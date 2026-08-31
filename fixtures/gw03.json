@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 3,
+  "authoredAt": "2026-09-01T18:22:11Z",
+  "mediaBase": "https://media.fantasyeg.com/gw03",
+  "posts": [
+    {
+      "id": "gw03-d1-1030-fb-feed",
+      "publishAt": "2026-09-03T07:30:00Z",
+      "slotCairo": "2026-09-03 10:30 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": { "file": "1030-winner-9f2c7a41.jpg", "sha256": "9f2c7a41b3d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f", "bytes": 483920, "mime": "image/jpeg", "width": 1080, "height": 1350 },
+      "source": { "card": "P_WINNER_THEIR_TEAM_NO_CLUB_SET", "texts": { "0": "بطل الجولة التالتة" }, "assets": { "0": "AHL" }, "keepNames": false },
+      "caption": "كهربا جاب 14 نقطة لوحده 🔥\nوالجولة الجاية قدامه الاتحاد ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d1-1100-ig-feed",
+      "publishAt": "2026-09-03T08:00:00Z",
+      "slotCairo": "2026-09-03 11:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": { "file": "1100-winner-9f2c7a41.jpg", "sha256": "9f2c7a41b3d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f", "bytes": 483920, "mime": "image/jpeg", "width": 1080, "height": 1350 },
+      "source": { "card": "P_WINNER_THEIR_TEAM_NO_CLUB_SET", "texts": { "0": "بطل الجولة التالتة" }, "assets": { "0": "AHL" }, "keepNames": false },
+      "caption": "كهربا جاب 14 نقطة لوحده الجولة دي 🔥 #فانتازي #الدوري_المصري",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d2-1600-fb-story",
+      "publishAt": "2026-09-03T13:00:00Z",
+      "slotCairo": "2026-09-03 16:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-story",
+      "media": { "file": "1600-results-1a2b3c4d.jpg", "sha256": "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809", "bytes": 512000, "mime": "image/jpeg", "width": 1080, "height": 1920 },
+      "source": { "card": "B_RESULTS_1080_1920", "texts": { "0": "نتايج الجولة التالتة" }, "assets": {}, "keepNames": false },
+      "caption": null,
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d3-2000-ig-reel",
+      "publishAt": "2026-09-03T17:00:00Z",
+      "slotCairo": "2026-09-03 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-reel",
+      "media": { "file": "2000-totw-5e6f7081.mp4", "sha256": "5e6f7081920a1b2c3d4e5f60718293a4b5c6d7e8f9001122334455667788990a", "bytes": 4183920, "mime": "video/mp4", "width": 1080, "height": 1920, "durationSeconds": 12 },
+      "source": { "composition": "TeamOfTheWeek", "props": { "gameweek": 3, "formation": "4-4-2" } },
+      "caption": "فريق الجولة التالتة 🔥 #فانتازي #الدوري_المصري",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d3-2000-tiktok",
+      "publishAt": "2026-09-03T17:00:00Z",
+      "slotCairo": "2026-09-03 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "media": { "file": "2000-totw-5e6f7081.mp4", "sha256": "5e6f7081920a1b2c3d4e5f60718293a4b5c6d7e8f9001122334455667788990a", "bytes": 4183920, "mime": "video/mp4", "width": 1080, "height": 1920, "durationSeconds": 12 },
+      "source": { "composition": "TeamOfTheWeek", "props": { "gameweek": 3, "formation": "4-4-2" } },
+      "caption": "فريق الجولة التالتة 🔥 #فانتازي #الدوري_المصري #الأهلي",
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}

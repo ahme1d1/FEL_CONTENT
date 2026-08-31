@@ -1,0 +1,4 @@
+# Every file here is a duplicate of a social post. It competes with nothing
+# useful in search, so it stays out of the index entirely.
+User-agent: *
+Disallow: /

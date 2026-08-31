@@ -1,0 +1,23 @@
+name: Validate content
+
+# Public repo, so Actions minutes are unmetered here. FEL_WEBSITE is private and
+# its minutes are not, which is one reason content lives in its own repo.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      # No install step: the publisher and the linters have zero npm dependencies
+      # on purpose, so nothing here can break on a registry outage.
+      - name: Unit tests
+        run: npm test
+      - name: Validate every manifest
+        run: node build/validate-cli.mjs

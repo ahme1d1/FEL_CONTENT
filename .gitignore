@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# TikTok's refresh token rotates on every use and must never be committed.
+publish/.tiktok-token.json

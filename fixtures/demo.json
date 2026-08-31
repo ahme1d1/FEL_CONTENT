@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 3,
+  "authoredAt": "2026-09-01T18:22:11Z",
+  "mediaBase": "https://media.fantasyeg.com/gw03",
+  "posts": [
+    {
+      "id": "demo-1030-fb-feed",
+      "publishAt": "2026-09-03T07:30:00Z",
+      "slotCairo": "2026-09-03 10:30 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": null,
+      "source": {
+        "card": "P_WINNER_THEIR_TEAM_NO_CLUB_SET",
+        "slug": "winner",
+        "texts": {
+          "0": "بطل الجولة التالتة"
+        },
+        "assets": {}
+      },
+      "caption": "كهربا جاب 14 نقطة لوحده 🔥\nوالجولة الجاية قدامه الاتحاد ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "demo-1100-ig-feed",
+      "publishAt": "2026-09-03T08:00:00Z",
+      "slotCairo": "2026-09-03 11:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": null,
+      "source": {
+        "card": "P_WINNER_THEIR_TEAM_NO_CLUB_SET",
+        "slug": "winner",
+        "texts": {
+          "0": "بطل الجولة التالتة"
+        },
+        "assets": {}
+      },
+      "caption": "كهربا جاب 14 نقطة لوحده الجولة دي 🔥 #فانتازي #الدوري_المصري",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "demo-1600-fb-story",
+      "publishAt": "2026-09-03T13:00:00Z",
+      "slotCairo": "2026-09-03 16:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-story",
+      "media": null,
+      "source": {
+        "card": "H_DEADLINE_1080_1920",
+        "slug": "deadline",
+        "texts": {},
+        "assets": {}
+      },
+      "caption": null,
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}
