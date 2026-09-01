@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 # TikTok's refresh token rotates on every use and must never be committed.
 publish/.tiktok-token.json
+publish/.tiktok-token.json.tmp
+# The TikTok client key and secret, if you keep them in a file rather than the shell.
+.env
+.env.*
