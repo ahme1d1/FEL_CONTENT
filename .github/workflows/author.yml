@@ -45,11 +45,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # A read-only DEPLOY KEY, not a personal access token. This repo is public, and a PAT carries
+      # the whole account: anyone able to push a workflow here could print it. A deploy key reaches
+      # one repository, read-only, and revoking it breaks nothing else.
       - name: Check out FEL_WEBSITE for the card tool
         uses: actions/checkout@v4
         with:
           repository: ahme1d1/FEL_WEBSITE
-          token: ${{ secrets.FEL_WEBSITE_TOKEN }}
+          ssh-key: ${{ secrets.FEL_WEBSITE_SSH_KEY }}
           path: FEL_WEBSITE
 
       - uses: actions/setup-node@v4
