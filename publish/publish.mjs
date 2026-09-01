@@ -14,9 +14,9 @@
  *   node publish/publish.mjs --manifest fixtures/gw03.json --dry-run --now 2026-09-03T08:00:00Z
  */
 
-import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { validateManifest } from '../build/manifest-schema.mjs'
+import { verifyMedia } from './media.mjs'
 import { selectDue } from './due.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
 import { routeFor } from './route.mjs'
@@ -89,19 +89,6 @@ function resolveTargets(dryRun) {
   const missing = [!igUserId && 'IG_USER_ID', !pageId && 'FB_PAGE_ID'].filter(Boolean)
   if (missing.length) throw new Error(`Missing required environment: ${missing.join(', ')}.`)
   return { igUserId, pageId }
-}
-
-/**
- * The manifest was reviewed as a diff; this confirms the bytes actually served
- * are the ones that were reviewed.
- */
-async function verifyMedia(mediaUrl, expectedSha) {
-  const res = await fetch(mediaUrl)
-  if (!res.ok) throw new Error(`Media ${mediaUrl} returned HTTP ${res.status}.`)
-  const actual = createHash('sha256').update(Buffer.from(await res.arrayBuffer())).digest('hex')
-  if (actual !== expectedSha) {
-    throw new Error(`Media ${mediaUrl} hashes to ${actual.slice(0, 12)}…, manifest says ${expectedSha.slice(0, 12)}….`)
-  }
 }
 
 /**

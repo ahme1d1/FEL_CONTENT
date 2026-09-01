@@ -1,0 +1,329 @@
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import { existsSync, readFileSync } from 'node:fs'
+import {
+  deadlineCard,
+  leagueTableCard,
+  matchdayCard,
+  playerOfRoundCard,
+  podiumCard,
+  priceChangesCard,
+  questionCard,
+  resultsCard,
+  singleMatchCard,
+  statCard,
+  teamOfWeekCard,
+  topPlayersCard,
+} from '../build/author/cards.mjs'
+
+const club = (id, short) => ({ id, short })
+const fx = (home, away, kickoffAt, over = {}) => ({
+  home,
+  away,
+  homeClub: club(home, { AHL: 'الأهلي', ZAM: 'الزمالك', PYR: 'بيراميدز', ENP: 'إنبي' }[home]),
+  awayClub: club(away, { AHL: 'الأهلي', ZAM: 'الزمالك', PYR: 'بيراميدز', ENP: 'إنبي' }[away]),
+  kickoffAt,
+  status: 'SCHEDULED',
+  homeScore: null,
+  awayScore: null,
+  ...over,
+})
+const player = (over = {}) => ({
+  playerId: 1,
+  name: 'إمام عاشور',
+  club: 'AHL',
+  pos: 'MID',
+  points: 10,
+  ...over,
+})
+
+const TWO = [fx('AHL', 'ZAM', '2026-09-07T14:00:00Z'), fx('PYR', 'ENP', '2026-09-07T17:00:00Z')]
+
+/* ─────────────────────────── shapes ─────────────────────────── */
+
+test('the matchday card lays a fixture out as home, kickoff, away from t2', () => {
+  const s = matchdayCard({ gameweek: 4, fixtures: TWO })
+  assert.equal(s.card, 'A_MATCHDAY_2_rows')
+  assert.equal(s.texts[0], 'الجولة الرابعة')
+  assert.deepEqual([s.texts[2], s.texts[3], s.texts[4]], ['الأهلي', '5:00', 'الزمالك'])
+  assert.deepEqual([s.texts[5], s.texts[6], s.texts[7]], ['بيراميدز', '8:00', 'إنبي'])
+  assert.deepEqual(s.assets, { 0: 'AHL', 1: 'ZAM', 2: 'PYR', 3: 'ENP' })
+})
+
+test('the row variant follows the number of fixtures, never a blanked row', () => {
+  const four = [...TWO, fx('AHL', 'ENP', '2026-09-07T18:00:00Z'), fx('ZAM', 'PYR', '2026-09-07T19:00:00Z')]
+  assert.equal(matchdayCard({ gameweek: 4, fixtures: four }).card, 'A_MATCHDAY_4_rows')
+})
+
+// 5, 6 and 7 rows were never built. Rendering one of them would leave a sample fixture on the card.
+test('a fixture count with no card refuses instead of leaving sample rows on the design', () => {
+  const five = [...TWO, ...TWO, TWO[0]]
+  assert.throws(() => matchdayCard({ gameweek: 4, fixtures: five }), /No matchday card has 5 rows/)
+})
+
+test('one fixture becomes the single-match card, not a one-row matchday that does not exist', () => {
+  assert.equal(matchdayCard({ gameweek: 4, fixtures: [TWO[0]] }).card, 'C_SINGLE_MATCH')
+})
+
+test('the results card straddles the locked separator, writing neither side of it', () => {
+  const played = TWO.map((f) => ({ ...f, status: 'FINISHED', homeScore: 2, awayScore: 1 }))
+  const s = resultsCard({ gameweek: 4, fixtures: played })
+  assert.equal(s.card, 'B_RESULTS_2_rows')
+  assert.deepEqual([s.texts[2], s.texts[3], s.texts[5], s.texts[6]], ['الأهلي', '2', '1', 'الزمالك'])
+  assert.equal(s.texts[4], undefined, 't4 is the locked dash')
+  assert.equal(s.texts[9], undefined, 't9 is the locked dash')
+})
+
+test('a goalless draw writes zeros rather than dropping the slot', () => {
+  const played = TWO.map((f) => ({ ...f, status: 'FINISHED', homeScore: 0, awayScore: 0 }))
+  const s = resultsCard({ gameweek: 4, fixtures: played })
+  assert.equal(s.texts[3], '0')
+  assert.equal(s.texts[5], '0')
+})
+
+test('the deadline card says the deadline out loud', () => {
+  const s = deadlineCard({ gameweek: 4, deadline: '2026-09-07T13:00:00Z' })
+  assert.deepEqual(s.texts, {
+    0: 'الجولة الرابعة',
+    1: 'الاتنين 4 العصر',
+    2: 'آخر ميعاد لتغيير فريقك',
+  })
+})
+
+test('a stat hero longer than the card can hold is refused', () => {
+  assert.throws(
+    () => statCard({ gameweek: 4, hero: 'ا'.repeat(20), support: 'x' }),
+    /wraps past 16/,
+  )
+})
+
+test('the question card shortens every name to fit the 284px box', () => {
+  const s = questionCard({
+    gameweek: 4,
+    players: [
+      player({ name: 'أحمد سيد زيزو' }),
+      player({ name: 'وسام أبو علي', club: 'AHL' }),
+      player({ name: 'محمد الشناوي' }),
+      player({ name: 'مروان عطية' }),
+    ],
+  })
+  assert.deepEqual([s.texts[2], s.texts[3], s.texts[4], s.texts[5]], [
+    'زيزو',
+    'أبو علي',
+    'الشناوي',
+    'عطية',
+  ])
+})
+
+test('the top-players card takes ten rows when there are ten, three when there are not', () => {
+  const many = Array.from({ length: 12 }, (_, i) => player({ playerId: i, points: 20 - i }))
+  assert.equal(topPlayersCard({ players: many }).card, 'F1_TOP_PLAYERS_10_rows')
+  assert.equal(topPlayersCard({ players: many.slice(0, 5) }).card, 'F1_TOP_PLAYERS_3_rows')
+  assert.throws(() => topPlayersCard({ players: many.slice(0, 2) }), /3 or 10 rows/)
+})
+
+test('the top-players card numbers its own rows', () => {
+  const s = topPlayersCard({ players: [player({ points: 14 }), player({ points: 12 }), player({ points: 11 })] })
+  assert.deepEqual([s.texts[1], s.texts[4], s.texts[7]], ['1', '2', '3'])
+  assert.deepEqual([s.texts[3], s.texts[6], s.texts[9]], ['14', '12', '11'])
+})
+
+test('the podium leads with the manager, and carries the team name it was given', () => {
+  const s = podiumCard({
+    gameweek: 4,
+    rows: [
+      { name: 'محمد عبد الرحمن', teamName: 'فريق النسور', gwPts: 87 },
+      { name: 'أحمد سامي', teamName: 'الملوك', gwPts: 84 },
+      { name: 'كريم الشناوي', teamName: 'ريد ديفيلز', gwPts: 81 },
+    ],
+  })
+  assert.deepEqual([s.texts[2], s.texts[3], s.texts[4], s.texts[5]], ['1', 'فريق النسور', 'محمد عبد الرحمن', '87'])
+  assert.equal(s.texts[13], '81')
+})
+
+test('the league table writes eight rows of rank, club, played, points', () => {
+  const rows = Array.from({ length: 20 }, (_, i) => ({
+    club: 'AHL',
+    clubShort: 'الأهلي',
+    p: 8,
+    pts: 22 - i,
+  }))
+  const s = leagueTableCard({ rows })
+  assert.deepEqual([s.texts[3], s.texts[4], s.texts[5], s.texts[6]], ['1', 'الأهلي', '8', '22'])
+  assert.equal(s.texts[34], '15', 'the eighth row ends at t34')
+  assert.equal(s.texts[35], undefined, 't35 is the wordmark')
+})
+
+const move = (change, price = 10.7) => ({ name: 'إمام عاشور', club: 'AHL', price, change })
+const EIGHT_MOVES = [...Array.from({ length: 5 }, () => move(0.2)), ...Array.from({ length: 3 }, () => move(-0.1))]
+
+test('a price move is written old then new, derived from the change the API reports', () => {
+  const s = priceChangesCard({ changes: EIGHT_MOVES })
+  assert.equal(s.texts[2], '10.5')
+  assert.equal(s.texts[4], '10.7')
+})
+
+// The arrows are painted into the design per row, not derived from the numbers. Row 4 is a red
+// down arrow whatever you put beside it, so a riser there renders as a fall.
+test('rows follow the card fixed up-down pattern, not the order the API returned', () => {
+  const changes = [
+    ...Array.from({ length: 5 }, (_, i) => move(0.2, 10 + i)),
+    ...Array.from({ length: 3 }, (_, i) => move(-0.1, 5 + i)),
+  ]
+  const s = priceChangesCard({ changes })
+  const rose = (row) => Number(s.texts[4 + 4 * row]) > Number(s.texts[2 + 4 * row])
+
+  assert.deepEqual([0, 1, 2, 3, 4, 5, 6, 7].map(rose), [true, true, true, false, false, true, false, true])
+})
+
+test('too few of either direction is refused rather than mismatching an arrow', () => {
+  assert.throws(
+    () => priceChangesCard({ changes: Array.from({ length: 8 }, () => move(0.2)) }),
+    /5 risers and 3 fallers/,
+  )
+  assert.throws(() => priceChangesCard({ changes: EIGHT_MOVES.slice(0, 4) }), /5 risers and 3 fallers/)
+})
+
+test('the player of the round names his club in words and his points as a number', () => {
+  const s = playerOfRoundCard({
+    player: { name: 'أحمد سيد زيزو', club: 'AHL', clubShort: 'الأهلي', points: 14 },
+  })
+  assert.deepEqual(s.texts, {
+    0: 'أعلى نقط الجولة',
+    1: 'زيزو',
+    2: 'الأهلي',
+    3: '14',
+    4: 'نقطة',
+  })
+})
+
+/* ─────────────────────────── team of the week ─────────────────────────── */
+
+const squad = (counts, pointsFor) =>
+  Object.entries(counts).flatMap(([pos, n]) =>
+    Array.from({ length: n }, (_, i) => player({ playerId: `${pos}${i}`.length * 100 + i, pos, points: pointsFor(pos, i) })),
+  )
+
+test('the formation that scores more wins, which is why both are built', () => {
+  // Plenty of forwards, thin midfield: 5-2-3 must beat 4-4-2.
+  const players = squad({ GK: 1, DEF: 6, MID: 4, FWD: 4 }, (pos, i) =>
+    pos === 'FWD' ? 20 - i : pos === 'MID' ? 2 : 9 - i,
+  )
+  assert.equal(teamOfWeekCard({ gameweek: 4, players }).card, 'M_TEAM_OF_THE_WEEK_5_2_3')
+})
+
+test('a tie keeps 4-4-2, so the same data always renders the same bytes', () => {
+  const players = squad({ GK: 1, DEF: 5, MID: 4, FWD: 3 }, () => 5)
+  assert.equal(teamOfWeekCard({ gameweek: 4, players }).card, 'M_TEAM_OF_THE_WEEK_4_4_2')
+})
+
+test('the eleven run down the pitch: forwards first, keeper last', () => {
+  const players = squad({ GK: 1, DEF: 5, MID: 5, FWD: 3 }, (pos) =>
+    ({ FWD: 9, MID: 7, DEF: 5, GK: 3 })[pos],
+  )
+  const s = teamOfWeekCard({ gameweek: 4, players })
+  assert.equal(s.card, 'M_TEAM_OF_THE_WEEK_4_4_2')
+  assert.deepEqual([s.texts[2], s.texts[4]], ['9', '9'], 'two forwards')
+  assert.deepEqual([s.texts[6], s.texts[8], s.texts[10], s.texts[12]], ['7', '7', '7', '7'])
+  assert.deepEqual([s.texts[14], s.texts[16], s.texts[18], s.texts[20]], ['5', '5', '5', '5'])
+  assert.equal(s.texts[22], '3', 'the keeper is last')
+})
+
+test('a squad that fills no shipped formation is refused', () => {
+  assert.throws(
+    () => teamOfWeekCard({ gameweek: 4, players: squad({ GK: 1, DEF: 2, MID: 2, FWD: 1 }, () => 5) }),
+    /No shipped formation/,
+  )
+})
+
+test('no keeper at all is refused rather than rendering ten men', () => {
+  assert.throws(
+    () => teamOfWeekCard({ gameweek: 4, players: squad({ DEF: 5, MID: 5, FWD: 3 }, () => 5) }),
+    /No shipped formation/,
+  )
+})
+
+/* ─────────────── the generated slot map is the contract ─────────────── */
+
+const SLOT_MAPS = new URL('../../FEL_WEBSITE/docs/marketing/card-slot-maps.md', import.meta.url)
+
+/** Parse the generated map into { CARD_ID: { texts, locked:Set, assets, keepNames } }. */
+function readSlotMaps(file) {
+  const cards = {}
+  let current = null
+  for (const line of readFileSync(file, 'utf8').split('\n')) {
+    const heading = line.match(/^### `([A-Za-z0-9_]+)`/)
+    if (heading) {
+      current = { texts: 0, locked: new Set(), assets: 0, keepNames: false }
+      cards[heading[1]] = current
+      continue
+    }
+    if (!current) continue
+
+    const texts = line.match(/^- \*\*texts\*\* \((\d+)\):(.*)$/)
+    if (texts) {
+      current.texts = Number(texts[1])
+      for (const m of texts[2].matchAll(/`(\d+)(\*?)`/g)) if (m[2]) current.locked.add(Number(m[1]))
+      continue
+    }
+    const assets = line.match(/^- \*\*assets\*\* \((\d+)\)/)
+    if (assets) current.assets = Number(assets[1])
+    if (line.includes('"keepNames": true')) current.keepNames = true
+  }
+  return cards
+}
+
+// A stale slot map is invisible: it puts text in the wrong slot and you only find out from the
+// PNG. This is the tripwire — it fails the moment build-cards.py moves an index under us.
+test('every slot a filler writes still exists on the card it names', { skip: !existsSync(SLOT_MAPS) }, () => {
+  const maps = readSlotMaps(SLOT_MAPS)
+  const ten = Array.from({ length: 12 }, (_, i) => player({ playerId: i, points: 20 - i }))
+  const four = [...TWO, fx('AHL', 'ENP', '2026-09-07T18:00:00Z'), fx('ZAM', 'PYR', '2026-09-07T19:00:00Z')]
+  const played = four.map((f) => ({ ...f, status: 'FINISHED', homeScore: 1, awayScore: 0 }))
+
+  const sources = [
+    matchdayCard({ gameweek: 4, fixtures: TWO }),
+    matchdayCard({ gameweek: 4, fixtures: four.slice(0, 3) }),
+    matchdayCard({ gameweek: 4, fixtures: four }),
+    resultsCard({ gameweek: 4, fixtures: played.slice(0, 2) }),
+    resultsCard({ gameweek: 4, fixtures: played.slice(0, 3) }),
+    resultsCard({ gameweek: 4, fixtures: played }),
+    singleMatchCard({ gameweek: 4, fixture: played[0] }),
+    deadlineCard({ gameweek: 4, deadline: '2026-09-07T13:00:00Z' }),
+    statCard({ gameweek: 4, hero: 'كابتنك ملعبش', support: 'الأهلي بكرة' }),
+    questionCard({ gameweek: 4, players: ten.slice(0, 4) }),
+    topPlayersCard({ players: ten.slice(0, 3) }),
+    topPlayersCard({ players: ten }),
+    playerOfRoundCard({ player: { name: 'زيزو', club: 'AHL', clubShort: 'الأهلي', points: 14 } }),
+    teamOfWeekCard({
+      gameweek: 4,
+      players: squad({ GK: 1, DEF: 5, MID: 5, FWD: 3 }, (pos) => ({ FWD: 9, MID: 7, DEF: 5, GK: 3 })[pos]),
+    }),
+    priceChangesCard({ changes: EIGHT_MOVES }),
+    podiumCard({
+      gameweek: 4,
+      rows: [1, 2, 3].map((n) => ({ name: `م${n}`, teamName: `ف${n}`, gwPts: 90 - n })),
+    }),
+    leagueTableCard({
+      rows: Array.from({ length: 8 }, () => ({ club: 'AHL', clubShort: 'الأهلي', p: 8, pts: 22 })),
+    }),
+  ]
+
+  for (const source of sources) {
+    const map = maps[source.card]
+    assert.ok(map, `card ${source.card} is not in the generated slot map`)
+
+    for (const index of Object.keys(source.texts).map(Number)) {
+      assert.ok(index < map.texts, `${source.card} t${index} is past its ${map.texts} text slots`)
+      assert.ok(!map.locked.has(index), `${source.card} t${index} is a locked slot`)
+    }
+    for (const index of Object.keys(source.assets).map(Number)) {
+      assert.ok(index < map.assets, `${source.card} a${index} is past its ${map.assets} asset slots`)
+    }
+    assert.equal(
+      Boolean(source.keepNames),
+      map.keepNames,
+      `${source.card} keepNames disagrees with the generated map`,
+    )
+  }
+})

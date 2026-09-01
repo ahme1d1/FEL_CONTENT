@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "_source": "posting-runbook.md §2. Slots must be members of SLOTS_CAIRO in build/manifest-schema.mjs, which is also what the publish workflow's eight crons fire on.",
+
+  "link": "https://fantasyeg.com/",
+
+  "days": {
+    "buildUp": [
+      {
+        "slot": "20:00",
+        "kind": "buildUp",
+        "card": "buildUp",
+        "platforms": ["facebook", "instagram"],
+        "carriesLink": true
+      }
+    ],
+
+    "middle": [
+      {
+        "slot": "11:00",
+        "kind": "priceChanges",
+        "card": "priceChanges",
+        "platforms": ["facebook", "instagram"],
+        "_note": "Conditional. The card holds eight rows, so it is skipped until eight prices have moved."
+      },
+      { "slot": "14:00", "kind": "leagueTable", "card": "leagueTable", "platforms": ["facebook", "instagram"] },
+      { "slot": "20:00", "kind": "question", "card": "question", "platforms": ["facebook", "instagram", "tiktok"] }
+    ],
+
+    "deadlineDay": [
+      { "slot": "09:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
+      {
+        "slot": "11:00",
+        "kind": "deadline",
+        "card": "deadline",
+        "platforms": ["facebook", "instagram"],
+        "maxLatenessMinutes": 60
+      },
+      { "slot": "22:30", "kind": "results", "card": "results", "platforms": ["facebook", "instagram"] }
+    ],
+
+    "matchDay": [
+      { "slot": "09:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
+      { "slot": "22:30", "kind": "results", "card": "results", "platforms": ["facebook", "instagram"] }
+    ],
+
+    "settleDay": [
+      { "slot": "10:30", "kind": "podium", "card": "podium", "platforms": ["facebook", "instagram"] },
+      { "slot": "13:00", "kind": "playerOfRound", "card": "playerOfRound", "platforms": ["facebook", "instagram"] },
+      { "slot": "16:00", "kind": "teamOfWeek", "card": "teamOfWeek", "platforms": ["facebook", "instagram", "tiktok"] },
+      { "slot": "20:00", "kind": "topPlayers", "card": "topPlayers", "platforms": ["facebook", "instagram"] }
+    ]
+  }
+}

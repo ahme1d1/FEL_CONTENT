@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "_source": "Written against build/copy-rules.json, NOT copied from content-design-kit.md §6 — those examples predate the linter and every one of them fails it, on the pointer emoji (banned outright) and on trailing questions (rejected by Instagram and TikTok). Voice: content-design-kit.md §2, register B. A caption never describes the card; the graphic already carries the scores, names, fixtures and times.",
+
+  "kinds": {
+    "buildUp": {
+      "facebook": [
+        "الجولة الجاية فتحت 🔜\nجهّز فريقك قبل الديدلاين ⏰\nfantasyeg.com",
+        "باب الجولة الجاية فتح 🔜\nجهّز فريقك من دلوقتي ⏰\nfantasyeg.com"
+      ],
+      "instagram": [
+        "الجولة الجاية فتحت 🔜 جهّز فريقك قبل الديدلاين ⏰",
+        "باب الجولة الجاية فتح 🔜 جهّز فريقك من دلوقتي ⏰"
+      ],
+      "tiktok": ["الجولة الجاية فتحت 🔜 جهّز فريقك", "باب الجولة الجاية فتح 🔜"]
+    },
+
+    "matchday": {
+      "facebook": [
+        "يوم كامل كورة قدامك ⚽\nوالكابتن هو اللي بيفرق ⚡",
+        "الجولة مش يوم واحد ⚽\nخلي بالك من اللي لسه جاي 👀"
+      ],
+      "instagram": [
+        "يوم كامل كورة قدامك ⚽ والكابتن هو اللي بيفرق ⚡",
+        "الجولة مش يوم واحد ⚽ خلي بالك من اللي لسه جاي 👀"
+      ],
+      "tiktok": ["يوم كامل كورة ⚽ والكابتن بيفرق", "الجولة مش يوم واحد ⚽ استنى الباقي"]
+    },
+
+    "results": {
+      "facebook": [
+        "اليوم خلص ✅\nوالجولة لسه ماخلصتش ⏳",
+        "النتايج نزلت ✅\nباقي الجولة هو اللي هيحسم ⚡"
+      ],
+      "instagram": ["اليوم خلص ✅ والجولة لسه ماخلصتش ⏳", "النتايج نزلت ✅ باقي الجولة هيحسم ⚡"],
+      "tiktok": ["اليوم خلص ✅ والجولة لسه ماخلصتش", "النتايج نزلت ✅ باقي الجولة هيحسم"]
+    },
+
+    "resultsFinal": {
+      "facebook": [
+        "الجولة خلصت ✅\nبكرة نشوف مين طلع الأول 🏆",
+        "آخر ماتش خلص ✅\nفاضل نعرف مين كسب الجولة 🏆"
+      ],
+      "instagram": ["الجولة خلصت ✅ بكرة نشوف مين طلع الأول 🏆", "آخر ماتش خلص ✅ فاضل نعرف مين كسب 🏆"],
+      "tiktok": ["الجولة خلصت ✅ بكرة نعرف الأول 🏆", "آخر ماتش خلص ✅ مين كسب الجولة"]
+    },
+
+    "deadline": {
+      "facebook": [
+        "الكابتن بيتغير مرة واحدة كل جولة ⚡\nاختار صح قبل ما يقفل ⏰",
+        "بعد الديدلاين مفيش تعديل ⏰\nراجع فريقك دلوقتي ⚡"
+      ],
+      "instagram": [
+        "الكابتن بيتغير مرة واحدة كل جولة ⚡ اختار صح قبل ما يقفل ⏰",
+        "بعد الديدلاين مفيش تعديل ⏰ راجع فريقك دلوقتي ⚡"
+      ],
+      "tiktok": ["اختار كابتنك صح قبل ما يقفل ⏰", "بعد الديدلاين مفيش تعديل ⏰"]
+    },
+
+    "question": {
+      "facebook": ["كابتنك مين الجولة دي؟ ⚡\nقولنا رأيك 💬", "مين شايل الجولة عندك؟ ⚡\nقولنا 💬"],
+      "instagram": ["الكابتن بيجيب ضعف نقطه ⚡ اختار صح", "كابتن واحد بيقلب الجولة ⚡"],
+      "tiktok": ["الكابتن بيجيب ضعف نقطه ⚡", "كابتن واحد بيقلب الجولة ⚡"]
+    },
+
+    "leagueTable": {
+      "facebook": [
+        "الترتيب اتغير بعد الجولة 📊\nوده بيغير اللي قدامهم في الجاية 🔜",
+        "الدوري اتقلب شوية 📊\nشوف ناديك واقف فين ⚽"
+      ],
+      "instagram": ["الترتيب اتغير بعد الجولة 📊", "الدوري اتقلب شوية 📊 شوف ناديك واقف فين ⚽"],
+      "tiktok": ["الترتيب اتغير بعد الجولة 📊", "الدوري اتقلب شوية 📊"]
+    },
+
+    "priceChanges": {
+      "facebook": ["الأسعار اتحركت 💰\nاللي اتأخر هيدفع أكتر ⏳", "حركة أسعار جديدة 💰\nالسعر بيتغير قبل ما تاخد بالك ⏳"],
+      "instagram": ["الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر ⏳", "حركة أسعار جديدة 💰 السعر مش ثابت ⏳"],
+      "tiktok": ["الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر", "حركة أسعار جديدة 💰"]
+    }
+  },
+
+  "needsHuman": {
+    "podium": "Name the three managers the card shows. Lead with the manager, never the team name — a team name is user input. Say what it took to win the round, not the score the card already carries.",
+    "topPlayers": "The card already lists the names and the points. Add what is not on it: what those players had in common this round, or who is about to face whom.",
+    "playerOfRound": "The card carries his name, club and points. Add the stake — what he does to a squad that has him, or who he faces next.",
+    "teamOfWeek": "Eleven names are already on the card. Add the one thing that is not: what the shape says about the round."
+  }
+}

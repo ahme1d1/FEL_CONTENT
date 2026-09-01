@@ -21,10 +21,16 @@ publishing routine; TikTok tokens never leave the author's machine.
 |---|---|
 | `manifests/gwNN.json` | the week's plan, reviewed as a diff before anything publishes |
 | `gwNN/` | rendered media, served by Pages, content-addressed by sha256 |
+| `build/author-cli.mjs` | **writes the manifest** from the live API and the calendar |
+| `build/author/calendar.json` | which card goes out at which slot on which day |
+| `build/author/caption-templates.json` | captions for the posts whose copy is mechanical |
+| `build/author/copy.json` | the fixed words a card carries: ordinals, day names, clock phrases |
 | `build/copy-rules.json` | voice and forbidden-claims rules, mirroring `content-design-kit.md` §2 and §5 |
 | `build/lint-copy.mjs` | caption linter |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
-| `publish/publish.mjs` | the publisher a cloud routine runs three times a day |
+| `build/render-manifest.mjs` | renders the cards and stamps `media` back into the manifest |
+| `publish/publish.mjs` | the publisher a cloud routine runs eight times a day |
+| `publish/schedule-facebook.mjs` | hands the Facebook posts to Meta's own scheduler, run by hand |
 | `publish/tiktok-auth-cli.mjs` | one-time TikTok authorization, run by hand |
 | `publish/tiktok-draft.mjs` | sends a video to the TikTok drafts inbox, run by hand |
 | `publish/ledger.jsonl` | append-only record of what actually went out |
@@ -32,12 +38,78 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 60+ unit tests, no network, no accounts
+npm test                                    # 250+ unit tests, no network, no accounts
+node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
+npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
 node build/validate-cli.mjs                 # validate every manifest
 node build/lint-copy-cli.mjs instagram "…"  # lint one caption
+node publish/schedule-facebook.mjs --manifest manifests/gw04.json --dry-run
 node publish/publish.mjs --manifest fixtures/gw03.json --dry-run --now 2026-09-03T08:00:00Z
 node publish/tiktok-draft.mjs --file ../FEL_VIDEO/out/ad-full.mp4 --dry-run
 ```
+
+## The authoring pass
+
+A gameweek goes out in four moves. Only the third touches an account.
+
+```
+author  ->  render  ->  schedule (Facebook)  ->  the routine (Instagram, stories)
+```
+
+**`build/author-cli.mjs` writes the plan.** It reads the public API — no token, no account,
+nothing written — works out the gameweek's content window from its fixtures, fills each card's
+slots with real data and picks a caption. It leaves `media: null`, which is exactly what
+`render-manifest.mjs` fills and exactly what `validateManifest` rejects until it has, so an
+un-rendered manifest cannot publish by construction.
+
+```bash
+node build/author-cli.mjs --gameweek 4 --snapshot /tmp/gw04.json --dry-run   # look first
+node build/author-cli.mjs --gameweek 4                                       # write it
+npm run render -- manifests/gw04.json
+```
+
+**Running it twice is the normal loop, not a mistake.** Everything that needs no match results is
+authored days ahead; the results cards land one at a time as the scores come in. A re-run merges —
+a post that already exists keeps its stamped media and its written caption — and reports any post
+whose data has changed underneath it rather than quietly replacing it. `--refresh` replaces those.
+
+**`--data` authors from a saved snapshot** instead of the network, which makes a manifest
+reproducible and lets the whole thing be re-run without touching prod.
+
+**Some captions are not the author's to write.** The winner, the player of the round, the team of
+the week and the top-players post all name a real person, so the author emits `caption: null` and
+a `captionBrief`, and refuses to write the manifest until someone answers. Write them into a JSON
+file keyed by post id and pass `--captions`; they go through the same linter as generated copy.
+`--allow-missing-captions` overrides, and `schedule-facebook.mjs` still refuses to send one.
+
+**Cards it cannot fill are skipped by name, with the reason.** A results card for a day that has
+not been played, a winner for a round that has not settled: both are answers, not failures.
+
+**It warns about text it did not write.** A manager's team name goes onto the podium card
+verbatim, and GW2's real top three contains `My FEL Team` — the wordmark retired from every
+user-facing surface on 2026-08-25. Nothing can fix that automatically, so it is printed while
+there is still time to decide whether to post the card at all.
+
+**The player cards need `GET /gameweeks/:gw/top-players`**, which is new server surface in
+`../FEL_API`. Until that is deployed the author says
+`topPlayers: not served by …` and skips the three cards that need it.
+
+## Scheduling the Facebook half
+
+`due.mjs` skips `fb-scheduled` and `fb-text` because Meta schedules those natively "during the
+authoring pass" — and until now nothing performed that pass but a curl typed by hand.
+`publish/schedule-facebook.mjs` does, with the same ledger discipline the routine uses, so the two
+can never post the same thing twice.
+
+```bash
+node publish/schedule-facebook.mjs --manifest manifests/gw04.json --dry-run
+printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest manifests/gw04.json
+```
+
+It writes `published=false` with a `scheduled_publish_time`, so posts land in the Page's Planner
+and stay editable until they go out. Read a dry run first: it prints the Cairo reading, the UTC
+instant and the epoch for every post, which is where a timezone mistake becomes visible. It is not
+in CI — Meta holds the queue once it is handed over, so there is nothing for a cron to keep doing.
 
 ## TikTok
 
