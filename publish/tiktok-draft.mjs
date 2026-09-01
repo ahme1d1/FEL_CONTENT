@@ -19,7 +19,7 @@ import { closeSync, openSync, readFileSync, readSync, statSync } from 'node:fs'
 import { basename, extname, join } from 'node:path'
 import { validateManifest } from '../build/manifest-schema.mjs'
 import { appendLedger, record } from './ledger.mjs'
-import { publishTiktokDraft } from './platforms/tiktok.mjs'
+import { publishTiktokDraft, publishTiktokPhotoDraft } from './platforms/tiktok.mjs'
 import { accessTokenFor, readTokenFile } from './tiktok-auth.mjs'
 import { apiHttp, getUserInfo, postForm, putChunk } from './tiktok-http.mjs'
 
@@ -33,7 +33,7 @@ const MIME_BY_EXT = {
 }
 
 function parseArgs(argv) {
-  const args = { manifest: null, post: null, file: null, mediaDir: null, ledger: 'publish/ledger.jsonl', dryRun: false, whoami: false }
+  const args = { manifest: null, post: null, file: null, mediaDir: null, ledger: 'publish/ledger.jsonl', dryRun: false, whoami: false, photoUrls: null }
   for (let i = 0; i < argv.length; i += 1) {
     const [flag, inline] = argv[i].split('=')
     const value = () => inline ?? argv[++i]
@@ -44,9 +44,10 @@ function parseArgs(argv) {
     else if (flag === '--media-dir') args.mediaDir = value()
     else if (flag === '--ledger') args.ledger = value()
     else if (flag === '--whoami') args.whoami = true
+    else if (flag === '--photo-url') (args.photoUrls ??= []).push(value())
     else throw new Error(`Unknown argument "${argv[i]}".`)
   }
-  if (args.whoami) return args
+  if (args.whoami || args.photoUrls) return args
   if (!args.manifest && !args.file) {
     throw new Error('usage: tiktok-draft.mjs (--manifest <path> [--post <id>] | --file <path>) [--media-dir <dir>] [--dry-run]')
   }
@@ -141,13 +142,30 @@ async function whoami() {
   console.log(`  token expires  ${token.expiresAt}`)
 }
 
+/**
+ * Photos take a different endpoint from video and have no FILE_UPLOAD option,
+ * so they are addressed by their public URL on the verified domain rather than
+ * by a path on this machine.
+ */
+async function photoDraft(args, http) {
+  console.log(`TIKTOK PHOTO DRAFT — ${args.photoUrls.length} image(s)`)
+  for (const u of args.photoUrls) console.log(`  ${u}`)
+  if (args.dryRun) {
+    console.log('  DRY RUN — nothing uploaded')
+    return
+  }
+  const { remoteId, status } = await publishTiktokPhotoDraft({ http, photoUrls: args.photoUrls })
+  console.log(`  ok — ${status} (publish_id ${remoteId})`)
+  console.log('Open TikTok on your phone — the draft arrives as an inbox notification.')
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2))
   if (args.whoami) return whoami()
 
-  const jobs = selectJobs(args)
+  const jobs = args.photoUrls ? [] : selectJobs(args)
 
-  console.log(`${args.dryRun ? 'DRY RUN' : 'TIKTOK DRAFTS'} — ${jobs.length} file(s)`)
+  if (!args.photoUrls) console.log(`${args.dryRun ? 'DRY RUN' : 'TIKTOK DRAFTS'} — ${jobs.length} file(s)`)
 
   let http = null
   if (!args.dryRun) {
@@ -157,6 +175,8 @@ async function main() {
     if (missing.length) throw new Error(`Missing required environment: ${missing.join(', ')}.`)
     http = apiHttp(await accessTokenFor({ postForm, clientKey, clientSecret }))
   }
+
+  if (args.photoUrls) return photoDraft(args, http)
 
   let failures = 0
   const captions = []

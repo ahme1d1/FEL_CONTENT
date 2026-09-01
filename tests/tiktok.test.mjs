@@ -192,3 +192,71 @@ test('a status that never settles throws rather than polling forever', async () 
     /did not finish|never/i,
   )
 })
+
+// ── photos ─────────────────────────────────────────────────────────────────
+// Cards are the weekly rhythm; video is occasional. A video-only integration
+// would leave TikTok with almost nothing to post.
+
+import { PHOTO_INIT_PATH, publishTiktokPhotoDraft } from '../publish/platforms/tiktok.mjs'
+
+const IMG = 'https://media.fantasyeg.com/gw03/gw3-d2-matchday.jpg'
+
+test('a photo draft declares MEDIA_UPLOAD and PHOTO, pulling from the verified domain', async () => {
+  const { http, calls } = recorder([ok({ publish_id: 'PUB_P1' }), ok({ status: 'SEND_TO_USER_INBOX' })])
+  const result = await publishTiktokPhotoDraft({ http, photoUrls: [IMG], sleep: async () => {} })
+
+  assert.equal(calls[0].path, PHOTO_INIT_PATH)
+  assert.equal(calls[0].body.post_mode, 'MEDIA_UPLOAD')
+  assert.equal(calls[0].body.media_type, 'PHOTO')
+  assert.deepEqual(calls[0].body.source_info, {
+    source: 'PULL_FROM_URL',
+    photo_images: [IMG],
+    photo_cover_index: 0,
+  })
+  assert.equal(result.remoteId, 'PUB_P1')
+  assert.equal(result.status, 'SEND_TO_USER_INBOX')
+})
+
+// Photos have no FILE_UPLOAD option at all, so an unreachable or unverified
+// URL is the whole failure mode. Catching it here beats a TikTok rejection.
+test('a non-https url is refused before the request', async () => {
+  const { http, calls } = recorder([])
+  await assert.rejects(
+    () => publishTiktokPhotoDraft({ http, photoUrls: ['http://media.fantasyeg.com/a.jpg'] }),
+    /https/i,
+  )
+  assert.equal(calls.length, 0)
+})
+
+test('an empty photo list is refused rather than initialising an empty post', async () => {
+  const { http } = recorder([])
+  await assert.rejects(() => publishTiktokPhotoDraft({ http, photoUrls: [] }), /photo/i)
+})
+
+test('more than the 35 photos tiktok accepts is refused', async () => {
+  const { http } = recorder([])
+  const many = Array.from({ length: 36 }, (_, i) => `${IMG}?i=${i}`)
+  await assert.rejects(() => publishTiktokPhotoDraft({ http, photoUrls: many }), /35/)
+})
+
+test('a carousel keeps the given order and cover', async () => {
+  const { http, calls } = recorder([ok({ publish_id: 'P' }), ok({ status: 'SEND_TO_USER_INBOX' })])
+  const urls = [`${IMG}?a`, `${IMG}?b`, `${IMG}?c`]
+  await publishTiktokPhotoDraft({ http, photoUrls: urls, coverIndex: 2, sleep: async () => {} })
+
+  assert.deepEqual(calls[0].body.source_info.photo_images, urls)
+  assert.equal(calls[0].body.source_info.photo_cover_index, 2)
+})
+
+test('a cover index outside the list is refused', async () => {
+  const { http } = recorder([])
+  await assert.rejects(() => publishTiktokPhotoDraft({ http, photoUrls: [IMG], coverIndex: 3 }), /cover/i)
+})
+
+test('a failed photo draft throws carrying the reason', async () => {
+  const { http } = recorder([ok({ publish_id: 'P' }), ok({ status: 'FAILED', fail_reason: 'url_ownership_unverified' })])
+  await assert.rejects(
+    () => publishTiktokPhotoDraft({ http, photoUrls: [IMG], sleep: async () => {} }),
+    /url_ownership_unverified/,
+  )
+})

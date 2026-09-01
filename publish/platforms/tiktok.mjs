@@ -32,6 +32,7 @@ const MAX_POLLS = 40
 export const API_BASE = 'https://open.tiktokapis.com/v2'
 export const INIT_PATH = '/post/publish/inbox/video/init/'
 export const STATUS_PATH = '/post/publish/status/fetch/'
+export const PHOTO_INIT_PATH = '/post/publish/content/init/'
 
 /** A draft stops here. PUBLISH_COMPLETE only arrives if a human posts it later. */
 const TERMINAL = new Set(['SEND_TO_USER_INBOX', 'PUBLISH_COMPLETE'])
@@ -164,4 +165,70 @@ export async function publishTiktokDraft({
     await sleep(POLL_INTERVAL_MS)
   }
   throw new Error(`Draft ${publishId} did not finish after ${maxPolls} polls.`)
+}
+
+/** TikTok caps a photo post at 35 images. */
+const MAX_PHOTOS = 35
+
+/**
+ * Photo drafts.
+ *
+ * A different endpoint from video, and a stricter one: photos have no
+ * FILE_UPLOAD option at all, so every image must sit on a public HTTPS URL
+ * under a domain verified in TikTok's portal. For FEL that is
+ * media.fantasyeg.com, which needed the certificate that landed 2026-09-01 and
+ * a DNS TXT record before any of this could work.
+ *
+ * No post_info is sent, for the same reason the video path sends none: under
+ * MEDIA_UPLOAD the creator writes the caption in the TikTok editor.
+ *
+ * @returns {Promise<{remoteId: string, status: string}>}
+ */
+export async function publishTiktokPhotoDraft({
+  http,
+  photoUrls,
+  coverIndex = 0,
+  sleep = defaultSleep,
+  maxPolls = MAX_POLLS,
+}) {
+  if (!Array.isArray(photoUrls) || photoUrls.length === 0) {
+    throw new Error('publishTiktokPhotoDraft needs at least one photo URL.')
+  }
+  if (photoUrls.length > MAX_PHOTOS) {
+    throw new Error(`${photoUrls.length} photos exceeds the ${MAX_PHOTOS} TikTok accepts.`)
+  }
+  for (const url of photoUrls) {
+    if (!/^https:\/\//.test(url)) {
+      throw new Error(`"${url}" must be https — photos are PULL_FROM_URL only, from a verified domain.`)
+    }
+  }
+  if (!Number.isInteger(coverIndex) || coverIndex < 0 || coverIndex >= photoUrls.length) {
+    throw new Error(`cover index ${coverIndex} is outside the ${photoUrls.length} photo(s) given.`)
+  }
+
+  const data = unwrap(
+    await http({
+      path: PHOTO_INIT_PATH,
+      body: {
+        post_mode: 'MEDIA_UPLOAD',
+        media_type: 'PHOTO',
+        source_info: {
+          source: 'PULL_FROM_URL',
+          photo_images: photoUrls,
+          photo_cover_index: coverIndex,
+        },
+      },
+    }),
+  )
+  if (!data.publish_id) throw new Error('No publish_id came back from the photo init.')
+
+  for (let i = 0; i < maxPolls; i += 1) {
+    const state = await fetchStatus({ http, publishId: data.publish_id })
+    if (state.status === 'FAILED') {
+      throw new Error(`Photo draft ${data.publish_id} failed: ${state.fail_reason ?? 'no reason given'}`)
+    }
+    if (TERMINAL.has(state.status)) return { remoteId: data.publish_id, status: state.status }
+    await sleep(POLL_INTERVAL_MS)
+  }
+  throw new Error(`Photo draft ${data.publish_id} did not finish after ${maxPolls} polls.`)
 }
