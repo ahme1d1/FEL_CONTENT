@@ -68,6 +68,35 @@ Two consequences of Direct Post being off, both deliberate:
 - **The caption does not travel.** The inbox endpoint accepts the file and nothing else, so
   `tiktok-draft.mjs` prints the manifest's caption at the end for you to paste.
 
+### The app must be a Sandbox until it passes review
+
+This is the part that costs a day if you do not know it. A **production app in Draft cannot
+authorize a user at all**, and the error page does not say so - it says:
+
+> If you're a developer, correct the following and try again: **client_key**
+
+The key is fine. That message means *the TikTok account signing in is not allowed to use an
+unreviewed app*. It is what defeated the earlier attempt to route this through Composio, which
+was misread at the time as a Composio workspace problem.
+
+The fix is TikTok's **Sandbox**, which exists for exactly this:
+
+1. App page -> **Sandbox** tab -> **Create Sandbox**, cloning the production config.
+2. Re-add the redirect URI - **cloning does not carry it over.**
+3. **Sandbox settings -> Target Users -> Add account**, signing in as the account the drafts
+   should land in. Up to 10. Only a listed account can approve.
+4. Use the **sandbox** credentials (`sbaw...`), not production's (`aw1a...`).
+
+Two things worth knowing, both verified rather than assumed:
+
+- **The sandbox uses the same hosts as production** - `www.tiktok.com/v2/auth/authorize/` and
+  `open.tiktokapis.com`. There is no separate base URL, whatever you may read elsewhere.
+- **Sandbox blocks the Content Posting API for *public* videos, but not for drafts.** The path
+  in this repo is the one sandbox still allows, which is why it can be proven before review.
+
+Production credentials are kept in `.env.tiktok` alongside the sandbox pair, for the day the app
+is approved; switching environments is a two-line edit and no code change.
+
 Uploads use `FILE_UPLOAD` rather than `PULL_FROM_URL`. The latter needs both a valid
 certificate on `media.fantasyeg.com` and the domain verified in TikTok's portal; sending the
 bytes from this machine needs neither, and matches where the token already lives.

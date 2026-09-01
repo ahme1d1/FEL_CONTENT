@@ -22,7 +22,26 @@ import { getUserInfo, postForm } from './tiktok-http.mjs'
 
 const DEFAULT_REDIRECT_URI = 'https://fantasyeg.com/tiktok/callback'
 
+/**
+ * Interactive by default. --state and --url let the browser half be driven
+ * separately, which is the only way to script a flow whose first output is a
+ * URL a human has to visit.
+ */
+function parseArgs(argv) {
+  const args = { state: null, url: null }
+  for (let i = 0; i < argv.length; i += 1) {
+    const [flag, inline] = argv[i].split('=')
+    const value = () => inline ?? argv[++i]
+    if (flag === '--state') args.state = value()
+    else if (flag === '--url') args.url = value()
+    else throw new Error(`Unknown argument "${argv[i]}". usage: tiktok-auth-cli.mjs [--state <s>] [--url <redirected-url>]`)
+  }
+  if (args.url && !args.state) throw new Error('--url needs the --state it was issued with, or the check is worthless.')
+  return args
+}
+
 async function main() {
+  const args = parseArgs(process.argv.slice(2))
   const clientKey = process.env.TIKTOK_CLIENT_KEY
   const clientSecret = process.env.TIKTOK_CLIENT_SECRET
   const redirectUri = process.env.TIKTOK_REDIRECT_URI ?? DEFAULT_REDIRECT_URI
@@ -30,7 +49,7 @@ async function main() {
   const missing = [!clientKey && 'TIKTOK_CLIENT_KEY', !clientSecret && 'TIKTOK_CLIENT_SECRET'].filter(Boolean)
   if (missing.length) throw new Error(`Missing required environment: ${missing.join(', ')}.`)
 
-  const state = randomBytes(12).toString('base64url')
+  const state = args.state ?? randomBytes(12).toString('base64url')
   const authorizeUrl = buildAuthorizeUrl({ clientKey, redirectUri, state })
 
   console.log('\nOpen this and approve as the FEL account (@fantasyeg.official):\n')
@@ -40,15 +59,17 @@ async function main() {
   console.log('\nTikTok will bounce you to that redirect. The page may 404 — that is fine.')
   console.log('Copy the whole address bar and paste it below.\n')
 
-  const rl = createInterface({ input: process.stdin, output: process.stdout })
-  let pasted
-  try {
-    pasted = (await rl.question('Redirected URL: ')).trim()
-  } finally {
-    rl.close()
+  let pasted = args.url
+  if (!pasted) {
+    const rl = createInterface({ input: process.stdin, output: process.stdout })
+    try {
+      pasted = (await rl.question('Redirected URL: ')).trim()
+    } finally {
+      rl.close()
+    }
   }
 
-  const { code } = parseCallback(pasted, state)
+  const { code } = parseCallback(pasted.trim(), state)
   console.log('\n  state ok')
 
   const bundle = await exchangeCode({ postForm, clientKey, clientSecret, code, redirectUri, now: new Date() })
