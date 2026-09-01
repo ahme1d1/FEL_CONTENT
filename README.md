@@ -97,6 +97,13 @@ Two things worth knowing, both verified rather than assumed:
 Production credentials are kept in `.env.tiktok` alongside the sandbox pair, for the day the app
 is approved; switching environments is a two-line edit and no code change.
 
+**Status: submitted for review on 2026-09-01**, with a demo video recorded from this sandbox.
+Until it is approved, only accounts listed as Target Users can authorise the app.
+
+One limit worth knowing before testing: TikTok counts an upload as *pending* until the creator
+actually **posts** it. Discarding a draft does not clear the counter, so a run of test uploads
+eventually returns `spam_risk_too_many_pending_share`. Post one, or wait.
+
 Uploads use `FILE_UPLOAD` rather than `PULL_FROM_URL`. The latter needs both a valid
 certificate on `media.fantasyeg.com` and the domain verified in TikTok's portal; sending the
 bytes from this machine needs neither, and matches where the token already lives.

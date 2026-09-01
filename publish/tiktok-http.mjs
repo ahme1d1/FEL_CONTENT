@@ -78,7 +78,9 @@ export function putChunk({ url, headers, body }) {
  * not request, so display_name is the most specific name available.
  */
 export async function getUserInfo(accessToken) {
-  const url = `${USER_INFO_URL}?fields=open_id,display_name,avatar_url`
+  // Only what is actually shown. Requesting an avatar we never display would
+  // make the app's own privacy claim untrue.
+  const url = `${USER_INFO_URL}?fields=open_id,display_name`
   const res = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } })
   const json = await res.json().catch(() => ({}))
   const code = json?.error?.code
