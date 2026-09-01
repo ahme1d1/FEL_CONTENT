@@ -1,0 +1,893 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 4,
+  "authoredAt": "2026-09-01T23:34:22.903Z",
+  "mediaBase": "https://media.fantasyeg.com/gw04",
+  "posts": [
+    {
+      "id": "gw04-d1-2000-fb-feed",
+      "publishAt": "2026-09-04T17:00:00Z",
+      "slotCairo": "2026-09-04 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "2000-buildup-5d865e79.jpg",
+        "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
+        "bytes": 51073,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "باب الجولة الجاية فتح 🔜\nجهّز فريقك من دلوقتي ⏰\nfantasyeg.com",
+      "link": "https://fantasyeg.com/",
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d1-2000-ig-feed",
+      "publishAt": "2026-09-04T17:00:00Z",
+      "slotCairo": "2026-09-04 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "2000-buildup-5d865e79.jpg",
+        "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
+        "bytes": 51073,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "باب الجولة الجاية فتح 🔜 جهّز فريقك من دلوقتي ⏰",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-1100-fb-feed",
+      "publishAt": "2026-09-06T08:00:00Z",
+      "slotCairo": "2026-09-06 11:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "1100-prices-aadbcca1.jpg",
+        "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
+        "bytes": 103608,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F3_PRICE_CHANGES",
+        "slug": "prices",
+        "keepNames": true,
+        "texts": {
+          "0": "الأسعار",
+          "1": "نيانغ",
+          "2": "4.0",
+          "4": "6.0",
+          "5": "تقا",
+          "6": "5.5",
+          "8": "5.6",
+          "9": "أوباما",
+          "10": "7.1",
+          "12": "7.2",
+          "13": "زيكو",
+          "14": "10.5",
+          "16": "10.4",
+          "17": "عاطف",
+          "18": "8.0",
+          "20": "7.9",
+          "21": "ممدوح",
+          "22": "6.1",
+          "24": "6.2",
+          "25": "طمين",
+          "26": "8.5",
+          "28": "8.4",
+          "29": "حسان",
+          "30": "5.0",
+          "32": "5.1"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "WDY",
+          "2": "PYR",
+          "3": "PYR",
+          "4": "PYR",
+          "5": "MOD",
+          "6": "MAS",
+          "7": "WDY"
+        }
+      },
+      "caption": "الأسعار اتحركت 💰\nاللي اتأخر هيدفع أكتر ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-1100-ig-feed",
+      "publishAt": "2026-09-06T08:00:00Z",
+      "slotCairo": "2026-09-06 11:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "1100-prices-aadbcca1.jpg",
+        "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
+        "bytes": 103608,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F3_PRICE_CHANGES",
+        "slug": "prices",
+        "keepNames": true,
+        "texts": {
+          "0": "الأسعار",
+          "1": "نيانغ",
+          "2": "4.0",
+          "4": "6.0",
+          "5": "تقا",
+          "6": "5.5",
+          "8": "5.6",
+          "9": "أوباما",
+          "10": "7.1",
+          "12": "7.2",
+          "13": "زيكو",
+          "14": "10.5",
+          "16": "10.4",
+          "17": "عاطف",
+          "18": "8.0",
+          "20": "7.9",
+          "21": "ممدوح",
+          "22": "6.1",
+          "24": "6.2",
+          "25": "طمين",
+          "26": "8.5",
+          "28": "8.4",
+          "29": "حسان",
+          "30": "5.0",
+          "32": "5.1"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "WDY",
+          "2": "PYR",
+          "3": "PYR",
+          "4": "PYR",
+          "5": "MOD",
+          "6": "MAS",
+          "7": "WDY"
+        }
+      },
+      "caption": "الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-1400-fb-feed",
+      "publishAt": "2026-09-06T11:00:00Z",
+      "slotCairo": "2026-09-06 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "1400-table-8b601a73.jpg",
+        "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
+        "bytes": 102669,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F2_LEAGUE_TABLE",
+        "slug": "table",
+        "texts": {
+          "0": "ترتيب الدوري",
+          "1": "لعب",
+          "2": "نقط",
+          "3": "1",
+          "4": "بيراميدز",
+          "5": "3",
+          "6": "9",
+          "7": "2",
+          "8": "الزمالك",
+          "9": "3",
+          "10": "7",
+          "11": "3",
+          "12": "الأهلي",
+          "13": "2",
+          "14": "6",
+          "15": "4",
+          "16": "المصري",
+          "17": "3",
+          "18": "6",
+          "19": "5",
+          "20": "طلائع الجيش",
+          "21": "3",
+          "22": "6",
+          "23": "6",
+          "24": "وادي دجلة",
+          "25": "3",
+          "26": "5",
+          "27": "7",
+          "28": "القناة",
+          "29": "3",
+          "30": "5",
+          "31": "8",
+          "32": "مودرن",
+          "33": "2",
+          "34": "4"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "ZAM",
+          "2": "AHL",
+          "3": "MAS",
+          "4": "TLG",
+          "5": "WDY",
+          "6": "QAN",
+          "7": "MOD"
+        }
+      },
+      "caption": "الترتيب اتغير بعد الجولة 📊\nوده بيغير اللي قدامهم في الجاية 🔜",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-1400-ig-feed",
+      "publishAt": "2026-09-06T11:00:00Z",
+      "slotCairo": "2026-09-06 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "1400-table-8b601a73.jpg",
+        "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
+        "bytes": 102669,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F2_LEAGUE_TABLE",
+        "slug": "table",
+        "texts": {
+          "0": "ترتيب الدوري",
+          "1": "لعب",
+          "2": "نقط",
+          "3": "1",
+          "4": "بيراميدز",
+          "5": "3",
+          "6": "9",
+          "7": "2",
+          "8": "الزمالك",
+          "9": "3",
+          "10": "7",
+          "11": "3",
+          "12": "الأهلي",
+          "13": "2",
+          "14": "6",
+          "15": "4",
+          "16": "المصري",
+          "17": "3",
+          "18": "6",
+          "19": "5",
+          "20": "طلائع الجيش",
+          "21": "3",
+          "22": "6",
+          "23": "6",
+          "24": "وادي دجلة",
+          "25": "3",
+          "26": "5",
+          "27": "7",
+          "28": "القناة",
+          "29": "3",
+          "30": "5",
+          "31": "8",
+          "32": "مودرن",
+          "33": "2",
+          "34": "4"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "ZAM",
+          "2": "AHL",
+          "3": "MAS",
+          "4": "TLG",
+          "5": "WDY",
+          "6": "QAN",
+          "7": "MOD"
+        }
+      },
+      "caption": "الترتيب اتغير بعد الجولة 📊",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-2000-fb-feed",
+      "publishAt": "2026-09-06T17:00:00Z",
+      "slotCairo": "2026-09-06 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "2000-question-4bf578b1.jpg",
+        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
+        "bytes": 78616,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ ⚡\nقولنا رأيك 💬",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-2000-ig-feed",
+      "publishAt": "2026-09-06T17:00:00Z",
+      "slotCairo": "2026-09-06 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "2000-question-4bf578b1.jpg",
+        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
+        "bytes": 78616,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "الكابتن بيجيب ضعف نقطه ⚡ اختار صح",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-2000-tiktok",
+      "publishAt": "2026-09-06T17:00:00Z",
+      "slotCairo": "2026-09-06 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "media": {
+        "file": "2000-question-4bf578b1.jpg",
+        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
+        "bytes": 78616,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "الكابتن بيجيب ضعف نقطه ⚡",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-0900-fb-feed",
+      "publishAt": "2026-09-07T06:00:00Z",
+      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "0900-matchday-391d2c09.jpg",
+        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
+        "bytes": 125085,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "القناة",
+          "3": "5:00",
+          "4": "طلائع الجيش",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "بترول أسيوط",
+          "8": "البنك الأهلي",
+          "9": "8:00",
+          "10": "غزل المحلة",
+          "11": "بتروجيت",
+          "12": "8:00",
+          "13": "المصري"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "TLG",
+          "2": "ITT",
+          "3": "ASY",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "الجولة مش يوم واحد ⚽\nخلي بالك من اللي لسه جاي 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-0900-ig-feed",
+      "publishAt": "2026-09-07T06:00:00Z",
+      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "0900-matchday-391d2c09.jpg",
+        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
+        "bytes": 125085,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "القناة",
+          "3": "5:00",
+          "4": "طلائع الجيش",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "بترول أسيوط",
+          "8": "البنك الأهلي",
+          "9": "8:00",
+          "10": "غزل المحلة",
+          "11": "بتروجيت",
+          "12": "8:00",
+          "13": "المصري"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "TLG",
+          "2": "ITT",
+          "3": "ASY",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "الجولة مش يوم واحد ⚽ خلي بالك من اللي لسه جاي 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-0900-tiktok",
+      "publishAt": "2026-09-07T06:00:00Z",
+      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "media": {
+        "file": "0900-matchday-391d2c09.jpg",
+        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
+        "bytes": 125085,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "القناة",
+          "3": "5:00",
+          "4": "طلائع الجيش",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "بترول أسيوط",
+          "8": "البنك الأهلي",
+          "9": "8:00",
+          "10": "غزل المحلة",
+          "11": "بتروجيت",
+          "12": "8:00",
+          "13": "المصري"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "TLG",
+          "2": "ITT",
+          "3": "ASY",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "الجولة مش يوم واحد ⚽ استنى الباقي",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-1100-fb-feed",
+      "publishAt": "2026-09-07T08:00:00Z",
+      "slotCairo": "2026-09-07 11:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "1100-deadline-6ea62884.jpg",
+        "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
+        "bytes": 57421,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "بعد الديدلاين مفيش تعديل ⏰\nراجع فريقك دلوقتي ⚡",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw04-d3-1100-ig-feed",
+      "publishAt": "2026-09-07T08:00:00Z",
+      "slotCairo": "2026-09-07 11:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "1100-deadline-6ea62884.jpg",
+        "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
+        "bytes": 57421,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "بعد الديدلاين مفيش تعديل ⏰ راجع فريقك دلوقتي ⚡",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw04-d4-0900-fb-feed",
+      "publishAt": "2026-09-08T06:00:00Z",
+      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "0900-matchday-0e062e37.jpg",
+        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
+        "bytes": 102663,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "بيراميدز",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "سموحة",
+          "6": "8:00",
+          "7": "سيراميكا",
+          "8": "الزمالك",
+          "9": "8:00",
+          "10": "أبو قير"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "SMC",
+          "3": "CRA",
+          "4": "ZAM",
+          "5": "ABQ"
+        }
+      },
+      "caption": "النهاردة فيه ماتشات ⚽\nوكل نقطة بتفرق في الآخر ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d4-0900-ig-feed",
+      "publishAt": "2026-09-08T06:00:00Z",
+      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "0900-matchday-0e062e37.jpg",
+        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
+        "bytes": 102663,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "بيراميدز",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "سموحة",
+          "6": "8:00",
+          "7": "سيراميكا",
+          "8": "الزمالك",
+          "9": "8:00",
+          "10": "أبو قير"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "SMC",
+          "3": "CRA",
+          "4": "ZAM",
+          "5": "ABQ"
+        }
+      },
+      "caption": "النهاردة فيه ماتشات ⚽ وكل نقطة بتفرق في الآخر ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d4-0900-tiktok",
+      "publishAt": "2026-09-08T06:00:00Z",
+      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "media": {
+        "file": "0900-matchday-0e062e37.jpg",
+        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
+        "bytes": 102663,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "بيراميدز",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "سموحة",
+          "6": "8:00",
+          "7": "سيراميكا",
+          "8": "الزمالك",
+          "9": "8:00",
+          "10": "أبو قير"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "SMC",
+          "3": "CRA",
+          "4": "ZAM",
+          "5": "ABQ"
+        }
+      },
+      "caption": "كل نقطة بتفرق في الآخر ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d5-0900-fb-feed",
+      "publishAt": "2026-09-09T06:00:00Z",
+      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "media": {
+        "file": "0900-matchday-1a45173c.jpg",
+        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
+        "bytes": 99790,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "وادي دجلة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "زد",
+          "8": "المقاولون",
+          "9": "8:00",
+          "10": "الأهلي"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "WDY",
+          "2": "ENP",
+          "3": "ZED",
+          "4": "MOK",
+          "5": "AHL"
+        }
+      },
+      "caption": "الجولة بتقفل النهاردة ⚽\nآخر ماتشات وبعدها الحساب ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d5-0900-ig-feed",
+      "publishAt": "2026-09-09T06:00:00Z",
+      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "media": {
+        "file": "0900-matchday-1a45173c.jpg",
+        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
+        "bytes": 99790,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "وادي دجلة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "زد",
+          "8": "المقاولون",
+          "9": "8:00",
+          "10": "الأهلي"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "WDY",
+          "2": "ENP",
+          "3": "ZED",
+          "4": "MOK",
+          "5": "AHL"
+        }
+      },
+      "caption": "الجولة بتقفل النهاردة ⚽ آخر ماتشات وبعدها الحساب ⏳",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d5-0900-tiktok",
+      "publishAt": "2026-09-09T06:00:00Z",
+      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "media": {
+        "file": "0900-matchday-1a45173c.jpg",
+        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
+        "bytes": 99790,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "وادي دجلة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "زد",
+          "8": "المقاولون",
+          "9": "8:00",
+          "10": "الأهلي"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "WDY",
+          "2": "ENP",
+          "3": "ZED",
+          "4": "MOK",
+          "5": "AHL"
+        }
+      },
+      "caption": "الجولة بتقفل النهاردة ⚽",
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}
