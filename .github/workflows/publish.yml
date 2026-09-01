@@ -1,0 +1,96 @@
+# The routine that publishes. Everything it needs to decide is in due.mjs; this
+# file only supplies a clock and the credentials.
+#
+# Two things here are load-bearing:
+#
+# 1. THE LEDGER IS COMMITTED BACK. An Actions workspace is thrown away, and the
+#    ledger is the only thing stopping a second run re-posting what the first
+#    already published. Losing it means duplicates on a live brand account.
+# 2. concurrency: cancel-in-progress is FALSE. Two overlapping runs both reading
+#    a stale ledger is exactly the race the ledger exists to prevent.
+name: Publish
+
+on:
+  schedule:
+    # Cairo is UTC+3. These are the SLOTS_CAIRO times in manifest-schema.mjs:
+    # 09:00 10:30 11:00 13:00 14:00 16:00 20:00 22:30 Cairo.
+    - cron: '0 6 * * *'    # 09:00
+    - cron: '30 7 * * *'   # 10:30
+    - cron: '0 8 * * *'    # 11:00
+    - cron: '0 10 * * *'   # 13:00
+    - cron: '0 11 * * *'   # 14:00
+    - cron: '0 13 * * *'   # 16:00
+    - cron: '0 17 * * *'   # 20:00
+    - cron: '30 19 * * *'  # 22:30
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Print what would publish without sending anything'
+        type: boolean
+        default: true
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # Zero npm dependencies on purpose, so there is no install step to fail.
+      - name: Publish what is due
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          COMPOSIO_IG_ACCOUNT_ID: ${{ secrets.COMPOSIO_IG_ACCOUNT_ID }}
+          COMPOSIO_USER_ID: ${{ secrets.COMPOSIO_USER_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          MANIFESTS=(manifests/*.json)
+          if [ ${#MANIFESTS[@]} -eq 0 ]; then
+            echo "No manifests to publish. Nothing to do."
+            exit 0
+          fi
+          FLAG=""
+          [ "${DRY:-false}" = "true" ] && FLAG="--dry-run"
+          FAILED=0
+          for m in "${MANIFESTS[@]}"; do
+            echo "── $m"
+            # The token goes in on stdin so it never lands in a command line or a log.
+            printf '%s' "$FB_PAGE_TOKEN" | node publish/publish.mjs --manifest "$m" $FLAG || FAILED=1
+          done
+          exit $FAILED
+
+      # Runs even when publishing failed: a post that went out before the failure
+      # is still recorded, and losing that record is what causes a duplicate.
+      - name: Commit the ledger
+        if: always() && inputs.dry_run != true
+        run: |
+          set -eu
+          git config user.name  'fel-publisher'
+          git config user.email 'noreply@fantasyeg.com'
+          if git diff --quiet -- publish/ledger.jsonl 2>/dev/null; then
+            echo "Ledger unchanged; nothing to record."
+            exit 0
+          fi
+          git add publish/ledger.jsonl
+          git commit -m "chore(ledger): record what went out at $(date -u +%FT%TZ)"
+          # Another run may have pushed while this one was publishing.
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push the ledger. A later run may re-post; reconcile by hand."
+          exit 1
