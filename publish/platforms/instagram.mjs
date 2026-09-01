@@ -15,9 +15,14 @@
  * architecture, and becomes usable the day a properly scoped token exists.
  */
 
+/**
+ * The REST API's slugs, which are NOT the names the MCP layer uses for the same
+ * two operations. Confirmed against GET /api/v3/tools?toolkit_slug=instagram;
+ * the MCP names 404 here.
+ */
 export const COMPOSIO_TOOLS = {
-  container: 'INSTAGRAM_POST_IG_USER_MEDIA',
-  publish: 'INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH',
+  container: 'INSTAGRAM_CREATE_MEDIA_CONTAINER',
+  publish: 'INSTAGRAM_CREATE_POST',
 }
 
 /** Same table as meta.mjs: a plain feed image declares no media_type. */
