@@ -20,8 +20,8 @@ import { basename, extname, join } from 'node:path'
 import { validateManifest } from '../build/manifest-schema.mjs'
 import { appendLedger, record } from './ledger.mjs'
 import { publishTiktokDraft } from './platforms/tiktok.mjs'
-import { accessTokenFor } from './tiktok-auth.mjs'
-import { apiHttp, postForm, putChunk } from './tiktok-http.mjs'
+import { accessTokenFor, readTokenFile } from './tiktok-auth.mjs'
+import { apiHttp, getUserInfo, postForm, putChunk } from './tiktok-http.mjs'
 
 const MIME_BY_EXT = {
   '.mp4': 'video/mp4',
@@ -33,7 +33,7 @@ const MIME_BY_EXT = {
 }
 
 function parseArgs(argv) {
-  const args = { manifest: null, post: null, file: null, mediaDir: null, ledger: 'publish/ledger.jsonl', dryRun: false }
+  const args = { manifest: null, post: null, file: null, mediaDir: null, ledger: 'publish/ledger.jsonl', dryRun: false, whoami: false }
   for (let i = 0; i < argv.length; i += 1) {
     const [flag, inline] = argv[i].split('=')
     const value = () => inline ?? argv[++i]
@@ -43,8 +43,10 @@ function parseArgs(argv) {
     else if (flag === '--file') args.file = value()
     else if (flag === '--media-dir') args.mediaDir = value()
     else if (flag === '--ledger') args.ledger = value()
+    else if (flag === '--whoami') args.whoami = true
     else throw new Error(`Unknown argument "${argv[i]}".`)
   }
+  if (args.whoami) return args
   if (!args.manifest && !args.file) {
     throw new Error('usage: tiktok-draft.mjs (--manifest <path> [--post <id>] | --file <path>) [--media-dir <dir>] [--dry-run]')
   }
@@ -128,8 +130,21 @@ async function uploadOne({ job, args, http }) {
   }
 }
 
+/** Which account the drafts will land in. Worth checking before, not after. */
+async function whoami() {
+  const token = readTokenFile()
+  if (!token) throw new Error('No TikTok token. Authorize with: node publish/tiktok-auth-cli.mjs')
+  const user = await getUserInfo(token.accessToken)
+  console.log(`  account        ${user.display_name ?? '(none)'}`)
+  console.log(`  open_id        ${token.openId}`)
+  console.log(`  scopes         ${token.scope}`)
+  console.log(`  token expires  ${token.expiresAt}`)
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2))
+  if (args.whoami) return whoami()
+
   const jobs = selectJobs(args)
 
   console.log(`${args.dryRun ? 'DRY RUN' : 'TIKTOK DRAFTS'} — ${jobs.length} file(s)`)
