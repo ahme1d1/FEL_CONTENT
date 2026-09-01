@@ -1,6 +1,7 @@
 {
   "version": 1,
   "_source": "Written against build/copy-rules.json, NOT copied from content-design-kit.md §6 — those examples predate the linter and every one of them fails it, on the pointer emoji (banned outright) and on trailing questions (rejected by Instagram and TikTok). Voice: content-design-kit.md §2, register B. A caption never describes the card; the graphic already carries the scores, names, fixtures and times.",
+  "_settleDay": "podium, playerOfRound, teamOfWeek and topPlayers were `needsHuman` until 2026-09-02, on the reasoning that a post naming a real person is taste. They are mechanical now because the naming was never needed: §2 rule 2 forbids the caption restating what the card carries, and the card already carries every name, club and score. A caption that adds the stake instead reproduces no person's name and no manager-typed team name — which is what made these 'taste' in the first place. The names still go on the CARD, verbatim, including a team name our own style guide would reject.",
 
   "kinds": {
     "buildUp": {
@@ -18,13 +19,31 @@
     "matchday": {
       "facebook": [
         "يوم كامل كورة قدامك ⚽\nوالكابتن هو اللي بيفرق ⚡",
-        "الجولة مش يوم واحد ⚽\nخلي بالك من اللي لسه جاي 👀"
+        "الجولة مش يوم واحد ⚽\nخلي بالك من اللي لسه جاي 👀",
+        "النهاردة فيه ماتشات ⚽\nوكل نقطة بتفرق في الآخر ⏳"
       ],
       "instagram": [
         "يوم كامل كورة قدامك ⚽ والكابتن هو اللي بيفرق ⚡",
-        "الجولة مش يوم واحد ⚽ خلي بالك من اللي لسه جاي 👀"
+        "الجولة مش يوم واحد ⚽ خلي بالك من اللي لسه جاي 👀",
+        "النهاردة فيه ماتشات ⚽ وكل نقطة بتفرق في الآخر ⏳"
       ],
-      "tiktok": ["يوم كامل كورة ⚽ والكابتن بيفرق", "الجولة مش يوم واحد ⚽ استنى الباقي"]
+      "tiktok": [
+        "يوم كامل كورة ⚽ والكابتن بيفرق",
+        "الجولة مش يوم واحد ⚽ استنى الباقي",
+        "كل نقطة بتفرق في الآخر ⚽"
+      ]
+    },
+
+    "matchdayFinal": {
+      "facebook": [
+        "آخر يوم في الجولة ⚽\nاللي هيتحسب النهاردة هو اللي خلاص ⏳",
+        "الجولة بتقفل النهاردة ⚽\nآخر ماتشات وبعدها الحساب ⏳"
+      ],
+      "instagram": [
+        "آخر يوم في الجولة ⚽ اللي هيتحسب النهاردة هو اللي خلاص ⏳",
+        "الجولة بتقفل النهاردة ⚽ آخر ماتشات وبعدها الحساب ⏳"
+      ],
+      "tiktok": ["آخر يوم في الجولة ⚽", "الجولة بتقفل النهاردة ⚽"]
     },
 
     "results": {
@@ -76,13 +95,80 @@
       "facebook": ["الأسعار اتحركت 💰\nاللي اتأخر هيدفع أكتر ⏳", "حركة أسعار جديدة 💰\nالسعر بيتغير قبل ما تاخد بالك ⏳"],
       "instagram": ["الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر ⏳", "حركة أسعار جديدة 💰 السعر مش ثابت ⏳"],
       "tiktok": ["الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر", "حركة أسعار جديدة 💰"]
+    },
+
+    "podium": {
+      "facebook": [
+        "التلاتة دول كسبوا الجولة 🏆\nوالترتيب العام بيتغير كل جولة ⏳",
+        "الجولة خلصت ولها أبطال 🏆\nوالجاية ممكن تقلب كل حاجة 🔄",
+        "المراكز دي مش نهائية 🏆\nكل جولة بتعيد ترتيب الناس ⏳"
+      ],
+      "instagram": [
+        "التلاتة دول كسبوا الجولة 🏆 والترتيب العام بيتغير كل جولة ⏳",
+        "الجولة خلصت ولها أبطال 🏆 والجاية ممكن تقلب كل حاجة 🔄",
+        "المراكز دي مش نهائية 🏆 كل جولة بتعيد ترتيب الناس ⏳"
+      ],
+      "tiktok": [
+        "التلاتة دول كسبوا الجولة 🏆",
+        "الجولة خلصت ولها أبطال 🏆",
+        "المراكز دي مش نهائية 🏆"
+      ]
+    },
+
+    "playerOfRound": {
+      "facebook": [
+        "اللي كان عنده الأسبوع ده كسب فرق كبير ⚡\nواللي مكانش، لسه قدامه جولة ⏰",
+        "ده الفرق بين فريق وفريق ⚡\nوالجولة الجاية لسه مفتوحة ⏰",
+        "أعلى نقط في الجولة ملهاش صاحب دايم ⚡\nالسؤال هو يفضل معاك ولا لأ ⏳"
+      ],
+      "instagram": [
+        "اللي كان عنده الأسبوع ده كسب فرق كبير ⚡ واللي مكانش لسه قدامه جولة ⏰",
+        "ده الفرق بين فريق وفريق ⚡ والجولة الجاية لسه مفتوحة ⏰",
+        "أعلى نقط في الجولة ملهاش صاحب دايم ⚡ يفضل معاك ولا لأ ⏳"
+      ],
+      "tiktok": [
+        "اللي كان عنده كسب فرق كبير ⚡",
+        "ده الفرق بين فريق وفريق ⚡",
+        "يفضل معاك الجولة الجاية ولا لأ ⏳"
+      ]
+    },
+
+    "teamOfWeek": {
+      "facebook": [
+        "الشكل ده محدش كان عنده كامل 🔥\nوده اللي بيفرق بين فريق وفريق ⏳",
+        "لو التشكيلة دي كانت عندك، الجولة كانت اتقلبت 🔥\nمحدش بيجمعهم بالظبط ⏳",
+        "شكل الجولة كان كده ⚽\nوالجاية شكلها هيبقى مختلف 🔄"
+      ],
+      "instagram": [
+        "الشكل ده محدش كان عنده كامل 🔥 وده اللي بيفرق بين فريق وفريق ⏳",
+        "لو التشكيلة دي كانت عندك الجولة كانت اتقلبت 🔥 محدش بيجمعهم بالظبط ⏳",
+        "شكل الجولة كان كده ⚽ والجاية شكلها هيبقى مختلف 🔄"
+      ],
+      "tiktok": [
+        "محدش كان عنده الشكل ده كامل 🔥",
+        "لو دول كانوا عندك كنت كسبت 🔥",
+        "شكل الجولة كان كده ⚽"
+      ]
+    },
+
+    "topPlayers": {
+      "facebook": [
+        "اللي كان عنده اتنين من دول كسب الجولة ⚡\nواللي مكانش، لسه فيه وقت ⏰",
+        "النقط دي مش صدفة ⚡\nشوف مين فيهم قدامه ماتش سهل الجاية 🔜",
+        "دول اللي فرقوا الأسبوع ده ⚡\nوالجولة الجاية بتعيد التوزيع 🔄"
+      ],
+      "instagram": [
+        "اللي كان عنده اتنين من دول كسب الجولة ⚡ واللي مكانش لسه فيه وقت ⏰",
+        "النقط دي مش صدفة ⚡ شوف مين فيهم قدامه ماتش سهل الجاية 🔜",
+        "دول اللي فرقوا الأسبوع ده ⚡ والجولة الجاية بتعيد التوزيع 🔄"
+      ],
+      "tiktok": [
+        "اللي كان عنده اتنين من دول كسب ⚡",
+        "النقط دي مش صدفة ⚡",
+        "دول اللي فرقوا الأسبوع ده ⚡"
+      ]
     }
   },
 
-  "needsHuman": {
-    "podium": "Name the three managers the card shows. Lead with the manager, never the team name — a team name is user input. Say what it took to win the round, not the score the card already carries.",
-    "topPlayers": "The card already lists the names and the points. Add what is not on it: what those players had in common this round, or who is about to face whom.",
-    "playerOfRound": "The card carries his name, club and points. Add the stake — what he does to a squad that has him, or who he faces next.",
-    "teamOfWeek": "Eleven names are already on the card. Add the one thing that is not: what the shape says about the round."
-  }
+  "needsHuman": {}
 }

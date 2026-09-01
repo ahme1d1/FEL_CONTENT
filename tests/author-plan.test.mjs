@@ -128,12 +128,13 @@ test('the deadline post carries a tighter lateness budget than the six-hour defa
   assert.equal(deadline.maxLatenessMinutes, 60)
 })
 
-test('the posts that name a real person arrive with a brief instead of a caption', () => {
+// Reversed 2026-09-02: the settle-day posts are templated, so a settled round authors unattended.
+test('the settle-day posts arrive captioned, so nothing blocks a settled round', () => {
   const { posts } = plan()
   const podium = posts.find((p) => p.id.includes('-1030-'))
-  assert.equal(podium.caption, null)
-  assert.match(podium.captionBrief, /manager/i)
-  assert.ok(missingCaptions(posts).includes(podium.id))
+  assert.match(podium.caption, /\S/)
+  assert.equal('captionBrief' in podium, false)
+  assert.deepEqual(missingCaptions(posts), [])
 })
 
 test('posts are ordered by when they publish', () => {
@@ -143,9 +144,11 @@ test('posts are ordered by when they publish', () => {
 
 /* ─────────────────────────── human captions ─────────────────────────── */
 
-test('a supplied caption replaces the brief and is linted like any other', () => {
+// No post needs a human any more, but --captions is still how one overrides a generated caption
+// for a week that deserves better words. It is linted exactly the same either way.
+test('a supplied caption overrides the generated one and is linted like any other', () => {
   const { posts } = plan()
-  const id = posts.find((p) => p.caption === null && p.platform === 'instagram').id
+  const id = posts.find((p) => p.platform === 'instagram').id
   const merged = applyHumanCaptions({ posts, captions: { [id]: 'مبروك يا كابتن 🏆' } })
 
   const post = merged.posts.find((p) => p.id === id)

@@ -21,16 +21,20 @@ publishing routine; TikTok tokens never leave the author's machine.
 |---|---|
 | `manifests/gwNN.json` | the week's plan, reviewed as a diff before anything publishes |
 | `gwNN/` | rendered media, served by Pages, content-addressed by sha256 |
+| `.github/workflows/author.yml` | **the routine that writes the week** — author, render, push, schedule |
+| `.github/workflows/publish.yml` | the routine that publishes what is due, eight times a day |
 | `build/author-cli.mjs` | **writes the manifest** from the live API and the calendar |
+| `build/current-gw-cli.mjs` | which gameweeks to author, worked out from public `/fixtures` |
 | `build/author/calendar.json` | which card goes out at which slot on which day |
-| `build/author/caption-templates.json` | captions for the posts whose copy is mechanical |
+| `build/author/caption-templates.json` | every caption; none is left for a human |
 | `build/author/copy.json` | the fixed words a card carries: ordinals, day names, clock phrases |
 | `build/copy-rules.json` | voice and forbidden-claims rules, mirroring `content-design-kit.md` §2 and §5 |
 | `build/lint-copy.mjs` | caption linter |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
 | `build/render-manifest.mjs` | renders the cards and stamps `media` back into the manifest |
 | `publish/publish.mjs` | the publisher a cloud routine runs eight times a day |
-| `publish/schedule-facebook.mjs` | hands the Facebook posts to Meta's own scheduler, run by hand |
+| `publish/schedule-facebook.mjs` | hands the Facebook posts to Meta's own scheduler, run by `author.yml` |
+| `publish/wait-media.mjs` | blocks until Pages actually serves the media Meta is about to fetch |
 | `publish/tiktok-auth-cli.mjs` | one-time TikTok authorization, run by hand |
 | `publish/tiktok-draft.mjs` | sends a video to the TikTok drafts inbox, run by hand |
 | `publish/ledger.jsonl` | append-only record of what actually went out |
@@ -38,7 +42,8 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 250+ unit tests, no network, no accounts
+npm test                                    # 275 unit tests, no network, no accounts
+node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
 node build/validate-cli.mjs                 # validate every manifest
@@ -53,8 +58,17 @@ node publish/tiktok-draft.mjs --file ../FEL_VIDEO/out/ad-full.mp4 --dry-run
 A gameweek goes out in four moves. Only the third touches an account.
 
 ```
-author  ->  render  ->  schedule (Facebook)  ->  the routine (Instagram, stories)
+author  ->  render  ->  push  ->  Pages  ->  schedule (Facebook)  ->  the routine (Instagram)
+└──────────────── author.yml, every two hours ─────────────────┘   └── publish.yml, 8×/day ──┘
 ```
+
+**Nobody runs any of this.** `author.yml` performs the first five moves and `publish.yml` the
+last. The order inside the first workflow is fixed and load-bearing: Meta schedules a Facebook
+post by **URL**, so the media has to be committed *and* served by Pages before Meta is told about
+it — `wait-media.mjs` is that barrier, and it verifies the sha256 rather than settling for a 200,
+which also catches Pages still serving the previous build.
+
+The commands below are how you drive it by hand when you want to look before it does.
 
 **`build/author-cli.mjs` writes the plan.** It reads the public API — no token, no account,
 nothing written — works out the gameweek's content window from its fixtures, fills each card's
@@ -76,23 +90,32 @@ whose data has changed underneath it rather than quietly replacing it. `--refres
 **`--data` authors from a saved snapshot** instead of the network, which makes a manifest
 reproducible and lets the whole thing be re-run without touching prod.
 
-**Some captions are not the author's to write.** The winner, the player of the round, the team of
-the week and the top-players post all name a real person, so the author emits `caption: null` and
-a `captionBrief`, and refuses to write the manifest until someone answers. Write them into a JSON
-file keyed by post id and pass `--captions`; they go through the same linter as generated copy.
-`--allow-missing-captions` overrides, and `schedule-facebook.mjs` still refuses to send one.
+**Every caption is templated, the settle-day four included.** The winner, the player of the round,
+the team of the week and the top-players post came back `null` with a brief until 2026-09-02, on
+the reasoning that a post naming a real person is taste. **The naming was never needed.**
+`content-design-kit.md` §2 rule 2 forbids a caption restating what the card carries, and the card
+already carries every name, club and score — so the caption carries the *stake* instead, and a
+caption that names nobody is one a template can write. That is what lets a settled round publish
+with nobody awake.
+
+`--captions <file>` still overrides a generated caption for a week that deserves better words, and
+an override is linted exactly like a template. `due.mjs` and `schedule-plan.mjs` both hold a post
+carrying no caption at all rather than send a bare image.
+
+**A manager's team name goes onto the card verbatim** — including `My FEL Team`, which the style
+guide would reject in our own copy. `review.mjs` prints a warning so a surprising name is visible
+in the log, and gates nothing: the rule governs what *we* write, not what a manager called their
+team, and holding back a winner's podium over it would be worse than printing it.
 
 **Cards it cannot fill are skipped by name, with the reason.** A results card for a day that has
 not been played, a winner for a round that has not settled: both are answers, not failures.
 
-**It warns about text it did not write.** A manager's team name goes onto the podium card
-verbatim, and GW2's real top three contains `My FEL Team` — the wordmark retired from every
-user-facing surface on 2026-08-25. Nothing can fix that automatically, so it is printed while
-there is still time to decide whether to post the card at all.
-
-**The player cards need `GET /gameweeks/:gw/top-players`**, which is new server surface in
-`../FEL_API`. Until that is deployed the author says
-`topPlayers: not served by …` and skips the three cards that need it.
+**The player cards need `GET /gameweeks/:gw/top-players`**, which is deployed on prod and public —
+verified 2026-09-02, GW2 returns 200 to an anonymous caller. What it refuses is an *unsettled*
+round, with `GAMEWEEK_NOT_SETTLED`, because bonus points are entered by hand and a pre-settlement
+total would be provisional. So the author says `topPlayers: GAMEWEEK_NOT_SETTLED` and skips those
+cards mid-round, then picks them up on the re-run after the round settles. That is the loop
+working, not a deployment gap.
 
 ## Scheduling the Facebook half
 
@@ -108,8 +131,14 @@ printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest man
 
 It writes `published=false` with a `scheduled_publish_time`, so posts land in the Page's Planner
 and stay editable until they go out. Read a dry run first: it prints the Cairo reading, the UTC
-instant and the epoch for every post, which is where a timezone mistake becomes visible. It is not
-in CI — Meta holds the queue once it is handed over, so there is nothing for a cron to keep doing.
+instant and the epoch for every post, which is where a timezone mistake becomes visible.
+
+**`author.yml` runs it now**, which it did not before 2026-09-02. The old reasoning was that Meta
+holds the queue once it is handed over, so there is nothing for a cron to keep doing — true of a
+*finished* manifest, and false of this one: a gameweek's manifest keeps growing as results land
+and the round settles, so there is always a next batch nobody has handed over. Running it every
+pass is safe because the ledger records a `scheduled` state per post, and `schedule-plan.mjs`
+skips anything already carrying one.
 
 ## TikTok
 

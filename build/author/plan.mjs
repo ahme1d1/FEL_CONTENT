@@ -52,6 +52,23 @@ export function primaryRole(day) {
   return 'middle'
 }
 
+/**
+ * The round's last day with fixtures.
+ *
+ * Its matchday and results posts have to read differently, because on that day nothing is still to
+ * come: the generic matchday caption promises «خلي بالك من اللي لسه جاي» and the generic results
+ * caption says «الجولة لسه ماخلصتش», and both are false once the last ball is kicked.
+ */
+export const lastMatchDate = (days) =>
+  days
+    .filter((d) => d.roles.includes('match'))
+    .map((d) => d.date)
+    .sort()
+    .at(-1) ?? null
+
+/** Kinds that swap to a final-day variant on that date. Everything else reads the same either way. */
+const FINAL_KIND = { matchday: 'matchdayFinal', results: 'resultsFinal' }
+
 /** Reads better in a skip line than a TypeError from three frames down. */
 function need(value, what) {
   const empty = value == null || (Array.isArray(value) && value.length === 0)
@@ -107,6 +124,8 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
   const posts = []
   const skipped = []
 
+  const finalDate = lastMatchDate(window.days)
+
   for (const day of window.days) {
     const entries = calendar.days[primaryRole(day)] ?? []
 
@@ -129,10 +148,12 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
         continue
       }
 
+      const kind = day.date === finalDate ? (FINAL_KIND[entry.kind] ?? entry.kind) : entry.kind
+
       for (const platform of entry.platforms) {
         const { strategy, suffix } = PLATFORMS[platform]
         const caption = captionFor({
-          kind: entry.kind,
+          kind,
           platform,
           gameweek: window.gameweek,
           dayIndex: day.index,
@@ -148,7 +169,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
           source,
           caption,
           // Travels with the post so the ask survives the handoff to whoever writes the copy.
-          ...(caption === null ? { captionBrief: captionBrief(entry.kind) } : {}),
+          ...(caption === null ? { captionBrief: captionBrief(kind) } : {}),
           // One link a gameweek, on the build-up post. Facebook only: Instagram and TikTok do not
           // make a link clickable, and the linter rejects one in their captions.
           link: entry.carriesLink && platform === 'facebook' ? calendar.link : null,

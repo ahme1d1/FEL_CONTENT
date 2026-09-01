@@ -29,8 +29,10 @@ on:
         type: boolean
         default: true
 
+# Shared with author.yml rather than scoped to this workflow: both commit to main, and the ledger
+# they both append to is the only thing standing between a retry and a duplicate.
 concurrency:
-  group: publish
+  group: content
   cancel-in-progress: false
 
 permissions:

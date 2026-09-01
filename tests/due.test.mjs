@@ -2,11 +2,14 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { selectDue, isTerminal, latestState } from '../publish/due.mjs'
 
+// A caption is part of a publishable post, not decoration: selectDue holds anything without one,
+// because instagram.mjs sends `post.caption ?? ''` and would otherwise post a bare image.
 const post = (over = {}) => ({
   id: 'gw03-d1-1100-ig-feed',
   publishAt: '2026-09-03T08:00:00Z',
   platform: 'instagram',
   strategy: 'ig-feed',
+  caption: 'بدأنا 🔴',
   ...over,
 })
 
@@ -125,4 +128,32 @@ test('due posts come back in publish order, earliest first', () => {
   ]
   const r = selectDue({ manifest: manifest(posts), ledger: [], now: at('2026-09-03T09:30:00Z') })
   assert.deepEqual(ids(r.due), ['early', 'late'])
+})
+
+
+// The backstop for schedule-plan.mjs's own check. Every caption kind is templated since
+// 2026-09-02, so this should never fire on a real manifest - which is exactly why it exists.
+test('a post with no caption is held, not published', () => {
+  for (const caption of [null, undefined, '', '   ']) {
+    const r = selectDue({
+      manifest: manifest([post({ caption })]),
+      ledger: [],
+      now: at('2026-09-03T08:00:00Z'),
+    })
+    assert.deepEqual(ids(r.due), [], `caption ${JSON.stringify(caption)} should not publish`)
+    assert.deepEqual(ids(r.needsCaption), ['gw03-d1-1100-ig-feed'])
+  }
+})
+
+// Held is not skipped. A skipped post has missed its window for good; a held one publishes the
+// moment somebody writes the copy, so nothing may be written to the ledger to close it out.
+test('a held post stays publishable once its caption arrives', () => {
+  const withCaption = post({ caption: 'الجولة خلصت ✅ بكرة نشوف مين طلع الأول 🏆' })
+  const r = selectDue({
+    manifest: manifest([withCaption]),
+    ledger: [],
+    now: at('2026-09-03T08:00:00Z'),
+  })
+  assert.deepEqual(ids(r.due), ['gw03-d1-1100-ig-feed'])
+  assert.deepEqual(ids(r.needsCaption), [])
 })

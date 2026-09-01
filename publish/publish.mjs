@@ -118,10 +118,13 @@ async function main() {
   const { igUserId, pageId } = resolveTargets(args.dryRun)
   const now = args.now ? new Date(args.now) : new Date()
   const ledger = readLedger(args.ledger)
-  const { due, skipped, crashed } = selectDue({ manifest, ledger, now })
+  const { due, skipped, crashed, needsCaption } = selectDue({ manifest, ledger, now })
 
   console.log(`${args.dryRun ? 'DRY RUN' : 'PUBLISH'} at ${now.toISOString()} — gameweek ${manifest.gameweek}`)
-  console.log(`  due ${due.length} · skipped ${skipped.length} · needs reconciliation ${crashed.length}`)
+  console.log(
+    `  due ${due.length} · skipped ${skipped.length} · needs reconciliation ${crashed.length}` +
+      ` · held for a caption ${needsCaption.length}`,
+  )
 
   const token = args.dryRun ? '' : readToken()
   if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
@@ -146,6 +149,12 @@ async function main() {
     console.log(`  SKIP ${post.id} — past its lateness budget; a late post is worse than silence`)
     write(record(post.id, 'skipped', { reason: 'past-lateness-budget', publishAt: post.publishAt }))
     failures += 1
+  }
+
+  // Not a failure: unlike a skipped post this one is recoverable, and it publishes on the next
+  // run once a caption exists. Nothing is written to the ledger, so nothing is closed out.
+  for (const post of needsCaption) {
+    console.warn(`  HOLD ${post.id} — no caption; will publish once one is written`)
   }
 
   for (const post of crashed) {

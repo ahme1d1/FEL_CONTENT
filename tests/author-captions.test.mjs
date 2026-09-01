@@ -50,11 +50,29 @@ test('the same input always picks the same caption, so re-authoring is a no-op d
   assert.equal(pick(), pick())
 })
 
-test('the posts that name a real person come back for a human to write', () => {
+// Until 2026-09-02 these four came back null with a brief, on the reasoning that a post naming a
+// real person is taste. The naming was never needed: §2 rule 2 forbids a caption restating what
+// the card carries, and the card already carries every name, club and score. So the caption adds
+// the stake instead — and a caption that names nobody is one a template can write.
+test('every settle-day post is templated, so a settled round needs no human', () => {
   for (const kind of ['podium', 'topPlayers', 'playerOfRound', 'teamOfWeek']) {
-    assert.equal(needsHumanCaption(kind), true, kind)
-    assert.equal(captionFor({ kind, platform: 'facebook', gameweek: 4, dayIndex: 1 }), null)
-    assert.match(captionBrief(kind), /\S/)
+    assert.equal(needsHumanCaption(kind), false, kind)
+    assert.equal(captionBrief(kind), null, kind)
+    for (const platform of ['facebook', 'instagram', 'tiktok']) {
+      assert.match(captionFor({ kind, platform, gameweek: 4, dayIndex: 1 }), /\S/, `${kind}/${platform}`)
+    }
+  }
+})
+
+// The whole point of the reversal. A caption carrying a manager's name would also be restating the
+// card, so this guards the voice rule and the automation at once.
+test('a settle-day caption names nobody the card already names', () => {
+  const names = ['Ahmed', 'محمد', 'My FEL Team', 'El mazzarita']
+  for (const kind of ['podium', 'topPlayers', 'playerOfRound', 'teamOfWeek']) {
+    for (let gameweek = 1; gameweek <= 19; gameweek += 1) {
+      const text = captionFor({ kind, platform: 'facebook', gameweek, dayIndex: 6 })
+      for (const n of names) assert.ok(!text.includes(n), `${kind} gw${gameweek} leaked "${n}"`)
+    }
   }
 })
 

@@ -1,0 +1,171 @@
+# The pass that writes the week. `publish.yml` only sends what already exists; this is what makes
+# it exist, and without it that workflow runs eight times a day over an empty directory.
+#
+# Four things here are load-bearing:
+#
+# 1. THE ORDER IS FIXED: author -> render -> push -> wait for Pages -> schedule Facebook. Meta
+#    fetches a card by URL rather than taking the bytes, so scheduling before the deploy lands
+#    asks it to fetch a 404. wait-media.mjs is the barrier.
+# 2. RE-RUNNING IS THE POINT. A results card cannot be written until that day's fixtures are
+#    finished and the settle-day cards cannot be written until the round settles, so a gameweek is
+#    authored many times. author-cli.mjs merges: a post that exists keeps its media and caption.
+# 3. IT SHARES A CONCURRENCY GROUP WITH publish.yml, because both push to main. The ledger is the
+#    only thing preventing a duplicate on a live brand account and it is committed, so two runs
+#    racing on that file is the failure it exists to prevent.
+# 4. RENDERING NEEDS FEL_WEBSITE. Cards are rendered by that repo's own render-cards.mjs rather
+#    than a copy, so the card tool and this pipeline cannot drift apart. It is private, hence the
+#    token; only @playwright/test is installed from it, not the whole Nuxt tree.
+name: Author
+
+on:
+  schedule:
+    # Every two hours. Cairo slots run 09:00-22:30, and Facebook refuses anything inside a
+    # ten-minute floor, so this cadence always leaves a comfortable lead on the next slot.
+    - cron: '20 */2 * * *'
+  workflow_dispatch:
+    inputs:
+      gameweek:
+        description: 'Author only this gameweek (blank = the running one and the next)'
+        type: string
+      skip_facebook:
+        description: 'Author and render, but hand nothing to Meta'
+        type: boolean
+        default: false
+
+concurrency:
+  group: content
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  author:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out FEL_WEBSITE for the card tool
+        uses: actions/checkout@v4
+        with:
+          repository: ahme1d1/FEL_WEBSITE
+          token: ${{ secrets.FEL_WEBSITE_TOKEN }}
+          path: FEL_WEBSITE
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      # render-cards.mjs imports Playwright by absolute path out of FEL_WEBSITE's node_modules and
+      # reads nothing else from the tree, so a full `npm ci` on a Nuxt app would be minutes spent
+      # on packages this never touches.
+      - name: Install Playwright into the FEL_WEBSITE checkout
+        working-directory: FEL_WEBSITE
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./package.json').devDependencies['@playwright/test']")
+          npm install --no-save --no-audit --no-fund "@playwright/test@${VERSION}"
+          npx playwright install --with-deps chromium
+
+      - name: Author and render
+        env:
+          FEL_WEBSITE_DIR: ${{ github.workspace }}/FEL_WEBSITE
+          ONLY_GW: ${{ inputs.gameweek }}
+        run: |
+          set -euo pipefail
+          if [ -n "${ONLY_GW:-}" ]; then
+            GAMEWEEKS="$ONLY_GW"
+          else
+            # Public /fixtures, no token. Prints nothing once the season is over.
+            GAMEWEEKS=$(node build/current-gw-cli.mjs)
+          fi
+          if [ -z "$GAMEWEEKS" ]; then
+            echo "No round is running. Nothing to author."
+            exit 0
+          fi
+          for gw in $GAMEWEEKS; do
+            echo "── gameweek $gw"
+            node build/author-cli.mjs --gameweek "$gw"
+            npm run render -- "manifests/gw$(printf '%02d' "$gw").json"
+          done
+          node build/validate-cli.mjs
+
+      # Pushed before Facebook is told anything, because Meta fetches the image from Pages.
+      - name: Commit the week
+        id: commit
+        run: |
+          set -eu
+          git config user.name  'fel-author'
+          git config user.email 'noreply@fantasyeg.com'
+          git add manifests gw[0-9][0-9] 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing new to author."
+            exit 0
+          fi
+          git commit -m "content: author and render $(date -u +%F)"
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push origin main && \
+              { echo "changed=true" >> "$GITHUB_OUTPUT"; exit 0; }
+            sleep 5
+          done
+          echo "::error::Could not push the authored week."
+          exit 1
+
+      # A commit is not a deploy. Verifies the sha256, which also catches Pages serving the
+      # previous build rather than merely returning a 404.
+      - name: Wait for Pages to serve the media
+        if: steps.commit.outputs.changed == 'true' && inputs.skip_facebook != true
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for m in manifests/*.json; do
+            node publish/wait-media.mjs --manifest "$m" --timeout 600
+          done
+
+      # Meta schedules these natively; due.mjs deliberately refuses them, so this pass is the only
+      # thing that sends them. Idempotent through the same ledger the routine uses.
+      - name: Hand the Facebook posts to Meta
+        if: inputs.skip_facebook != true
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          MANIFESTS=(manifests/*.json)
+          if [ ${#MANIFESTS[@]} -eq 0 ]; then
+            echo "No manifests. Nothing to schedule."
+            exit 0
+          fi
+          FAILED=0
+          for m in "${MANIFESTS[@]}"; do
+            echo "── $m"
+            # stdin, so the token never lands in a command line or a log.
+            printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest "$m" || FAILED=1
+          done
+          exit $FAILED
+
+      # Always: a post handed over before a later failure is still scheduled, and losing that
+      # record is what causes Meta to be handed the same post twice.
+      - name: Commit the ledger
+        if: always()
+        run: |
+          set -eu
+          git config user.name  'fel-author'
+          git config user.email 'noreply@fantasyeg.com'
+          if git diff --quiet -- publish/ledger.jsonl 2>/dev/null; then
+            echo "Ledger unchanged; nothing to record."
+            exit 0
+          fi
+          git add publish/ledger.jsonl
+          git commit -m "chore(ledger): record what was scheduled at $(date -u +%FT%TZ)"
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push the ledger. A later run may re-schedule; reconcile by hand."
+          exit 1
