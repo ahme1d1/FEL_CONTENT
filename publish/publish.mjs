@@ -20,7 +20,9 @@ import { validateManifest } from '../build/manifest-schema.mjs'
 import { selectDue } from './due.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
 import { routeFor } from './route.mjs'
-import { publishFacebookStory, publishInstagram } from './platforms/meta.mjs'
+import { publishFacebookStory } from './platforms/meta.mjs'
+import { publishInstagramViaComposio } from './platforms/instagram.mjs'
+import { composioExecute } from './composio.mjs'
 
 const GRAPH = 'https://graph.facebook.com/v21.0'
 
@@ -102,10 +104,17 @@ async function verifyMedia(mediaUrl, expectedSha) {
   }
 }
 
-async function publishOne({ post, manifest, http, igUserId, pageId }) {
+/**
+ * Instagram goes through Composio, not the Graph API in meta.mjs. That path
+ * needs a Page token carrying instagram_basic and instagram_content_publish,
+ * and Composio's Facebook app requests neither - re-authorising was tried on
+ * 2026-09-01 and changed nothing. meta.mjs keeps its Instagram code because it
+ * is the better architecture the day a properly scoped token exists.
+ */
+async function publishOne({ post, manifest, http, execute, igUserId, pageId }) {
   const mediaUrl = `${manifest.mediaBase}/${post.media.file}`
   if (routeFor(post.strategy) === 'fb-story') return publishFacebookStory({ http, pageId, mediaUrl })
-  return publishInstagram({ http, igUserId, post, mediaUrl })
+  return publishInstagramViaComposio({ execute, igUserId, post, mediaUrl })
 }
 
 async function main() {
@@ -132,6 +141,16 @@ async function main() {
 
   const log = []
   const http = args.dryRun ? dryRunHttp(log) : graphHttp(token)
+  const execute = args.dryRun
+    ? async ({ tool, args: a }) => {
+        log.push(`    COMPOSIO ${tool}  ${JSON.stringify({ ...a, caption: a.caption?.slice(0, 40) })}`)
+        return { successful: true, data: { id: `DRYRUN_${tool.endsWith('PUBLISH') ? 'MEDIA' : 'CONTAINER'}` } }
+      }
+    : composioExecute({
+        apiKey: process.env.COMPOSIO_API_KEY,
+        connectedAccountId: process.env.COMPOSIO_IG_ACCOUNT_ID,
+        userId: process.env.COMPOSIO_USER_ID,
+      })
   const write = (r) => (args.dryRun ? log.push(`    LEDGER ${JSON.stringify(r)}`) : appendLedger(args.ledger, r))
 
   let failures = 0
@@ -154,7 +173,7 @@ async function main() {
       if (!args.dryRun && !args.skipMediaCheck && post.media) {
         await verifyMedia(`${manifest.mediaBase}/${post.media.file}`, post.media.sha256)
       }
-      const { remoteId } = await publishOne({ post, manifest, http, igUserId, pageId })
+      const { remoteId } = await publishOne({ post, manifest, http, execute, igUserId, pageId })
       console.log(`    ok — ${remoteId}`)
       write(record(post.id, post.strategy.startsWith('tiktok') ? 'drafted' : 'published', { remoteId }))
     } catch (err) {
