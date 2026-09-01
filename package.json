@@ -4,11 +4,15 @@
   "private": true,
   "type": "module",
   "description": "FEL social content: weekly manifests, rendered media, and the publisher. Served at media.fantasyeg.com via GitHub Pages.",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "test": "node --test \"tests/**/*.test.mjs\"",
     "lint:copy": "node build/lint-copy-cli.mjs",
     "render": "node build/render-manifest.mjs",
+    "tiktok:auth": "node publish/tiktok-auth-cli.mjs",
+    "tiktok:draft": "node publish/tiktok-draft.mjs",
     "publish:dry": "node publish/publish.mjs --dry-run"
   }
 }

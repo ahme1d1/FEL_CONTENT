@@ -25,6 +25,8 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/lint-copy.mjs` | caption linter |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
 | `publish/publish.mjs` | the publisher a cloud routine runs three times a day |
+| `publish/tiktok-auth-cli.mjs` | one-time TikTok authorization, run by hand |
+| `publish/tiktok-draft.mjs` | sends a video to the TikTok drafts inbox, run by hand |
 | `publish/ledger.jsonl` | append-only record of what actually went out |
 
 ## Commands
@@ -34,7 +36,41 @@ npm test                                    # 60+ unit tests, no network, no acc
 node build/validate-cli.mjs                 # validate every manifest
 node build/lint-copy-cli.mjs instagram "…"  # lint one caption
 node publish/publish.mjs --manifest fixtures/gw03.json --dry-run --now 2026-09-03T08:00:00Z
+node publish/tiktok-draft.mjs --file ../FEL_VIDEO/out/ad-full.mp4 --dry-run
 ```
+
+## TikTok
+
+Composio has no managed auth for TikTok, so the OAuth lives here. Authorize once:
+
+```bash
+export TIKTOK_CLIENT_KEY=aw1a…
+export TIKTOK_CLIENT_SECRET=…
+npm run tiktok:auth
+```
+
+There is no local callback server because there cannot be one — TikTok only registers
+redirect URIs that are absolute HTTPS, so `http://localhost` is rejected outright. The
+browser lands on `https://fantasyeg.com/tiktok/callback`, which does not need to exist; a
+404 still carries `?code=` in the address bar, and you paste that address back.
+
+**The refresh token rotates on nearly every use and retires the one you sent.** Losing the
+new one cannot be repaired, only reauthorized, so `publish/.tiktok-token.json` is written
+atomically — temp file, fsync, rename, fsync the directory — and the access token is never
+handed to a caller until that write has succeeded. It is gitignored and mode 0600.
+
+Two consequences of Direct Post being off, both deliberate:
+
+- Everything goes to the **drafts inbox**, so the only scopes needed are `user.info.basic`
+  and `video.upload` and the app faces no audit. A draft's terminal state is
+  `SEND_TO_USER_INBOX`, not `PUBLISH_COMPLETE` — the latter arrives only if a human opens
+  the notification and posts it.
+- **The caption does not travel.** The inbox endpoint accepts the file and nothing else, so
+  `tiktok-draft.mjs` prints the manifest's caption at the end for you to paste.
+
+Uploads use `FILE_UPLOAD` rather than `PULL_FROM_URL`. The latter needs both a valid
+certificate on `media.fantasyeg.com` and the domain verified in TikTok's portal; sending the
+bytes from this machine needs neither, and matches where the token already lives.
 
 ## Two things that are easy to get wrong
 

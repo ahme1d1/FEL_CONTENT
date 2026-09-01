@@ -19,6 +19,7 @@ import { readFileSync } from 'node:fs'
 import { validateManifest } from '../build/manifest-schema.mjs'
 import { selectDue } from './due.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
+import { routeFor } from './route.mjs'
 import { publishFacebookStory, publishInstagram } from './platforms/meta.mjs'
 
 const GRAPH = 'https://graph.facebook.com/v21.0'
@@ -103,7 +104,7 @@ async function verifyMedia(mediaUrl, expectedSha) {
 
 async function publishOne({ post, manifest, http, igUserId, pageId }) {
   const mediaUrl = `${manifest.mediaBase}/${post.media.file}`
-  if (post.strategy === 'fb-story') return publishFacebookStory({ http, pageId, mediaUrl })
+  if (routeFor(post.strategy) === 'fb-story') return publishFacebookStory({ http, pageId, mediaUrl })
   return publishInstagram({ http, igUserId, post, mediaUrl })
 }
 
