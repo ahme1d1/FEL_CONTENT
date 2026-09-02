@@ -137,6 +137,150 @@
       "dependsOn": null
     },
     {
+      "id": "gw03-d5-results-fb-feed",
+      "publishAt": "2026-09-02T23:14:41Z",
+      "slotCairo": "2026-09-03 02:14 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0214-results-80d44af0.jpg",
+        "sha256": "80d44af0bc23cf102a61dd296ba8d361436917c8cc5f611b5dc35f144bef11ef",
+        "bytes": 95420,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "1",
+          "6": "المقاولون",
+          "7": "أبو قير",
+          "8": "0",
+          "10": "2",
+          "11": "الاتحاد",
+          "12": "سيراميكا",
+          "13": "2",
+          "15": "0",
+          "16": "مودرن"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "MOK",
+          "2": "ABQ",
+          "3": "ITT",
+          "4": "CRA",
+          "5": "MOD"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتش واحد في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw03-d5-results-ig-feed",
+      "publishAt": "2026-09-02T23:14:41Z",
+      "slotCairo": "2026-09-03 02:14 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0214-results-80d44af0.jpg",
+        "sha256": "80d44af0bc23cf102a61dd296ba8d361436917c8cc5f611b5dc35f144bef11ef",
+        "bytes": 95420,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "1",
+          "6": "المقاولون",
+          "7": "أبو قير",
+          "8": "0",
+          "10": "2",
+          "11": "الاتحاد",
+          "12": "سيراميكا",
+          "13": "2",
+          "15": "0",
+          "16": "مودرن"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "MOK",
+          "2": "ABQ",
+          "3": "ITT",
+          "4": "CRA",
+          "5": "MOD"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتش واحد في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw03-d5-results-tiktok",
+      "publishAt": "2026-09-02T23:14:41Z",
+      "slotCairo": "2026-09-03 02:14 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0214-results-story-d001a40b.jpg",
+        "sha256": "d001a40b12cf8c73a439cf083aad3248cfda67c1b18f13f5a4fad9fd2773dfa6",
+        "bytes": 101467,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "1",
+          "6": "المقاولون",
+          "7": "أبو قير",
+          "8": "0",
+          "10": "2",
+          "11": "الاتحاد",
+          "12": "سيراميكا",
+          "13": "2",
+          "15": "0",
+          "16": "مودرن"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "MOK",
+          "2": "ABQ",
+          "3": "ITT",
+          "4": "CRA",
+          "5": "MOD"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتش واحد في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw03-d6-1200-fb-feed",
       "publishAt": "2026-09-03T09:00:00Z",
       "slotCairo": "2026-09-03 12:00 Africa/Cairo",
