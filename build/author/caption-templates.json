@@ -4,7 +4,7 @@
   "_whatChanged": "v1 was abstract («يوم كامل كورة قدامك») and v2 was closer but still stiff («باب الجولة الرابعة فتح», «شوف ناديك واقف فين», «قولنا رأيك»), all rejected. The tell is padding: facebook.minEmoji was 2, which forced a second line onto captions the page writes as one. That floor is now 1.",
   "_retired": "👇 and ownership percentages both appear in the page's AUGUST posts and in NONE from 30 Aug onward. They were dropped deliberately; the linter keeps 👇 banned and no template quotes a percentage.",
   "_registers": "ENGAGEMENT posts close on a question — matchday, matchdayFinal, question, podium, playerOfRound, teamOfWeek, topPlayers. INFORMATIONAL posts state and point forward — buildUp, deadline, priceChanges, leagueTable, results, resultsFinal. captions.mjs holds the list and lifts the linter's trailing-question ban for the first group only.",
-  "_vars": "{matches} «ماتش واحد»/«ماتشين»/«3 ماتشات» · {these} «الماتش ده»/«الماتشين دول»/«الماتشات دي» · {remaining} matches left in the round · {rounds} rounds already played, «جولتين» · {deadline} «الاتنين 4 العصر» · {gw} «الجولة الرابعة». Arabic counts one and two in the noun, so these are pluralised in plan.mjs, never with a bare numeral. {winner} is the winning manager's name, and exists only once the round has settled.",
+  "_vars": "{matches} «ماتش واحد»/«ماتشين»/«3 ماتشات» · {these} «الماتش ده»/«الماتشين دول»/«الماتشات دي» · {remaining} matches left in the round · {rounds} rounds already played, «جولتين» · {deadline} «الاتنين 4 العصر» · {gw} «الجولة الرابعة». Arabic counts one and two in the noun, so these are pluralised in plan.mjs, never with a bare numeral. {winner} is the winning manager's name, and exists only once the round has settled. {untilDeadline} is time left from THIS slot to the deadline, computed per post — «كمان ساعتين» is true at 14:00 against a 16:00 deadline and false in GW18, whose deadline is 20:30.",
   "kinds": {
     "buildUp": {
       "facebook": [
@@ -23,17 +23,17 @@
     "matchday": {
       "facebook": [
         "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "{matches} النهاردة ⚽\nمين عندك هيلعب ؟",
         "مستني ايه من ماتشات النهاردة؟ ⚽"
       ],
       "instagram": [
         "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "{matches} النهاردة ⚽\nمين عندك هيلعب ؟",
         "مستني ايه من ماتشات النهاردة؟ ⚽"
       ],
       "tiktok": [
         "كابتنك لعب ولا لسه؟ 🔥",
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "{matches} النهاردة ⚽\nمين عندك هيلعب ؟",
         "مستني ايه من ماتشات النهاردة؟ ⚽"
       ]
     },
@@ -82,15 +82,15 @@
     "deadline": {
       "facebook": [
         "اتأكد من فريقك، الديدلاين {deadline} ⏰",
-        "كابتن غلط ممكن يضيّع عليك الجولة كلها. راجع فريقك ⏰"
+        "الديدلاين كمان {untilDeadline} ⏰"
       ],
       "instagram": [
         "اتأكد من فريقك، الديدلاين {deadline} ⏰",
-        "كابتن غلط ممكن يضيّع عليك الجولة كلها ⏰"
+        "الديدلاين كمان {untilDeadline} ⏰"
       ],
       "tiktok": [
-        "اتأكد من فريقك، الديدلاين {deadline} ⏰",
-        "راجع فريقك قبل الديدلاين ⏰"
+        "الديدلاين {deadline} ⏰",
+        "الديدلاين كمان {untilDeadline} ⏰"
       ]
     },
     "question": {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 4,
-  "authoredAt": "2026-09-02T02:16:30.454Z",
+  "authoredAt": "2026-09-02T02:18:31.720Z",
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
@@ -512,7 +512,7 @@
           "7": "MAS"
         }
       },
-      "caption": "4 ماتشات النهاردة ⚽\nعندك مين فيهم؟ 👀",
+      "caption": "4 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -561,7 +561,7 @@
           "7": "MAS"
         }
       },
-      "caption": "4 ماتشات النهاردة ⚽\nعندك مين فيهم؟ 👀",
+      "caption": "4 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -610,7 +610,7 @@
           "7": "MAS"
         }
       },
-      "caption": "4 ماتشات النهاردة ⚽\nعندك مين فيهم؟ 👀",
+      "caption": "4 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -639,7 +639,7 @@
         },
         "assets": {}
       },
-      "caption": "كابتن غلط ممكن يضيّع عليك الجولة كلها. راجع فريقك ⏰",
+      "caption": "الديدلاين كمان ساعتين ⏰",
       "link": null,
       "dependsOn": null,
       "maxLatenessMinutes": 60
@@ -669,7 +669,7 @@
         },
         "assets": {}
       },
-      "caption": "كابتن غلط ممكن يضيّع عليك الجولة كلها ⏰",
+      "caption": "الديدلاين كمان ساعتين ⏰",
       "link": null,
       "dependsOn": null,
       "maxLatenessMinutes": 60
@@ -699,7 +699,7 @@
         },
         "assets": {}
       },
-      "caption": "راجع فريقك قبل الديدلاين ⏰",
+      "caption": "الديدلاين كمان ساعتين ⏰",
       "link": null,
       "dependsOn": null,
       "maxLatenessMinutes": 60

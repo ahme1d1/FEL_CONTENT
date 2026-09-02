@@ -21,6 +21,7 @@ const VARS = {
   remaining: '4 ماتشات',
   rounds: 'جولتين',
   deadline: 'الاتنين 4 العصر',
+  untilDeadline: 'ساعتين',
   gw: 'الجولة الرابعة',
 }
 const fill = (t) => t.replace(/\{(\w+)\}/g, (whole, key) => (key in VARS ? VARS[key] : whole))

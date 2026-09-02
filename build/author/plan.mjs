@@ -70,6 +70,21 @@ export function theseMatches(n) {
   return 'الماتشات دي'
 }
 
+/**
+ * «ساعة» · «ساعتين» · «6 ساعات» — how long is left before the deadline, from a given slot.
+ *
+ * Computed, never written down. «الديدلاين كمان ساعتين» is true of a 14:00 post against a 16:00
+ * deadline and false of the same post in GW18, whose deadline is 20:30. The runbook records
+ * exactly this going wrong: on 2026-08-26 a queued card still read «فاضل ساعة» after the deadline
+ * moved. Floored, so the number is never larger than the time actually remaining.
+ */
+export function hoursUntil(fromIso, deadlineIso) {
+  const hours = Math.floor((Date.parse(deadlineIso) - Date.parse(fromIso)) / 3_600_000)
+  if (hours <= 1) return 'ساعة'
+  if (hours === 2) return 'ساعتين'
+  return `${hours} ساعات`
+}
+
 /** «جولة» · «جولتين» · «3 جولات», for «ترتيب الدوري بعد جولتين». */
 export function roundCount(n) {
   if (n === 1) return 'جولة'
@@ -84,7 +99,7 @@ export function roundCount(n) {
  * «يوم كامل كورة قدامك» would have been equally true of any day of any round, which is exactly
  * why it read as written by nobody.
  */
-function captionVars({ window: w, day, data }) {
+function captionVars({ window: w, day, data, publishAt }) {
   const roundFixtures = data.fixtures ?? []
   const finishedInRound = roundFixtures.filter((f) => f.status === 'FINISHED').length
   const left = Math.max(0, roundFixtures.length - finishedInRound)
@@ -97,6 +112,7 @@ function captionVars({ window: w, day, data }) {
     // «ترتيب الدوري بعد جولتين» — the rounds already played, not the one being authored.
     rounds: roundCount(Math.max(0, w.gameweek - 1)),
     deadline: deadlinePhrase(w.deadline),
+    untilDeadline: hoursUntil(publishAt, w.deadline),
     gw: gameweekLabel(w.gameweek),
     // The prize caption is «مبروك يا مراد 🏆» — the one caption that names a person on purpose,
     // because congratulating nobody in particular is not a congratulation. Undefined until the
@@ -263,7 +279,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
       }
 
       const kind = day.date === finalDate ? (FINAL_KIND[entry.kind] ?? entry.kind) : entry.kind
-      const vars = captionVars({ window, day, data })
+      const vars = captionVars({ window, day, data, publishAt })
 
       for (const platform of entry.platforms) {
         const { strategy, suffix } = PLATFORMS[platform]
