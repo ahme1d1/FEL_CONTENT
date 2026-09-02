@@ -12,9 +12,9 @@
       "strategy": "fb-scheduled",
       "kind": "buildUp",
       "media": {
-        "file": "2000-buildup-5d865e79.jpg",
-        "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
-        "bytes": 51073,
+        "file": "2000-buildup-f5e2839c.jpg",
+        "sha256": "f5e2839cf50706467737d5cface0b9ccf97e66bb529d36ac1378649a31bdc48c",
+        "bytes": 51572,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -41,9 +41,9 @@
       "strategy": "ig-feed",
       "kind": "buildUp",
       "media": {
-        "file": "2000-buildup-5d865e79.jpg",
-        "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
-        "bytes": 51073,
+        "file": "2000-buildup-f5e2839c.jpg",
+        "sha256": "f5e2839cf50706467737d5cface0b9ccf97e66bb529d36ac1378649a31bdc48c",
+        "bytes": 51572,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -70,9 +70,9 @@
       "strategy": "tiktok-draft",
       "kind": "buildUp",
       "media": {
-        "file": "2000-buildup-story-f605a4ef.jpg",
-        "sha256": "f605a4efcc595d296ad0cc691e5c23c7b1c17a868603a409447e1c109c01fc37",
-        "bytes": 47285,
+        "file": "2000-buildup-story-b4d95670.jpg",
+        "sha256": "b4d95670ad0242c928b6fbee833adcd88f7a19c71add73e2000b0e5edd7a0819",
+        "bytes": 47217,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
@@ -99,9 +99,9 @@
       "strategy": "fb-scheduled",
       "kind": "priceChanges",
       "media": {
-        "file": "1200-prices-aadbcca1.jpg",
-        "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
-        "bytes": 103608,
+        "file": "1200-prices-4906d338.jpg",
+        "sha256": "4906d338604fd92147e7a8453ec171bb8eb2784868b650a9845d5fdafe5a9e39",
+        "bytes": 103240,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -160,9 +160,9 @@
       "strategy": "ig-feed",
       "kind": "priceChanges",
       "media": {
-        "file": "1200-prices-aadbcca1.jpg",
-        "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
-        "bytes": 103608,
+        "file": "1200-prices-4906d338.jpg",
+        "sha256": "4906d338604fd92147e7a8453ec171bb8eb2784868b650a9845d5fdafe5a9e39",
+        "bytes": 103240,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -221,9 +221,9 @@
       "strategy": "fb-scheduled",
       "kind": "leagueTable",
       "media": {
-        "file": "1400-table-8b601a73.jpg",
-        "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
-        "bytes": 102669,
+        "file": "1400-table-913e2b03.jpg",
+        "sha256": "913e2b033fbfea297bdd93f5bd2312b6c14813528287da2246f3c96e04dd31a3",
+        "bytes": 103467,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -291,9 +291,9 @@
       "strategy": "ig-feed",
       "kind": "leagueTable",
       "media": {
-        "file": "1400-table-8b601a73.jpg",
-        "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
-        "bytes": 102669,
+        "file": "1400-table-913e2b03.jpg",
+        "sha256": "913e2b033fbfea297bdd93f5bd2312b6c14813528287da2246f3c96e04dd31a3",
+        "bytes": 103467,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -361,9 +361,9 @@
       "strategy": "fb-scheduled",
       "kind": "question",
       "media": {
-        "file": "2000-question-4bf578b1.jpg",
-        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
-        "bytes": 78616,
+        "file": "2000-question-6eeed041.jpg",
+        "sha256": "6eeed041291ea034737145526ca7e6cfb558d299ef393d6d7790caaea5971cf0",
+        "bytes": 79150,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -399,9 +399,9 @@
       "strategy": "ig-feed",
       "kind": "question",
       "media": {
-        "file": "2000-question-4bf578b1.jpg",
-        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
-        "bytes": 78616,
+        "file": "2000-question-6eeed041.jpg",
+        "sha256": "6eeed041291ea034737145526ca7e6cfb558d299ef393d6d7790caaea5971cf0",
+        "bytes": 79150,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -437,9 +437,9 @@
       "strategy": "tiktok-draft",
       "kind": "question",
       "media": {
-        "file": "2000-question-story-4926df51.jpg",
-        "sha256": "4926df51225658d4e1f345945f070ccafbcbce48174cca602a058c20e00c3ad1",
-        "bytes": 76262,
+        "file": "2000-question-story-b7163d50.jpg",
+        "sha256": "b7163d5079af3985ef540b654d1a81f8ea8a69d43be68cb930fa10a444b92a2b",
+        "bytes": 77033,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
@@ -475,9 +475,9 @@
       "strategy": "fb-scheduled",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-391d2c09.jpg",
-        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
-        "bytes": 125085,
+        "file": "1200-matchday-218f9799.jpg",
+        "sha256": "218f97996a9b7b61426d2ee02d6f57e2a9d2801383d541afae8a5f65088d66c4",
+        "bytes": 125366,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -524,9 +524,9 @@
       "strategy": "ig-feed",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-391d2c09.jpg",
-        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
-        "bytes": 125085,
+        "file": "1200-matchday-218f9799.jpg",
+        "sha256": "218f97996a9b7b61426d2ee02d6f57e2a9d2801383d541afae8a5f65088d66c4",
+        "bytes": 125366,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -573,9 +573,9 @@
       "strategy": "tiktok-draft",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-story-2bf01e57.jpg",
-        "sha256": "2bf01e573715d4733e28d67555091a681e79d39cee7dfa3191c6925da2318c9a",
-        "bytes": 107932,
+        "file": "1200-matchday-story-a5cb36e0.jpg",
+        "sha256": "a5cb36e01b940250afbead4c38dbba277c5bd3163642953b38f8355749c66b40",
+        "bytes": 107918,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
@@ -622,9 +622,9 @@
       "strategy": "fb-scheduled",
       "kind": "deadline",
       "media": {
-        "file": "1400-deadline-6ea62884.jpg",
-        "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
-        "bytes": 57421,
+        "file": "1400-deadline-34bf22c4.jpg",
+        "sha256": "34bf22c4d10e3a20c833a14b5f6f76861ac0868ebd9812436c0f3ccb7cff4fa9",
+        "bytes": 57547,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -652,9 +652,9 @@
       "strategy": "ig-feed",
       "kind": "deadline",
       "media": {
-        "file": "1400-deadline-6ea62884.jpg",
-        "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
-        "bytes": 57421,
+        "file": "1400-deadline-34bf22c4.jpg",
+        "sha256": "34bf22c4d10e3a20c833a14b5f6f76861ac0868ebd9812436c0f3ccb7cff4fa9",
+        "bytes": 57547,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -682,9 +682,9 @@
       "strategy": "tiktok-draft",
       "kind": "deadline",
       "media": {
-        "file": "1400-deadline-story-2d69281c.jpg",
-        "sha256": "2d69281cbdd1ceca4ea353b7546772b91eb26344ce31c10e91f56c84864ea50d",
-        "bytes": 62387,
+        "file": "1400-deadline-story-c4d34d52.jpg",
+        "sha256": "c4d34d52b49ab2a613e8bfd3777a1fd1999ff42a5ccc26123604dac6ef8c0bd3",
+        "bytes": 62352,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
@@ -712,9 +712,9 @@
       "strategy": "fb-scheduled",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-0e062e37.jpg",
-        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
-        "bytes": 102663,
+        "file": "1200-matchday-fae66fd7.jpg",
+        "sha256": "fae66fd7ce5f6e87c8015fd4b6addf6ae478871ce9abc0ead84e74118b74f3d6",
+        "bytes": 103551,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -756,9 +756,9 @@
       "strategy": "ig-feed",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-0e062e37.jpg",
-        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
-        "bytes": 102663,
+        "file": "1200-matchday-fae66fd7.jpg",
+        "sha256": "fae66fd7ce5f6e87c8015fd4b6addf6ae478871ce9abc0ead84e74118b74f3d6",
+        "bytes": 103551,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -800,9 +800,9 @@
       "strategy": "tiktok-draft",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-story-e98bf943.jpg",
-        "sha256": "e98bf943244ce62b7aff739533b70dcaf48b61b508b34e94f65951002f86f9f8",
-        "bytes": 87522,
+        "file": "1200-matchday-story-b5d809ce.jpg",
+        "sha256": "b5d809ce3b1dd24b6f7c37a82f0a2ac707d54611119563c25c544839b363c834",
+        "bytes": 87652,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
@@ -844,9 +844,9 @@
       "strategy": "fb-scheduled",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-matchday-1a45173c.jpg",
-        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
-        "bytes": 99790,
+        "file": "1200-matchday-6be34875.jpg",
+        "sha256": "6be348750824e2d7e670f0e60ff08e874690323d0aaed3be430f0f0df9b19c63",
+        "bytes": 100692,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -888,9 +888,9 @@
       "strategy": "ig-feed",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-matchday-1a45173c.jpg",
-        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
-        "bytes": 99790,
+        "file": "1200-matchday-6be34875.jpg",
+        "sha256": "6be348750824e2d7e670f0e60ff08e874690323d0aaed3be430f0f0df9b19c63",
+        "bytes": 100692,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -932,9 +932,9 @@
       "strategy": "tiktok-draft",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-matchday-story-ac459bd8.jpg",
-        "sha256": "ac459bd8feaac98f745d6b17cb1223ea8a7e3cd7193fc2870a74ba28ad3abf0f",
-        "bytes": 85198,
+        "file": "1200-matchday-story-527d99df.jpg",
+        "sha256": "527d99df4038632fac0eec2ceb76aaa24f34b39fedfc23930f574922a6021e74",
+        "bytes": 85113,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
