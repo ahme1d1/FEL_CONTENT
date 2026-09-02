@@ -14,8 +14,14 @@ const RULES = JSON.parse(
   readFileSync(fileURLToPath(new URL('./copy-rules.json', import.meta.url)), 'utf8'),
 )
 
-/** Cairo wall-clock times the calendar is allowed to use. */
-export const SLOTS_CAIRO = ['09:00', '10:30', '11:00', '13:00', '14:00', '16:00', '20:00', '22:30']
+/**
+ * Cairo wall-clock times the calendar is allowed to use.
+ *
+ * **The day starts at noon** — owner call, 2026-09-02. The morning slots (09:00, 10:30, 11:00)
+ * were retired: nothing goes out before 12:00 Cairo. `publish.yml`'s crons fire on exactly these
+ * times, so the two lists must be changed together or a slot has no routine to send it.
+ */
+export const SLOTS_CAIRO = ['12:00', '13:00', '14:00', '16:00', '20:00', '22:30']
 
 /**
  * Instagram accepts 4:5 (0.8) through 1.91:1 for feed images and rejects the

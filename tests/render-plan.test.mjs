@@ -4,7 +4,7 @@ import { sourceKey, planRenders, mediaName, stampManifest } from '../build/rende
 
 const cardPost = (over = {}) => ({
   id: 'gw03-d1-1100-ig-feed',
-  slotCairo: '2026-09-03 11:00 Africa/Cairo',
+  slotCairo: '2026-09-03 14:00 Africa/Cairo',
   strategy: 'ig-feed',
   source: { card: 'P_WINNER_THEIR_TEAM', texts: { 0: 'بطل الجولة' }, assets: { 0: 'AHL' } },
   media: null,
@@ -29,7 +29,7 @@ test('sourceKey separates different content', () => {
 // rendered once and shared, not rendered twice into two identical files.
 test('two posts with identical sources become one render job', () => {
   const posts = [
-    cardPost({ id: 'fb', strategy: 'fb-scheduled', slotCairo: '2026-09-03 10:30 Africa/Cairo' }),
+    cardPost({ id: 'fb', strategy: 'fb-scheduled', slotCairo: '2026-09-03 13:00 Africa/Cairo' }),
     cardPost({ id: 'ig', strategy: 'ig-feed' }),
   ]
   const plan = planRenders(manifest(posts))
@@ -71,22 +71,22 @@ test('a job carries the render-cards.mjs job shape', () => {
 test('the earliest slot in a shared group names the file', () => {
   const posts = [
     cardPost({ id: 'late', slotCairo: '2026-09-03 16:00 Africa/Cairo' }),
-    cardPost({ id: 'early', slotCairo: '2026-09-03 10:30 Africa/Cairo' }),
+    cardPost({ id: 'early', slotCairo: '2026-09-03 13:00 Africa/Cairo' }),
   ]
   const [job] = planRenders(manifest(posts))
-  assert.equal(mediaName(job, 'abcdef1234567890'), '1030-p-winner-their-team-abcdef12.jpg')
+  assert.equal(mediaName(job, 'abcdef1234567890'), '1300-p-winner-their-team-abcdef12.jpg')
 })
 
 test('the filename carries the first 8 hex of the sha, so bytes and URL agree', () => {
   const [job] = planRenders(manifest([cardPost()]))
   const name = mediaName(job, '9f2c7a41b3d5e6f7')
   assert.ok(name.endsWith('-9f2c7a41.jpg'))
-  assert.ok(name.startsWith('1100-'))
+  assert.ok(name.startsWith('1400-'))
 })
 
 test('an explicit slug overrides the derived one', () => {
   const [job] = planRenders(manifest([cardPost({ source: { card: 'P_WINNER_THEIR_TEAM', slug: 'winner', texts: {} } })]))
-  assert.equal(mediaName(job, 'aaaaaaaabbbb'), '1100-winner-aaaaaaaa.jpg')
+  assert.equal(mediaName(job, 'aaaaaaaabbbb'), '1400-winner-aaaaaaaa.jpg')
 })
 
 test('stampManifest returns a new manifest and never mutates the original', () => {

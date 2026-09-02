@@ -13,10 +13,10 @@ name: Publish
 on:
   schedule:
     # Cairo is UTC+3. These are the SLOTS_CAIRO times in manifest-schema.mjs:
-    # 09:00 10:30 11:00 13:00 14:00 16:00 20:00 22:30 Cairo.
-    - cron: '0 6 * * *'    # 09:00
-    - cron: '30 7 * * *'   # 10:30
-    - cron: '0 8 * * *'    # 11:00
+    # 12:00 13:00 14:00 16:00 20:00 22:30 Cairo. Change the two together — a slot
+    # with no cron behind it is a post that waits until the next one.
+    # The day starts at noon (owner call, 2026-09-02); the three morning crons are gone.
+    - cron: '0 9 * * *'    # 12:00
     - cron: '0 10 * * *'   # 13:00
     - cron: '0 11 * * *'   # 14:00
     - cron: '0 13 * * *'   # 16:00

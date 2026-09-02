@@ -4,17 +4,17 @@ import { SLOTS_CAIRO, cairoWallClock } from '../build/manifest-schema.mjs'
 import { addCairoDays, cairoDateOf, slotInstant } from '../build/author/slots.mjs'
 
 test('a Cairo slot becomes the UTC instant the validator expects', () => {
-  assert.deepEqual(slotInstant('2026-09-03', '11:00'), {
-    publishAt: '2026-09-03T08:00:00Z',
-    slotCairo: '2026-09-03 11:00 Africa/Cairo',
+  assert.deepEqual(slotInstant('2026-09-03', '14:00'), {
+    publishAt: '2026-09-03T11:00:00Z',
+    slotCairo: '2026-09-03 14:00 Africa/Cairo',
   })
 })
 
 // Cairo drops from UTC+3 to UTC+2 overnight on 29 October 2026, around GW9. Doing the arithmetic
 // by hand is how every post after it silently moves by an hour.
 test('the October 2026 clock change is handled by construction, not by hand', () => {
-  assert.equal(slotInstant('2026-10-29', '09:00').publishAt, '2026-10-29T06:00:00Z')
-  assert.equal(slotInstant('2026-11-05', '09:00').publishAt, '2026-11-05T07:00:00Z')
+  assert.equal(slotInstant('2026-10-29', '12:00').publishAt, '2026-10-29T09:00:00Z')
+  assert.equal(slotInstant('2026-11-05', '12:00').publishAt, '2026-11-05T10:00:00Z')
 })
 
 test('every calendar slot round-trips through cairoWallClock on both sides of the change', () => {
@@ -42,7 +42,7 @@ test('a time that is not a calendar slot is refused at the source', () => {
 })
 
 test('a malformed date is refused rather than producing an Invalid Date', () => {
-  assert.throws(() => slotInstant('3 Sep 2026', '11:00'), /YYYY-MM-DD/)
+  assert.throws(() => slotInstant('3 Sep 2026', '14:00'), /YYYY-MM-DD/)
 })
 
 test('cairoDateOf reads the Cairo day, not the UTC one', () => {

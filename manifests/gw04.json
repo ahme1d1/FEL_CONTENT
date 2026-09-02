@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 4,
-  "authoredAt": "2026-09-01T23:34:22.903Z",
+  "authoredAt": "2026-09-02T00:05:10.432Z",
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
@@ -61,13 +61,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d2-1100-fb-feed",
-      "publishAt": "2026-09-06T08:00:00Z",
-      "slotCairo": "2026-09-06 11:00 Africa/Cairo",
+      "id": "gw04-d2-1200-fb-feed",
+      "publishAt": "2026-09-06T09:00:00Z",
+      "slotCairo": "2026-09-06 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "1100-prices-aadbcca1.jpg",
+        "file": "1200-prices-aadbcca1.jpg",
         "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
         "bytes": 103608,
         "mime": "image/jpeg",
@@ -121,13 +121,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d2-1100-ig-feed",
-      "publishAt": "2026-09-06T08:00:00Z",
-      "slotCairo": "2026-09-06 11:00 Africa/Cairo",
+      "id": "gw04-d2-1200-ig-feed",
+      "publishAt": "2026-09-06T09:00:00Z",
+      "slotCairo": "2026-09-06 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "1100-prices-aadbcca1.jpg",
+        "file": "1200-prices-aadbcca1.jpg",
         "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
         "bytes": 103608,
         "mime": "image/jpeg",
@@ -430,13 +430,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d3-0900-fb-feed",
-      "publishAt": "2026-09-07T06:00:00Z",
-      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "id": "gw04-d3-1200-fb-feed",
+      "publishAt": "2026-09-07T09:00:00Z",
+      "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "0900-matchday-391d2c09.jpg",
+        "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
         "bytes": 125085,
         "mime": "image/jpeg",
@@ -478,13 +478,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d3-0900-ig-feed",
-      "publishAt": "2026-09-07T06:00:00Z",
-      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "id": "gw04-d3-1200-ig-feed",
+      "publishAt": "2026-09-07T09:00:00Z",
+      "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "0900-matchday-391d2c09.jpg",
+        "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
         "bytes": 125085,
         "mime": "image/jpeg",
@@ -526,13 +526,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d3-0900-tiktok",
-      "publishAt": "2026-09-07T06:00:00Z",
-      "slotCairo": "2026-09-07 09:00 Africa/Cairo",
+      "id": "gw04-d3-1200-tiktok",
+      "publishAt": "2026-09-07T09:00:00Z",
+      "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
       "media": {
-        "file": "0900-matchday-391d2c09.jpg",
+        "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
         "bytes": 125085,
         "mime": "image/jpeg",
@@ -574,13 +574,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d3-1100-fb-feed",
-      "publishAt": "2026-09-07T08:00:00Z",
-      "slotCairo": "2026-09-07 11:00 Africa/Cairo",
+      "id": "gw04-d3-1400-fb-feed",
+      "publishAt": "2026-09-07T11:00:00Z",
+      "slotCairo": "2026-09-07 14:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "1100-deadline-6ea62884.jpg",
+        "file": "1400-deadline-6ea62884.jpg",
         "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
         "bytes": 57421,
         "mime": "image/jpeg",
@@ -603,13 +603,13 @@
       "maxLatenessMinutes": 60
     },
     {
-      "id": "gw04-d3-1100-ig-feed",
-      "publishAt": "2026-09-07T08:00:00Z",
-      "slotCairo": "2026-09-07 11:00 Africa/Cairo",
+      "id": "gw04-d3-1400-ig-feed",
+      "publishAt": "2026-09-07T11:00:00Z",
+      "slotCairo": "2026-09-07 14:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "1100-deadline-6ea62884.jpg",
+        "file": "1400-deadline-6ea62884.jpg",
         "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
         "bytes": 57421,
         "mime": "image/jpeg",
@@ -632,13 +632,13 @@
       "maxLatenessMinutes": 60
     },
     {
-      "id": "gw04-d4-0900-fb-feed",
-      "publishAt": "2026-09-08T06:00:00Z",
-      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "id": "gw04-d4-1200-fb-feed",
+      "publishAt": "2026-09-08T09:00:00Z",
+      "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "0900-matchday-0e062e37.jpg",
+        "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
         "bytes": 102663,
         "mime": "image/jpeg",
@@ -675,13 +675,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d4-0900-ig-feed",
-      "publishAt": "2026-09-08T06:00:00Z",
-      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "id": "gw04-d4-1200-ig-feed",
+      "publishAt": "2026-09-08T09:00:00Z",
+      "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "0900-matchday-0e062e37.jpg",
+        "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
         "bytes": 102663,
         "mime": "image/jpeg",
@@ -718,13 +718,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d4-0900-tiktok",
-      "publishAt": "2026-09-08T06:00:00Z",
-      "slotCairo": "2026-09-08 09:00 Africa/Cairo",
+      "id": "gw04-d4-1200-tiktok",
+      "publishAt": "2026-09-08T09:00:00Z",
+      "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
       "media": {
-        "file": "0900-matchday-0e062e37.jpg",
+        "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
         "bytes": 102663,
         "mime": "image/jpeg",
@@ -761,13 +761,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d5-0900-fb-feed",
-      "publishAt": "2026-09-09T06:00:00Z",
-      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "id": "gw04-d5-1200-fb-feed",
+      "publishAt": "2026-09-09T09:00:00Z",
+      "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "0900-matchday-1a45173c.jpg",
+        "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
         "bytes": 99790,
         "mime": "image/jpeg",
@@ -804,13 +804,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d5-0900-ig-feed",
-      "publishAt": "2026-09-09T06:00:00Z",
-      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "id": "gw04-d5-1200-ig-feed",
+      "publishAt": "2026-09-09T09:00:00Z",
+      "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "0900-matchday-1a45173c.jpg",
+        "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
         "bytes": 99790,
         "mime": "image/jpeg",
@@ -847,13 +847,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw04-d5-0900-tiktok",
-      "publishAt": "2026-09-09T06:00:00Z",
-      "slotCairo": "2026-09-09 09:00 Africa/Cairo",
+      "id": "gw04-d5-1200-tiktok",
+      "publishAt": "2026-09-09T09:00:00Z",
+      "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
       "media": {
-        "file": "0900-matchday-1a45173c.jpg",
+        "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
         "bytes": 99790,
         "mime": "image/jpeg",

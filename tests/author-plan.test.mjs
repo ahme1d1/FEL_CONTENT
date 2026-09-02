@@ -79,7 +79,7 @@ test('one link in the whole gameweek, on the build-up post, on Facebook only', (
 
 test('a post id names its gameweek, day, slot and destination', () => {
   const { posts } = plan()
-  assert.ok(posts.some((p) => p.id === 'gw04-d3-0900-ig-feed'))
+  assert.ok(posts.some((p) => p.id === 'gw04-d3-1200-ig-feed'))
   assert.ok(posts.every((p) => /^gw04-d\d+-\d{4}-(fb-feed|ig-feed|tiktok)$/.test(p.id)))
 })
 
@@ -90,7 +90,7 @@ test('every post id is unique, which the validator would otherwise reject', () =
 
 test('the same source fans out to several platforms, so the renderer draws it once', () => {
   const { posts } = plan()
-  const nine = posts.filter((p) => p.id.includes('-d3-0900-'))
+  const nine = posts.filter((p) => p.id.includes('-d3-1200-'))
   assert.equal(nine.length, 3)
   assert.equal(new Set(nine.map((p) => JSON.stringify(p.source))).size, 1)
   assert.deepEqual(nine.map((p) => p.strategy).sort(), ['fb-scheduled', 'ig-feed', 'tiktok-draft'])
@@ -124,14 +124,16 @@ test('a card whose data has not arrived is skipped by name, not crashed on', () 
 })
 
 test('the deadline post carries a tighter lateness budget than the six-hour default', () => {
-  const deadline = plan().posts.find((p) => p.id.endsWith('-1100-fb-feed'))
+  // Selected by card, not by slot tag: since the day starts at noon the deadline post shares
+  // 14:00 with the league table, and an id-suffix match would silently grab the wrong one.
+  const deadline = plan().posts.find((p) => p.source?.card === 'H_DEADLINE' && p.platform === 'facebook')
   assert.equal(deadline.maxLatenessMinutes, 60)
 })
 
 // Reversed 2026-09-02: the settle-day posts are templated, so a settled round authors unattended.
 test('the settle-day posts arrive captioned, so nothing blocks a settled round', () => {
   const { posts } = plan()
-  const podium = posts.find((p) => p.id.includes('-1030-'))
+  const podium = posts.find((p) => p.source?.card === 'E_PODIUM')
   assert.match(podium.caption, /\S/)
   assert.equal('captionBrief' in podium, false)
   assert.deepEqual(missingCaptions(posts), [])
@@ -166,7 +168,7 @@ test('a supplied caption that breaks the rules is reported, not accepted', () =>
 
 test('a caption for a post that does not exist is a typo worth reporting', () => {
   const { posts } = plan()
-  const { findings } = applyHumanCaptions({ posts, captions: { 'gw04-d9-0900-fb-feed': 'x 🏆' } })
+  const { findings } = applyHumanCaptions({ posts, captions: { 'gw04-d9-1200-fb-feed': 'x 🏆' } })
   assert.ok(findings.some((f) => f.ruleId === 'unknown-post'))
 })
 

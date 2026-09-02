@@ -17,7 +17,7 @@
 
     "middle": [
       {
-        "slot": "11:00",
+        "slot": "12:00",
         "kind": "priceChanges",
         "card": "priceChanges",
         "platforms": ["facebook", "instagram"],
@@ -28,9 +28,9 @@
     ],
 
     "deadlineDay": [
-      { "slot": "09:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
+      { "slot": "12:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
       {
-        "slot": "11:00",
+        "slot": "14:00",
         "kind": "deadline",
         "card": "deadline",
         "platforms": ["facebook", "instagram"],
@@ -40,12 +40,12 @@
     ],
 
     "matchDay": [
-      { "slot": "09:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
+      { "slot": "12:00", "kind": "matchday", "card": "matchday", "platforms": ["facebook", "instagram", "tiktok"] },
       { "slot": "22:30", "kind": "results", "card": "results", "platforms": ["facebook", "instagram"] }
     ],
 
     "settleDay": [
-      { "slot": "10:30", "kind": "podium", "card": "podium", "platforms": ["facebook", "instagram"] },
+      { "slot": "12:00", "kind": "podium", "card": "podium", "platforms": ["facebook", "instagram"] },
       { "slot": "13:00", "kind": "playerOfRound", "card": "playerOfRound", "platforms": ["facebook", "instagram"] },
       { "slot": "16:00", "kind": "teamOfWeek", "card": "teamOfWeek", "platforms": ["facebook", "instagram", "tiktok"] },
       { "slot": "20:00", "kind": "topPlayers", "card": "topPlayers", "platforms": ["facebook", "instagram"] }

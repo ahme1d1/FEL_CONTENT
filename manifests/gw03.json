@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "gameweek": 3,
-  "authoredAt": "2026-09-01T23:34:17.029Z",
+  "authoredAt": "2026-09-02T00:05:10.000Z",
   "mediaBase": "https://media.fantasyeg.com/gw03",
   "posts": [
     {
-      "id": "gw03-d5-0900-fb-feed",
-      "publishAt": "2026-09-02T06:00:00Z",
-      "slotCairo": "2026-09-02 09:00 Africa/Cairo",
+      "id": "gw03-d5-1200-fb-feed",
+      "publishAt": "2026-09-02T09:00:00Z",
+      "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "0900-matchday-d5ab50e2.jpg",
+        "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
         "bytes": 103223,
         "mime": "image/jpeg",
@@ -48,13 +48,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d5-0900-ig-feed",
-      "publishAt": "2026-09-02T06:00:00Z",
-      "slotCairo": "2026-09-02 09:00 Africa/Cairo",
+      "id": "gw03-d5-1200-ig-feed",
+      "publishAt": "2026-09-02T09:00:00Z",
+      "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "0900-matchday-d5ab50e2.jpg",
+        "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
         "bytes": 103223,
         "mime": "image/jpeg",
@@ -91,13 +91,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d5-0900-tiktok",
-      "publishAt": "2026-09-02T06:00:00Z",
-      "slotCairo": "2026-09-02 09:00 Africa/Cairo",
+      "id": "gw03-d5-1200-tiktok",
+      "publishAt": "2026-09-02T09:00:00Z",
+      "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
       "media": {
-        "file": "0900-matchday-d5ab50e2.jpg",
+        "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
         "bytes": 103223,
         "mime": "image/jpeg",
@@ -134,13 +134,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d6-0900-fb-feed",
-      "publishAt": "2026-09-03T06:00:00Z",
-      "slotCairo": "2026-09-03 09:00 Africa/Cairo",
+      "id": "gw03-d6-1200-fb-feed",
+      "publishAt": "2026-09-03T09:00:00Z",
+      "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "0900-match-84ec673b.jpg",
+        "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
         "bytes": 81996,
         "mime": "image/jpeg",
@@ -169,13 +169,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d6-0900-ig-feed",
-      "publishAt": "2026-09-03T06:00:00Z",
-      "slotCairo": "2026-09-03 09:00 Africa/Cairo",
+      "id": "gw03-d6-1200-ig-feed",
+      "publishAt": "2026-09-03T09:00:00Z",
+      "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "0900-match-84ec673b.jpg",
+        "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
         "bytes": 81996,
         "mime": "image/jpeg",
@@ -204,13 +204,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d6-0900-tiktok",
-      "publishAt": "2026-09-03T06:00:00Z",
-      "slotCairo": "2026-09-03 09:00 Africa/Cairo",
+      "id": "gw03-d6-1200-tiktok",
+      "publishAt": "2026-09-03T09:00:00Z",
+      "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
       "media": {
-        "file": "0900-match-84ec673b.jpg",
+        "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
         "bytes": 81996,
         "mime": "image/jpeg",
@@ -239,13 +239,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d7-1030-fb-feed",
-      "publishAt": "2026-09-04T07:30:00Z",
-      "slotCairo": "2026-09-04 10:30 Africa/Cairo",
+      "id": "gw03-d7-1200-fb-feed",
+      "publishAt": "2026-09-04T09:00:00Z",
+      "slotCairo": "2026-09-04 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "media": {
-        "file": "1030-podium-8d07dae1.jpg",
+        "file": "1200-podium-8d07dae1.jpg",
         "sha256": "8d07dae1a7d6ee0e086eba71d822be86e5c5da8a6f3140bf9194c38ebeb49ae4",
         "bytes": 82911,
         "mime": "image/jpeg",
@@ -278,13 +278,13 @@
       "dependsOn": null
     },
     {
-      "id": "gw03-d7-1030-ig-feed",
-      "publishAt": "2026-09-04T07:30:00Z",
-      "slotCairo": "2026-09-04 10:30 Africa/Cairo",
+      "id": "gw03-d7-1200-ig-feed",
+      "publishAt": "2026-09-04T09:00:00Z",
+      "slotCairo": "2026-09-04 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
       "media": {
-        "file": "1030-podium-8d07dae1.jpg",
+        "file": "1200-podium-8d07dae1.jpg",
         "sha256": "8d07dae1a7d6ee0e086eba71d822be86e5c5da8a6f3140bf9194c38ebeb49ae4",
         "bytes": 82911,
         "mime": "image/jpeg",

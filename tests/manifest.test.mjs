@@ -11,8 +11,8 @@ const base = () => ({
   posts: [
     {
       id: 'gw03-d1-1100-ig-feed',
-      publishAt: '2026-09-03T08:00:00Z', // 11:00 Cairo, UTC+3 in September
-      slotCairo: '2026-09-03 11:00 Africa/Cairo',
+      publishAt: '2026-09-03T11:00:00Z', // 14:00 Cairo, UTC+3 in September
+      slotCairo: '2026-09-03 14:00 Africa/Cairo',
       platform: 'instagram',
       strategy: 'ig-feed',
       media: {
@@ -52,7 +52,7 @@ test('publishAt must be after authoredAt', () => {
 
 test('publishAt must be an explicit UTC instant', () => {
   const m = base()
-  m.posts[0].publishAt = '2026-09-03T11:00:00+03:00'
+  m.posts[0].publishAt = '2026-09-03T14:00:00+03:00'
   assert.ok(idsFor(m).includes('publish-not-utc'))
 })
 
@@ -60,12 +60,12 @@ test('publishAt must be an explicit UTC instant', () => {
 // 2026-10-29, around GW9. The same wall-clock slot is a different UTC hour after that.
 test('the same Cairo slot validates on both sides of the DST change', () => {
   const summer = base()
-  summer.posts[0].publishAt = '2026-09-03T08:00:00Z'
+  summer.posts[0].publishAt = '2026-09-03T11:00:00Z'
   assert.deepEqual(validateManifest(summer), [])
 
   const winter = base()
-  winter.posts[0].publishAt = '2026-11-05T09:00:00Z' // 11:00 Cairo at UTC+2
-  winter.posts[0].slotCairo = '2026-11-05 11:00 Africa/Cairo'
+  winter.posts[0].publishAt = '2026-11-05T12:00:00Z' // 14:00 Cairo at UTC+2
+  winter.posts[0].slotCairo = '2026-11-05 14:00 Africa/Cairo'
   assert.deepEqual(validateManifest(winter), [])
 })
 
@@ -183,7 +183,7 @@ test('a text-only Facebook post needs no media', () => {
 })
 
 test('every declared slot is a real slot', () => {
-  assert.ok(SLOTS_CAIRO.includes('11:00'))
+  assert.ok(SLOTS_CAIRO.includes('14:00'))
   assert.ok(SLOTS_CAIRO.includes('22:30'))
   assert.ok(!SLOTS_CAIRO.includes('10:00'))
 })
