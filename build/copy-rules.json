@@ -1,12 +1,11 @@
 {
   "version": 1,
   "_source": "docs/marketing/content-design-kit.md §2 (voice) and §5 (forbidden claims) in FEL_WEBSITE, plus owner calls logged there. Update both together.",
-
   "platforms": {
     "facebook": {
       "maxChars": null,
       "maxLines": 4,
-      "minEmoji": 2,
+      "minEmoji": 1,
       "maxEmoji": 4,
       "emojiMustEndLine": true,
       "maxHashtags": 0,
@@ -34,68 +33,245 @@
       "allowTrailingQuestion": false
     }
   },
-
   "bannedCharacters": [
-    { "id": "eastern-digits", "chars": "٠١٢٣٤٥٦٧٨٩", "message": "Western digits everywhere (owner call 2026-08-25). Write 15, not ١٥." },
-    { "id": "pointer-emoji", "chars": "👇", "message": "The pointer emoji was rejected. Point forward to what is next instead." },
-    { "id": "em-dash", "chars": "—–", "message": "Em and en dashes read as machine-written. Use a comma, a period or a colon." }
+    {
+      "id": "eastern-digits",
+      "chars": "٠١٢٣٤٥٦٧٨٩",
+      "message": "Western digits everywhere (owner call 2026-08-25). Write 15, not ١٥."
+    },
+    {
+      "id": "pointer-emoji",
+      "chars": "👇",
+      "message": "The pointer emoji was rejected. Point forward to what is next instead."
+    },
+    {
+      "id": "em-dash",
+      "chars": "—–",
+      "message": "Em and en dashes read as machine-written. Use a comma, a period or a colon."
+    }
   ],
-
   "retiredVocabulary": [
-    { "term": "ولّع", "use": "state the fact; the adjective does not carry the post" },
-    { "term": "ولع", "use": "state the fact; the adjective does not carry the post" },
-    { "term": "هيولّع", "use": "state the fact" },
-    { "term": "يجنن", "use": "state the fact" },
-    { "term": "نار", "use": "state the fact" },
-    { "term": "الشلة", "use": "صحابك" },
-    { "term": "أصحابك", "use": "صحابك" },
-    { "term": "تشيبس", "use": "الأدوات" },
-    { "term": "المتصفح", "use": "say the benefit: من غير تحميل" },
-    { "term": "الديفرنشال", "use": "SHOW_DIFFERENTIALS is false; the feature is off" },
-    { "term": "ركّب فريقك", "use": "جهّز فريقك" },
-    { "term": "ركب فريقك", "use": "جهّز فريقك" },
-    { "term": "اختار حكيم", "use": "اختار صح" },
-    { "term": "الأكفأ", "use": "الأحسن" },
-    { "term": "فانلة", "use": "تيشيرت" },
-    { "term": "أكام", "use": "كام" },
-    { "term": "الأكثر شيوعاً", "use": "الأكتر سؤالاً" },
-    { "term": "بونص", "use": "النقاط الإضافية" }
+    {
+      "term": "ولّع",
+      "use": "state the fact; the adjective does not carry the post"
+    },
+    {
+      "term": "ولع",
+      "use": "state the fact; the adjective does not carry the post"
+    },
+    {
+      "term": "هيولّع",
+      "use": "state the fact"
+    },
+    {
+      "term": "يجنن",
+      "use": "state the fact"
+    },
+    {
+      "term": "نار",
+      "use": "state the fact"
+    },
+    {
+      "term": "الشلة",
+      "use": "صحابك"
+    },
+    {
+      "term": "أصحابك",
+      "use": "صحابك"
+    },
+    {
+      "term": "تشيبس",
+      "use": "الأدوات"
+    },
+    {
+      "term": "المتصفح",
+      "use": "say the benefit: من غير تحميل"
+    },
+    {
+      "term": "الديفرنشال",
+      "use": "SHOW_DIFFERENTIALS is false; the feature is off"
+    },
+    {
+      "term": "ركّب فريقك",
+      "use": "جهّز فريقك"
+    },
+    {
+      "term": "ركب فريقك",
+      "use": "جهّز فريقك"
+    },
+    {
+      "term": "اختار حكيم",
+      "use": "اختار صح"
+    },
+    {
+      "term": "الأكفأ",
+      "use": "الأحسن"
+    },
+    {
+      "term": "فانلة",
+      "use": "تيشيرت"
+    },
+    {
+      "term": "أكام",
+      "use": "كام"
+    },
+    {
+      "term": "الأكثر شيوعاً",
+      "use": "الأكتر سؤالاً"
+    },
+    {
+      "term": "بونص",
+      "use": "النقاط الإضافية"
+    }
   ],
-
   "msaMarkers": [
-    { "term": "ليس", "use": "مش" },
-    { "term": "كيف", "use": "إزاي" },
-    { "term": "لماذا", "use": "ليه" },
-    { "term": "ماذا", "use": "إيه" },
-    { "term": "الآن", "use": "دلوقتي" },
-    { "term": "سوف", "use": "ه + الفعل" },
-    { "term": "الذي", "use": "اللي" },
-    { "term": "الذين", "use": "اللي" },
-    { "term": "هؤلاء", "use": "دول" },
-    { "term": "جميع", "use": "كل" }
+    {
+      "term": "ليس",
+      "use": "مش"
+    },
+    {
+      "term": "كيف",
+      "use": "إزاي"
+    },
+    {
+      "term": "لماذا",
+      "use": "ليه"
+    },
+    {
+      "term": "ماذا",
+      "use": "إيه"
+    },
+    {
+      "term": "الآن",
+      "use": "دلوقتي"
+    },
+    {
+      "term": "سوف",
+      "use": "ه + الفعل"
+    },
+    {
+      "term": "الذي",
+      "use": "اللي"
+    },
+    {
+      "term": "الذين",
+      "use": "اللي"
+    },
+    {
+      "term": "هؤلاء",
+      "use": "دول"
+    },
+    {
+      "term": "جميع",
+      "use": "كل"
+    }
   ],
-
   "forbiddenClaims": [
-    { "id": "season-length", "pattern": "(?<![0-9])(2[0-9]|3[0-9])\\s*جولة", "message": "The first stage is 19 gameweeks, and stage 2 does not exist yet. See open item 7 in docs/PLAN.md." },
-    { "id": "one-free-transfer", "pattern": "تبديل\\s+واحد\\s+مجاني", "message": "Free transfers accumulate up to 5. One-per-round is FilGoal's rule, not ours." },
-    { "id": "player-count", "pattern": "(?<![0-9])[0-9]{3,4}\\s*لاعب", "message": "Quote no player count until prod is confirmed to match the dataset." },
-    { "id": "live-rank", "pattern": "(الترتيب|ترتيبك|الرانك|رانكك)[^\\n]{0,12}(لايف|مباشر)", "message": "Points are live; rank is not." },
-    { "id": "live-points-marketing", "pattern": "نقط\\s*لايف|نقطك\\s+بتتحرك", "message": "Retired 2026-08-25. The feature works; do not market it." },
-    { "id": "public-leagues", "pattern": "دوريات\\s+عامة|دوري\\s+الحي|دوري\\s+الجامعة|دوري\\s+الشركة", "message": "Public neighbourhood/university/company leagues do not exist." },
-    { "id": "live-commentary", "pattern": "تعليقات\\s+حية|ميمز", "message": "Live commentary and memes do not exist as a feature." },
-    { "id": "pharaohs-cup", "pattern": "كأس\\s+الفراعنة", "message": "SHOW_SIMULATED_COMPETITION is false." },
-    { "id": "automatic-bonus", "pattern": "(بونص|النقاط\\s+الإضافية)[^\\n]{0,20}(تلقائي|أوتوماتيك)", "message": "An admin enters bonus by hand per player. Never call it automatic." },
-    { "id": "app-download", "pattern": "حمّل\\s+التطبيق|حمل\\s+التطبيق|App\\s*Store|Google\\s*Play|جوجل\\s+بلاي|آب\\s*ستور|المتجر", "message": "nativeAppLive is false. Web only." },
-    { "id": "device-requirements", "pattern": "آيفون|أندرويد|iPhone|Android", "message": "App-store requirements for an app that does not exist." },
-    { "id": "league-cap", "pattern": "دوري\\s+خاص[^\\n]{0,20}(?<![0-9])[0-9]{1,2}\\s*(فريق|مدير|عضو)", "message": "Site says 2-20, API allows 50. Say دوري خاص بكود دعوة with no number." },
-    { "id": "fixed-day", "pattern": "كل\\s+جمعة|كل\\s+جمعه", "message": "Gameweeks are not on a fixed day, and one spans three days." },
-    { "id": "two-hour-deadline", "pattern": "بساعتين|ساعتين\\s+قبل", "message": "Reversed 2026-08-26. The deadline is one hour before the first kickoff." },
-    { "id": "notifications", "pattern": "هنفكّرك|هنفكرك|إشعارات|تنبيهات|نوتيفيكيشن", "message": "Unverified. Keep notifications and goal alerts out of copy." },
-    { "id": "bps", "pattern": "\\bBPS\\b|بتتراجع\\s+رسمياً", "message": "FPL's system and a Premier League convention. Ours is entered by hand." },
-    { "id": "scout-stats", "pattern": "Scout\\s*&?\\s*Stats", "message": "SHOW_SCOUT is false." },
-    { "id": "rename-cooldown", "pattern": "مرة\\s+كل\\s+شهر", "message": "No team-rename cooldown is enforced." },
-    { "id": "team-origin-story", "pattern": "(?<![0-9])[0-9]+\\s+ناس\\s+في\\s+القاهرة|من\\s+2014", "message": "Not true. Say من مصر، وبنلعب فانتازي زيك بالظبط." },
-    { "id": "response-sla", "pattern": "أقل\\s+من\\s+24\\s+ساعة|خلال\\s+24\\s+ساعة", "message": "No SLA exists. Say هنرد عليك في أقرب وقت." },
-    { "id": "unprovisioned-email", "pattern": "[A-Za-z0-9._%+-]+@fantasyeg\\.com", "message": "No @fantasyeg.com addresses are provisioned (SHOW_CONTACT_EMAILS is false)." }
-  ]
+    {
+      "id": "season-length",
+      "pattern": "(?<![0-9])(2[0-9]|3[0-9])\\s*جولة",
+      "message": "The first stage is 19 gameweeks, and stage 2 does not exist yet. See open item 7 in docs/PLAN.md."
+    },
+    {
+      "id": "one-free-transfer",
+      "pattern": "تبديل\\s+واحد\\s+مجاني",
+      "message": "Free transfers accumulate up to 5. One-per-round is FilGoal's rule, not ours."
+    },
+    {
+      "id": "player-count",
+      "pattern": "(?<![0-9])[0-9]{3,4}\\s*لاعب",
+      "message": "Quote no player count until prod is confirmed to match the dataset."
+    },
+    {
+      "id": "live-rank",
+      "pattern": "(الترتيب|ترتيبك|الرانك|رانكك)[^\\n]{0,12}(لايف|مباشر)",
+      "message": "Points are live; rank is not."
+    },
+    {
+      "id": "live-points-marketing",
+      "pattern": "نقط\\s*لايف|نقطك\\s+بتتحرك",
+      "message": "Retired 2026-08-25. The feature works; do not market it."
+    },
+    {
+      "id": "public-leagues",
+      "pattern": "دوريات\\s+عامة|دوري\\s+الحي|دوري\\s+الجامعة|دوري\\s+الشركة",
+      "message": "Public neighbourhood/university/company leagues do not exist."
+    },
+    {
+      "id": "live-commentary",
+      "pattern": "تعليقات\\s+حية|ميمز",
+      "message": "Live commentary and memes do not exist as a feature."
+    },
+    {
+      "id": "pharaohs-cup",
+      "pattern": "كأس\\s+الفراعنة",
+      "message": "SHOW_SIMULATED_COMPETITION is false."
+    },
+    {
+      "id": "automatic-bonus",
+      "pattern": "(بونص|النقاط\\s+الإضافية)[^\\n]{0,20}(تلقائي|أوتوماتيك)",
+      "message": "An admin enters bonus by hand per player. Never call it automatic."
+    },
+    {
+      "id": "app-download",
+      "pattern": "حمّل\\s+التطبيق|حمل\\s+التطبيق|App\\s*Store|Google\\s*Play|جوجل\\s+بلاي|آب\\s*ستور|المتجر",
+      "message": "nativeAppLive is false. Web only."
+    },
+    {
+      "id": "device-requirements",
+      "pattern": "آيفون|أندرويد|iPhone|Android",
+      "message": "App-store requirements for an app that does not exist."
+    },
+    {
+      "id": "league-cap",
+      "pattern": "دوري\\s+خاص[^\\n]{0,20}(?<![0-9])[0-9]{1,2}\\s*(فريق|مدير|عضو)",
+      "message": "Site says 2-20, API allows 50. Say دوري خاص بكود دعوة with no number."
+    },
+    {
+      "id": "fixed-day",
+      "pattern": "كل\\s+جمعة|كل\\s+جمعه",
+      "message": "Gameweeks are not on a fixed day, and one spans three days."
+    },
+    {
+      "id": "two-hour-deadline",
+      "pattern": "بساعتين|ساعتين\\s+قبل",
+      "message": "Reversed 2026-08-26. The deadline is one hour before the first kickoff."
+    },
+    {
+      "id": "notifications",
+      "pattern": "هنفكّرك|هنفكرك|إشعارات|تنبيهات|نوتيفيكيشن",
+      "message": "Unverified. Keep notifications and goal alerts out of copy."
+    },
+    {
+      "id": "bps",
+      "pattern": "\\bBPS\\b|بتتراجع\\s+رسمياً",
+      "message": "FPL's system and a Premier League convention. Ours is entered by hand."
+    },
+    {
+      "id": "scout-stats",
+      "pattern": "Scout\\s*&?\\s*Stats",
+      "message": "SHOW_SCOUT is false."
+    },
+    {
+      "id": "rename-cooldown",
+      "pattern": "مرة\\s+كل\\s+شهر",
+      "message": "No team-rename cooldown is enforced."
+    },
+    {
+      "id": "team-origin-story",
+      "pattern": "(?<![0-9])[0-9]+\\s+ناس\\s+في\\s+القاهرة|من\\s+2014",
+      "message": "Not true. Say من مصر، وبنلعب فانتازي زيك بالظبط."
+    },
+    {
+      "id": "response-sla",
+      "pattern": "أقل\\s+من\\s+24\\s+ساعة|خلال\\s+24\\s+ساعة",
+      "message": "No SLA exists. Say هنرد عليك في أقرب وقت."
+    },
+    {
+      "id": "unprovisioned-email",
+      "pattern": "[A-Za-z0-9._%+-]+@fantasyeg\\.com",
+      "message": "No @fantasyeg.com addresses are provisioned (SHOW_CONTACT_EMAILS is false)."
+    }
+  ],
+  "_emojiFloor": "facebook.minEmoji dropped 2 -> 1 on 2026-09-02, read off the page's own posts. «ترتيب الدوري بعد جولتين 🏆» and «الأسعار اللي طلعت ونزلت الأسبوع ده 💰» are one line with one emoji, and a floor of two forced every caption into a padded second line. That padding is what made the generated set read as written by nobody."
 }

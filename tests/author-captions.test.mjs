@@ -11,9 +11,14 @@ const RULES = JSON.parse(
 
 // Representative values, standing in for a real round. Linting the raw template would test a
 // string that never publishes — «{matches} النهاردة» is not what anyone reads.
+// Must stay in step with captionVars() in plan.mjs — a template using a var this map lacks is
+// what the placeholder test below is for, so the two together catch a name drifting apart.
 const VARS = {
   matches: '3 ماتشات',
+  these: 'الماتشات دي',
   played: 'ماتشين',
+  remaining: '4 ماتشات',
+  rounds: 'جولتين',
   deadline: 'الاتنين 4 العصر',
   gw: 'الجولة الرابعة',
 }

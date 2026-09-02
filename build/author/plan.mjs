@@ -28,6 +28,7 @@ import {
   resultsCard,
   teamOfWeekCard,
   topPlayersCard,
+  winnerCard,
 } from './cards.mjs'
 
 export const CALENDAR = JSON.parse(
@@ -56,6 +57,20 @@ export function matchCount(n) {
   return `${n} ماتشات`
 }
 
+/** «الماتش ده» · «الماتشين دول» · «الماتشات دي» — the demonstrative agrees with the count too. */
+export function theseMatches(n) {
+  if (n === 1) return 'الماتش ده'
+  if (n === 2) return 'الماتشين دول'
+  return 'الماتشات دي'
+}
+
+/** «جولة» · «جولتين» · «3 جولات», for «ترتيب الدوري بعد جولتين». */
+export function roundCount(n) {
+  if (n === 1) return 'جولة'
+  if (n === 2) return 'جولتين'
+  return `${n} جولات`
+}
+
 /**
  * The real values a caption interpolates, per day.
  *
@@ -63,11 +78,18 @@ export function matchCount(n) {
  * «يوم كامل كورة قدامك» would have been equally true of any day of any round, which is exactly
  * why it read as written by nobody.
  */
-function captionVars({ window: w, day }) {
-  const finished = day.fixtures.filter((f) => f.status === 'FINISHED').length
+function captionVars({ window: w, day, data }) {
+  const roundFixtures = data.fixtures ?? []
+  const finishedInRound = roundFixtures.filter((f) => f.status === 'FINISHED').length
+  const left = Math.max(0, roundFixtures.length - finishedInRound)
+
   return {
     matches: matchCount(day.fixtures.length),
-    played: matchCount(finished),
+    these: theseMatches(day.fixtures.length),
+    played: matchCount(day.fixtures.length),
+    remaining: matchCount(left),
+    // «ترتيب الدوري بعد جولتين» — the rounds already played, not the one being authored.
+    rounds: roundCount(Math.max(0, w.gameweek - 1)),
     deadline: deadlinePhrase(w.deadline),
     gw: gameweekLabel(w.gameweek),
   }
@@ -133,8 +155,22 @@ const BUILDERS = {
 
   leagueTable: ({ data }) => leagueTableCard({ rows: need(data.standings, 'league table') }),
 
-  podium: ({ window, data }) =>
-    podiumCard({ gameweek: window.gameweek, rows: need(data.gwStandings, 'gameweek board').slice(0, 3) }),
+  // Both of these name a champion, and BOTH must wait for settlement.
+  //
+  // `/gameweeks/:gw/standings` answers before a round settles, from live ranks — which is right for
+  // a live board and wrong for a winner. Authoring early would stamp a provisional name, and
+  // mergePosts keeps an existing post, so the wrong person would stay on the card through to
+  // publication. `topPlayers` is the settlement signal: its endpoint 404s GAMEWEEK_NOT_SETTLED
+  // until bonus points are entered, so its presence is the API's own "this round is final".
+  winner: ({ window, data }) => {
+    need(data.topPlayers, 'settled gameweek')
+    return winnerCard({ gameweek: window.gameweek, winner: need(data.gwStandings, 'gameweek board')[0] })
+  },
+
+  podium: ({ window, data }) => {
+    need(data.topPlayers, 'settled gameweek')
+    return podiumCard({ gameweek: window.gameweek, rows: need(data.gwStandings, 'gameweek board').slice(0, 3) })
+  },
 
   playerOfRound: ({ data }) => playerOfRoundCard({ player: need(data.topPlayers, 'gameweek points')[0] }),
 
@@ -179,7 +215,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
       }
 
       const kind = day.date === finalDate ? (FINAL_KIND[entry.kind] ?? entry.kind) : entry.kind
-      const vars = captionVars({ window, day })
+      const vars = captionVars({ window, day, data })
 
       for (const platform of entry.platforms) {
         const { strategy, suffix } = PLATFORMS[platform]

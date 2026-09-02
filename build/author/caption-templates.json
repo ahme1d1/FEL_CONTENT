@@ -1,156 +1,210 @@
 {
-  "version": 2,
-  "_source": "content-design-kit.md §6 is the house style and this file follows it: line one states the round's real fact, line two either asks the reader something or names what comes next. Voice: §2, register B. Every template is linted on every run against build/copy-rules.json.",
-  "_registers": "TWO registers, split by what a post is FOR (owner call, 2026-09-02). ENGAGEMENT posts exist to be replied to and close on a question — matchday, matchdayFinal, question, podium, playerOfRound, teamOfWeek, topPlayers. captions.mjs holds that list and lifts the linter's trailing-question ban for exactly those. INFORMATIONAL posts exist to be acted on and point forward instead — buildUp, deadline, priceChanges, leagueTable, results, resultsFinal. `results` is informational on purpose: §6's «فريقك عمل كام؟» was retired, because asking a manager their score after a bad round is the one question that earns no reply.",
-  "_vars": "{matches} is «ماتش واحد» / «ماتشين» / «3 ماتشات» for that day, already pluralised — Arabic counts one and two in the noun. {played} is the same for finished fixtures. {deadline} is «الاتنين 4 العصر». {gw} is «الجولة الرابعة». A caption carrying none of these would read identically in any gameweek, which is the failure the first version shipped.",
-  "_leagueTable": "leagueTable deliberately carries no {gw}. It goes out on a MIDDLE day, before the round it is authored under has been played, so «ترتيب الدوري بعد الجولة الرابعة» would name a round that has not happened yet. The table is simply the table.",
-  "_settleDay": "podium, playerOfRound, teamOfWeek and topPlayers were `needsHuman` until 2026-09-02, on the reasoning that a post naming a real person is taste. They are templated because the naming was never needed: the card already carries every name, club and score, so the caption asks instead. The names still go on the CARD verbatim, including a manager's team name our own style guide would reject.",
-
+  "version": 3,
+  "_source": "Modelled on the page's OWN published captions, read back from the Graph API on 2026-09-02 — not from a style guide. The last ten posts (30 Aug – 1 Sep) are the reference: «مباريات النهاردة ⚽ / كابتنك لعب ولا لسه؟ 🔥», «ترتيب الدوري بعد جولتين 🏆», «الأسعار اللي طلعت ونزلت الأسبوع ده 💰». One or two lines, one emoji at the end of a line, plain and conversational.",
+  "_whatChanged": "v1 was abstract («يوم كامل كورة قدامك») and v2 was closer but still stiff («باب الجولة الرابعة فتح», «شوف ناديك واقف فين», «قولنا رأيك»), all rejected. The tell is padding: facebook.minEmoji was 2, which forced a second line onto captions the page writes as one. That floor is now 1.",
+  "_retired": "👇 and ownership percentages both appear in the page's AUGUST posts and in NONE from 30 Aug onward. They were dropped deliberately; the linter keeps 👇 banned and no template quotes a percentage.",
+  "_registers": "ENGAGEMENT posts close on a question — matchday, matchdayFinal, question, podium, playerOfRound, teamOfWeek, topPlayers. INFORMATIONAL posts state and point forward — buildUp, deadline, priceChanges, leagueTable, results, resultsFinal. captions.mjs holds the list and lifts the linter's trailing-question ban for the first group only.",
+  "_vars": "{matches} «ماتش واحد»/«ماتشين»/«3 ماتشات» · {these} «الماتش ده»/«الماتشين دول»/«الماتشات دي» · {remaining} matches left in the round · {rounds} rounds already played, «جولتين» · {deadline} «الاتنين 4 العصر» · {gw} «الجولة الرابعة». Arabic counts one and two in the noun, so these are pluralised in plan.mjs, never with a bare numeral.",
   "kinds": {
     "buildUp": {
       "facebook": [
-        "{gw} فتحت 🔜\nجهّز فريقك قبل {deadline} ⏰\nfantasyeg.com",
-        "باب {gw} فتح 🔜\nالديدلاين {deadline} ⏰\nfantasyeg.com"
+        "جهّز فريقك لـ{gw} ⚽\nالديدلاين {deadline} ⏰\nfantasyeg.com",
+        "{gw} قربت ⏰\nجهّز فريقك على fantasyeg.com ⚽"
       ],
       "instagram": [
-        "{gw} فتحت 🔜\nجهّز فريقك قبل {deadline} ⏰",
-        "باب {gw} فتح 🔜\nالديدلاين {deadline} ⏰"
-      ],
-      "tiktok": ["{gw} فتحت 🔜\nجهّز فريقك", "باب {gw} فتح 🔜"]
-    },
-
-    "matchday": {
-      "facebook": [
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
-        "{matches} النهاردة ⚽\nكابتنك بيلعب في أنهي واحد؟ ⚡",
-        "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟ 👀"
-      ],
-      "instagram": [
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟",
-        "{matches} النهاردة ⚽\nكابتنك بيلعب في أنهي واحد؟",
-        "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟"
+        "جهّز فريقك لـ{gw} ⚽\nالديدلاين {deadline} ⏰",
+        "{gw} قربت ⏰\nجهّز فريقك"
       ],
       "tiktok": [
-        "{matches} النهاردة ⚽\nعندك مين فيهم؟",
-        "{matches} النهاردة ⚽\nكابتنك فين؟",
-        "عندك كام لاعب النهاردة؟ ⚽"
+        "جهّز فريقك لـ{gw} ⚽",
+        "{gw} قربت ⏰"
       ]
     },
-
+    "matchday": {
+      "facebook": [
+        "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "متوقع إيه من ماتشات النهاردة؟ ⚽"
+      ],
+      "instagram": [
+        "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "متوقع إيه من ماتشات النهاردة؟ ⚽"
+      ],
+      "tiktok": [
+        "كابتنك لعب ولا لسه؟ 🔥",
+        "{matches} النهاردة ⚽\nعندك مين فيهم؟ 👀",
+        "متوقع إيه من ماتشات النهاردة؟ ⚽"
+      ]
+    },
     "matchdayFinal": {
       "facebook": [
-        "آخر يوم في الجولة ⚽\nعندك مين في {matches} النهاردة؟ 👀",
-        "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟ ⚡"
+        "آخر يوم في {gw} ⚽\nعندك مين من {these}؟ 👀",
+        "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀"
       ],
       "instagram": [
-        "آخر يوم في الجولة ⚽\nعندك مين في {matches} النهاردة؟",
-        "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟"
+        "آخر يوم في {gw} ⚽\nعندك مين من {these}؟ 👀",
+        "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀"
       ],
-      "tiktok": ["آخر يوم في الجولة ⚽\nعندك مين النهاردة؟", "الجولة بتقفل النهاردة ⚽"]
+      "tiktok": [
+        "آخر يوم في {gw} ⚽\nعندك مين من {these}؟ 👀",
+        "آخر يوم في الجولة ⚽\nفريقك محتاج كام؟ 👀"
+      ]
     },
-
     "results": {
       "facebook": [
-        "{played} خلصوا ✅\nوالجولة لسه شغالة ⏳",
-        "النتايج نزلت ✅\nباقي الجولة هو اللي هيحسم ⏳"
+        "اليوم خلص ✅\nفاضل {remaining} في الجولة ⚽",
+        "نتائج مباريات اليوم ⚽"
       ],
-      "instagram": ["{played} خلصوا ✅\nوالجولة لسه شغالة ⏳", "النتايج نزلت ✅\nباقي الجولة هيحسم ⏳"],
-      "tiktok": ["{played} خلصوا ✅\nوالجولة لسه شغالة", "النتايج نزلت ✅"]
+      "instagram": [
+        "اليوم خلص ✅\nفاضل {remaining} في الجولة ⚽",
+        "نتائج مباريات اليوم ⚽"
+      ],
+      "tiktok": [
+        "اليوم خلص ✅\nفاضل {remaining} في الجولة ⚽",
+        "نتائج مباريات اليوم ⚽"
+      ]
     },
-
     "resultsFinal": {
       "facebook": [
-        "الجولة خلصت ✅\nبكرة نعرف مين طلع الأول 🏆",
-        "آخر ماتش خلص ✅\nالترتيب بكرة 🏆"
+        "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+        "{gw} خلصت ✅\nبكرة نعرف الترتيب 🏆"
       ],
-      "instagram": ["الجولة خلصت ✅\nبكرة نعرف مين طلع الأول 🏆", "آخر ماتش خلص ✅\nالترتيب بكرة 🏆"],
-      "tiktok": ["الجولة خلصت ✅\nبكرة نعرف الأول 🏆", "آخر ماتش خلص ✅"]
+      "instagram": [
+        "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+        "{gw} خلصت ✅\nبكرة نعرف الترتيب 🏆"
+      ],
+      "tiktok": [
+        "آخر يوم في الجولة خلص ✅",
+        "{gw} خلصت ✅\nبكرة نعرف الترتيب 🏆"
+      ]
     },
-
     "deadline": {
       "facebook": [
-        "الديدلاين {deadline} ⏰\nغيّر كابتنك قبلها ⚡",
-        "بعد الديدلاين مفيش تعديل ⏰\nراجع فريقك دلوقتي ⚡"
+        "اتأكد من فريقك، الديدلاين {deadline} ⏰",
+        "كابتن غلط ممكن يضيّع عليك الجولة كلها. راجع فريقك ⏰"
       ],
       "instagram": [
-        "الديدلاين {deadline} ⏰\nغيّر كابتنك قبلها",
-        "بعد الديدلاين مفيش تعديل ⏰\nراجع فريقك دلوقتي"
+        "اتأكد من فريقك، الديدلاين {deadline} ⏰",
+        "كابتن غلط ممكن يضيّع عليك الجولة كلها ⏰"
       ],
-      "tiktok": ["الديدلاين {deadline} ⏰", "بعد الديدلاين مفيش تعديل ⏰"]
+      "tiktok": [
+        "اتأكد من فريقك، الديدلاين {deadline} ⏰",
+        "راجع فريقك قبل الديدلاين ⏰"
+      ]
     },
-
     "question": {
       "facebook": [
-        "كابتنك مين الجولة دي؟ ⚡\nقولنا رأيك 💬",
-        "مين شايل {gw} عندك؟ ⚡\nقولنا 💬"
+        "مين كابتن فريقك في {gw}؟ 👀",
+        "كابتنك مين الجولة دي؟ 🤔"
       ],
-      "instagram": ["كابتنك مين الجولة دي؟ ⚡", "مين شايل {gw} عندك؟ ⚡"],
-      "tiktok": ["كابتنك مين الجولة دي؟ ⚡", "مين شايل الجولة عندك؟ ⚡"]
+      "instagram": [
+        "مين كابتن فريقك في {gw}؟ 👀",
+        "كابتنك مين الجولة دي؟ 🤔"
+      ],
+      "tiktok": [
+        "مين كابتن فريقك في {gw}؟ 👀",
+        "كابتنك مين الجولة دي؟ 🤔"
+      ]
     },
-
     "leagueTable": {
       "facebook": [
-        "ترتيب الدوري 📊\nشوف ناديك واقف فين ⚽",
-        "الترتيب اتغير 📊\nوده بيغير حسابات الجولة الجاية 🔜"
+        "ترتيب الدوري بعد {rounds} 🏆",
+        "الترتيب اتغير بعد الجولة اللي فاتت 📊"
       ],
       "instagram": [
-        "ترتيب الدوري 📊\nشوف ناديك واقف فين",
-        "الترتيب اتغير 📊\nوده بيغير حسابات الجاية 🔜"
+        "ترتيب الدوري بعد {rounds} 🏆",
+        "الترتيب اتغير بعد الجولة اللي فاتت 📊"
       ],
-      "tiktok": ["ترتيب الدوري 📊", "الترتيب اتغير 📊"]
+      "tiktok": [
+        "ترتيب الدوري بعد {rounds} 🏆",
+        "الترتيب اتغير 📊"
+      ]
     },
-
     "priceChanges": {
       "facebook": [
-        "الأسعار اتحركت 📈\nراجع فريقك قبل {deadline} ⏰",
-        "حركة أسعار جديدة 📈\nاللي اتأخر هيدفع أكتر ⏳"
+        "الأسعار اللي طلعت ونزلت الأسبوع ده 💰",
+        "الأسعار اتحركت 💰\nراجع فريقك قبل {deadline} ⏰"
       ],
       "instagram": [
-        "الأسعار اتحركت 📈\nراجع فريقك قبل {deadline} ⏰",
-        "حركة أسعار جديدة 📈\nاللي اتأخر هيدفع أكتر ⏳"
+        "الأسعار اللي طلعت ونزلت الأسبوع ده 💰",
+        "الأسعار اتحركت 💰\nراجع فريقك قبل {deadline} ⏰"
       ],
-      "tiktok": ["الأسعار اتحركت 📈\nراجع فريقك", "حركة أسعار جديدة 📈"]
+      "tiktok": [
+        "الأسعار اللي طلعت ونزلت الأسبوع ده 💰",
+        "الأسعار اتحركت 💰"
+      ]
     },
-
     "podium": {
       "facebook": [
-        "أعلى 3 مديرين في {gw} 🏅\nانت فين في الترتيب؟ 👀",
-        "التلاتة دول كسبوا {gw} 🏅\nقربت منهم ولا لسه؟ 👀"
+        "أعلى 3 مديرين في {gw} 🏅",
+        "التلاتة اللي كسبوا {gw} 🏅"
       ],
-      "instagram": ["أعلى 3 مديرين في {gw} 🏅\nانت فين؟", "التلاتة دول كسبوا {gw} 🏅\nقربت منهم ولا لسه؟"],
-      "tiktok": ["أعلى 3 مديرين في {gw} 🏅\nانت فين؟", "دول كسبوا الجولة 🏅\nانت فين؟"]
+      "instagram": [
+        "أعلى 3 مديرين في {gw} 🏅",
+        "التلاتة اللي كسبوا {gw} 🏅"
+      ],
+      "tiktok": [
+        "أعلى 3 مديرين في {gw} 🏅",
+        "التلاتة اللي كسبوا الجولة 🏅"
+      ]
     },
-
+    "winner": {
+      "facebook": [
+        "اكسب الجولة وخد تيشيرت ناديك 👕\nكلّمنا في الرسايل 🏆",
+        "بطل {gw} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕"
+      ],
+      "instagram": [
+        "اكسب الجولة وخد تيشيرت ناديك 👕\nكلّمنا في الرسايل 🏆",
+        "بطل {gw} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕"
+      ],
+      "tiktok": [
+        "اكسب الجولة وخد تيشيرت ناديك 👕",
+        "بطل {gw} 🏆"
+      ]
+    },
     "playerOfRound": {
       "facebook": [
-        "أعلى نقط في {gw} 👑\nكان عندك؟ 👀",
-        "ده لاعب الجولة 👑\nعندك ولا فاتك؟ 👀"
+        "أعلى نقط في {gw} ⚡\nكان عندك؟ 👀",
+        "ده لاعب الجولة ⚡\nعندك ولا فاتك؟ 👀"
       ],
-      "instagram": ["أعلى نقط في {gw} 👑\nكان عندك؟", "ده لاعب الجولة 👑\nعندك ولا فاتك؟"],
-      "tiktok": ["ده لاعب الجولة 👑\nكان عندك؟", "أعلى نقط في الجولة 👑\nعندك؟"]
+      "instagram": [
+        "أعلى نقط في {gw} ⚡\nكان عندك؟ 👀",
+        "ده لاعب الجولة ⚡\nعندك ولا فاتك؟ 👀"
+      ],
+      "tiktok": [
+        "ده لاعب الجولة ⚡\nكان عندك؟ 👀",
+        "أعلى نقط في الجولة ⚡\nعندك؟ 👀"
+      ]
     },
-
     "teamOfWeek": {
       "facebook": [
         "فريق {gw} 🔥\nعندك كام منهم؟ 👀",
-        "أحسن 11 في الجولة 🔥\nعندك كام واحد فيهم؟ 👀"
-      ],
-      "instagram": ["فريق {gw} 🔥\nعندك كام منهم؟", "أحسن 11 في الجولة 🔥\nعندك كام واحد فيهم؟"],
-      "tiktok": ["فريق الجولة 🔥\nعندك كام منهم؟", "أحسن 11 في الجولة 🔥\nعندك كام؟"]
-    },
-
-    "topPlayers": {
-      "facebook": [
-        "أعلى نقط اللاعيبة في {gw} ⚡\nعندك كام منهم؟ 👀",
-        "دول اللي فرقوا الجولة ⚡\nكان عندك مين فيهم؟ 👀"
+        "أحسن 11 في الجولة 🔥\nعندك كام؟ 👀"
       ],
       "instagram": [
-        "أعلى نقط اللاعيبة في {gw} ⚡\nعندك كام منهم؟",
-        "دول اللي فرقوا الجولة ⚡\nكان عندك مين فيهم؟"
+        "فريق {gw} 🔥\nعندك كام منهم؟ 👀",
+        "أحسن 11 في الجولة 🔥\nعندك كام؟ 👀"
       ],
-      "tiktok": ["أعلى نقط اللاعيبة ⚡\nعندك كام منهم؟", "دول اللي فرقوا الجولة ⚡\nعندك مين؟"]
+      "tiktok": [
+        "فريق الجولة 🔥\nعندك كام منهم؟ 👀",
+        "أحسن 11 في الجولة 🔥\nعندك كام؟ 👀"
+      ]
+    },
+    "topPlayers": {
+      "facebook": [
+        "أعلى لاعيبة جابوا نقط في {gw} 🔥\nعندك حد منهم في فريقك؟ 👀",
+        "دول أعلى نقط في الجولة 🔥\nعندك حد فيهم؟ 👀"
+      ],
+      "instagram": [
+        "أعلى لاعيبة جابوا نقط في {gw} 🔥\nعندك حد منهم؟ 👀",
+        "دول أعلى نقط في الجولة 🔥\nعندك حد فيهم؟ 👀"
+      ],
+      "tiktok": [
+        "أعلى لاعيبة جابوا نقط 🔥\nعندك حد منهم؟ 👀",
+        "دول أعلى نقط في الجولة 🔥\nعندك حد فيهم؟ 👀"
+      ]
     }
   },
-
   "needsHuman": {}
 }

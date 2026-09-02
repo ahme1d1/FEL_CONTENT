@@ -1,7 +1,6 @@
 {
   "version": 1,
   "_source": "Fixed strings a card carries, kept out of code so they read as copy and change as a reviewed diff — the same discipline as copy-rules.json. Voice rules: content-design-kit.md §2. Western digits everywhere (owner call 2026-08-25); Egyptian colloquial, not MSA (rule 7).",
-
   "gameweekLabel": "الجولة {ordinal}",
   "gameweekOrdinals": {
     "1": "الأولى",
@@ -15,17 +14,42 @@
     "9": "التاسعة",
     "10": "العاشرة"
   },
-
-  "cairoDays": ["الحد", "الاتنين", "التلات", "الأربع", "الخميس", "الجمعة", "السبت"],
-
-  "clockPeriods": [
-    { "from": 0, "to": 4, "word": "بالليل" },
-    { "from": 5, "to": 11, "word": "الصبح" },
-    { "from": 12, "to": 14, "word": "الضهر" },
-    { "from": 15, "to": 17, "word": "العصر" },
-    { "from": 18, "to": 23, "word": "بالليل" }
+  "cairoDays": [
+    "الحد",
+    "الاتنين",
+    "التلات",
+    "الأربع",
+    "الخميس",
+    "الجمعة",
+    "السبت"
   ],
-
+  "clockPeriods": [
+    {
+      "from": 0,
+      "to": 4,
+      "word": "بالليل"
+    },
+    {
+      "from": 5,
+      "to": 11,
+      "word": "الصبح"
+    },
+    {
+      "from": 12,
+      "to": 14,
+      "word": "الضهر"
+    },
+    {
+      "from": 15,
+      "to": 17,
+      "word": "العصر"
+    },
+    {
+      "from": 18,
+      "to": 23,
+      "word": "بالليل"
+    }
+  ],
   "cards": {
     "matchdayTitle": "مباريات النهاردة",
     "resultsTitle": "نتايج النهاردة",
@@ -43,6 +67,7 @@
     "pricesTitle": "الأسعار",
     "injuryTitle": "مصاب",
     "injurySubtitle": "يغيب عن الجولة",
-    "matchFinished": "انتهت المباراة"
+    "matchFinished": "انتهت المباراة",
+    "winnerPrize": "بطل الجولة وياخد تيشيرت ناديه"
   }
 }

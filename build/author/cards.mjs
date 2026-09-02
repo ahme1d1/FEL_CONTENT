@@ -328,3 +328,28 @@ export function leagueTableCard({ rows }) {
 
   return { card: 'F2_LEAGUE_TABLE', slug: 'table', texts, assets }
 }
+
+/**
+ * The weekly prize post: who won the round, and that a shirt is coming to them.
+ *
+ * The card this SHOULD use is `P_WINNER_THEIR_TEAM_NO_CLUB_SET`, which shows the winner's whole
+ * XI with the captain marked — the runbook's 10:30 slot. It cannot be built here: that needs the
+ * winner's squad from `GET /managers/:id/squad`, which is behind `JwtAuthGuard`, and this pipeline
+ * holds no credential by design. Building it would mean giving a publishing routine a manager's
+ * token, which is a worse trade than a simpler card.
+ *
+ * So it is a STAT card, carrying only what the public board already answers: the winner's name and
+ * the prize. The name is a manager's own and goes on verbatim.
+ *
+ * The 16-character hero cap is real — the design wraps and collides past it — so a long name falls
+ * back to the round rather than throwing away the post.
+ */
+export function winnerCard({ gameweek, winner }) {
+  if (!winner?.name) throw new Error('no gameweek winner available yet')
+
+  const hero = winner.name.length <= 16 ? winner.name : gameweekLabel(gameweek)
+  return {
+    ...statCard({ gameweek, hero, support: TEXT.winnerPrize }),
+    slug: 'winner',
+  }
+}
