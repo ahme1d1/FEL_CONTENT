@@ -29,16 +29,52 @@ export const needsHumanCaption = (kind) => kind in TEMPLATES.needsHuman
 export const captionBrief = (kind) => TEMPLATES.needsHuman[kind] ?? null
 
 /**
+ * Posts whose job is comments, and which therefore close on a question.
+ *
+ * The split is the owner's, 2026-09-02, and it is what `content-design-kit.md` §6 already
+ * described: a matchday card, a captain poll and a podium exist to be replied to — «عندك مين
+ * فيهم؟», «انت فين؟» — while a deadline, a price move or a league table exists to be acted on,
+ * and a question there only softens the instruction. The linter's platform-level ban on trailing
+ * questions is lifted for these kinds and no others.
+ *
+ * `results` is deliberately NOT here. §6's «فريقك عمل كام؟» was retired: asking a manager their
+ * score after a bad round is the one question that does not earn a reply. Point forward instead.
+ */
+const ENGAGEMENT_KINDS = new Set([
+  'matchday',
+  'matchdayFinal',
+  'question',
+  'podium',
+  'playerOfRound',
+  'teamOfWeek',
+  'topPlayers',
+])
+
+/** Whether this kind of post may close on a question. */
+export const asksQuestion = (kind) => ENGAGEMENT_KINDS.has(kind)
+
+/**
+ * Fill `{name}` placeholders with the round's real values.
+ *
+ * The house style is specific — «3 ماتشات النهاردة», not «يوم كامل كورة قدامك» — and a caption
+ * that would read identically in any gameweek is the failure this exists to prevent. A
+ * placeholder with no value is left as-is so it fails the linter loudly rather than publishing a
+ * literal brace to a brand account.
+ */
+const fill = (text, vars) => text.replace(/\{(\w+)\}/g, (whole, key) => (key in vars ? String(vars[key]) : whole))
+
+/**
  * Pick a caption.
  *
  * Variety is deterministic, never random: three matchday cards in one round carrying identical
  * text "reads as a bot" (posting-runbook.md §7), and `Math.random()` would make the same manifest
  * author differently twice, which breaks the diff review the whole pipeline rests on.
  *
- * @param {{kind: string, platform: string, gameweek: number, dayIndex: number, rules?: object}} input
+ * @param {{kind: string, platform: string, gameweek: number, dayIndex: number, vars?: object,
+ *   rules?: object}} input
  * @returns {string|null} null when this kind is the human's to write
  */
-export function captionFor({ kind, platform, gameweek, dayIndex, rules = RULES }) {
+export function captionFor({ kind, platform, gameweek, dayIndex, vars = {}, rules = RULES }) {
   if (needsHumanCaption(kind)) return null
 
   const byPlatform = TEMPLATES.kinds[kind]
@@ -47,9 +83,9 @@ export function captionFor({ kind, platform, gameweek, dayIndex, rules = RULES }
   const variants = byPlatform[platform]
   if (!variants?.length) throw new Error(`No ${platform} caption for "${kind}".`)
 
-  const text = variants[(gameweek + dayIndex) % variants.length]
+  const text = fill(variants[(gameweek + dayIndex) % variants.length], vars)
 
-  const { findings } = lintCaption({ text, platform, rules })
+  const { findings } = lintCaption({ text, platform, rules, allowQuestion: asksQuestion(kind) })
   if (findings.length) {
     const reasons = findings.map((f) => `[${f.ruleId}] ${f.message}`).join('\n  ')
     throw new Error(`The ${platform} caption for "${kind}" does not pass the linter:\n  ${reasons}`)
@@ -77,9 +113,10 @@ export function applyHumanCaptions({ posts, captions, rules = RULES }) {
     const text = captions[post.id]
     if (text === undefined) return post
 
-    for (const f of lintCaption({ text, platform: post.platform, rules }).findings) {
-      findings.push({ id: post.id, ...f })
-    }
+    // Judged by the same rule the generated caption was: an override on a matchday card may ask
+    // a question, and an override on a deadline card still may not.
+    const lint = lintCaption({ text, platform: post.platform, rules, allowQuestion: asksQuestion(post.kind) })
+    for (const f of lint.findings) findings.push({ id: post.id, ...f })
 
     const { captionBrief: _asked, ...rest } = post
     return { ...rest, caption: text }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 3,
-  "authoredAt": "2026-09-02T00:05:10.000Z",
+  "authoredAt": "2026-09-02T01:24:55.151Z",
   "mediaBase": "https://media.fantasyeg.com/gw03",
   "posts": [
     {
@@ -10,6 +10,7 @@
       "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
@@ -43,7 +44,7 @@
           "5": "ITT"
         }
       },
-      "caption": "النهاردة فيه ماتشات ⚽\nوكل نقطة بتفرق في الآخر ⏳",
+      "caption": "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟ 👀",
       "link": null,
       "dependsOn": null
     },
@@ -53,6 +54,7 @@
       "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
@@ -86,7 +88,7 @@
           "5": "ITT"
         }
       },
-      "caption": "النهاردة فيه ماتشات ⚽ وكل نقطة بتفرق في الآخر ⏳",
+      "caption": "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟",
       "link": null,
       "dependsOn": null
     },
@@ -96,6 +98,7 @@
       "slotCairo": "2026-09-02 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-d5ab50e2.jpg",
         "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
@@ -129,7 +132,7 @@
           "5": "ITT"
         }
       },
-      "caption": "كل نقطة بتفرق في الآخر ⚽",
+      "caption": "عندك كام لاعب النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -139,6 +142,7 @@
       "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
@@ -164,7 +168,7 @@
           "1": "SMC"
         }
       },
-      "caption": "الجولة بتقفل النهاردة ⚽\nآخر ماتشات وبعدها الحساب ⏳",
+      "caption": "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟ ⚡",
       "link": null,
       "dependsOn": null
     },
@@ -174,6 +178,7 @@
       "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
@@ -199,7 +204,7 @@
           "1": "SMC"
         }
       },
-      "caption": "الجولة بتقفل النهاردة ⚽ آخر ماتشات وبعدها الحساب ⏳",
+      "caption": "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟",
       "link": null,
       "dependsOn": null
     },
@@ -209,6 +214,7 @@
       "slotCairo": "2026-09-03 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-match-84ec673b.jpg",
         "sha256": "84ec673b2552e46bb523a4c5b8b3dcc8c8749bfcc21b209a901287afcab39f82",
@@ -244,6 +250,7 @@
       "slotCairo": "2026-09-04 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "podium",
       "media": {
         "file": "1200-podium-8d07dae1.jpg",
         "sha256": "8d07dae1a7d6ee0e086eba71d822be86e5c5da8a6f3140bf9194c38ebeb49ae4",
@@ -273,7 +280,7 @@
         },
         "assets": {}
       },
-      "caption": "الجولة خلصت ولها أبطال 🏆\nوالجاية ممكن تقلب كل حاجة 🔄",
+      "caption": "أعلى 3 مديرين في الجولة التالتة 🏅\nانت فين في الترتيب؟ 👀",
       "link": null,
       "dependsOn": null
     },
@@ -283,6 +290,7 @@
       "slotCairo": "2026-09-04 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "podium",
       "media": {
         "file": "1200-podium-8d07dae1.jpg",
         "sha256": "8d07dae1a7d6ee0e086eba71d822be86e5c5da8a6f3140bf9194c38ebeb49ae4",
@@ -312,7 +320,7 @@
         },
         "assets": {}
       },
-      "caption": "الجولة خلصت ولها أبطال 🏆 والجاية ممكن تقلب كل حاجة 🔄",
+      "caption": "أعلى 3 مديرين في الجولة التالتة 🏅\nانت فين؟",
       "link": null,
       "dependsOn": null
     }

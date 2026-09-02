@@ -3,24 +3,60 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { lintCaption } from '../build/lint-copy.mjs'
-import { TEMPLATES, captionBrief, captionFor, needsHumanCaption } from '../build/author/captions.mjs'
+import { TEMPLATES, asksQuestion, captionBrief, captionFor, needsHumanCaption } from '../build/author/captions.mjs'
 
 const RULES = JSON.parse(
   readFileSync(fileURLToPath(new URL('../build/copy-rules.json', import.meta.url)), 'utf8'),
 )
 
+// Representative values, standing in for a real round. Linting the raw template would test a
+// string that never publishes — «{matches} النهاردة» is not what anyone reads.
+const VARS = {
+  matches: '3 ماتشات',
+  played: 'ماتشين',
+  deadline: 'الاتنين 4 العصر',
+  gw: 'الجولة الرابعة',
+}
+const fill = (t) => t.replace(/\{(\w+)\}/g, (whole, key) => (key in VARS ? VARS[key] : whole))
+
 // The whole point of a template file: the rules are checked once, here, instead of thirty times
 // a season by eye. A red line in this test is a caption that must not be written.
-test('every shipped template passes the linter on its own platform', () => {
+test('every shipped template passes the linter as it will actually publish', () => {
   for (const [kind, byPlatform] of Object.entries(TEMPLATES.kinds)) {
     for (const [platform, variants] of Object.entries(byPlatform)) {
-      for (const text of variants) {
-        const { findings } = lintCaption({ text, platform, rules: RULES })
+      for (const raw of variants) {
+        const text = fill(raw)
+        const { findings } = lintCaption({ text, platform, rules: RULES, allowQuestion: asksQuestion(kind) })
         assert.deepEqual(
           findings.map((f) => `${f.ruleId}: ${f.match ?? ''}`),
           [],
           `${kind}/${platform}: ${text}`,
         )
+      }
+    }
+  }
+})
+
+// A template nobody filled would publish a literal «{gw}» to a brand account. The linter cannot
+// catch that — a brace is not banned vocabulary — so it is caught here instead.
+test('no placeholder survives filling, and none is unknown', () => {
+  for (const [kind, byPlatform] of Object.entries(TEMPLATES.kinds)) {
+    for (const [platform, variants] of Object.entries(byPlatform)) {
+      for (const raw of variants) {
+        const left = fill(raw).match(/\{\w+\}/g)
+        assert.equal(left, null, `${kind}/${platform} has an unknown placeholder: ${left?.join(', ')}`)
+      }
+    }
+  }
+})
+
+// The split the owner drew: engagement posts ask, informational posts point forward.
+test('only engagement kinds close on a question', () => {
+  for (const [kind, byPlatform] of Object.entries(TEMPLATES.kinds)) {
+    if (asksQuestion(kind)) continue
+    for (const [platform, variants] of Object.entries(byPlatform)) {
+      for (const raw of variants) {
+        assert.ok(!/[?؟]/.test(fill(raw)), `${kind}/${platform} is informational but asks: ${raw}`)
       }
     }
   }

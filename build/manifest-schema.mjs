@@ -9,6 +9,7 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { lintCaption } from './lint-copy.mjs'
+import { asksQuestion } from './author/captions.mjs'
 
 const RULES = JSON.parse(
   readFileSync(fileURLToPath(new URL('./copy-rules.json', import.meta.url)), 'utf8'),
@@ -147,7 +148,15 @@ function checkPost(post, i, authoredAt, out) {
   checkMedia(post, i, spec, out)
 
   if (typeof post.caption === 'string' && RULES.platforms[post.platform]) {
-    for (const f of lintCaption({ text: post.caption, platform: post.platform, rules: RULES }).findings) {
+    // allowQuestion is a property of the post's kind, which is why `kind` travels in the manifest.
+    // A manifest predating that field simply gets the stricter platform default.
+    const lint = lintCaption({
+      text: post.caption,
+      platform: post.platform,
+      rules: RULES,
+      allowQuestion: asksQuestion(post.kind),
+    })
+    for (const f of lint.findings) {
       out.push({ ...at(i, f.ruleId, f.message), match: f.match })
     }
   }

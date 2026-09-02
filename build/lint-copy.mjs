@@ -112,16 +112,21 @@ function checkShape(text, platform, spec, out) {
 }
 
 /**
- * @param {{text: string, platform: string, rules: object}} input
+ * @param {{text: string, platform: string, rules: object, allowQuestion?: boolean}} input
+ *   allowQuestion — this post's job is comments, so a closing question is the point rather than a
+ *   lapse. It is a property of the POST KIND, not the platform: a matchday card asking «عندك مين
+ *   فيهم؟» is the house style (content-design-kit.md §6), while a deadline card that ends in a
+ *   question is a deadline nobody acts on. The platform default still governs everything else.
  * @returns {{ok: boolean, findings: Array<{ruleId: string, severity: string, message: string, match: string|null}>}}
  */
-export function lintCaption({ text, platform, rules }) {
-  const spec = rules.platforms[platform]
-  if (!spec) {
+export function lintCaption({ text, platform, rules, allowQuestion = false }) {
+  const base = rules.platforms[platform]
+  if (!base) {
     throw new Error(`Unknown platform "${platform}". Known: ${Object.keys(rules.platforms).join(', ')}.`)
   }
   if (typeof text !== 'string') throw new TypeError(`Caption must be a string, got ${typeof text}.`)
 
+  const spec = allowQuestion ? { ...base, allowTrailingQuestion: true } : base
   const findings = []
   checkCharacters(text, rules, findings)
   checkVocabulary(text, rules, findings)

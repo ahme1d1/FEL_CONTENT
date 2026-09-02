@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 4,
-  "authoredAt": "2026-09-02T00:05:10.432Z",
+  "authoredAt": "2026-09-02T01:24:55.573Z",
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
@@ -10,6 +10,7 @@
       "slotCairo": "2026-09-04 20:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "buildUp",
       "media": {
         "file": "2000-buildup-5d865e79.jpg",
         "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
@@ -28,7 +29,7 @@
         },
         "assets": {}
       },
-      "caption": "باب الجولة الجاية فتح 🔜\nجهّز فريقك من دلوقتي ⏰\nfantasyeg.com",
+      "caption": "باب الجولة الرابعة فتح 🔜\nالديدلاين الاتنين 4 العصر ⏰\nfantasyeg.com",
       "link": "https://fantasyeg.com/",
       "dependsOn": null
     },
@@ -38,6 +39,7 @@
       "slotCairo": "2026-09-04 20:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "buildUp",
       "media": {
         "file": "2000-buildup-5d865e79.jpg",
         "sha256": "5d865e790a79ef4bfd439303ad428d5c978378eda15ec788546b41f96594fe44",
@@ -56,7 +58,7 @@
         },
         "assets": {}
       },
-      "caption": "باب الجولة الجاية فتح 🔜 جهّز فريقك من دلوقتي ⏰",
+      "caption": "باب الجولة الرابعة فتح 🔜\nالديدلاين الاتنين 4 العصر ⏰",
       "link": null,
       "dependsOn": null
     },
@@ -66,6 +68,7 @@
       "slotCairo": "2026-09-06 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "priceChanges",
       "media": {
         "file": "1200-prices-aadbcca1.jpg",
         "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
@@ -116,7 +119,7 @@
           "7": "WDY"
         }
       },
-      "caption": "الأسعار اتحركت 💰\nاللي اتأخر هيدفع أكتر ⏳",
+      "caption": "الأسعار اتحركت 📈\nراجع فريقك قبل الاتنين 4 العصر ⏰",
       "link": null,
       "dependsOn": null
     },
@@ -126,6 +129,7 @@
       "slotCairo": "2026-09-06 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "priceChanges",
       "media": {
         "file": "1200-prices-aadbcca1.jpg",
         "sha256": "aadbcca18e8e00cef73ddd7fa319bda178aa6fc44700a6449e6b40614a69269f",
@@ -176,7 +180,7 @@
           "7": "WDY"
         }
       },
-      "caption": "الأسعار اتحركت 💰 اللي اتأخر هيدفع أكتر ⏳",
+      "caption": "الأسعار اتحركت 📈\nراجع فريقك قبل الاتنين 4 العصر ⏰",
       "link": null,
       "dependsOn": null
     },
@@ -186,6 +190,7 @@
       "slotCairo": "2026-09-06 14:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "leagueTable",
       "media": {
         "file": "1400-table-8b601a73.jpg",
         "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
@@ -245,7 +250,7 @@
           "7": "MOD"
         }
       },
-      "caption": "الترتيب اتغير بعد الجولة 📊\nوده بيغير اللي قدامهم في الجاية 🔜",
+      "caption": "ترتيب الدوري 📊\nشوف ناديك واقف فين ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -255,6 +260,7 @@
       "slotCairo": "2026-09-06 14:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "leagueTable",
       "media": {
         "file": "1400-table-8b601a73.jpg",
         "sha256": "8b601a73493785c25e81e89dddebe6ff1621912b6d5389004297c019b154ea27",
@@ -314,7 +320,7 @@
           "7": "MOD"
         }
       },
-      "caption": "الترتيب اتغير بعد الجولة 📊",
+      "caption": "ترتيب الدوري 📊\nشوف ناديك واقف فين",
       "link": null,
       "dependsOn": null
     },
@@ -324,6 +330,7 @@
       "slotCairo": "2026-09-06 20:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "question",
       "media": {
         "file": "2000-question-4bf578b1.jpg",
         "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
@@ -361,6 +368,7 @@
       "slotCairo": "2026-09-06 20:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "question",
       "media": {
         "file": "2000-question-4bf578b1.jpg",
         "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
@@ -388,7 +396,7 @@
           "3": "NBE"
         }
       },
-      "caption": "الكابتن بيجيب ضعف نقطه ⚡ اختار صح",
+      "caption": "كابتنك مين الجولة دي؟ ⚡",
       "link": null,
       "dependsOn": null
     },
@@ -398,6 +406,7 @@
       "slotCairo": "2026-09-06 20:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "question",
       "media": {
         "file": "2000-question-4bf578b1.jpg",
         "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
@@ -425,7 +434,7 @@
           "3": "NBE"
         }
       },
-      "caption": "الكابتن بيجيب ضعف نقطه ⚡",
+      "caption": "كابتنك مين الجولة دي؟ ⚡",
       "link": null,
       "dependsOn": null
     },
@@ -435,6 +444,7 @@
       "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
@@ -473,7 +483,7 @@
           "7": "MAS"
         }
       },
-      "caption": "الجولة مش يوم واحد ⚽\nخلي بالك من اللي لسه جاي 👀",
+      "caption": "4 ماتشات النهاردة ⚽\nكابتنك بيلعب في أنهي واحد؟ ⚡",
       "link": null,
       "dependsOn": null
     },
@@ -483,6 +493,7 @@
       "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
@@ -521,7 +532,7 @@
           "7": "MAS"
         }
       },
-      "caption": "الجولة مش يوم واحد ⚽ خلي بالك من اللي لسه جاي 👀",
+      "caption": "4 ماتشات النهاردة ⚽\nكابتنك بيلعب في أنهي واحد؟",
       "link": null,
       "dependsOn": null
     },
@@ -531,6 +542,7 @@
       "slotCairo": "2026-09-07 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-391d2c09.jpg",
         "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
@@ -569,7 +581,7 @@
           "7": "MAS"
         }
       },
-      "caption": "الجولة مش يوم واحد ⚽ استنى الباقي",
+      "caption": "4 ماتشات النهاردة ⚽\nكابتنك فين؟",
       "link": null,
       "dependsOn": null
     },
@@ -579,6 +591,7 @@
       "slotCairo": "2026-09-07 14:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "deadline",
       "media": {
         "file": "1400-deadline-6ea62884.jpg",
         "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
@@ -608,6 +621,7 @@
       "slotCairo": "2026-09-07 14:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "deadline",
       "media": {
         "file": "1400-deadline-6ea62884.jpg",
         "sha256": "6ea62884f5423708fa6c9733052bbb526042d11003102c8c24a309f418e4680e",
@@ -626,7 +640,7 @@
         },
         "assets": {}
       },
-      "caption": "بعد الديدلاين مفيش تعديل ⏰ راجع فريقك دلوقتي ⚡",
+      "caption": "بعد الديدلاين مفيش تعديل ⏰\nراجع فريقك دلوقتي",
       "link": null,
       "dependsOn": null,
       "maxLatenessMinutes": 60
@@ -637,6 +651,7 @@
       "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
@@ -670,7 +685,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "النهاردة فيه ماتشات ⚽\nوكل نقطة بتفرق في الآخر ⏳",
+      "caption": "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟ 👀",
       "link": null,
       "dependsOn": null
     },
@@ -680,6 +695,7 @@
       "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
@@ -713,7 +729,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "النهاردة فيه ماتشات ⚽ وكل نقطة بتفرق في الآخر ⏳",
+      "caption": "الجولة لسه شغالة ⚽\nعندك كام لاعب النهاردة؟",
       "link": null,
       "dependsOn": null
     },
@@ -723,6 +739,7 @@
       "slotCairo": "2026-09-08 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "matchday",
       "media": {
         "file": "1200-matchday-0e062e37.jpg",
         "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
@@ -756,7 +773,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "كل نقطة بتفرق في الآخر ⚽",
+      "caption": "عندك كام لاعب النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -766,6 +783,7 @@
       "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
@@ -799,7 +817,7 @@
           "5": "AHL"
         }
       },
-      "caption": "الجولة بتقفل النهاردة ⚽\nآخر ماتشات وبعدها الحساب ⏳",
+      "caption": "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟ ⚡",
       "link": null,
       "dependsOn": null
     },
@@ -809,6 +827,7 @@
       "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
@@ -842,7 +861,7 @@
           "5": "AHL"
         }
       },
-      "caption": "الجولة بتقفل النهاردة ⚽ آخر ماتشات وبعدها الحساب ⏳",
+      "caption": "الجولة بتقفل النهاردة ⚽\nكابتنك لسه ملعبش؟",
       "link": null,
       "dependsOn": null
     },
@@ -852,6 +871,7 @@
       "slotCairo": "2026-09-09 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
       "media": {
         "file": "1200-matchday-1a45173c.jpg",
         "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",

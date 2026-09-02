@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url'
 import { sourceKey } from '../render-plan.mjs'
 import { slotInstant } from './slots.mjs'
 import { captionBrief, captionFor } from './captions.mjs'
+import { deadlinePhrase, gameweekLabel } from './labels.mjs'
 import {
   buildUpCard,
   deadlineCard,
@@ -42,6 +43,35 @@ const PLATFORMS = {
 
 const gwTag = (gw) => `gw${String(gw).padStart(2, '0')}`
 export const mediaBaseFor = (gw) => `https://media.fantasyeg.com/${gwTag(gw)}`
+
+/**
+ * «ماتش واحد» · «ماتشين» · «3 ماتشات».
+ *
+ * Arabic counts one and two in the noun rather than the numeral, so a naive `${n} ماتشات` would
+ * publish «1 ماتشات» on any single-fixture day — and GW3 has one of those tomorrow.
+ */
+export function matchCount(n) {
+  if (n === 1) return 'ماتش واحد'
+  if (n === 2) return 'ماتشين'
+  return `${n} ماتشات`
+}
+
+/**
+ * The real values a caption interpolates, per day.
+ *
+ * This is what separates the house style from filler. «3 ماتشات النهاردة» is about today;
+ * «يوم كامل كورة قدامك» would have been equally true of any day of any round, which is exactly
+ * why it read as written by nobody.
+ */
+function captionVars({ window: w, day }) {
+  const finished = day.fixtures.filter((f) => f.status === 'FINISHED').length
+  return {
+    matches: matchCount(day.fixtures.length),
+    played: matchCount(finished),
+    deadline: deadlinePhrase(w.deadline),
+    gw: gameweekLabel(w.gameweek),
+  }
+}
 
 /** A day holds one calendar role even when it wears several hats; the busiest wins. */
 export function primaryRole(day) {
@@ -149,6 +179,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
       }
 
       const kind = day.date === finalDate ? (FINAL_KIND[entry.kind] ?? entry.kind) : entry.kind
+      const vars = captionVars({ window, day })
 
       for (const platform of entry.platforms) {
         const { strategy, suffix } = PLATFORMS[platform]
@@ -157,6 +188,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
           platform,
           gameweek: window.gameweek,
           dayIndex: day.index,
+          vars,
         })
 
         posts.push({
@@ -165,6 +197,10 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
           slotCairo,
           platform,
           strategy,
+          // Travels in the manifest because the caption rules are per kind, not per platform:
+          // validateManifest has to know whether this post is one of the ones allowed to ask a
+          // question. It also saves every reader of a manifest re-deriving it from the card.
+          kind,
           media: null,
           source,
           caption,
