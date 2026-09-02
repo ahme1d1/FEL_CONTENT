@@ -27,9 +27,8 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/current-gw-cli.mjs` | which gameweeks to author, worked out from public `/fixtures` |
 | `build/author/calendar.json` | which card goes out at which slot on which day |
 | `build/author/caption-templates.json` | every caption; none is left for a human |
-| `build/copy-rules.json` | the linter's rules — check against real posts before blaming a template |
 | `build/author/copy.json` | the fixed words a card carries: ordinals, day names, clock phrases |
-| `build/copy-rules.json` | voice and forbidden-claims rules, mirroring `content-design-kit.md` §2 and §5 |
+| `build/copy-rules.json` | voice, forbidden claims and the platform shape rules — check it against real posts before blaming a template |
 | `build/lint-copy.mjs` | caption linter |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
 | `build/render-manifest.mjs` | renders the cards and stamps `media` back into the manifest |
