@@ -27,6 +27,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/current-gw-cli.mjs` | which gameweeks to author, worked out from public `/fixtures` |
 | `build/author/calendar.json` | which card goes out at which slot on which day |
 | `build/author/caption-templates.json` | every caption; none is left for a human |
+| `build/copy-rules.json` | the linter's rules — check against real posts before blaming a template |
 | `build/author/copy.json` | the fixed words a card carries: ordinals, day names, clock phrases |
 | `build/copy-rules.json` | voice and forbidden-claims rules, mirroring `content-design-kit.md` §2 and §5 |
 | `build/lint-copy.mjs` | caption linter |
@@ -42,7 +43,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 275 unit tests, no network, no accounts
+npm test                                    # 277 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
@@ -140,7 +141,82 @@ and the round settles, so there is always a next batch nobody has handed over. R
 pass is safe because the ledger records a `scheduled` state per post, and `schedule-plan.mjs`
 skips anything already carrying one.
 
+## The calendar
+
+**The day starts at noon** (owner call, 2026-09-02). `SLOTS_CAIRO` is `12:00 13:00 14:00 16:00
+20:00 22:30`, and `publish.yml`'s six crons fire on exactly those times — **change the two
+together**, or a slot has no routine behind it and its posts wait for the next one.
+
+| day role | slots |
+|---|---|
+| build-up | 20:00 build-up |
+| middle | 12:00 prices · 14:00 league table · 20:00 captain poll |
+| deadline day | 12:00 matchday · 14:00 deadline · 22:30 results |
+| match day | 12:00 matchday · 22:30 results |
+| settle day | **12:00 winner + shirt** · 13:00 podium · 14:00 player of the round · 16:00 team of the week · 20:00 top players |
+
+The settle day leads with the prize post, because that is the one the audience waits for. Note
+that **12:00 is noon, eleven hours after the ~01:00 settlement run** — not before it. Nothing can
+jump the gun even if the clock slips: the winner and podium builders both gate on `topPlayers`,
+whose endpoint 404s `GAMEWEEK_NOT_SETTLED` until bonus points are in, which is the API's own
+signal that a round is final. `/gameweeks/:gw/standings` is NOT that signal — it answers from live
+ranks mid-round, and authoring against it named the current leader as champion.
+
+An earlier slot was considered and rejected on mechanics: the authoring workflow's nearest run is
+01:20 Cairo, it needs 5–8 minutes to render and push, and Meta refuses anything scheduled less
+than ten minutes ahead. 02:30 is the earliest that would work at all.
+
+## Captions
+
+Two registers, split by what a post is FOR. **Engagement** posts close on a question — matchday,
+matchdayFinal, question, podium, playerOfRound, teamOfWeek, topPlayers. **Informational** posts
+state and point forward — buildUp, deadline, priceChanges, leagueTable, results, resultsFinal,
+winner. `captions.mjs` holds the list and lifts the linter's trailing-question ban for the first
+group only, because that ban is a property of the post's kind, not the platform.
+
+**The house voice is read off the page, not out of a style guide.** Two caption sets were written
+from `content-design-kit.md` §6 and both were rejected as not sounding like anyone. The fix was to
+pull the page's own published captions:
+
+```
+COMPOSIO_MULTI_EXECUTE_TOOL -> FACEBOOK_GET_PAGE_POSTS
+  { page_id: "1236455056218105", limit: 40, fields: "id,message,created_time,permalink_url" }
+```
+
+One or two lines, **one** emoji at the end of a line, plain and conversational. A linter rule was
+fighting exactly that: `facebook.minEmoji` was 2, so a caption the page writes as one line had a
+second line invented to carry a second emoji. **Check copy-rules.json against real posts before
+blaming the templates.** The archive also settles rules by evidence — 👇 and ownership percentages
+are all over the August posts and appear in none from 30 Aug on, so both stay retired.
+
+Captions interpolate real values, because a line that would read the same in any gameweek is the
+failure this replaced: `{matches}` `{these}` `{remaining}` `{rounds}` `{deadline}` `{gw}`
+`{winner}` `{untilDeadline}`. Arabic counts one and two in the noun, so these are pluralised in
+`plan.mjs` and never with a bare numeral. `{untilDeadline}` is computed per post — «الديدلاين كمان
+ساعتين» is true at 14:00 against a 16:00 deadline and six hours wrong in GW18, whose deadline is
+20:30.
+
+The prize post is the one caption that names a person: «مبروك يا مراد 🏆». Congratulating an
+unnamed person is not a congratulation.
+
 ## TikTok
+
+**TikTok is vertical.** Every kind it posts takes a 1080 × 1920 story card — see `STORY_BUILDERS`
+in `plan.mjs`. It was being handed the same 4:5 feed image as Facebook until 2026-09-02.
+
+That was blocked on the card tool: the base matchday story card holds **eight** fixture rows and a
+matchday never has more than four, and an unset slot does not go blank — it publishes the design's
+own sample fixture with a crest off a rotating guess list. `ROW_VARIANTS` in `build-cards.py` now
+derives short variants of both story cards, so the tool ships **48 cards, not 43**.
+
+Regenerating it needs the Claude Design source, which **cannot be fetched through DesignSync** —
+`get_file` caps at 256 KiB and `FEL Social Cards.dc.html` is 305,559 bytes, so it truncates
+silently into a card-less build. The owner exports it by hand. **Verify any rebuild by first
+building with the unchanged config and confirming the same card keys come back** — that is what
+proves it is the right file.
+
+A story builder returns `null` where no layout of that shape exists (a single-fixture day has
+none) and the caller falls back to the feed image rather than inventing one.
 
 Composio has no managed auth for TikTok, so the OAuth lives here. Authorize once:
 
