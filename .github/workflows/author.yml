@@ -19,9 +19,15 @@ name: Author
 
 on:
   schedule:
-    # Every two hours. Cairo slots run 09:00-22:30, and Facebook refuses anything inside a
-    # ten-minute floor, so this cadence always leaves a comfortable lead on the next slot.
-    - cron: '20 */2 * * *'
+    # HOURLY, at :05. Two-hourly at :20 left a hole exactly where it mattered: a results card
+    # cannot be authored until every fixture that day reads FINISHED, evening matches end around
+    # 22:00 Cairo, and the 22:30 slot sat between a 21:20 run (still playing) and a 23:20 run (slot
+    # already passed) — so a whole night of results would have been silently missed.
+    #
+    # :05 rather than :20 buys the lead Facebook needs. Meta refuses anything scheduled inside ten
+    # minutes, and this job takes 5-8 minutes to render and push, so a run starting at :20 finishes
+    # too close to a :30 slot to hand it over.
+    - cron: '5 * * * *'
   workflow_dispatch:
     inputs:
       gameweek:
