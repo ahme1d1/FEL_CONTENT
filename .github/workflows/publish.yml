@@ -83,11 +83,15 @@ jobs:
           set -eu
           git config user.name  'fel-publisher'
           git config user.email 'noreply@fantasyeg.com'
-          if git diff --quiet -- publish/ledger.jsonl 2>/dev/null; then
+          # `git add` FIRST, then compare the index. `git diff --quiet -- <path>` reports an
+          # UNTRACKED file as unchanged and returns 0, so the original order exited before ever
+          # adding it — and the very first ledger, recording ten scheduled posts, was thrown away
+          # with the runner. The ledger is the only thing standing between a retry and a duplicate.
+          git add publish/ledger.jsonl 2>/dev/null || true
+          if git diff --cached --quiet -- publish/ledger.jsonl; then
             echo "Ledger unchanged; nothing to record."
             exit 0
           fi
-          git add publish/ledger.jsonl
           git commit -m "chore(ledger): record what went out at $(date -u +%FT%TZ)"
           # Another run may have pushed while this one was publishing.
           for i in 1 2 3; do

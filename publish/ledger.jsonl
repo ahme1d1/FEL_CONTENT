@@ -1,0 +1,16 @@
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw03-d5-1200-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw03-d5-1200-fb-feed", "state": "scheduled", "remoteId": "122118591909405259", "scheduledFor": "2026-09-02T09:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw03-d6-1200-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw03-d6-1200-fb-feed", "state": "scheduled", "remoteId": "122118591951405259", "scheduledFor": "2026-09-03T09:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d1-2000-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d1-2000-fb-feed", "state": "scheduled", "remoteId": "122118592005405259", "scheduledFor": "2026-09-04T17:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d2-2000-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d2-2000-fb-feed", "state": "scheduled", "remoteId": "122118592155405259", "scheduledFor": "2026-09-06T17:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d3-1200-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d3-1200-fb-feed", "state": "scheduled", "remoteId": "122118592197405259", "scheduledFor": "2026-09-07T09:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d3-1400-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d3-1400-fb-feed", "state": "scheduled", "remoteId": "122118592245405259", "scheduledFor": "2026-09-07T11:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d4-1200-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d4-1200-fb-feed", "state": "scheduled", "remoteId": "122118592299405259", "scheduledFor": "2026-09-08T09:00:00Z"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d5-1200-fb-feed", "state": "claimed", "strategy": "fb-scheduled"}
+{"ts": "2026-09-02T03:29:35.000Z", "id": "gw04-d5-1200-fb-feed", "state": "scheduled", "remoteId": "122118592347405259", "scheduledFor": "2026-09-09T09:00:00Z"}

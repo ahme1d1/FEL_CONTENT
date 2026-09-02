@@ -25,7 +25,8 @@
           "facebook",
           "instagram"
         ],
-        "_note": "Conditional. The card holds eight rows, so it is skipped until eight prices have moved."
+        "_note": "Conditional. The card holds eight rows, so it is skipped until eight prices have moved.",
+        "freshWithinHours": 24
       },
       {
         "slot": "14:00",
@@ -34,7 +35,8 @@
         "platforms": [
           "facebook",
           "instagram"
-        ]
+        ],
+        "freshWithinHours": 48
       },
       {
         "slot": "20:00",
@@ -154,5 +156,6 @@
     ]
   },
   "_tiktok": "TikTok takes a 1080x1920 story card for every kind that has one — see STORY_BUILDERS in plan.mjs. Matchday and results joined on 2026-09-02 once build-cards.py grew short row variants of their story cards; before that the only layouts held eight and four rows.",
-  "_settleDay": "The prize post leads the day. Owner call, 2026-09-02: the round's winner is what the audience is waiting for once a gameweek settles, so it goes out first rather than third. Settlement itself runs around 01:00 Cairo and the day starts at noon, so 12:00 is as immediate as the grid allows."
+  "_settleDay": "The prize post leads the day. Owner call, 2026-09-02: the round's winner is what the audience is waiting for once a gameweek settles, so it goes out first rather than third. Settlement itself runs around 01:00 Cairo and the day starts at noon, so 12:00 is as immediate as the grid allows.",
+  "_freshness": "freshWithinHours holds back a card whose data keeps moving until its slot is close. A card is a snapshot and mergePosts keeps it, so one authored four days early publishes what was true when it rendered. Prices are a rolling 168h window, hence 24h; the table needs the previous round finished, hence 48h plus its own completeness check in plan.mjs."
 }

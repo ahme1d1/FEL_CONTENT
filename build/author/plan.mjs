@@ -180,7 +180,15 @@ const BUILDERS = {
       players: need(data.captainCandidates, 'captain candidates').slice(0, 4),
     }),
 
-  leagueTable: ({ data }) => leagueTableCard({ rows: need(data.standings, 'league table') }),
+  // The table counts COMPLETED rounds — «ترتيب الدوري بعد 3 جولات» — so every fixture of the
+  // previous round must be played before it can be authored. Authored mid-round it froze a table
+  // showing two clubs on P2 under a caption claiming three, and mergePosts would have carried
+  // that snapshot to its slot four days later.
+  leagueTable: ({ data }) => {
+    const unplayed = (data.previousFixtures ?? []).filter((f) => f.status !== 'FINISHED').length
+    if (unplayed) throw new Error(`the previous round still has ${unplayed} fixture(s) to play`)
+    return leagueTableCard({ rows: need(data.standings, 'league table') })
+  },
 
   // Both of these name a champion, and BOTH must wait for settlement.
   //
@@ -267,6 +275,20 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
       // normal, so a slot that has already gone is expected, not an error.
       if (Date.parse(publishAt) <= Date.parse(authoredAt)) {
         skipped.push({ id: idPrefix, reason: `${slotCairo} has already passed` })
+        continue
+      }
+
+      // Some cards read data that never stops moving — a league table, a rolling week of price
+      // changes. A card is a SNAPSHOT and mergePosts keeps it, so authoring one days ahead
+      // publishes what was true when it rendered under a caption written for the day it goes out.
+      // `freshWithinHours` holds those back until the slot is close; the two-hourly loop picks
+      // them up with time to spare.
+      const freshMs = (entry.freshWithinHours ?? 0) * 3_600_000
+      if (freshMs && Date.parse(publishAt) - Date.parse(authoredAt) > freshMs) {
+        skipped.push({
+          id: idPrefix,
+          reason: `too early — ${entry.kind} is authored within ${entry.freshWithinHours}h of its slot`,
+        })
         continue
       }
 
