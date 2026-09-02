@@ -31,7 +31,9 @@ import {
   winnerCard,
   buildUpCardStory,
   deadlineCardStory,
+  matchdayCardStory,
   questionCardStory,
+  resultsCardStory,
   winnerCardStory,
 } from './cards.mjs'
 
@@ -195,12 +197,26 @@ const BUILDERS = {
  * The vertical card a platform gets instead of the feed one, where a story card of fixed shape
  * exists. TikTok is a vertical surface and was being handed the same 4:5 image as Facebook.
  *
- * Only these four kinds are here, and the omissions are the point: matchday and results would need
- * `A_MATCHDAY_1080_1920` / `B_RESULTS_1080_1920`, which hold eight and four rows against a day that
- * has three or four — and an unset row publishes the design's sample fixture rather than nothing.
- * See the note above the story builders in cards.mjs.
+ * Matchday and results joined on 2026-09-02, once the design source was exported and build-cards.py
+ * grew short row variants of both story cards. Before that they held eight and four rows against a
+ * day that has three or four, and an unset row publishes the design's own sample fixture.
+ *
+ * A builder returning null means "no story layout for this shape" — a single-fixture day has none —
+ * and the caller falls back to the feed image rather than inventing one.
  */
 const STORY_BUILDERS = {
+  matchday: ({ window, day }) =>
+    matchdayCardStory({ gameweek: window.gameweek, fixtures: need(day.fixtures, 'fixtures') }),
+
+  matchdayFinal: ({ window, day }) =>
+    matchdayCardStory({ gameweek: window.gameweek, fixtures: need(day.fixtures, 'fixtures') }),
+
+  results: ({ window, day }) => {
+    const fixtures = need(day.fixtures, 'fixtures')
+    if (fixtures.some((f) => f.status !== 'FINISHED')) throw new Error('fixtures that day are not finished')
+    return resultsCardStory({ gameweek: window.gameweek, fixtures })
+  },
+
   buildUp: ({ window }) => buildUpCardStory({ gameweek: window.gameweek, deadline: window.deadline }),
   deadline: ({ window }) => deadlineCardStory({ gameweek: window.gameweek, deadline: window.deadline }),
   question: ({ window, data }) =>
@@ -254,8 +270,8 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
 
         // A vertical platform takes the story card where one exists. Its own `source` means
         // render-plan groups it separately, so the feed and story images both get rendered.
-        const build = VERTICAL_PLATFORMS.has(platform) ? STORY_BUILDERS[entry.kind] : null
-        const platformSource = build ? build({ window, day, data }) : source
+        const build = VERTICAL_PLATFORMS.has(platform) ? STORY_BUILDERS[kind] : null
+        const platformSource = (build && build({ window, day, data })) || source
         const caption = captionFor({
           kind,
           platform,

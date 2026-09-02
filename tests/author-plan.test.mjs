@@ -88,12 +88,21 @@ test('every post id is unique, which the validator would otherwise reject', () =
   assert.equal(new Set(posts.map((p) => p.id)).size, posts.length)
 })
 
-test('the same source fans out to several platforms, so the renderer draws it once', () => {
+// The two feed platforms still share one image, so the renderer draws it once. TikTok no longer
+// does: it is a vertical surface and takes the 1080×1920 story card, which is a different source
+// and therefore a second render job. Sharing was never the goal — not rendering the same picture
+// twice was, and that still holds per shape.
+test('the feed platforms share one image while tiktok takes its own vertical', () => {
   const { posts } = plan()
-  const nine = posts.filter((p) => p.id.includes('-d3-1200-'))
-  assert.equal(nine.length, 3)
-  assert.equal(new Set(nine.map((p) => JSON.stringify(p.source))).size, 1)
-  assert.deepEqual(nine.map((p) => p.strategy).sort(), ['fb-scheduled', 'ig-feed', 'tiktok-draft'])
+  const slot = posts.filter((p) => p.id.includes('-d3-1200-'))
+  assert.deepEqual(slot.map((p) => p.strategy).sort(), ['fb-scheduled', 'ig-feed', 'tiktok-draft'])
+
+  const feed = slot.filter((p) => p.platform !== 'tiktok')
+  assert.equal(new Set(feed.map((p) => JSON.stringify(p.source))).size, 1)
+
+  const tiktok = slot.find((p) => p.platform === 'tiktok')
+  assert.match(tiktok.source.card, /_1080_1920/)
+  assert.notEqual(JSON.stringify(tiktok.source), JSON.stringify(feed[0].source))
 })
 
 // The runbook's own loop: schedule everything that needs no scores, then come back for the rest.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 3,
-  "authoredAt": "2026-09-02T01:54:14.828Z",
+  "authoredAt": "2026-09-02T02:02:08.914Z",
   "mediaBase": "https://media.fantasyeg.com/gw03",
   "posts": [
     {
@@ -44,7 +44,7 @@
           "5": "ITT"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -88,7 +88,7 @@
           "5": "ITT"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -100,16 +100,16 @@
       "strategy": "tiktok-draft",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-d5ab50e2.jpg",
-        "sha256": "d5ab50e2b8adf0073e90f30f89a251bd2e6e77c59ee954e555dc35f02b59043d",
-        "bytes": 103223,
+        "file": "1200-matchday-story-0b4aa8d0.jpg",
+        "sha256": "0b4aa8d0dc1260243c1148b3da2b389c28dd1706d2b46a15b54dff6bd5d64a1f",
+        "bytes": 87664,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "A_MATCHDAY_3_rows",
-        "slug": "matchday",
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
         "texts": {
           "0": "الجولة التالتة",
           "1": "مباريات النهاردة",
@@ -132,7 +132,7 @@
           "5": "ITT"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -168,7 +168,7 @@
           "1": "SMC"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -204,7 +204,7 @@
           "1": "SMC"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -240,7 +240,7 @@
           "1": "SMC"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     }

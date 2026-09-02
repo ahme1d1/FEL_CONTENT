@@ -361,6 +361,10 @@ export function winnerCard({ gameweek, winner }) {
 
 /* ─────────────────────────── vertical, for TikTok ─────────────────────────── */
 
+/** Row counts the story cards actually ship. A day outside these has no vertical layout. */
+const STORY_MATCHDAY_ROWS = [2, 3, 4, 8]
+const STORY_RESULTS_ROWS = [2, 3, 4]
+
 /**
  * TikTok is a vertical surface, and the tool ships ten 1080 × 1920 cards the calendar had never
  * used — TikTok was being handed the same 4:5 feed image as Facebook.
@@ -427,4 +431,51 @@ export function winnerCardStory({ gameweek, winner }) {
     }),
     slug: 'winner-story',
   }
+}
+
+/**
+ * Today's fixtures, story shape. Unblocked on 2026-09-02, when the owner exported the design
+ * source and `ROW_VARIANTS` grew short variants of the matchday and results story cards.
+ *
+ * The slot arithmetic is identical to the feed card — three slots per row from t2, two crests per
+ * row — so only the key changes. What made this unsafe before was purely the row count: the base
+ * story card holds eight rows and an unset row publishes the design's own sample fixture.
+ *
+ * A single-fixture day returns null rather than a card: there is no one-match story layout, and
+ * the caller falls back to the feed image rather than inventing a shape.
+ */
+export function matchdayCardStory({ gameweek, fixtures }) {
+  if (!STORY_MATCHDAY_ROWS.includes(fixtures.length)) return null
+
+  const texts = { 0: gameweekLabel(gameweek), 1: TEXT.matchdayTitle }
+  const assets = {}
+  fixtures.forEach((f, i) => {
+    texts[2 + 3 * i] = f.homeClub.short
+    texts[3 + 3 * i] = kickoffTime(f.kickoffAt)
+    texts[4 + 3 * i] = f.awayClub.short
+    assets[2 * i] = f.home
+    assets[2 * i + 1] = f.away
+  })
+
+  const card = fixtures.length === 8 ? 'A_MATCHDAY_1080_1920' : `A_MATCHDAY_1080_1920_${fixtures.length}_rows`
+  return { card, slug: 'matchday-story', texts, assets }
+}
+
+/** Tonight's results, story shape. Five slots per row from t2, straddling a locked dash. */
+export function resultsCardStory({ gameweek, fixtures }) {
+  if (!STORY_RESULTS_ROWS.includes(fixtures.length)) return null
+
+  const texts = { 0: gameweekLabel(gameweek), 1: TEXT.resultsTitle }
+  const assets = {}
+  fixtures.forEach((f, i) => {
+    texts[2 + 5 * i] = f.homeClub.short
+    texts[3 + 5 * i] = asText(f.homeScore)
+    texts[5 + 5 * i] = asText(f.awayScore)
+    texts[6 + 5 * i] = f.awayClub.short
+    assets[2 * i] = f.home
+    assets[2 * i + 1] = f.away
+  })
+
+  const card = fixtures.length === 4 ? 'B_RESULTS_1080_1920' : `B_RESULTS_1080_1920_${fixtures.length}_rows`
+  return { card, slug: 'results-story', texts, assets }
 }

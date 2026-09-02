@@ -75,7 +75,8 @@
         "card": "results",
         "platforms": [
           "facebook",
-          "instagram"
+          "instagram",
+          "tiktok"
         ]
       }
     ],
@@ -96,7 +97,8 @@
         "card": "results",
         "platforms": [
           "facebook",
-          "instagram"
+          "instagram",
+          "tiktok"
         ]
       }
     ],
@@ -151,5 +153,5 @@
       }
     ]
   },
-  "_tiktok": "TikTok takes a 1080x1920 story card wherever one of fixed shape exists — see STORY_BUILDERS in plan.mjs. It stays on the 4:5 feed card for matchday, because the story matchday card holds eight fixture rows and an unset row publishes the design's sample fixture."
+  "_tiktok": "TikTok takes a 1080x1920 story card for every kind that has one — see STORY_BUILDERS in plan.mjs. Matchday and results joined on 2026-09-02 once build-cards.py grew short row variants of their story cards; before that the only layouts held eight and four rows."
 }

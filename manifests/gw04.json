@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 4,
-  "authoredAt": "2026-09-02T01:54:15.274Z",
+  "authoredAt": "2026-09-02T02:02:09.362Z",
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
@@ -573,16 +573,16 @@
       "strategy": "tiktok-draft",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-391d2c09.jpg",
-        "sha256": "391d2c0918959a5b76d801a4350975318916de65e8c237ba1f7461c9e459df04",
-        "bytes": 125085,
+        "file": "1200-matchday-story-2bf01e57.jpg",
+        "sha256": "2bf01e573715d4733e28d67555091a681e79d39cee7dfa3191c6925da2318c9a",
+        "bytes": 107932,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "A_MATCHDAY_4_rows",
-        "slug": "matchday",
+        "card": "A_MATCHDAY_1080_1920_4_rows",
+        "slug": "matchday-story",
         "texts": {
           "0": "الجولة الرابعة",
           "1": "مباريات النهاردة",
@@ -744,7 +744,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -788,7 +788,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -800,16 +800,16 @@
       "strategy": "tiktok-draft",
       "kind": "matchday",
       "media": {
-        "file": "1200-matchday-0e062e37.jpg",
-        "sha256": "0e062e3714c06be7a1a3e7eb0520cbcc5bcc79c93ad419b7117de6979dd1acb7",
-        "bytes": 102663,
+        "file": "1200-matchday-story-e98bf943.jpg",
+        "sha256": "e98bf943244ce62b7aff739533b70dcaf48b61b508b34e94f65951002f86f9f8",
+        "bytes": 87522,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "A_MATCHDAY_3_rows",
-        "slug": "matchday",
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
         "texts": {
           "0": "الجولة الرابعة",
           "1": "مباريات النهاردة",
@@ -832,7 +832,7 @@
           "5": "ABQ"
         }
       },
-      "caption": "متوقع إيه من ماتشات النهاردة؟ ⚽",
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -876,7 +876,7 @@
           "5": "AHL"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -920,7 +920,7 @@
           "5": "AHL"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام النهاردة؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     },
@@ -932,16 +932,16 @@
       "strategy": "tiktok-draft",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-matchday-1a45173c.jpg",
-        "sha256": "1a45173cc86c9c637c977d6ef684e3edc86e6655c2894a20dbc6a3e5ed01de18",
-        "bytes": 99790,
+        "file": "1200-matchday-story-ac459bd8.jpg",
+        "sha256": "ac459bd8feaac98f745d6b17cb1223ea8a7e3cd7193fc2870a74ba28ad3abf0f",
+        "bytes": 85198,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "A_MATCHDAY_3_rows",
-        "slug": "matchday",
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
         "texts": {
           "0": "الجولة الرابعة",
           "1": "مباريات النهاردة",
@@ -964,7 +964,7 @@
           "5": "AHL"
         }
       },
-      "caption": "آخر يوم في الجولة ⚽\nفريقك محتاج كام؟ 👀",
+      "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
     }
