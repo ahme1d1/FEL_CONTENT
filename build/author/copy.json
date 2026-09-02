@@ -68,6 +68,8 @@
     "injuryTitle": "مصاب",
     "injurySubtitle": "يغيب عن الجولة",
     "matchFinished": "انتهت المباراة",
-    "winnerPrize": "بطل الجولة وياخد تيشيرت ناديه"
+    "winnerPrize": "بطل الجولة وياخد تيشيرت ناديه",
+    "winnerHero": "بطل الجولة",
+    "winnerShirt": "وياخد تيشيرت ناديه"
   }
 }

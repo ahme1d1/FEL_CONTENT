@@ -10,7 +10,8 @@
         "card": "buildUp",
         "platforms": [
           "facebook",
-          "instagram"
+          "instagram",
+          "tiktok"
         ],
         "carriesLink": true
       }
@@ -63,7 +64,8 @@
         "card": "deadline",
         "platforms": [
           "facebook",
-          "instagram"
+          "instagram",
+          "tiktok"
         ],
         "maxLatenessMinutes": 60
       },
@@ -123,7 +125,8 @@
         "card": "winner",
         "platforms": [
           "facebook",
-          "instagram"
+          "instagram",
+          "tiktok"
         ],
         "_note": "The weekly prize. STAT card, not P_WINNER_THEIR_TEAM: that one needs the winner's XI from an auth-gated endpoint."
       },
@@ -147,5 +150,6 @@
         ]
       }
     ]
-  }
+  },
+  "_tiktok": "TikTok takes a 1080x1920 story card wherever one of fixed shape exists — see STORY_BUILDERS in plan.mjs. It stays on the 4:5 feed card for matchday, because the story matchday card holds eight fixture rows and an unset row publishes the design's sample fixture."
 }

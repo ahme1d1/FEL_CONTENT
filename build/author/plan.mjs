@@ -29,6 +29,10 @@ import {
   teamOfWeekCard,
   topPlayersCard,
   winnerCard,
+  buildUpCardStory,
+  deadlineCardStory,
+  questionCardStory,
+  winnerCardStory,
 } from './cards.mjs'
 
 export const CALENDAR = JSON.parse(
@@ -183,6 +187,29 @@ const BUILDERS = {
 }
 
 /**
+ * The vertical card a platform gets instead of the feed one, where a story card of fixed shape
+ * exists. TikTok is a vertical surface and was being handed the same 4:5 image as Facebook.
+ *
+ * Only these four kinds are here, and the omissions are the point: matchday and results would need
+ * `A_MATCHDAY_1080_1920` / `B_RESULTS_1080_1920`, which hold eight and four rows against a day that
+ * has three or four — and an unset row publishes the design's sample fixture rather than nothing.
+ * See the note above the story builders in cards.mjs.
+ */
+const STORY_BUILDERS = {
+  buildUp: ({ window }) => buildUpCardStory({ gameweek: window.gameweek, deadline: window.deadline }),
+  deadline: ({ window }) => deadlineCardStory({ gameweek: window.gameweek, deadline: window.deadline }),
+  question: ({ window, data }) =>
+    questionCardStory({ gameweek: window.gameweek, players: need(data.captainCandidates, 'captain candidates').slice(0, 4) }),
+  winner: ({ window, data }) => {
+    need(data.topPlayers, 'settled gameweek')
+    return winnerCardStory({ gameweek: window.gameweek, winner: need(data.gwStandings, 'gameweek board')[0] })
+  },
+}
+
+/** Platforms that prefer a vertical card when one of fixed shape exists for the kind. */
+const VERTICAL_PLATFORMS = new Set(['tiktok'])
+
+/**
  * @param {{window: object, data: object, authoredAt: string, calendar?: object}} input
  * @returns {{posts: object[], skipped: Array<{id: string, reason: string}>}}
  */
@@ -219,6 +246,11 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
 
       for (const platform of entry.platforms) {
         const { strategy, suffix } = PLATFORMS[platform]
+
+        // A vertical platform takes the story card where one exists. Its own `source` means
+        // render-plan groups it separately, so the feed and story images both get rendered.
+        const build = VERTICAL_PLATFORMS.has(platform) ? STORY_BUILDERS[entry.kind] : null
+        const platformSource = build ? build({ window, day, data }) : source
         const caption = captionFor({
           kind,
           platform,
@@ -238,7 +270,7 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
           // question. It also saves every reader of a manifest re-deriving it from the card.
           kind,
           media: null,
-          source,
+          source: platformSource,
           caption,
           // Travels with the post so the ask survives the handoff to whoever writes the copy.
           ...(caption === null ? { captionBrief: captionBrief(kind) } : {}),

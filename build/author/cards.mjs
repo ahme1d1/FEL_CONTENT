@@ -330,26 +330,101 @@ export function leagueTableCard({ rows }) {
 }
 
 /**
- * The weekly prize post: who won the round, and that a shirt is coming to them.
+ * The weekly prize post: who won the round, their score, and that a shirt is coming to them.
  *
- * The card this SHOULD use is `P_WINNER_THEIR_TEAM_NO_CLUB_SET`, which shows the winner's whole
- * XI with the captain marked — the runbook's 10:30 slot. It cannot be built here: that needs the
- * winner's squad from `GET /managers/:id/squad`, which is behind `JwtAuthGuard`, and this pipeline
- * holds no credential by design. Building it would mean giving a publishing routine a manager's
- * token, which is a worse trade than a simpler card.
+ * This is the one post the audience is waiting for after a round settles, so the manager's name
+ * is never dropped. The STAT hero wraps and collides past 16 characters, so a long name moves to
+ * the support line under a «بطل الجولة» hero rather than being truncated — a person's name is not
+ * something to cut in half.
  *
- * So it is a STAT card, carrying only what the public board already answers: the winner's name and
- * the prize. The name is a manager's own and goes on verbatim.
+ * The card this SHOULD use is `P_WINNER_THEIR_TEAM_NO_CLUB_SET`, which shows the winner's whole XI
+ * with the captain marked. It cannot be built here: that needs `GET /managers/:id/squad`, behind
+ * `JwtAuthGuard`, and handing a publishing routine a manager's token is the worse trade.
  *
- * The 16-character hero cap is real — the design wraps and collides past it — so a long name falls
- * back to the round rather than throwing away the post.
+ * The name is a manager's own and goes on verbatim, exactly as it does on the podium.
  */
 export function winnerCard({ gameweek, winner }) {
   if (!winner?.name) throw new Error('no gameweek winner available yet')
 
-  const hero = winner.name.length <= 16 ? winner.name : gameweekLabel(gameweek)
+  const points = `${asText(winner.gwPts)} ${TEXT.pointsWord}`
+  const fits = winner.name.length <= 16
+
   return {
-    ...statCard({ gameweek, hero, support: TEXT.winnerPrize }),
+    ...statCard({
+      gameweek,
+      hero: fits ? winner.name : TEXT.winnerHero,
+      support: fits ? `${points} · ${TEXT.winnerShirt}` : `${winner.name} · ${points}`,
+    }),
     slug: 'winner',
+  }
+}
+
+/* ─────────────────────────── vertical, for TikTok ─────────────────────────── */
+
+/**
+ * TikTok is a vertical surface, and the tool ships ten 1080 × 1920 cards the calendar had never
+ * used — TikTok was being handed the same 4:5 feed image as Facebook.
+ *
+ * Only the FIXED-SHAPE story cards are wired up here, and that is the whole constraint:
+ * `A_MATCHDAY_1080_1920` holds **eight** fixture rows with sixteen crests, a matchday never has
+ * more than four, and an unset slot does not go blank — it publishes the design's own sample
+ * fixture, with a crest picked off a rotating guess list. There is no 3-row story variant to fall
+ * back on: `ROW_VARIANTS` in build-cards.py generates short variants for the feed cards only, and
+ * regenerating the tool needs the Claude Design source, which is not in this checkout.
+ *
+ * So matchday and results stay on their feed cards until a short story variant exists, and the
+ * kinds below — which carry a fixed number of slots on every round — go out vertical.
+ */
+
+/** Captain poll, story shape. Always exactly four candidates, so nothing is left unset. */
+export function questionCardStory({ gameweek, players }) {
+  if (players.length !== 4) throw new Error(`The question story takes 4 players, got ${players.length}.`)
+  const texts = { 0: gameweekLabel(gameweek), 1: TEXT.questionTitle }
+  const assets = {}
+  players.forEach((p, i) => {
+    texts[2 + i] = shortName(p.name)
+    assets[i] = p.club
+  })
+  return { card: 'J_QUESTION_1080_1920', slug: 'question-story', keepNames: true, texts, assets }
+}
+
+/** Deadline, story shape. t3–t5 are the locked Fantasy EG footer and must never be written. */
+export function deadlineCardStory({ gameweek, deadline }) {
+  return {
+    card: 'H_DEADLINE_1080_1920',
+    slug: 'deadline-story',
+    texts: { 0: gameweekLabel(gameweek), 1: deadlinePhrase(deadline), 2: TEXT.deadlineSubtitle },
+    assets: {},
+  }
+}
+
+/** One fact, large, story shape. Three slots and no assets — the safest card to fill. */
+export function statCardStory({ gameweek, hero, support }) {
+  if (hero.length > 16) throw new Error(`STAT hero "${hero}" is ${hero.length} chars; it wraps past 16.`)
+  return {
+    card: 'D_STAT_1080_1920',
+    slug: 'stat-story',
+    texts: { 0: gameweekLabel(gameweek), 1: hero, 2: support },
+    assets: {},
+  }
+}
+
+/** The build-up post, story shape. Same fact as the feed card: the deadline, large. */
+export function buildUpCardStory({ gameweek, deadline }) {
+  return { ...statCardStory({ gameweek, hero: deadlinePhrase(deadline), support: TEXT.deadlineWord }), slug: 'buildup-story' }
+}
+
+/** The prize post, story shape. Same rule: the manager is named either way. */
+export function winnerCardStory({ gameweek, winner }) {
+  if (!winner?.name) throw new Error('no gameweek winner available yet')
+  const points = `${asText(winner.gwPts)} ${TEXT.pointsWord}`
+  const fits = winner.name.length <= 16
+  return {
+    ...statCardStory({
+      gameweek,
+      hero: fits ? winner.name : TEXT.winnerHero,
+      support: fits ? `${points} · ${TEXT.winnerShirt}` : `${winner.name} · ${points}`,
+    }),
+    slug: 'winner-story',
   }
 }

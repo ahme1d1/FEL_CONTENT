@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "gameweek": 4,
-  "authoredAt": "2026-09-02T01:40:35.396Z",
+  "authoredAt": "2026-09-02T01:49:54.431Z",
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
@@ -59,6 +59,35 @@
         "assets": {}
       },
       "caption": "الجولة الرابعة قربت ⏰\nجهّز فريقك",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d1-2000-tiktok",
+      "publishAt": "2026-09-04T17:00:00Z",
+      "slotCairo": "2026-09-04 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "buildUp",
+      "media": {
+        "file": "2000-buildup-story-f605a4ef.jpg",
+        "sha256": "f605a4efcc595d296ad0cc691e5c23c7b1c17a868603a409447e1c109c01fc37",
+        "bytes": 47285,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "buildup-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة الرابعة قربت ⏰",
       "link": null,
       "dependsOn": null
     },
@@ -408,16 +437,16 @@
       "strategy": "tiktok-draft",
       "kind": "question",
       "media": {
-        "file": "2000-question-4bf578b1.jpg",
-        "sha256": "4bf578b172797b4760a3f33a6473396726021e99b5ed792cc98da632422e8df2",
-        "bytes": 78616,
+        "file": "2000-question-story-4926df51.jpg",
+        "sha256": "4926df51225658d4e1f345945f070ccafbcbce48174cca602a058c20e00c3ad1",
+        "bytes": 76262,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "J_QUESTION",
-        "slug": "question",
+        "card": "J_QUESTION_1080_1920",
+        "slug": "question-story",
         "keepNames": true,
         "texts": {
           "0": "الجولة الرابعة",
@@ -641,6 +670,36 @@
         "assets": {}
       },
       "caption": "كابتن غلط ممكن يضيّع عليك الجولة كلها ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw04-d3-1400-tiktok",
+      "publishAt": "2026-09-07T11:00:00Z",
+      "slotCairo": "2026-09-07 14:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-story-2d69281c.jpg",
+        "sha256": "2d69281cbdd1ceca4ea353b7546772b91eb26344ce31c10e91f56c84864ea50d",
+        "bytes": 62387,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "H_DEADLINE_1080_1920",
+        "slug": "deadline-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "راجع فريقك قبل الديدلاين ⏰",
       "link": null,
       "dependsOn": null,
       "maxLatenessMinutes": 60
