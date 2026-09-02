@@ -105,24 +105,6 @@
     "settleDay": [
       {
         "slot": "12:00",
-        "kind": "podium",
-        "card": "podium",
-        "platforms": [
-          "facebook",
-          "instagram"
-        ]
-      },
-      {
-        "slot": "13:00",
-        "kind": "playerOfRound",
-        "card": "playerOfRound",
-        "platforms": [
-          "facebook",
-          "instagram"
-        ]
-      },
-      {
-        "slot": "14:00",
         "kind": "winner",
         "card": "winner",
         "platforms": [
@@ -131,6 +113,24 @@
           "tiktok"
         ],
         "_note": "The weekly prize. STAT card, not P_WINNER_THEIR_TEAM: that one needs the winner's XI from an auth-gated endpoint."
+      },
+      {
+        "slot": "13:00",
+        "kind": "podium",
+        "card": "podium",
+        "platforms": [
+          "facebook",
+          "instagram"
+        ]
+      },
+      {
+        "slot": "14:00",
+        "kind": "playerOfRound",
+        "card": "playerOfRound",
+        "platforms": [
+          "facebook",
+          "instagram"
+        ]
       },
       {
         "slot": "16:00",
@@ -153,5 +153,6 @@
       }
     ]
   },
-  "_tiktok": "TikTok takes a 1080x1920 story card for every kind that has one — see STORY_BUILDERS in plan.mjs. Matchday and results joined on 2026-09-02 once build-cards.py grew short row variants of their story cards; before that the only layouts held eight and four rows."
+  "_tiktok": "TikTok takes a 1080x1920 story card for every kind that has one — see STORY_BUILDERS in plan.mjs. Matchday and results joined on 2026-09-02 once build-cards.py grew short row variants of their story cards; before that the only layouts held eight and four rows.",
+  "_settleDay": "The prize post leads the day. Owner call, 2026-09-02: the round's winner is what the audience is waiting for once a gameweek settles, so it goes out first rather than third. Settlement itself runs around 01:00 Cairo and the day starts at noon, so 12:00 is as immediate as the grid allows."
 }
