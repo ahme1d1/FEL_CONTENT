@@ -4,7 +4,7 @@
   "_whatChanged": "v1 was abstract («يوم كامل كورة قدامك») and v2 was closer but still stiff («باب الجولة الرابعة فتح», «شوف ناديك واقف فين», «قولنا رأيك»), all rejected. The tell is padding: facebook.minEmoji was 2, which forced a second line onto captions the page writes as one. That floor is now 1.",
   "_retired": "👇 and ownership percentages both appear in the page's AUGUST posts and in NONE from 30 Aug onward. They were dropped deliberately; the linter keeps 👇 banned and no template quotes a percentage.",
   "_registers": "ENGAGEMENT posts close on a question — matchday, matchdayFinal, question, podium, playerOfRound, teamOfWeek, topPlayers. INFORMATIONAL posts state and point forward — buildUp, deadline, priceChanges, leagueTable, results, resultsFinal. captions.mjs holds the list and lifts the linter's trailing-question ban for the first group only.",
-  "_vars": "{matches} «ماتش واحد»/«ماتشين»/«3 ماتشات» · {these} «الماتش ده»/«الماتشين دول»/«الماتشات دي» · {remaining} matches left in the round · {rounds} rounds already played, «جولتين» · {deadline} «الاتنين 4 العصر» · {gw} «الجولة الرابعة». Arabic counts one and two in the noun, so these are pluralised in plan.mjs, never with a bare numeral.",
+  "_vars": "{matches} «ماتش واحد»/«ماتشين»/«3 ماتشات» · {these} «الماتش ده»/«الماتشين دول»/«الماتشات دي» · {remaining} matches left in the round · {rounds} rounds already played, «جولتين» · {deadline} «الاتنين 4 العصر» · {gw} «الجولة الرابعة». Arabic counts one and two in the noun, so these are pluralised in plan.mjs, never with a bare numeral. {winner} is the winning manager's name, and exists only once the round has settled.",
   "kinds": {
     "buildUp": {
       "facebook": [
@@ -151,16 +151,16 @@
     },
     "winner": {
       "facebook": [
-        "اكسب الجولة وخد تيشيرت ناديك 👕\nكلّمنا في الرسايل 🏆",
-        "بطل {gw} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕"
+        "مبروك يا {winner} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕",
+        "اكسب الجولة وخد تيشيرت ناديك 👕\nمبروك يا {winner} 🏆"
       ],
       "instagram": [
-        "اكسب الجولة وخد تيشيرت ناديك 👕\nكلّمنا في الرسايل 🏆",
-        "بطل {gw} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕"
+        "مبروك يا {winner} 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕",
+        "اكسب الجولة وخد تيشيرت ناديك 👕\nمبروك يا {winner} 🏆"
       ],
       "tiktok": [
-        "اكسب الجولة وخد تيشيرت ناديك 👕",
-        "بطل {gw} 🏆"
+        "مبروك يا {winner} 🏆",
+        "بطل الجولة {winner} 🏆"
       ]
     },
     "playerOfRound": {
@@ -206,5 +206,6 @@
       ]
     }
   },
-  "needsHuman": {}
+  "needsHuman": {},
+  "_winner": "The prize caption NAMES the winner — «مبروك يا مراد 🏆 / كلّمنا في الرسايل عشان التيشيرت 👕», read off the page on 2026-09-02. It is the one exception to the settle-day rule that a caption names nobody: congratulating an unnamed person is not a congratulation, and the name is why anyone opens the post."
 }

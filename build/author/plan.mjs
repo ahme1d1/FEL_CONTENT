@@ -96,6 +96,11 @@ function captionVars({ window: w, day, data }) {
     rounds: roundCount(Math.max(0, w.gameweek - 1)),
     deadline: deadlinePhrase(w.deadline),
     gw: gameweekLabel(w.gameweek),
+    // The prize caption is «مبروك يا مراد 🏆» — the one caption that names a person on purpose,
+    // because congratulating nobody in particular is not a congratulation. Undefined until the
+    // round settles, which is fine: the winner post is skipped until then, so no template that
+    // uses it is ever reached with it missing.
+    winner: data.gwStandings?.[0]?.name,
   }
 }
 

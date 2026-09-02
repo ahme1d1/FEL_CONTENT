@@ -16,6 +16,7 @@ const RULES = JSON.parse(
 const VARS = {
   matches: '3 ماتشات',
   these: 'الماتشات دي',
+  winner: 'مراد',
   played: 'ماتشين',
   remaining: '4 ماتشات',
   rounds: 'جولتين',
@@ -107,6 +108,10 @@ test('every settle-day post is templated, so a settled round needs no human', ()
 
 // The whole point of the reversal. A caption carrying a manager's name would also be restating the
 // card, so this guards the voice rule and the automation at once.
+//
+// `winner` is deliberately absent from this list. Its caption is «مبروك يا مراد 🏆» — the page's
+// own words — and congratulating an unnamed person is not a congratulation. It reads its name
+// from {winner}, never from a hardcoded string, which is what the placeholder test above covers.
 test('a settle-day caption names nobody the card already names', () => {
   const names = ['Ahmed', 'محمد', 'My FEL Team', 'El mazzarita']
   for (const kind of ['podium', 'topPlayers', 'playerOfRound', 'teamOfWeek']) {
