@@ -22,6 +22,12 @@ on:
     - cron: '0 13 * * *'   # 16:00
     - cron: '0 17 * * *'   # 20:00
     - cron: '30 19 * * *'  # 22:30
+    # The results post is ANCHORED rather than slotted: it is authored `leadMinutes` after the day's
+    # last fixture reads FINISHED, so its instant is deliberately not one of the six above and no
+    # fixed cron can be aimed at it. This window polls the evening instead. `due.mjs` sends anything
+    # already past its publishAt inside the lateness budget, so an anchored post goes out within
+    # about a quarter of an hour of being authored. This is NOT a slot — do not add one for it.
+    - cron: '*/15 16-23 * * *'
   workflow_dispatch:
     inputs:
       dry_run:

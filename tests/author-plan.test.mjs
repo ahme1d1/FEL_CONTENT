@@ -108,17 +108,58 @@ test('the feed platforms share one image while tiktok takes its own vertical', (
 // The runbook's own loop: schedule everything that needs no scores, then come back for the rest.
 test('a results card for a day that has not been played is skipped, with the reason', () => {
   const { posts, skipped } = plan()
-  assert.equal(posts.some((p) => p.id.includes('-2230-')), false)
+  assert.equal(posts.some((p) => p.id.includes('-results-')), false)
   assert.ok(skipped.some((s) => /not finished/.test(s.reason)))
 })
 
-test('once the scores are in, the same run authors the results card', () => {
+// The results post is ANCHORED, not slotted: it is timed by the football finishing, so its instant
+// is `authoredAt + leadMinutes` and lands wherever that lands. 19:17Z + 20m is 22:37 Cairo, which
+// is deliberately NOT one of the six calendar slots — that is the whole point of the change.
+const playedDay3 = (authoredAt) => {
   const played = GW4.map((f) =>
     f.kickoffAt.startsWith('2026-09-07') ? { ...f, status: 'FINISHED', homeScore: 2, awayScore: 1 } : f,
   )
   const window = contentWindow({ gameweek: 4, fixtures: played, previousFixtures: GW3_TAIL })
-  const { posts } = planPosts({ window, data: DATA, authoredAt: AUTHORED })
-  assert.ok(posts.some((p) => p.id === 'gw04-d3-2230-fb-feed'))
+  return planPosts({ window, data: DATA, authoredAt })
+}
+
+test('once the scores are in, the same run authors the results card', () => {
+  const { posts } = playedDay3('2026-09-07T19:17:00Z')
+  const results = posts.find((p) => p.id === 'gw04-d3-results-fb-feed')
+  assert.ok(results, 'the results post should exist once every fixture that day reads FINISHED')
+  assert.equal(results.publishAt, '2026-09-07T19:37:00Z')
+  assert.equal(results.anchor, 'fixturesFinished')
+})
+
+test('an anchored post is off-slot and still validates', () => {
+  const { posts } = playedDay3('2026-09-07T19:17:00Z')
+  const authoredAt = '2026-09-07T19:17:00Z'
+  const manifest = buildManifest({ gameweek: 4, posts, authoredAt })
+  const results = posts.find((p) => p.id === 'gw04-d3-results-fb-feed')
+  // 22:37 Cairo is not in SLOTS_CAIRO — the old `not-a-slot` rule would have rejected this.
+  assert.equal(results.slotCairo, '2026-09-07 22:37 Africa/Cairo')
+  const problems = validateManifest(manifest).filter((e) => e.ruleId === 'not-a-slot')
+  assert.deepEqual(problems, [])
+})
+
+// The id is mergePosts' key. If it carried the instant it would differ on every pass and the same
+// results card would be authored again and again instead of recognising itself.
+test('re-authoring an anchored post does not mint a duplicate', () => {
+  const first = playedDay3('2026-09-07T19:17:00Z').posts
+  const second = playedDay3('2026-09-07T20:41:00Z').posts
+  const { posts: merged, added } = mergePosts({ existing: first, fresh: second })
+  const ids = merged.filter((p) => p.id.includes('-results-')).map((p) => p.id)
+  assert.equal(new Set(ids).size, ids.length)
+  assert.equal(added.some((id) => id.includes('-results-')), false, 'the second pass re-added it')
+  // The first pass's instant is the one that survives, so the post does not drift later each pass.
+  assert.equal(merged.find((p) => p.id === 'gw04-d3-results-fb-feed').publishAt, '2026-09-07T19:37:00Z')
+})
+
+// Without this, the first pass after a pipeline outage publishes every day it missed at once.
+test('a day that finished long ago is dropped rather than posted late', () => {
+  const { posts, skipped } = playedDay3('2026-09-09T12:00:00Z')
+  assert.equal(posts.some((p) => p.id === 'gw04-d3-results-fb-feed'), false)
+  assert.ok(skipped.some((s) => /too late .* over the 24h limit/.test(s.reason)), JSON.stringify(skipped))
 })
 
 test('a slot that has already gone is skipped rather than made invalid', () => {

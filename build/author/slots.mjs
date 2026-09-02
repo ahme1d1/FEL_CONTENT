@@ -80,3 +80,42 @@ export function slotInstant(cairoDate, wallClock) {
   // midnight and our earliest slot is 09:00 — but a silent wrong answer here is a mistimed post.
   throw new Error(`${wallClock} Cairo does not exist on ${cairoDate}.`)
 }
+
+/**
+ * Graph refuses a `scheduled_publish_time` less than ten minutes out, and rendering plus the push
+ * to Pages takes five to eight. Fifteen is the floor at which an anchored post can still survive
+ * the handoff; below it the post fails at Meta instead of going out, which is a worse failure than
+ * not authoring it at all because it happens after the ledger has recorded an attempt.
+ */
+const MIN_LEAD_MINUTES = 15
+
+/**
+ * An instant `leadMinutes` from now, for a post the calendar cannot time in advance.
+ *
+ * The mirror of `slotInstant`, and deliberately the same return shape so the planner can use
+ * either without knowing which it got. The difference is where the instant comes from: a slot is
+ * a time somebody chose, an anchor is a time the world chose. `slotCairo` is still filled in —
+ * it is what the dry run prints and what a human reads in the diff — but here it is a READING of
+ * the instant, not the thing the instant was derived from.
+ *
+ * Used by the results post, whose card cannot be built until every fixture that day reads
+ * FINISHED. Pinning that to a wall clock meant guessing when football ends, and the guess lost
+ * every day of GW3.
+ *
+ * @param {string} authoredAt ISO instant the pass started
+ * @param {number} leadMinutes how long after it to publish; at least MIN_LEAD_MINUTES
+ * @returns {{publishAt: string, slotCairo: string}} the same pair the validator cross-checks
+ */
+export function anchoredInstant(authoredAt, leadMinutes) {
+  const at = Date.parse(authoredAt)
+  if (!Number.isFinite(at)) throw new Error(`"${authoredAt}" is not a date.`)
+  if (!Number.isFinite(leadMinutes) || leadMinutes < MIN_LEAD_MINUTES) {
+    throw new Error(`leadMinutes must be a number of at least ${MIN_LEAD_MINUTES}; got ${leadMinutes}.`)
+  }
+
+  const publishAt = toIso(at + leadMinutes * 60_000)
+  return {
+    publishAt,
+    slotCairo: `${cairoDateOf(publishAt)} ${cairoWallClock(publishAt)} Africa/Cairo`,
+  }
+}

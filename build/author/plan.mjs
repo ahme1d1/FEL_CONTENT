@@ -13,7 +13,7 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { sourceKey } from '../render-plan.mjs'
-import { slotInstant } from './slots.mjs'
+import { anchoredInstant, slotInstant } from './slots.mjs'
 import { captionBrief, captionFor } from './captions.mjs'
 import { deadlinePhrase, gameweekLabel } from './labels.mjs'
 import {
@@ -268,14 +268,52 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
     const entries = calendar.days[primaryRole(day)] ?? []
 
     for (const entry of entries) {
-      const { publishAt, slotCairo } = slotInstant(day.date, entry.slot)
-      const idPrefix = `${gwTag(window.gameweek)}-d${day.index}-${entry.slot.replace(':', '')}`
+      // Two ways a post gets its instant. A SLOTTED entry lands on one of the six calendar slots,
+      // which is right for anything the calendar can predict — a matchday card in the morning, a
+      // deadline reminder. An ANCHORED entry has no wall clock at all: it is authored on the first
+      // pass that can build its card, and goes out `leadMinutes` later.
+      //
+      // Results are anchored because 22:30 was a guess about when football ends, and the guess lost
+      // the race on every day of GW3 — the card cannot be built until every fixture that day reads
+      // FINISHED, and by the time that was true the slot had gone, so the post was skipped as
+      // `has already passed` three days running. `BUILDERS.results` refusing an unplayed day is now
+      // the TRIGGER rather than a reason to miss a slot: it throws, the entry is skipped by name,
+      // and the next pass tries again until the day is done.
+      const anchored = Boolean(entry.anchor)
+      const { publishAt, slotCairo } = anchored
+        ? anchoredInstant(authoredAt, entry.leadMinutes)
+        : slotInstant(day.date, entry.slot)
+
+      // The id is `mergePosts`' key, so nothing in it may move between passes. A slotted id names
+      // its slot; an anchored id names its KIND, because its instant is different every pass and a
+      // time-derived id would mint a fresh duplicate each time instead of recognising itself.
+      const idPrefix = anchored
+        ? `${gwTag(window.gameweek)}-d${day.index}-${entry.kind}`
+        : `${gwTag(window.gameweek)}-d${day.index}-${entry.slot.replace(':', '')}`
 
       // publishAt must be after authoredAt or the manifest is invalid. Re-authoring mid-round is
-      // normal, so a slot that has already gone is expected, not an error.
-      if (Date.parse(publishAt) <= Date.parse(authoredAt)) {
+      // normal, so a slot that has already gone is expected, not an error. An anchored instant is
+      // computed forward from `authoredAt`, so it is never in the past and never needs this.
+      if (!anchored && Date.parse(publishAt) <= Date.parse(authoredAt)) {
         skipped.push({ id: idPrefix, reason: `${slotCairo} has already passed` })
         continue
+      }
+
+      // An anchored entry fires whenever its card becomes buildable, which for results means
+      // "whenever the day finished". Without a cutoff that is also true of every day that finished
+      // LAST week: the pass that first sees them would mint a results post for each and publish
+      // three days of old scores twenty minutes from now. `staleAfterHours` measures from the day's
+      // last kickoff, so a day the pipeline missed is dropped by name rather than posted late.
+      if (anchored && entry.staleAfterHours) {
+        const lastKickoff = Math.max(...(day.fixtures ?? []).map((f) => Date.parse(f.kickoffAt)))
+        const ageHours = (Date.parse(authoredAt) - lastKickoff) / 3_600_000
+        if (Number.isFinite(ageHours) && ageHours > entry.staleAfterHours) {
+          skipped.push({
+            id: idPrefix,
+            reason: `too late — ${entry.kind} is ${Math.round(ageHours)}h past kickoff, over the ${entry.staleAfterHours}h limit`,
+          })
+          continue
+        }
       }
 
       // Some cards read data that never stops moving — a league table, a rolling week of price
@@ -337,6 +375,9 @@ export function planPosts({ window, data, authoredAt, calendar = CALENDAR }) {
           // make a link clickable, and the linter rejects one in their captions.
           link: entry.carriesLink && platform === 'facebook' ? calendar.link : null,
           dependsOn: null,
+          // Travels with the post because `validateManifest` cannot otherwise tell an off-slot
+          // instant from a mistake — an anchored post is exempt from the calendar-slot rule.
+          ...(anchored ? { anchor: entry.anchor } : {}),
           ...(entry.maxLatenessMinutes ? { maxLatenessMinutes: entry.maxLatenessMinutes } : {}),
         })
       }

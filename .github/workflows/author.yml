@@ -28,6 +28,18 @@ on:
     # minutes, and this job takes 5-8 minutes to render and push, so a run starting at :20 finishes
     # too close to a :30 slot to hand it over.
     - cron: '5 * * * *'
+    # ...and every 20 minutes through the evening, when matches actually finish.
+    #
+    # The hourly line above is a schedule GitHub is free to ignore, and does: on 2026-09-02 it
+    # produced four runs in twenty-four hours (08:31, 13:22 failed, 17:41, 20:41). The 17:41 pass
+    # was mid-match and the next was 20:41, so the one pass that could have authored that night's
+    # results never happened. Scheduled workflows are best-effort; several independent entries
+    # degrade far better than one, because each is its own chance rather than the same one retried.
+    #
+    # 16:00-22:59 UTC is 18:00-01:00 Cairo in winter and 19:00-02:00 in summer, which brackets the
+    # end of every kickoff in the fixture list under either offset. Runs serialise on the `content`
+    # concurrency group below, so a dense window queues rather than races.
+    - cron: '*/20 16-22 * * *'
   workflow_dispatch:
     inputs:
       gameweek:

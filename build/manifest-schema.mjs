@@ -84,7 +84,11 @@ function checkTiming(post, i, authoredAt, out) {
   }
 
   const wall = cairoWallClock(post.publishAt)
-  if (!SLOTS_CAIRO.includes(wall)) {
+  // An ANCHORED post has no calendar slot by design: it is timed by an event — a day's fixtures all
+  // reading FINISHED — which lands wherever the football lands, not on one of six chosen times.
+  // Everything else about its instant is still checked: UTC, strictly after authoredAt, and
+  // `slotCairo` agreeing with it below. Only the "must be one of the six" rule is lifted.
+  if (!post.anchor && !SLOTS_CAIRO.includes(wall)) {
     out.push(at(i, 'not-a-slot', `${wall} Cairo is not a calendar slot (${SLOTS_CAIRO.join(', ')}).`))
   }
   if (post.slotCairo && !post.slotCairo.includes(wall)) {
