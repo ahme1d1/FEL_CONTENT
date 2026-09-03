@@ -53,6 +53,28 @@ test('a false season length is rejected', () => {
   assert.ok(idsFor('38 جولة و38 فايز 🔥⚽').includes('season-length'))
 })
 
+test('the BPS acronym is rejected, but describing what it measures is not', () => {
+  // The system is real since 2026-09-03; the acronym is transliterated English (kit §2 rule 7).
+  assert.ok(idsFor('النقاط الإضافية بتتحسب بـ BPS 🔥⚽').includes('bps'))
+  assert.ok(!idsFor('أحسن 3 لاعيبة في الماتش بياخدوا نقط إضافية 🔥⚽').includes('bps'))
+})
+
+test('a Monday stat revision is rejected — that is a Premier League convention', () => {
+  assert.ok(idsFor('الإحصائيات بتتراجع رسمياً يوم الاتنين 🔥⚽').includes('monday-revision'))
+})
+
+test('saying the extra points compute themselves is allowed — it became true', () => {
+  // The `automatic-bonus` rule outlived the fact behind it: bonus was typed in by an admin until
+  // the 2026-09-03 scoring release computed it from match statistics. A linter that keeps
+  // rejecting a claim after it comes true blocks honest copy, which is the failure this guards.
+  const text = 'النقاط الإضافية بتتحسب أوتوماتيك من الماتش 🔥⚽'
+  assert.deepEqual(idsFor(text), [])
+})
+
+test('«بونص» is still the wrong word for them', () => {
+  assert.ok(idsFor('البونص نزل دلوقتي 🔥⚽').includes('retired-vocabulary'))
+})
+
 test('the two-hour deadline claim is rejected', () => {
   assert.ok(idsFor('الديدلاين قبل أول ماتش بساعتين 🔥⚽').includes('two-hour-deadline'))
 })

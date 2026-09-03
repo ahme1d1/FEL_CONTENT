@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "_source": "docs/marketing/content-design-kit.md §2 (voice) and §5 (forbidden claims) in FEL_WEBSITE, plus owner calls logged there. Update both together.",
+  "_source": "docs/marketing/content-design-kit.md §2 (voice) and §5 (forbidden claims) in FEL_WEBSITE, plus owner calls logged there. Update both together. A rule here can go stale in the direction that matters least visibly: `automatic-bonus` outlived the fact behind it and spent time rejecting captions that were simply true.",
   "platforms": {
     "facebook": {
       "maxChars": null,
@@ -122,6 +122,10 @@
     {
       "term": "بونص",
       "use": "النقاط الإضافية"
+    },
+    {
+      "term": "البونص",
+      "use": "النقاط الإضافية"
     }
   ],
   "msaMarkers": [
@@ -208,11 +212,6 @@
       "message": "SHOW_SIMULATED_COMPETITION is false."
     },
     {
-      "id": "automatic-bonus",
-      "pattern": "(بونص|النقاط\\s+الإضافية)[^\\n]{0,20}(تلقائي|أوتوماتيك)",
-      "message": "An admin enters bonus by hand per player. Never call it automatic."
-    },
-    {
       "id": "app-download",
       "pattern": "حمّل\\s+التطبيق|حمل\\s+التطبيق|App\\s*Store|Google\\s*Play|جوجل\\s+بلاي|آب\\s*ستور|المتجر",
       "message": "nativeAppLive is false. Web only."
@@ -243,9 +242,14 @@
       "message": "Unverified. Keep notifications and goal alerts out of copy."
     },
     {
+      "id": "monday-revision",
+      "pattern": "بتتراجع\\s+رسمياً",
+      "message": "A Premier League convention. Stats are reviewed after the match, not on a weekday."
+    },
+    {
       "id": "bps",
-      "pattern": "\\bBPS\\b|بتتراجع\\s+رسمياً",
-      "message": "FPL's system and a Premier League convention. Ours is entered by hand."
+      "pattern": "\\bBPS\\b",
+      "message": "The system behind the extra points is real since 2026-09-03, but the acronym is transliterated English. Describe what it measures; never name it."
     },
     {
       "id": "scout-stats",
