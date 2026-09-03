@@ -498,6 +498,379 @@
       "link": null,
       "dependsOn": null,
       "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw03-d7-1200-fb-feed",
+      "publishAt": "2026-09-04T09:00:00Z",
+      "slotCairo": "2026-09-04 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "winner",
+      "media": {
+        "file": "1200-winner-7989fc4a.jpg",
+        "sha256": "7989fc4a4398979d8c59fb149fbf5d9e53c2f0e08c0e1715a1b2885d36942217",
+        "bytes": 64474,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "winner",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "Mohamed Sadek",
+          "2": "80 نقطة · وياخد تيشيرت ناديه"
+        },
+        "assets": {}
+      },
+      "caption": "مبروك يا Mohamed Sadek 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1200-ig-feed",
+      "publishAt": "2026-09-04T09:00:00Z",
+      "slotCairo": "2026-09-04 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "winner",
+      "media": {
+        "file": "1200-winner-7989fc4a.jpg",
+        "sha256": "7989fc4a4398979d8c59fb149fbf5d9e53c2f0e08c0e1715a1b2885d36942217",
+        "bytes": 64474,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "winner",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "Mohamed Sadek",
+          "2": "80 نقطة · وياخد تيشيرت ناديه"
+        },
+        "assets": {}
+      },
+      "caption": "مبروك يا Mohamed Sadek 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1200-tiktok",
+      "publishAt": "2026-09-04T09:00:00Z",
+      "slotCairo": "2026-09-04 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "winner",
+      "media": {
+        "file": "1200-winner-story-9e8d813a.jpg",
+        "sha256": "9e8d813a9107aa94099f61bb8bcfd86d428dc8de183f0d46f3d4d846dff1cfff",
+        "bytes": 61856,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "winner-story",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "Mohamed Sadek",
+          "2": "80 نقطة · وياخد تيشيرت ناديه"
+        },
+        "assets": {}
+      },
+      "caption": "مبروك يا Mohamed Sadek 🏆",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1300-fb-feed",
+      "publishAt": "2026-09-04T10:00:00Z",
+      "slotCairo": "2026-09-04 13:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "podium",
+      "media": {
+        "file": "1300-podium-3d6b7413.jpg",
+        "sha256": "3d6b741366ec906a8cfbbc1fdba1af29d113cce6434d57b6fd5af325f15a7ef5",
+        "bytes": 87881,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "E_PODIUM",
+        "slug": "podium",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "أعلى 3 مديرين",
+          "2": "1",
+          "3": "العالمي",
+          "4": "Mohamed Sadek",
+          "5": "80",
+          "6": "2",
+          "7": "الكينج",
+          "8": "yossef amer",
+          "9": "78",
+          "10": "3",
+          "11": "الاهلي",
+          "12": "يوسف نبيل حسين احمد حسن عمار",
+          "13": "76"
+        },
+        "assets": {}
+      },
+      "caption": "أعلى 3 مديرين في الجولة التالتة 🏅",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1300-ig-feed",
+      "publishAt": "2026-09-04T10:00:00Z",
+      "slotCairo": "2026-09-04 13:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "podium",
+      "media": {
+        "file": "1300-podium-3d6b7413.jpg",
+        "sha256": "3d6b741366ec906a8cfbbc1fdba1af29d113cce6434d57b6fd5af325f15a7ef5",
+        "bytes": 87881,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "E_PODIUM",
+        "slug": "podium",
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "أعلى 3 مديرين",
+          "2": "1",
+          "3": "العالمي",
+          "4": "Mohamed Sadek",
+          "5": "80",
+          "6": "2",
+          "7": "الكينج",
+          "8": "yossef amer",
+          "9": "78",
+          "10": "3",
+          "11": "الاهلي",
+          "12": "يوسف نبيل حسين احمد حسن عمار",
+          "13": "76"
+        },
+        "assets": {}
+      },
+      "caption": "أعلى 3 مديرين في الجولة التالتة 🏅",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1400-fb-feed",
+      "publishAt": "2026-09-04T11:00:00Z",
+      "slotCairo": "2026-09-04 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "playerOfRound",
+      "media": {
+        "file": "1400-player-736eadac.jpg",
+        "sha256": "736eadac4202dfeee19169279ab168acbfa03c158e32e0a3f68913dfbb057637",
+        "bytes": 63339,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "G_NO_PHOTO_FALLBACK",
+        "slug": "player",
+        "keepNames": true,
+        "texts": {
+          "0": "أعلى نقط الجولة",
+          "1": "سامى",
+          "2": "بيراميدز",
+          "3": "17",
+          "4": "نقطة"
+        },
+        "assets": {
+          "0": "PYR"
+        }
+      },
+      "caption": "أعلى نقط في الجولة التالتة ⚡\nكان عندك؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-1400-ig-feed",
+      "publishAt": "2026-09-04T11:00:00Z",
+      "slotCairo": "2026-09-04 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "playerOfRound",
+      "media": {
+        "file": "1400-player-736eadac.jpg",
+        "sha256": "736eadac4202dfeee19169279ab168acbfa03c158e32e0a3f68913dfbb057637",
+        "bytes": 63339,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "G_NO_PHOTO_FALLBACK",
+        "slug": "player",
+        "keepNames": true,
+        "texts": {
+          "0": "أعلى نقط الجولة",
+          "1": "سامى",
+          "2": "بيراميدز",
+          "3": "17",
+          "4": "نقطة"
+        },
+        "assets": {
+          "0": "PYR"
+        }
+      },
+      "caption": "أعلى نقط في الجولة التالتة ⚡\nكان عندك؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-2000-fb-feed",
+      "publishAt": "2026-09-04T17:00:00Z",
+      "slotCairo": "2026-09-04 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "topPlayers",
+      "media": {
+        "file": "2000-top-players-ba747351.jpg",
+        "sha256": "ba747351d71ca86c618f8b4d075d0c916aaccd0f91f4717388bb35be0f334281",
+        "bytes": 105168,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F1_TOP_PLAYERS_10_rows",
+        "slug": "top-players",
+        "keepNames": true,
+        "texts": {
+          "0": "أعلى نقط الجولة",
+          "1": "1",
+          "2": "سامى",
+          "3": "17",
+          "4": "2",
+          "5": "إبراهيم",
+          "6": "15",
+          "7": "3",
+          "8": "شعبان",
+          "9": "14",
+          "10": "4",
+          "11": "جمال",
+          "12": "13",
+          "13": "5",
+          "14": "سافيور",
+          "15": "11",
+          "16": "6",
+          "17": "نشأت",
+          "18": "11",
+          "19": "7",
+          "20": "الشيبي",
+          "21": "11",
+          "22": "8",
+          "23": "بلحاج",
+          "24": "11",
+          "25": "9",
+          "26": "عفيفي",
+          "27": "10",
+          "28": "10",
+          "29": "موسى",
+          "30": "10"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "AHL",
+          "2": "QAN",
+          "3": "MOK",
+          "4": "ITT",
+          "5": "GHZ",
+          "6": "PYR",
+          "7": "CRA",
+          "8": "NBE",
+          "9": "PTJ"
+        }
+      },
+      "caption": "أعلى لاعيبة جابوا نقط في الجولة التالتة 🔥\nعندك حد منهم في فريقك؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw03-d7-2000-ig-feed",
+      "publishAt": "2026-09-04T17:00:00Z",
+      "slotCairo": "2026-09-04 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "topPlayers",
+      "media": {
+        "file": "2000-top-players-ba747351.jpg",
+        "sha256": "ba747351d71ca86c618f8b4d075d0c916aaccd0f91f4717388bb35be0f334281",
+        "bytes": 105168,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F1_TOP_PLAYERS_10_rows",
+        "slug": "top-players",
+        "keepNames": true,
+        "texts": {
+          "0": "أعلى نقط الجولة",
+          "1": "1",
+          "2": "سامى",
+          "3": "17",
+          "4": "2",
+          "5": "إبراهيم",
+          "6": "15",
+          "7": "3",
+          "8": "شعبان",
+          "9": "14",
+          "10": "4",
+          "11": "جمال",
+          "12": "13",
+          "13": "5",
+          "14": "سافيور",
+          "15": "11",
+          "16": "6",
+          "17": "نشأت",
+          "18": "11",
+          "19": "7",
+          "20": "الشيبي",
+          "21": "11",
+          "22": "8",
+          "23": "بلحاج",
+          "24": "11",
+          "25": "9",
+          "26": "عفيفي",
+          "27": "10",
+          "28": "10",
+          "29": "موسى",
+          "30": "10"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "AHL",
+          "2": "QAN",
+          "3": "MOK",
+          "4": "ITT",
+          "5": "GHZ",
+          "6": "PYR",
+          "7": "CRA",
+          "8": "NBE",
+          "9": "PTJ"
+        }
+      },
+      "caption": "أعلى لاعيبة جابوا نقط في الجولة التالتة 🔥\nعندك حد منهم؟ 👀",
+      "link": null,
+      "dependsOn": null
     }
   ]
 }
