@@ -22,3 +22,15 @@
 {"ts":"2026-09-03T00:57:01.430Z","id":"gw03-d5-results-ig-feed","state":"published","remoteId":"18139176280606749"}
 {"ts":"2026-09-03T13:27:48.832Z","id":"gw03-d6-1200-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"6618fdd6b5f0973b7f4ee323ed9ac615014b17ce2a14590463b57d195a38b28b"}
 {"ts":"2026-09-03T13:27:57.348Z","id":"gw03-d6-1200-ig-feed","state":"published","remoteId":"18000815501989249"}
+{"ts":"2026-09-03T19:47:22.329Z","id":"gw05-d1-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"c6c8f45eceb026cf978245f0c2a77e23381ebe26c984a4dcf7d11eeee9f389e3"}
+{"ts":"2026-09-03T19:47:24.952Z","id":"gw05-d1-2000-fb-feed","state":"scheduled","remoteId":"122119989129405259","scheduledFor":"2026-09-10T17:00:00Z"}
+{"ts":"2026-09-03T19:47:24.953Z","id":"gw05-d2-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"ae3833ff0eaf94998ec6accbfc9b4eba1f40ddcfc65e069a7721747c07f66f1d"}
+{"ts":"2026-09-03T19:47:27.011Z","id":"gw05-d2-2000-fb-feed","state":"scheduled","remoteId":"122119989177405259","scheduledFor":"2026-09-13T17:00:00Z"}
+{"ts":"2026-09-03T19:47:27.011Z","id":"gw05-d3-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"2d66960c00a1abd43d27fe51071784f45615db3ae9d890f5149569d2f744f1e2"}
+{"ts":"2026-09-03T19:47:29.226Z","id":"gw05-d3-1200-fb-feed","state":"scheduled","remoteId":"122119989225405259","scheduledFor":"2026-09-14T09:00:00Z"}
+{"ts":"2026-09-03T19:47:29.227Z","id":"gw05-d3-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"2a85d421704c34d186ac5e0dca46839c472f3d4dceabcef02591adef4d72013b"}
+{"ts":"2026-09-03T19:47:31.366Z","id":"gw05-d3-1400-fb-feed","state":"scheduled","remoteId":"122119989267405259","scheduledFor":"2026-09-14T11:00:00Z"}
+{"ts":"2026-09-03T19:47:31.367Z","id":"gw05-d4-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"5f3d1f8351c75be86b19c4ae8502f4fcf20107e826f10f04fd300149f2d0048f"}
+{"ts":"2026-09-03T19:47:33.734Z","id":"gw05-d4-1200-fb-feed","state":"scheduled","remoteId":"122119989321405259","scheduledFor":"2026-09-15T09:00:00Z"}
+{"ts":"2026-09-03T19:47:33.735Z","id":"gw05-d5-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"32c652cc5fb426091b7e53ae9c01f8032ba2ad6cc3815bdbc1d7d7458c9ca135"}
+{"ts":"2026-09-03T19:47:37.169Z","id":"gw05-d5-1200-fb-feed","state":"scheduled","remoteId":"122119989369405259","scheduledFor":"2026-09-16T09:00:00Z"}
