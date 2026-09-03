@@ -40,6 +40,16 @@ export const STRATEGIES = {
   'fb-scheduled': { platform: 'facebook', media: 'image', mimes: [...IMAGE, 'image/png'], aspect: null },
   'fb-text': { platform: 'facebook', media: 'none', mimes: [], aspect: null },
   'fb-story': { platform: 'facebook', media: 'image', mimes: [...IMAGE, 'image/png'], aspect: 'vertical' },
+  /**
+   * A scheduled Facebook VIDEO. Separate from `fb-scheduled` because the Graph
+   * endpoint is different, not merely the file: /videos takes `file_url` and
+   * `description` where /photos takes `url` and `message`, so one strategy
+   * covering both would post a video with no caption.
+   *
+   * Constrained to vertical because vertical is all the shorts pipeline makes;
+   * Facebook itself would accept other shapes.
+   */
+  'fb-video': { platform: 'facebook', media: 'video', mimes: VIDEO, aspect: 'vertical' },
   'ig-feed': { platform: 'instagram', media: 'image', mimes: ['image/jpeg'], aspect: 'feed' },
   'ig-story': { platform: 'instagram', media: 'image', mimes: ['image/jpeg'], aspect: 'vertical' },
   'ig-reel': { platform: 'instagram', media: 'video', mimes: VIDEO, aspect: 'vertical' },

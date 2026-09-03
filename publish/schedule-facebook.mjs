@@ -18,7 +18,12 @@ import { cairoWallClock, validateManifest } from '../build/manifest-schema.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
 import { verifyMedia } from './media.mjs'
 import { selectSchedulable } from './schedule-plan.mjs'
-import { epochSeconds, scheduleFacebookPhoto, scheduleFacebookText } from './platforms/fb-schedule.mjs'
+import {
+  epochSeconds,
+  scheduleFacebookPhoto,
+  scheduleFacebookText,
+  scheduleFacebookVideo,
+} from './platforms/fb-schedule.mjs'
 
 const GRAPH = 'https://graph.facebook.com/v21.0'
 
@@ -79,7 +84,12 @@ function resolvePageId(dryRun) {
 const scheduleOne = ({ post, manifest, http, pageId }) =>
   post.strategy === 'fb-text'
     ? scheduleFacebookText({ http, pageId, post })
-    : scheduleFacebookPhoto({ http, pageId, post, mediaUrl: `${manifest.mediaBase}/${post.media.file}` })
+    : (post.strategy === 'fb-video' ? scheduleFacebookVideo : scheduleFacebookPhoto)({
+        http,
+        pageId,
+        post,
+        mediaUrl: `${manifest.mediaBase}/${post.media.file}`,
+      })
 
 /** The three readings of one instant, so a wrong one is obvious before it is sent. */
 const when = (post) =>

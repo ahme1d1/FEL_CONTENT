@@ -60,3 +60,28 @@ export async function scheduleFacebookText({ http, pageId, post }) {
   if (!body.id) throw new Error(`Scheduling ${post.id} returned no id.`)
   return { remoteId: body.id }
 }
+
+/**
+ * A short, scheduled.
+ *
+ * The Graph video endpoint is NOT the photo endpoint with a different file. It reads `file_url`
+ * where /photos reads `url`, and `description` where /photos reads `message` — send the photo
+ * form here and Facebook accepts it, then publishes a video with no words on it.
+ *
+ * Like a card, the bytes are pulled by Meta from `mediaBase` rather than uploaded from here.
+ *
+ * @returns {Promise<{remoteId: string}>}
+ */
+export async function scheduleFacebookVideo({ http, pageId, post, mediaUrl }) {
+  const { message, ...timing } = scheduledForm(post)
+
+  const body = await http({
+    method: 'POST',
+    path: `/${pageId}/videos`,
+    form: { ...timing, description: message, file_url: mediaUrl },
+  })
+
+  const remoteId = body.post_id ?? body.id
+  if (!remoteId) throw new Error(`Scheduling ${post.id} returned no id.`)
+  return { remoteId }
+}

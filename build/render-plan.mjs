@@ -89,6 +89,9 @@ export function stampManifest(manifest, results) {
         mime: r.mime,
         width: r.width,
         height: r.height,
+        // Video only, and omitted rather than nulled for stills: the schema's
+        // 90s ig-reel cap reads this field, so it has to survive the stamp.
+        ...(r.durationSeconds === undefined ? {} : { durationSeconds: r.durationSeconds }),
       })
     }
   }

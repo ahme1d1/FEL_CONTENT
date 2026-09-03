@@ -11,7 +11,7 @@
  */
 
 /** The strategies `due.mjs` leaves to us, and the only ones we may touch. */
-const AUTHORING_PASS = new Set(['fb-scheduled', 'fb-text'])
+const AUTHORING_PASS = new Set(['fb-scheduled', 'fb-text', 'fb-video'])
 
 /** Anything here closes a post out. `claimed` is deliberately absent: it means we do not know. */
 const TERMINAL = new Set(['scheduled', 'failed', 'skipped'])
