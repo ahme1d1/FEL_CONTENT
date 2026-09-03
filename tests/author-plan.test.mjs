@@ -268,3 +268,22 @@ test('key order alone is not a change, so a re-run is not a churn of false drift
   }
   assert.deepEqual(mergePosts({ existing: [reordered], fresh: posts }).drifted, [])
 })
+
+// STORY_BUILDERS is keyed on the FINAL kind, so on a round's last matchday it looked up
+// `resultsFinal` — an entry that did not exist — and `build` came back undefined. The post then
+// silently fell back to the 1080x1350 feed card. Nothing caught it: `tiktok-draft` carries
+// `aspect: null` in manifest-schema.mjs, so the vertical guard never ran. `matchdayFinal` had an
+// entry and `resultsFinal` did not, which is why only the results half was ever wrong.
+test('the results card on a round’s last matchday is still vertical on tiktok', () => {
+  const played = GW4.map((f) => ({ ...f, status: 'FINISHED', homeScore: 2, awayScore: 1 }))
+  const window = contentWindow({ gameweek: 4, fixtures: played, previousFixtures: GW3_TAIL })
+  const { posts } = planPosts({ window, data: DATA, authoredAt: '2026-09-08T19:17:00Z' })
+
+  const tiktok = posts.find((p) => p.id === 'gw04-d4-results-tiktok')
+  assert.ok(tiktok, 'the final matchday results post should exist')
+  assert.equal(tiktok.kind, 'resultsFinal')
+  assert.match(tiktok.source.card, /_1080_1920/)
+
+  const feed = posts.find((p) => p.id === 'gw04-d4-results-fb-feed')
+  assert.notEqual(JSON.stringify(tiktok.source), JSON.stringify(feed.source))
+})

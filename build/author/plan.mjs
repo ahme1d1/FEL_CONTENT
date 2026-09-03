@@ -228,6 +228,13 @@ const BUILDERS = {
  * A builder returning null means "no story layout for this shape" — a single-fixture day has none —
  * and the caller falls back to the feed image rather than inventing one.
  */
+/** Shared by `results` and `resultsFinal`: the same card, a different caption register. */
+const resultsStory = ({ window, day }) => {
+  const fixtures = need(day.fixtures, 'fixtures')
+  if (fixtures.some((f) => f.status !== 'FINISHED')) throw new Error('fixtures that day are not finished')
+  return resultsCardStory({ gameweek: window.gameweek, fixtures })
+}
+
 const STORY_BUILDERS = {
   matchday: ({ window, day }) =>
     matchdayCardStory({ gameweek: window.gameweek, fixtures: need(day.fixtures, 'fixtures') }),
@@ -235,11 +242,12 @@ const STORY_BUILDERS = {
   matchdayFinal: ({ window, day }) =>
     matchdayCardStory({ gameweek: window.gameweek, fixtures: need(day.fixtures, 'fixtures') }),
 
-  results: ({ window, day }) => {
-    const fixtures = need(day.fixtures, 'fixtures')
-    if (fixtures.some((f) => f.status !== 'FINISHED')) throw new Error('fixtures that day are not finished')
-    return resultsCardStory({ gameweek: window.gameweek, fixtures })
-  },
+  results: resultsStory,
+
+  // Keyed on the FINAL kind (see FINAL_KIND), so a round's last matchday looks up `resultsFinal`
+  // rather than `results`. Without this entry the lookup returned undefined and the post fell back
+  // to the 1080x1350 feed card — silently, because `tiktok-draft` carries no aspect guard.
+  resultsFinal: resultsStory,
 
   buildUp: ({ window }) => buildUpCardStory({ gameweek: window.gameweek, deadline: window.deadline }),
   deadline: ({ window }) => deadlineCardStory({ gameweek: window.gameweek, deadline: window.deadline }),

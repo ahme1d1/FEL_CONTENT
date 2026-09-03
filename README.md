@@ -42,7 +42,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 277 unit tests, no network, no accounts
+npm test                                    # 302 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
