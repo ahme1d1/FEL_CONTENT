@@ -104,3 +104,76 @@ test('a container with no id throws rather than publishing undefined', async () 
   const { execute } = recorder([ok({})])
   await assert.rejects(() => publishInstagramViaComposio({ ...ctx(execute), post: feedPost, mediaUrl: url }), /container/i)
 })
+
+/* --- Video containers are not publishable the instant they are created --- */
+
+const reelPost = {
+  id: 'gw03-d1-1100-ig-reel',
+  strategy: 'ig-reel',
+  caption: 'فانتازي بلاعيبة الدوري المصري ⚽',
+  media: { file: 'a.mp4', mime: 'video/mp4' },
+}
+const videoUrl = 'https://media.fantasyeg.com/memes/a.mp4'
+
+/** What Instagram actually returns while it is still transcoding a Reel. */
+const notReady = {
+  successful: false,
+  error:
+    'Failed to create post (status 400). Response: {"error":{"message":"Media ID is not available",' +
+    '"code":9007,"error_subcode":2207027}}',
+}
+
+/**
+ * Regression, seen publishing a real Reel on 2026-09-03: the first publish came back 9007
+ * «Media ID is not available», and the second, ~25s later, succeeded. The comment on this
+ * function claimed "the publish tool polls for FINISHED itself, so there is no wait loop here",
+ * which holds for an image and not for a video.
+ *
+ * It matters beyond a one-off: publish.mjs records a failure as `failed`, which due.mjs treats
+ * as TERMINAL, so the routine would never retry the post.
+ */
+test('a reel that is still transcoding is retried rather than failed', async () => {
+  const { execute, calls } = recorder([ok({ id: 'C' }), notReady, notReady, ok({ id: 'M' })])
+  const result = await publishInstagramViaComposio({
+    ...ctx(execute),
+    post: reelPost,
+    mediaUrl: videoUrl,
+    waitMs: 0,
+  })
+
+  assert.equal(result.remoteId, 'M')
+  assert.equal(calls.length, 4, 'one container, three publish attempts')
+  assert.equal(calls[0].tool, COMPOSIO_TOOLS.container)
+  // The SAME container is retried; creating a second one would orphan the first.
+  for (const c of calls.slice(1)) {
+    assert.equal(c.tool, COMPOSIO_TOOLS.publish)
+    assert.equal(c.args.creation_id, 'C')
+  }
+})
+
+test('an image publishes on the first attempt, with no waiting', async () => {
+  const { execute, calls } = recorder([ok({ id: 'C' }), ok({ id: 'M' })])
+  await publishInstagramViaComposio({ ...ctx(execute), post: feedPost, mediaUrl: url, waitMs: 0 })
+  assert.equal(calls.length, 2, 'an image must not pay the video retry cost')
+})
+
+test('a reel that never finishes transcoding still throws', async () => {
+  const { execute } = recorder([ok({ id: 'C' }), ...Array.from({ length: 12 }, () => notReady)])
+  await assert.rejects(
+    () => publishInstagramViaComposio({ ...ctx(execute), post: reelPost, mediaUrl: videoUrl, waitMs: 0, attempts: 3 }),
+    /publish/,
+  )
+})
+
+// An error that is not "still transcoding" must surface at once, not be retried for a minute.
+test('a real publish error is not mistaken for transcoding', async () => {
+  const { execute, calls } = recorder([
+    ok({ id: 'C' }),
+    { successful: false, error: 'Permissions error: instagram_content_publish missing' },
+  ])
+  await assert.rejects(
+    () => publishInstagramViaComposio({ ...ctx(execute), post: reelPost, mediaUrl: videoUrl, waitMs: 0 }),
+    /Permissions/,
+  )
+  assert.equal(calls.length, 2, 'it should not have retried')
+})
