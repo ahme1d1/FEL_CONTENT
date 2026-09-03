@@ -387,6 +387,117 @@
       "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw03-d6-results-fb-feed",
+      "publishAt": "2026-09-03T20:11:35Z",
+      "slotCairo": "2026-09-03 23:11 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2311-match-0031a25c.jpg",
+        "sha256": "0031a25c9570e48e4c91fbd65346ba230a935cb79dedb3fe2d0ca980816ba98c",
+        "bytes": 87286,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "1",
+          "3": "0",
+          "4": "الأهلي",
+          "5": "سموحة",
+          "6": "انتهت المباراة"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "SMC"
+        }
+      },
+      "caption": "الجولة التالتة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw03-d6-results-ig-feed",
+      "publishAt": "2026-09-03T20:11:35Z",
+      "slotCairo": "2026-09-03 23:11 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2311-match-0031a25c.jpg",
+        "sha256": "0031a25c9570e48e4c91fbd65346ba230a935cb79dedb3fe2d0ca980816ba98c",
+        "bytes": 87286,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "1",
+          "3": "0",
+          "4": "الأهلي",
+          "5": "سموحة",
+          "6": "انتهت المباراة"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "SMC"
+        }
+      },
+      "caption": "الجولة التالتة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw03-d6-results-tiktok",
+      "publishAt": "2026-09-03T20:11:35Z",
+      "slotCairo": "2026-09-03 23:11 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2311-match-0031a25c.jpg",
+        "sha256": "0031a25c9570e48e4c91fbd65346ba230a935cb79dedb3fe2d0ca980816ba98c",
+        "bytes": 87286,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التالتة",
+          "1": "1",
+          "3": "0",
+          "4": "الأهلي",
+          "5": "سموحة",
+          "6": "انتهت المباراة"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "SMC"
+        }
+      },
+      "caption": "الجولة التالتة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
