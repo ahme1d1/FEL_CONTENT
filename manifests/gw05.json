@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 5,
+  "authoredAt": "2026-09-03T19:46:30.024Z",
+  "mediaBase": "https://media.fantasyeg.com/gw05",
+  "posts": [
+    {
+      "id": "gw05-d1-2000-fb-feed",
+      "publishAt": "2026-09-10T17:00:00Z",
+      "slotCairo": "2026-09-10 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "buildUp",
+      "media": {
+        "file": "2000-buildup-c6c8f45e.jpg",
+        "sha256": "c6c8f45eceb026cf978245f0c2a77e23381ebe26c984a4dcf7d11eeee9f389e3",
+        "bytes": 51862,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة الخامسة ⚽\nالديدلاين الاتنين 4 العصر ⏰\nfantasyeg.com",
+      "link": "https://fantasyeg.com/",
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d1-2000-ig-feed",
+      "publishAt": "2026-09-10T17:00:00Z",
+      "slotCairo": "2026-09-10 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "buildUp",
+      "media": {
+        "file": "2000-buildup-c6c8f45e.jpg",
+        "sha256": "c6c8f45eceb026cf978245f0c2a77e23381ebe26c984a4dcf7d11eeee9f389e3",
+        "bytes": 51862,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة الخامسة ⚽\nالديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d1-2000-tiktok",
+      "publishAt": "2026-09-10T17:00:00Z",
+      "slotCairo": "2026-09-10 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "buildUp",
+      "media": {
+        "file": "2000-buildup-story-ad45d066.jpg",
+        "sha256": "ad45d06603f0111b86d30241b16916de5bca076cd33540f987f9c48333d95943",
+        "bytes": 47644,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "buildup-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة الخامسة ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d2-2000-fb-feed",
+      "publishAt": "2026-09-13T17:00:00Z",
+      "slotCairo": "2026-09-13 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-ae3833ff.jpg",
+        "sha256": "ae3833ff0eaf94998ec6accbfc9b4eba1f40ddcfc65e069a7721747c07f66f1d",
+        "bytes": 79486,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d2-2000-ig-feed",
+      "publishAt": "2026-09-13T17:00:00Z",
+      "slotCairo": "2026-09-13 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-ae3833ff.jpg",
+        "sha256": "ae3833ff0eaf94998ec6accbfc9b4eba1f40ddcfc65e069a7721747c07f66f1d",
+        "bytes": 79486,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d2-2000-tiktok",
+      "publishAt": "2026-09-13T17:00:00Z",
+      "slotCairo": "2026-09-13 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-story-fa29a713.jpg",
+        "sha256": "fa29a71349089a69c269c07fe18da6edca14c2e48f360038ae2b9615415e3001",
+        "bytes": 77411,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "J_QUESTION_1080_1920",
+        "slug": "question-story",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "الدباغ",
+          "5": "ريان"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "ZAM",
+          "3": "NBE"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d3-1200-fb-feed",
+      "publishAt": "2026-09-14T09:00:00Z",
+      "slotCairo": "2026-09-14 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-2d66960c.jpg",
+        "sha256": "2d66960c00a1abd43d27fe51071784f45615db3ae9d890f5149569d2f744f1e2",
+        "bytes": 106583,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "طلائع الجيش",
+          "3": "5:00",
+          "4": "سموحة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "البنك الأهلي",
+          "8": "زد",
+          "9": "8:00",
+          "10": "القناة"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "QAN"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d3-1200-ig-feed",
+      "publishAt": "2026-09-14T09:00:00Z",
+      "slotCairo": "2026-09-14 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-2d66960c.jpg",
+        "sha256": "2d66960c00a1abd43d27fe51071784f45615db3ae9d890f5149569d2f744f1e2",
+        "bytes": 106583,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "طلائع الجيش",
+          "3": "5:00",
+          "4": "سموحة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "البنك الأهلي",
+          "8": "زد",
+          "9": "8:00",
+          "10": "القناة"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "QAN"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d3-1200-tiktok",
+      "publishAt": "2026-09-14T09:00:00Z",
+      "slotCairo": "2026-09-14 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-d0d723de.jpg",
+        "sha256": "d0d723de386459e5e93b43a71cfefdd95aa6acf9eaf9c1105bbd6bbf6ddafd47",
+        "bytes": 89093,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "طلائع الجيش",
+          "3": "5:00",
+          "4": "سموحة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "البنك الأهلي",
+          "8": "زد",
+          "9": "8:00",
+          "10": "القناة"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "QAN"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d3-1400-fb-feed",
+      "publishAt": "2026-09-14T11:00:00Z",
+      "slotCairo": "2026-09-14 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-2a85d421.jpg",
+        "sha256": "2a85d421704c34d186ac5e0dca46839c472f3d4dceabcef02591adef4d72013b",
+        "bytes": 57867,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "اتأكد من فريقك، الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw05-d3-1400-ig-feed",
+      "publishAt": "2026-09-14T11:00:00Z",
+      "slotCairo": "2026-09-14 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-2a85d421.jpg",
+        "sha256": "2a85d421704c34d186ac5e0dca46839c472f3d4dceabcef02591adef4d72013b",
+        "bytes": 57867,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "اتأكد من فريقك، الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw05-d3-1400-tiktok",
+      "publishAt": "2026-09-14T11:00:00Z",
+      "slotCairo": "2026-09-14 14:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-story-4b2f1c9b.jpg",
+        "sha256": "4b2f1c9b93ef230a5a3ae6f5fe2de4d42b4d65d61ca5d9698809f0be976a6f9f",
+        "bytes": 62821,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "H_DEADLINE_1080_1920",
+        "slug": "deadline-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw05-d4-1200-fb-feed",
+      "publishAt": "2026-09-15T09:00:00Z",
+      "slotCairo": "2026-09-15 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-5f3d1f83.jpg",
+        "sha256": "5f3d1f8351c75be86b19c4ae8502f4fcf20107e826f10f04fd300149f2d0048f",
+        "bytes": 122811,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "المصري",
+          "6": "8:00",
+          "7": "الاتحاد",
+          "8": "وادي دجلة",
+          "9": "8:00",
+          "10": "المقاولون",
+          "11": "الأهلي",
+          "12": "8:00",
+          "13": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "MAS",
+          "3": "ITT",
+          "4": "WDY",
+          "5": "MOK",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d4-1200-ig-feed",
+      "publishAt": "2026-09-15T09:00:00Z",
+      "slotCairo": "2026-09-15 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-5f3d1f83.jpg",
+        "sha256": "5f3d1f8351c75be86b19c4ae8502f4fcf20107e826f10f04fd300149f2d0048f",
+        "bytes": 122811,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "المصري",
+          "6": "8:00",
+          "7": "الاتحاد",
+          "8": "وادي دجلة",
+          "9": "8:00",
+          "10": "المقاولون",
+          "11": "الأهلي",
+          "12": "8:00",
+          "13": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "MAS",
+          "3": "ITT",
+          "4": "WDY",
+          "5": "MOK",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d4-1200-tiktok",
+      "publishAt": "2026-09-15T09:00:00Z",
+      "slotCairo": "2026-09-15 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-3cb48c49.jpg",
+        "sha256": "3cb48c497afd3240a3fd90948eaa7aa36c1f29dc7133b111334f628defd7ee59",
+        "bytes": 105810,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_4_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "المصري",
+          "6": "8:00",
+          "7": "الاتحاد",
+          "8": "وادي دجلة",
+          "9": "8:00",
+          "10": "المقاولون",
+          "11": "الأهلي",
+          "12": "8:00",
+          "13": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "MAS",
+          "3": "ITT",
+          "4": "WDY",
+          "5": "MOK",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "كابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d5-1200-fb-feed",
+      "publishAt": "2026-09-16T09:00:00Z",
+      "slotCairo": "2026-09-16 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-32c652cc.jpg",
+        "sha256": "32c652cc5fb426091b7e53ae9c01f8032ba2ad6cc3815bdbc1d7d7458c9ca135",
+        "bytes": 99799,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "الجونة",
+          "3": "5:00",
+          "4": "بتروجيت",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز",
+          "8": "غزل المحلة",
+          "9": "8:00",
+          "10": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "ENP",
+          "3": "PYR",
+          "4": "GHZ",
+          "5": "ZAM"
+        }
+      },
+      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d5-1200-ig-feed",
+      "publishAt": "2026-09-16T09:00:00Z",
+      "slotCairo": "2026-09-16 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-32c652cc.jpg",
+        "sha256": "32c652cc5fb426091b7e53ae9c01f8032ba2ad6cc3815bdbc1d7d7458c9ca135",
+        "bytes": 99799,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "الجونة",
+          "3": "5:00",
+          "4": "بتروجيت",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز",
+          "8": "غزل المحلة",
+          "9": "8:00",
+          "10": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "ENP",
+          "3": "PYR",
+          "4": "GHZ",
+          "5": "ZAM"
+        }
+      },
+      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d5-1200-tiktok",
+      "publishAt": "2026-09-16T09:00:00Z",
+      "slotCairo": "2026-09-16 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-story-bf7114b3.jpg",
+        "sha256": "bf7114b34cd06ec5a95c97b4c3ad025d6afd17462723968d2cfb521d6896f6c1",
+        "bytes": 85559,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "مباريات النهاردة",
+          "2": "الجونة",
+          "3": "5:00",
+          "4": "بتروجيت",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز",
+          "8": "غزل المحلة",
+          "9": "8:00",
+          "10": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "ENP",
+          "3": "PYR",
+          "4": "GHZ",
+          "5": "ZAM"
+        }
+      },
+      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}
