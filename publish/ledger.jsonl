@@ -62,3 +62,12 @@
 {"ts":"2026-09-04T03:47:06.128Z","id":"gw05-d1-2000-fb-feed","state":"skipped","remoteId":"122119989129405259"}
 {"ts":"2026-09-04T03:58:13.571Z","id":"gw04-d1-2000-ig-feed","state":"skipped","reason":"build-up retired from its own day; it now goes out on the deadline day"}
 {"ts":"2026-09-04T03:58:13.584Z","id":"gw05-d1-2000-ig-feed","state":"skipped","reason":"build-up retired from its own day; it now goes out on the deadline day"}
+{"ts":"2026-09-04T06:06:58.809Z","id":"gw03-d7-1200-fb-feed","state":"unscheduled","remoteId":"122120186049405259"}
+{"ts":"2026-09-04T06:06:58.812Z","id":"gw03-d7-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"4b31eb9d14cfa0abdfff89cb7f4b285e3f2606f918eca176cdac9aa3c1a3de61"}
+{"ts":"2026-09-04T06:07:00.993Z","id":"gw03-d7-1200-fb-feed","state":"scheduled","remoteId":"122120196543405259","scheduledFor":"2026-09-04T09:00:00Z"}
+{"ts":"2026-09-04T06:07:00.993Z","id":"gw03-d7-1600-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"8347704ec6fd30de2f77f93020041de3f2cf0bc3ddba8ee1901d512c049305fb"}
+{"ts":"2026-09-04T06:07:02.583Z","id":"gw03-d7-1600-fb-feed","state":"scheduled","remoteId":"122120196591405259","scheduledFor":"2026-09-04T13:00:00Z"}
+{"ts":"2026-09-04T06:07:02.782Z","id":"gw04-meme-pov-yasser-fb-video","state":"claimed","strategy":"fb-video","mediaSha256":"dd0d7c4c92b7a2fe90d5e4bafb36eee251876b9d88198bc54550f058b59302b4"}
+{"ts":"2026-09-04T06:07:08.621Z","id":"gw04-meme-pov-yasser-fb-video","state":"scheduled","remoteId":"1384200869949205","scheduledFor":"2026-09-04T19:30:00Z"}
+{"ts":"2026-09-04T06:07:08.622Z","id":"gw04-meme-my-gameweek-fb-video","state":"claimed","strategy":"fb-video","mediaSha256":"6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f"}
+{"ts":"2026-09-04T06:07:12.664Z","id":"gw04-meme-my-gameweek-fb-video","state":"scheduled","remoteId":"1358911459646297","scheduledFor":"2026-09-05T17:00:00Z"}
