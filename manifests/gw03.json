@@ -507,9 +507,9 @@
       "strategy": "fb-scheduled",
       "kind": "winner",
       "media": {
-        "file": "1200-winner-7989fc4a.jpg",
-        "sha256": "7989fc4a4398979d8c59fb149fbf5d9e53c2f0e08c0e1715a1b2885d36942217",
-        "bytes": 64474,
+        "file": "1200-winner-f1c45733.jpg",
+        "sha256": "f1c457330e79fc0f520c79c412091d4a93fc5cfbdb891451f6a9d314e45f5f71",
+        "bytes": 61402,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -520,7 +520,7 @@
         "texts": {
           "0": "الجولة التالتة",
           "1": "Mohamed Sadek",
-          "2": "80 نقطة · وياخد تيشيرت ناديه"
+          "2": "العالمي · 80 نقطة"
         },
         "assets": {}
       },
@@ -536,9 +536,9 @@
       "strategy": "ig-feed",
       "kind": "winner",
       "media": {
-        "file": "1200-winner-7989fc4a.jpg",
-        "sha256": "7989fc4a4398979d8c59fb149fbf5d9e53c2f0e08c0e1715a1b2885d36942217",
-        "bytes": 64474,
+        "file": "1200-winner-f1c45733.jpg",
+        "sha256": "f1c457330e79fc0f520c79c412091d4a93fc5cfbdb891451f6a9d314e45f5f71",
+        "bytes": 61402,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -549,7 +549,7 @@
         "texts": {
           "0": "الجولة التالتة",
           "1": "Mohamed Sadek",
-          "2": "80 نقطة · وياخد تيشيرت ناديه"
+          "2": "العالمي · 80 نقطة"
         },
         "assets": {}
       },
@@ -674,17 +674,18 @@
       "strategy": "fb-scheduled",
       "kind": "playerOfRound",
       "media": {
-        "file": "1400-player-3bacf1b1.jpg",
-        "sha256": "3bacf1b19891e92a787ada1155cc5dfb785e4710616cff04897e520dcc9e3a49",
-        "bytes": 65944,
+        "file": "1400-player-1cdb35c1.jpg",
+        "sha256": "1cdb35c130529e332466989d749a27df28a7a9329cdf4759407a1b7edc5bb0f5",
+        "bytes": 75317,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "G_NO_PHOTO_FALLBACK",
+        "card": "G_PLAYER_SPOTLIGHT",
         "slug": "player",
         "keepNames": true,
+        "photoUrl": "https://api.fantasyeg.com/api/v1/assets/players/21.jpg",
         "texts": {
           "0": "أعلى نقط الجولة",
           "1": "احمد سامى",
@@ -708,17 +709,18 @@
       "strategy": "ig-feed",
       "kind": "playerOfRound",
       "media": {
-        "file": "1400-player-3bacf1b1.jpg",
-        "sha256": "3bacf1b19891e92a787ada1155cc5dfb785e4710616cff04897e520dcc9e3a49",
-        "bytes": 65944,
+        "file": "1400-player-1cdb35c1.jpg",
+        "sha256": "1cdb35c130529e332466989d749a27df28a7a9329cdf4759407a1b7edc5bb0f5",
+        "bytes": 75317,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "G_NO_PHOTO_FALLBACK",
+        "card": "G_PLAYER_SPOTLIGHT",
         "slug": "player",
         "keepNames": true,
+        "photoUrl": "https://api.fantasyeg.com/api/v1/assets/players/21.jpg",
         "texts": {
           "0": "أعلى نقط الجولة",
           "1": "احمد سامى",
