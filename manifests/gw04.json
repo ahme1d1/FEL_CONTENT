@@ -173,6 +173,146 @@
       "dependsOn": null
     },
     {
+      "id": "gw04-d2-1400-fb-feed",
+      "publishAt": "2026-09-06T11:00:00Z",
+      "slotCairo": "2026-09-06 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "leagueTable",
+      "media": {
+        "file": "1400-table-2e21b997.jpg",
+        "sha256": "2e21b99753e6e289b4181dc08e4f199607500eb41d33be9ec6fd9b78584ccf1e",
+        "bytes": 103988,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F2_LEAGUE_TABLE",
+        "slug": "table",
+        "texts": {
+          "0": "ترتيب الدوري",
+          "1": "لعب",
+          "2": "نقط",
+          "3": "1",
+          "4": "بيراميدز",
+          "5": "3",
+          "6": "9",
+          "7": "2",
+          "8": "الأهلي",
+          "9": "3",
+          "10": "9",
+          "11": "3",
+          "12": "الزمالك",
+          "13": "3",
+          "14": "7",
+          "15": "4",
+          "16": "سيراميكا",
+          "17": "3",
+          "18": "6",
+          "19": "5",
+          "20": "المصري",
+          "21": "3",
+          "22": "6",
+          "23": "6",
+          "24": "طلائع الجيش",
+          "25": "3",
+          "26": "6",
+          "27": "7",
+          "28": "وادي دجلة",
+          "29": "3",
+          "30": "5",
+          "31": "8",
+          "32": "القناة",
+          "33": "3",
+          "34": "5"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "AHL",
+          "2": "ZAM",
+          "3": "CRA",
+          "4": "MAS",
+          "5": "TLG",
+          "6": "WDY",
+          "7": "QAN"
+        }
+      },
+      "caption": "ترتيب الدوري بعد 3 جولات 🏆",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d2-1400-ig-feed",
+      "publishAt": "2026-09-06T11:00:00Z",
+      "slotCairo": "2026-09-06 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "leagueTable",
+      "media": {
+        "file": "1400-table-2e21b997.jpg",
+        "sha256": "2e21b99753e6e289b4181dc08e4f199607500eb41d33be9ec6fd9b78584ccf1e",
+        "bytes": 103988,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "F2_LEAGUE_TABLE",
+        "slug": "table",
+        "texts": {
+          "0": "ترتيب الدوري",
+          "1": "لعب",
+          "2": "نقط",
+          "3": "1",
+          "4": "بيراميدز",
+          "5": "3",
+          "6": "9",
+          "7": "2",
+          "8": "الأهلي",
+          "9": "3",
+          "10": "9",
+          "11": "3",
+          "12": "الزمالك",
+          "13": "3",
+          "14": "7",
+          "15": "4",
+          "16": "سيراميكا",
+          "17": "3",
+          "18": "6",
+          "19": "5",
+          "20": "المصري",
+          "21": "3",
+          "22": "6",
+          "23": "6",
+          "24": "طلائع الجيش",
+          "25": "3",
+          "26": "6",
+          "27": "7",
+          "28": "وادي دجلة",
+          "29": "3",
+          "30": "5",
+          "31": "8",
+          "32": "القناة",
+          "33": "3",
+          "34": "5"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "AHL",
+          "2": "ZAM",
+          "3": "CRA",
+          "4": "MAS",
+          "5": "TLG",
+          "6": "WDY",
+          "7": "QAN"
+        }
+      },
+      "caption": "ترتيب الدوري بعد 3 جولات 🏆",
+      "link": null,
+      "dependsOn": null
+    },
+    {
       "id": "gw04-d2-2000-fb-feed",
       "publishAt": "2026-09-06T17:00:00Z",
       "slotCairo": "2026-09-06 20:00 Africa/Cairo",
@@ -430,6 +570,93 @@
         }
       },
       "caption": "4 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-1300-fb-feed",
+      "publishAt": "2026-09-07T10:00:00Z",
+      "slotCairo": "2026-09-07 13:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-f5e2839c.jpg",
+        "sha256": "f5e2839cf50706467737d5cface0b9ccf97e66bb529d36ac1378649a31bdc48c",
+        "bytes": 51572,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة الرابعة قربت ⏰\nجهّز فريقك على fantasyeg.com ⚽",
+      "link": "https://fantasyeg.com/",
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-1300-ig-feed",
+      "publishAt": "2026-09-07T10:00:00Z",
+      "slotCairo": "2026-09-07 13:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-f5e2839c.jpg",
+        "sha256": "f5e2839cf50706467737d5cface0b9ccf97e66bb529d36ac1378649a31bdc48c",
+        "bytes": 51572,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة الرابعة قربت ⏰\nجهّز فريقك",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-d3-1300-tiktok",
+      "publishAt": "2026-09-07T10:00:00Z",
+      "slotCairo": "2026-09-07 13:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-story-b4d95670.jpg",
+        "sha256": "b4d95670ad0242c928b6fbee833adcd88f7a19c71add73e2000b0e5edd7a0819",
+        "bytes": 47217,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "buildup-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة الرابعة قربت ⏰",
       "link": null,
       "dependsOn": null
     },
