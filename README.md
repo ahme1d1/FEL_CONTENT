@@ -372,6 +372,19 @@ captain marker. The captain LEADS the eleven, because the template pins that mar
 cell. Pitch order buys nothing in exchange: the card draws a fixed 3-3-4-1 whatever the real shape
 is, so ordering by position was costing a correct armband for a decoration.
 
+**OPEN — the winner's pitch does not show his formation.** Owner call, 2026-09-04: ship it as it
+is for GW3, fix it for the weeks after. `P_WINNER_THEIR_TEAM_NO_CLUB_SET` has four hard-coded rows
+— **3 / 3 / 4 / 1** — and no formation variants, so it draws that shape whoever won and whatever
+they played. Mohamed Sadek played 4-4-2, which pours into those rows as two forwards and a
+midfielder in the front line: every name and every score correct, one man standing in the wrong
+line. Team of the week already solves this — it has a template per shape, and `teamOfWeekCard`
+picks by `formation`. The winner card needs the same treatment: `P_WINNER_THEIR_TEAM_<shape>`
+layouts, and `winnerTeamCard` choosing between them. The API side needs nothing — the XI's
+positions already say the shape, so it can be derived without another endpoint. The 5-4-1 built
+today is the worked example: clone the nearest existing layout, take a five-wide line from a card
+that already has one rather than cloning a four-wide, and RENDER IT AND LOOK — the first attempt
+put the far defender through the edge of the card and no amount of reading the markup showed it.
+
 **The player of the round carries his photo.** `G_PLAYER_SPOTLIGHT` and `G_NO_PHOTO_FALLBACK` have
 identical texts and assets and differ only by a 520x520 hero, so the fallback was never a lesser
 card — it was the only one we ever got, because the settle-day author reads `top-players`, which
