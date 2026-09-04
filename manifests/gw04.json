@@ -5,6 +5,48 @@
   "mediaBase": "https://media.fantasyeg.com/gw04",
   "posts": [
     {
+      "id": "gw04-meme-ahly-defence-ig-reel",
+      "publishAt": "2026-09-04T11:00:00Z",
+      "slotCairo": "2026-09-04 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-reel",
+      "kind": "meme",
+      "media": {
+        "file": "1400-meme-ahly-defence-fda70726.mp4",
+        "sha256": "fda70726f7d2d02917d586ae5c87f17937e94f5ae7f3d8e77cd8fde4de3bf720",
+        "bytes": 3036047,
+        "mime": "video/mp4",
+        "width": 720,
+        "height": 1280,
+        "durationSeconds": 8.85
+      },
+      "source": null,
+      "caption": "دفاع الأهلي لوحده جاب 31 نقطة في الجولة التالتة 🔴",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-ahly-defence-tiktok",
+      "publishAt": "2026-09-04T11:00:00Z",
+      "slotCairo": "2026-09-04 14:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "meme",
+      "media": {
+        "file": "1400-meme-ahly-defence-fda70726.mp4",
+        "sha256": "fda70726f7d2d02917d586ae5c87f17937e94f5ae7f3d8e77cd8fde4de3bf720",
+        "bytes": 3036047,
+        "mime": "video/mp4",
+        "width": 720,
+        "height": 1280,
+        "durationSeconds": 8.85
+      },
+      "source": null,
+      "caption": "دفاع الأهلي لوحده جاب 31 نقطة في الجولة التالتة 🔴",
+      "link": null,
+      "dependsOn": null
+    },
+    {
       "id": "gw04-d1-2000-fb-feed",
       "publishAt": "2026-09-04T17:00:00Z",
       "slotCairo": "2026-09-04 20:00 Africa/Cairo",
@@ -88,6 +130,132 @@
         "assets": {}
       },
       "caption": "الجولة الرابعة قربت ⏰",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-pov-yasser-fb-video",
+      "publishAt": "2026-09-04T19:30:00Z",
+      "slotCairo": "2026-09-04 22:30 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-video",
+      "kind": "meme",
+      "media": {
+        "file": "2230-meme-pov-yasser-10dc29ba.mp4",
+        "sha256": "10dc29ba2db5c9680274a51140a07005963f38e0326c07cffb7d542a1a0001cb",
+        "bytes": 1069903,
+        "mime": "video/mp4",
+        "width": 576,
+        "height": 1024,
+        "durationSeconds": 18.88
+      },
+      "source": null,
+      "caption": "اللي كابتن ياسر إبراهيم الجولة اللي فاتت خد 30 نقطة 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-pov-yasser-ig-reel",
+      "publishAt": "2026-09-04T19:30:00Z",
+      "slotCairo": "2026-09-04 22:30 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-reel",
+      "kind": "meme",
+      "media": {
+        "file": "2230-meme-pov-yasser-10dc29ba.mp4",
+        "sha256": "10dc29ba2db5c9680274a51140a07005963f38e0326c07cffb7d542a1a0001cb",
+        "bytes": 1069903,
+        "mime": "video/mp4",
+        "width": 576,
+        "height": 1024,
+        "durationSeconds": 18.88
+      },
+      "source": null,
+      "caption": "اللي كابتن ياسر إبراهيم الجولة اللي فاتت خد 30 نقطة 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-pov-yasser-tiktok",
+      "publishAt": "2026-09-04T19:30:00Z",
+      "slotCairo": "2026-09-04 22:30 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "meme",
+      "media": {
+        "file": "2230-meme-pov-yasser-10dc29ba.mp4",
+        "sha256": "10dc29ba2db5c9680274a51140a07005963f38e0326c07cffb7d542a1a0001cb",
+        "bytes": 1069903,
+        "mime": "video/mp4",
+        "width": 576,
+        "height": 1024,
+        "durationSeconds": 18.88
+      },
+      "source": null,
+      "caption": "اللي كابتن ياسر إبراهيم الجولة اللي فاتت خد 30 نقطة 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-my-gameweek-fb-video",
+      "publishAt": "2026-09-05T17:00:00Z",
+      "slotCairo": "2026-09-05 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-video",
+      "kind": "meme",
+      "media": {
+        "file": "2000-meme-my-gameweek-6bc6582e.mp4",
+        "sha256": "6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f",
+        "bytes": 2900671,
+        "mime": "video/mp4",
+        "width": 1072,
+        "height": 1920,
+        "durationSeconds": 11
+      },
+      "source": null,
+      "caption": "ستة لاعيبة في جولة كاملة جابوا 15 نقطة 😮‍💨",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-my-gameweek-ig-reel",
+      "publishAt": "2026-09-05T17:00:00Z",
+      "slotCairo": "2026-09-05 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-reel",
+      "kind": "meme",
+      "media": {
+        "file": "2000-meme-my-gameweek-6bc6582e.mp4",
+        "sha256": "6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f",
+        "bytes": 2900671,
+        "mime": "video/mp4",
+        "width": 1072,
+        "height": 1920,
+        "durationSeconds": 11
+      },
+      "source": null,
+      "caption": "ستة لاعيبة في جولة كاملة جابوا 15 نقطة 😮‍💨",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-my-gameweek-tiktok",
+      "publishAt": "2026-09-05T17:00:00Z",
+      "slotCairo": "2026-09-05 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "meme",
+      "media": {
+        "file": "2000-meme-my-gameweek-6bc6582e.mp4",
+        "sha256": "6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f",
+        "bytes": 2900671,
+        "mime": "video/mp4",
+        "width": 1072,
+        "height": 1920,
+        "durationSeconds": 11
+      },
+      "source": null,
+      "caption": "ستة لاعيبة في جولة كاملة جابوا 15 نقطة 😮‍💨",
       "link": null,
       "dependsOn": null
     },

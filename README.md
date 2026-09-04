@@ -32,6 +32,9 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/lint-copy.mjs` | caption linter |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
 | `build/render-manifest.mjs` | renders the cards and stamps `media` back into the manifest |
+| `build/swap-card.mjs` | **the meme maker** — swaps a borrowed video's game UI for ours |
+| `build/swap-plan.mjs` | its argument grammar and filter graph, kept pure so they are tested |
+| `memes/` | the GW1 swap, from before these carried a manifest entry |
 | `publish/publish.mjs` | the publisher a cloud routine runs eight times a day |
 | `publish/schedule-facebook.mjs` | hands the Facebook posts to Meta's own scheduler, run by `author.yml` |
 | `publish/wait-media.mjs` | blocks until Pages actually serves the media Meta is about to fetch |
@@ -42,7 +45,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 302 unit tests, no network, no accounts
+npm test                                    # 347 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
@@ -51,6 +54,7 @@ node build/lint-copy-cli.mjs instagram "…"  # lint one caption
 node publish/schedule-facebook.mjs --manifest manifests/gw04.json --dry-run
 node publish/publish.mjs --manifest fixtures/gw03.json --dry-run --now 2026-09-03T08:00:00Z
 node publish/tiktok-draft.mjs --file ../FEL_VIDEO/out/ad-full.mp4 --dry-run
+node build/swap-card.mjs --video <tiktok-url> --probe        # find the card box
 ```
 
 ## The authoring pass
@@ -283,6 +287,57 @@ eventually returns `spam_risk_too_many_pending_share`. Post one, or wait.
 Uploads use `FILE_UPLOAD` rather than `PULL_FROM_URL`. The latter needs both a valid
 certificate on `media.fantasyeg.com` and the domain verified in TikTok's portal; sending the
 bytes from this machine needs neither, and matches where the token already lives.
+
+## The meme swap
+
+Three attempts at designing our own short were rejected before the owner named the format: take a
+viral fantasy TikTok and replace **only its game UI**, leaving the clip, the audio and the timing
+untouched. The humour and the reach live in the borrowed footage, which we cannot manufacture. The
+part that has to be ours is what sits on top, and that part is data we already have.
+
+```bash
+node build/swap-card.mjs --video <url> --probe                # the card box and the dimensions
+node build/swap-card.mjs --file src.mp4 --dry-run \
+  --player 9 --gameweek 3 --captain --card 88,958,230,297 \
+  --player 14 --gameweek 3 --card 762,479,216,275 --out out.mp4
+```
+
+`swap-plan.mjs` holds the grammar and the ffmpeg filter graph, and is where their tests are.
+`swap-card.mjs` downloads, reads the API, drives Remotion and runs ffmpeg.
+
+A finished swap lands in `gwNN/` like every other asset, because `mediaBase` is per-gameweek and
+Instagram is handed `mediaBase/file` — it cannot be served out of `memes/`. Its manifest entry is
+written by hand: `kind: "meme"`, `source: null`, and an `ig-reel`, `fb-video` or `tiktok-draft`
+strategy. `mergePosts` keeps any post the planner did not generate, so a hand-added one survives
+the next authoring pass rather than being swept away by it.
+
+**Every number is read live and none is copied from the source.** Bruno's card said 46 and
+ممدوح's said 24, because his GW2 was 12 and captaining doubles it. Nothing on a card is
+typed in: a field that can be typed into is a field that will eventually carry a score
+nobody scored.
+
+**`--player` is sticky.** It opens a pick, and `--gameweek`, `--captain`, `--no-star`,
+`--card` and `--panel` all describe the pick they follow. Six cards in a frame is six
+`--player … --card …` groups in one pass, which is the shape a "my gameweek was a disaster" video
+actually has. A single-player call written the old way still parses to one pick.
+
+The overlays are Remotion compositions in `../FEL_VIDEO/src/shorts/`, each rendered on a
+transparent background at 3× its target box and scaled down — a 1× render of a 207px card puts
+Cairo at about 14px and it turns to mush. `CardOnly`, `PanelOnly`, `PointsPanel`, `LogoTile`
+and `TextLine`.
+
+**Only the green card is auto-detected**, by its saturation. The dark stat panel is near-black and
+so are most living-room shadows; the chip tile is violet and no more distinctive. Measure those off
+a frame. `--probe` against a **green screen** answers with a box the width of the video — read that
+as "measure it by hand", not as a card.
+
+**A tile can only cover what is never moving behind it.** These overlays are static for the whole
+clip, so a badge in the footage that a presenter walks in front of cannot be covered without the
+tile landing on his face. Park `--logo` in a region that is clear in *every* frame instead, and
+check it against the whole clip rather than one.
+
+**yt-dlp cannot download TikTok** right now — it fails on "universal data for rehydration" and
+browser cookies return 403 — so the tool uses tikwm's public endpoint.
 
 ## Two things that are easy to get wrong
 

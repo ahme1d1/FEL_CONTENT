@@ -14,6 +14,10 @@
  * Everything about the player is READ LIVE from the API — club, shirt, photo, and the real
  * per-gameweek goals, assists and points. Do not mirror the source video's numbers; a captained
  * score is that gameweek's points doubled, and if that is 24 rather than 46, it is 24.
+ *
+ * `--player` may be repeated. Each one opens a pick that the flags after it describe, so a video
+ * carrying six cards is six `--player … --card …` groups in one pass. The grammar and the filter
+ * graph live in swap-plan.mjs, which is where their tests are.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -21,79 +25,13 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { shortName } from './author/names.mjs'
+import { overlayFilters, overlayJobs, parseArgs } from './swap-plan.mjs'
 
 const API = process.env.FEL_API_BASE ?? 'https://api.fantasyeg.com/api/v1'
 const VIDEO_DIR = process.env.FEL_VIDEO_DIR ?? resolve(process.cwd(), '../FEL_VIDEO')
 
-/** The boxes are padded outward so no edge of the overlay being replaced survives. */
-const COVER_PAD = 3
-
 const run = (cmd, args, opts = {}) =>
   execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 1 << 26, ...opts }).toString()
-
-function parseArgs(argv) {
-  const args = { captain: false, probe: false, dryRun: false }
-  for (let i = 0; i < argv.length; i += 1) {
-    const [flag, inline] = argv[i].split('=')
-    const value = () => inline ?? argv[++i]
-    if (flag === '--captain') args.captain = true
-    else if (flag === '--probe') args.probe = true
-    else if (flag === '--dry-run') args.dryRun = true
-    else if (flag === '--no-panel') args.noPanel = true
-    else if (flag === '--video') args.video = value()
-    else if (flag === '--file') args.file = value()
-    else if (flag === '--player') args.player = Number(value())
-    else if (flag === '--gameweek') args.gameweek = Number(value())
-    else if (flag === '--card') args.card = box(value(), '--card')
-    else if (flag === '--panel') args.panel = box(value(), '--panel')
-    else if (flag === '--points') args.points = box(value(), '--points')
-    else if (flag === '--logo') args.logo = box(value(), '--logo')
-    else if (flag === '--total') args.total = value()
-    else if (flag === '--text') args.text = box(value(), '--text')
-    else if (flag === '--line') args.line = value()
-    else if (flag === '--bar') args.bar = value()
-    else if (flag === '--eyebrow') args.eyebrow = value()
-    else if (flag === '--out') args.out = value()
-    else throw new Error(`Unexpected argument "${argv[i]}".`)
-  }
-  if (!args.video && !args.file) throw new Error(usage())
-  const wantsPlayer = Boolean(args.card || args.panel)
-  if (!args.probe && wantsPlayer && !args.player) {
-    throw new Error('--card / --panel describe a player, so --player <id> is required.')
-  }
-  if (!args.probe && !args.card && !args.points && !args.logo && !args.text) {
-    throw new Error('Nothing to replace. Give at least one of --card, --points, --logo or --text.')
-  }
-  if (!args.probe && args.text && !args.line) {
-    throw new Error('--text needs --line "<the new words>".')
-  }
-  if (!args.probe && args.points && !args.total) {
-    throw new Error('--points needs --total <n>, the number to show.')
-  }
-  return args
-}
-
-const usage = () =>
-  'usage: swap-card.mjs (--video <url> | --file <path>) [overlays...] [--out f.mp4]\n' +
-  '\n' +
-  '  player overlays  --player <id> [--gameweek N] [--captain]\n' +
-  '                   --card x,y,w,h        the big player card\n' +
-  '                   --panel x,y,w,h       the dark match stat panel\n' +
-  '\n' +
-  '  brand overlays   --points x,y,w,h --total 30 [--eyebrow "الجولة 3"]\n' +
-  '                   --logo x,y,w,h        our mark over the competition badge\n' +
-  '                   --text x,y,w,h --line "…"   repaint a caption baked into the footage\n' +
-  '                                          (--bar #000000 if the bar is not black)\n' +
-  '\n' +
-  '  swap-card.mjs --video <url> --probe    find the card box and the dimensions'
-
-function box(raw, flag) {
-  const parts = String(raw).split(',').map(Number)
-  if (parts.length !== 4 || parts.some((n) => !Number.isFinite(n))) {
-    throw new Error(`${flag} must be x,y,w,h — got "${raw}".`)
-  }
-  return { x: parts[0], y: parts[1], w: parts[2], h: parts[3] }
-}
 
 async function getJson(url) {
   const res = await fetch(url, { headers: { accept: 'application/json' } })
@@ -181,7 +119,8 @@ function renderStill(composition, props, out) {
  *
  * The card's green is saturated and nothing else in a kitchen or a living room usually is, so a
  * per-channel test finds it reliably. The stat panel is NOT auto-detected: it is near-black, and
- * so are the shadows in most footage.
+ * so are the shadows in most footage. Neither is a green SCREEN, which this reports as one card
+ * the width of the frame — read that as "measure it by hand", not as a box.
  */
 function probeCard(video, work) {
   const raw = join(work, 'frame.raw')
@@ -248,90 +187,37 @@ async function main() {
       return
     }
 
-    // Only needed when a player overlay was asked for; a points/logo swap names nobody.
-    let player = null
-    let photo = null
-    if (args.player) {
-      player = await loadPlayer(args.player, args.gameweek, args.captain)
-      photo = args.panel ? await fetchPhoto(player.id) : null
+    // Resolved in order, so the log reads like the picks were written.
+    for (const pick of args.picks) {
+      pick.resolved = await loadPlayer(pick.player, pick.gameweek, pick.captain)
+      pick.photo = pick.panel && !args.noPanel ? await fetchPhoto(pick.player) : null
+      const p = pick.resolved
       console.log(
-        `${player.fullName} (${player.club}) GW${player.gw}: ` +
-          `${player.goals}g ${player.assists}a -> ${player.points}${args.captain ? ' captained' : ''}`,
+        `${p.fullName} (${p.club}) GW${p.gw}: ${p.goals}g ${p.assists}a -> ` +
+          `${p.points}${pick.captain ? ' captained' : ''}`,
       )
     }
-    if (args.points) console.log(`points panel: ${args.eyebrow ?? ''} ${args.total}`.trim())
-    if (args.logo) console.log('logo tile: our mark')
-    if (args.text) console.log(`caption: «${args.line}»`)
-    if (args.dryRun) return
+    if (args.brand.points) console.log(`points panel: ${args.brand.eyebrow ?? ''} ${args.brand.total}`.trim())
+    if (args.brand.logo) console.log('logo tile: our mark')
+    if (args.brand.text) console.log(`caption: «${args.brand.line}»`)
 
-    // Each overlay is a still rendered at N x its box, then scaled into place. The box is padded
-    // outward so no edge of the thing being replaced survives.
-    const jobs = []
-    if (args.card) {
-      jobs.push({
-        box: args.card,
-        composition: 'CardOnly',
-        props: {
-          name: player.cardName,
-          club: player.club,
-          value: String(player.points),
-          badge: args.captain ? 'C' : null,
-          star: true,
-        },
-      })
-    }
-    if (args.panel && !args.noPanel) {
-      jobs.push({
-        box: args.panel,
-        composition: 'PanelOnly',
-        props: {
-          name: player.fullName,
-          photo,
-          points: String(player.points),
-          goals: player.goals,
-          assists: player.assists,
-          captain: args.captain,
-        },
-      })
-    }
-    if (args.points) {
-      jobs.push({
-        box: args.points,
-        composition: 'PointsPanel',
-        props: {
-          eyebrow: args.eyebrow ?? `الجولة ${player?.gw ?? ''}`.trim(),
-          points: String(args.total),
-        },
-      })
-    }
-    if (args.logo) jobs.push({ box: args.logo, composition: 'LogoTile', props: {} })
-    if (args.text) {
-      // Painted LAST so it sits over anything else that shares the bar.
-      jobs.push({
-        box: args.text,
-        composition: 'TextLine',
-        props: { text: args.line, ...(args.bar ? { background: args.bar } : {}) },
-        // The bar is a solid fill we reproduce exactly, so padding it outward would only eat
-        // into the picture below. This one job covers precisely its box.
-        pad: 0,
-      })
+    const jobs = overlayJobs(args)
+    if (args.dryRun) {
+      jobs.forEach((j) => console.log(`  ${j.composition.padEnd(12)} ${Object.values(j.box).join(',')}`))
+      return
     }
 
+    // Each overlay is a still rendered at N x its box, then scaled into place.
     const inputs = ['-i', source]
-    const filters = []
-    let last = '[0:v]'
     jobs.forEach((job, i) => {
       const png = join(work, `ov-${i}.png`)
       renderStill(job.composition, job.props, png)
       inputs.push('-i', png)
-      const b = job.box
-      const pad = job.pad ?? COVER_PAD
-      filters.push(`[${i + 1}:v]scale=${b.w + pad * 2}:${b.h + pad * 2}[o${i}]`)
-      filters.push(`${last}[o${i}]overlay=${b.x - pad}:${b.y - pad}[v${i}]`)
-      last = `[v${i}]`
     })
+    const { filters, last } = overlayFilters(jobs)
 
-    const out = resolve(args.out ?? (player ? `swap-${player.id}-gw${player.gw}.mp4` : 'swap.mp4'))
+    const first = args.picks[0]?.resolved
+    const out = resolve(args.out ?? (first ? `swap-${first.id}-gw${first.gw}.mp4` : 'swap.mp4'))
     run('ffmpeg', ['-v', 'error', '-y', ...inputs,
       '-filter_complex', filters.join(';'),
       '-map', last, '-map', '0:a?', '-c:a', 'copy',
