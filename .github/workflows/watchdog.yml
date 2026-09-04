@@ -19,6 +19,9 @@ on:
       grace:
         description: 'Minutes a post may be late before the alarm (default 90)'
         type: string
+      now:
+        description: 'Pretend it is this instant, e.g. 2026-09-05T09:00:00Z. Reads only — use it to prove the alarm still fires.'
+        type: string
 
 concurrency:
   group: watchdog
@@ -50,13 +53,18 @@ jobs:
           # Through the environment, never interpolated into the script: this is a public repo
           # and `${{ }}` inside a run block is string substitution, not an argument.
           GRACE: ${{ inputs.grace }}
+          # An alarm that has never been seen to fire is not an alarm. `now` lets a dispatch
+          # prove the whole path — script, body, issue — without waiting for a real outage and
+          # without touching anything: the watchdog reads, and writes no ledger record.
+          NOW: ${{ inputs.now }}
         run: |
           # NOT `set -e`. The whole point of this step is to run a command that EXITS 1, and
           # -e would abort before the body file is written — leaving the alarm with nothing to
           # say but "the watchdog itself failed".
           set -uo pipefail
           ARGS=""
-          if [ -n "${GRACE:-}" ]; then ARGS="--grace $GRACE"; fi
+          if [ -n "${GRACE:-}" ]; then ARGS="$ARGS --grace $GRACE"; fi
+          if [ -n "${NOW:-}" ]; then ARGS="$ARGS --now $NOW"; fi
           node publish/watchdog.mjs $ARGS --format markdown --out "$RUNNER_TEMP/body.md"
           RC=$?
           cat "$RUNNER_TEMP/body.md"
