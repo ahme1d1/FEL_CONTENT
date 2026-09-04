@@ -48,3 +48,7 @@
 {"ts":"2026-09-03T23:31:57.831Z","id":"gw03-d7-2000-fb-feed","state":"scheduled","remoteId":"122120029659405259","scheduledFor":"2026-09-04T17:00:00Z"}
 {"ts":"2026-09-04T03:19:16.097Z","id":"gw03-d7-1400-fb-feed","state":"unscheduled","remoteId":"122120029605405259"}
 {"ts":"2026-09-04T03:19:21.048Z","id":"gw03-d7-2000-fb-feed","state":"unscheduled","remoteId":"122120029659405259"}
+{"ts":"2026-09-04T03:23:07.826Z","id":"gw03-d7-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"3bacf1b19891e92a787ada1155cc5dfb785e4710616cff04897e520dcc9e3a49"}
+{"ts":"2026-09-04T03:23:11.068Z","id":"gw03-d7-1400-fb-feed","state":"scheduled","remoteId":"122120181033405259","scheduledFor":"2026-09-04T11:00:00Z"}
+{"ts":"2026-09-04T03:23:11.068Z","id":"gw03-d7-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"d861544a487244b61206c615544b23ec23bd085492b864ea48c55c4299cce512"}
+{"ts":"2026-09-04T03:23:13.218Z","id":"gw03-d7-2000-fb-feed","state":"scheduled","remoteId":"122120181087405259","scheduledFor":"2026-09-04T17:00:00Z"}
