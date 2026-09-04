@@ -89,3 +89,5 @@
 {"ts":"2026-09-04T21:05:48.960Z","id":"gw04-d3-1300-fb-feed","state":"scheduled","remoteId":"122120487429405259","scheduledFor":"2026-09-07T10:00:00Z"}
 {"ts":"2026-09-04T21:05:49.047Z","id":"gw05-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"c6c8f45eceb026cf978245f0c2a77e23381ebe26c984a4dcf7d11eeee9f389e3"}
 {"ts":"2026-09-04T21:05:51.322Z","id":"gw05-d3-1300-fb-feed","state":"scheduled","remoteId":"122120487489405259","scheduledFor":"2026-09-14T10:00:00Z"}
+{"ts":"2026-09-04T21:14:23.340Z","id":"gw04-meme-pov-yasser-ig-reel","state":"claimed","strategy":"ig-reel","mediaSha256":"dd0d7c4c92b7a2fe90d5e4bafb36eee251876b9d88198bc54550f058b59302b4"}
+{"ts":"2026-09-04T21:15:45.723Z","id":"gw04-meme-pov-yasser-ig-reel","state":"published","remoteId":"17945099778293978"}
