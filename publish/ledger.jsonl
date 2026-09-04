@@ -83,3 +83,9 @@
 {"ts":"2026-09-04T13:25:14.982Z","id":"gw04-meme-ahly-defence-ig-reel","state":"published","remoteId":"18009308759953329"}
 {"ts":"2026-09-04T18:48:47.525Z","id":"gw03-d7-2000-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"d861544a487244b61206c615544b23ec23bd085492b864ea48c55c4299cce512"}
 {"ts":"2026-09-04T18:48:55.864Z","id":"gw03-d7-2000-ig-feed","state":"published","remoteId":"18074791469526643"}
+{"ts":"2026-09-04T21:05:44.703Z","id":"gw04-d2-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"2e21b99753e6e289b4181dc08e4f199607500eb41d33be9ec6fd9b78584ccf1e"}
+{"ts":"2026-09-04T21:05:46.881Z","id":"gw04-d2-1400-fb-feed","state":"scheduled","remoteId":"122120487387405259","scheduledFor":"2026-09-06T11:00:00Z"}
+{"ts":"2026-09-04T21:05:46.882Z","id":"gw04-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"f5e2839cf50706467737d5cface0b9ccf97e66bb529d36ac1378649a31bdc48c"}
+{"ts":"2026-09-04T21:05:48.960Z","id":"gw04-d3-1300-fb-feed","state":"scheduled","remoteId":"122120487429405259","scheduledFor":"2026-09-07T10:00:00Z"}
+{"ts":"2026-09-04T21:05:49.047Z","id":"gw05-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"c6c8f45eceb026cf978245f0c2a77e23381ebe26c984a4dcf7d11eeee9f389e3"}
+{"ts":"2026-09-04T21:05:51.322Z","id":"gw05-d3-1300-fb-feed","state":"scheduled","remoteId":"122120487489405259","scheduledFor":"2026-09-14T10:00:00Z"}
