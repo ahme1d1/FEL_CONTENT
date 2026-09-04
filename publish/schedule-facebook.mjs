@@ -18,6 +18,7 @@ import { cairoWallClock, validateManifest } from '../build/manifest-schema.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
 import { verifyMedia } from './media.mjs'
 import { selectSchedulable } from './schedule-plan.mjs'
+import { planUnschedule, UNSCHEDULED } from './unschedule-plan.mjs'
 import {
   epochSeconds,
   scheduleFacebookPhoto,
@@ -28,11 +29,12 @@ import {
 const GRAPH = 'https://graph.facebook.com/v21.0'
 
 function parseArgs(argv) {
-  const args = { dryRun: false, ledger: 'publish/ledger.jsonl', now: null, manifest: null, skipMediaCheck: false }
+  const args = { dryRun: false, ledger: 'publish/ledger.jsonl', now: null, manifest: null, skipMediaCheck: false, unschedule: [] }
   for (let i = 0; i < argv.length; i += 1) {
     const [flag, inline] = argv[i].split('=')
     const value = () => inline ?? argv[++i]
     if (flag === '--dry-run') args.dryRun = true
+    else if (flag === '--unschedule') args.unschedule = value().split(',').map((x) => x.trim()).filter(Boolean)
     else if (flag === '--skip-media-check') args.skipMediaCheck = true
     else if (flag === '--manifest') args.manifest = value()
     else if (flag === '--ledger') args.ledger = value()
@@ -68,7 +70,8 @@ const graphHttp = (token) => async ({ method, path, form }) => {
 function dryRunHttp(log) {
   let n = 0
   return async ({ method, path, form }) => {
-    const shown = { ...form, message: `${form.message.slice(0, 40)}…` }
+    // Not every Graph call carries a message — a delete carries only `method`.
+    const shown = form?.message ? { ...form, message: `${form.message.slice(0, 40)}…` } : { ...form }
     log.push(`    ${method} ${path}  ${JSON.stringify(shown)}`)
     return { id: `DRYRUN_${++n}`, post_id: `DRYRUN_POST_${n}` }
   }
@@ -108,7 +111,41 @@ async function main() {
 
   const pageId = resolvePageId(args.dryRun)
   const now = args.now ? new Date(args.now) : new Date()
-  const ledger = readLedger(args.ledger)
+  // Pull named posts back out of Meta's queue BEFORE planning, so the same run re-schedules them
+  // with whatever the card says now. Deleting and re-sending is the only way to replace a scheduled
+  // photo post: Meta bound the image at creation, and there is no edit for it.
+  // A dry run writes nothing, so entries it *would* write are carried forward in memory. Without
+  // this the plan below re-reads the file, still sees `scheduled`, and prints HELD for a post the
+  // same run just reported dropping — which is the opposite of what a real run does.
+  const pendingLedger = []
+  if (args.unschedule.length) {
+    const token = args.dryRun ? '' : readToken()
+    if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
+    const dropLog = []
+    const http = args.dryRun ? dryRunHttp(dropLog) : graphHttp(token)
+    const pulled = planUnschedule({ manifest, ledger: readLedger(args.ledger), ids: args.unschedule })
+
+    for (const id of pulled.unknown) {
+      throw new Error(`"${id}" is not a post in ${args.manifest}; refusing to guess which one you meant.`)
+    }
+    for (const id of pulled.notScheduled) {
+      console.log(`  KEPT ${id} — Facebook is not holding it; nothing to pull back`)
+    }
+    for (const { id, remoteId } of pulled.toDelete) {
+      console.log(`  DROP ${id} (${remoteId})`)
+      // Graph takes a delete as POST ?method=delete, which the existing transport already speaks.
+      await http({ method: 'POST', path: `/${remoteId}`, form: { method: 'delete' } })
+      const entry = record(id, UNSCHEDULED, { remoteId })
+      if (args.dryRun) {
+        console.log(`    LEDGER ${JSON.stringify(entry)}`)
+        pendingLedger.push(entry)
+      } else appendLedger(args.ledger, entry)
+      for (const line of dropLog.splice(0)) console.log(line)
+      console.log(`    ok — Facebook released it`)
+    }
+  }
+
+  const ledger = [...readLedger(args.ledger), ...pendingLedger]
   const plan = selectSchedulable({ manifest, ledger, now })
 
   console.log(`${args.dryRun ? 'DRY RUN' : 'SCHEDULE'} at ${now.toISOString()} — gameweek ${manifest.gameweek}`)

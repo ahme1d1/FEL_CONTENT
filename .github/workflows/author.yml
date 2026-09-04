@@ -49,6 +49,13 @@ on:
         description: 'Author and render, but hand nothing to Meta'
         type: boolean
         default: false
+      refresh:
+        description: 'Replace posts whose data has changed since they were authored'
+        type: boolean
+        default: false
+      unschedule:
+        description: 'Comma-separated post ids to pull back out of Meta''s queue first, e.g. gw03-d7-1400-fb-feed'
+        type: string
 
 concurrency:
   group: content
@@ -95,6 +102,7 @@ jobs:
         env:
           FEL_WEBSITE_DIR: ${{ github.workspace }}/FEL_WEBSITE
           ONLY_GW: ${{ inputs.gameweek }}
+          REFRESH: ${{ inputs.refresh }}
         run: |
           set -euo pipefail
           if [ -n "${ONLY_GW:-}" ]; then
@@ -109,7 +117,9 @@ jobs:
           fi
           for gw in $GAMEWEEKS; do
             echo "── gameweek $gw"
-            node build/author-cli.mjs --gameweek "$gw"
+            REFRESH_FLAG=""
+            [ "${REFRESH:-false}" = "true" ] && REFRESH_FLAG="--refresh"
+            node build/author-cli.mjs --gameweek "$gw" $REFRESH_FLAG
             npm run render -- "manifests/gw$(printf '%02d' "$gw").json"
           done
           node build/validate-cli.mjs
@@ -150,6 +160,28 @@ jobs:
           shopt -s nullglob
           for m in manifests/*.json; do
             node publish/wait-media.mjs --manifest "$m" --timeout 600
+          done
+
+      # Replacing a scheduled photo post means deleting it: Meta bound the image at creation and
+      # offers no edit for it. This runs AFTER Pages is serving the new render and BEFORE the
+      # scheduling step below, so one run drops the stale post and re-sends the fresh one into the
+      # same slot. Ids are matched to their own manifest by prefix; an id the manifest does not
+      # carry is an error, not a no-op.
+      - name: Pull named posts out of Meta's queue
+        if: inputs.unschedule != '' && inputs.skip_facebook != true
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          UNSCHEDULE: ${{ inputs.unschedule }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for m in manifests/*.json; do
+            gw=$(basename "$m" .json)
+            IDS=$(printf '%s' "$UNSCHEDULE" | tr ',' '\n' | sed 's/ //g' | grep "^${gw}-" | paste -sd, - || true)
+            if [ -z "$IDS" ]; then continue; fi
+            echo "── $m"
+            printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest "$m" --unschedule "$IDS"
           done
 
       # Meta schedules these natively; due.mjs deliberately refuses them, so this pass is the only
