@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "_source": "posting-runbook.md §2. Slots must be members of SLOTS_CAIRO in build/manifest-schema.mjs, which is also what the publish workflow's eight crons fire on.",
+  "_source": "posting-runbook.md §2. Slots must be members of SLOTS_CAIRO in build/manifest-schema.mjs, which is also what six of the publish workflow's seven crons fire on (the seventh polls the evening for the anchored results post). The real clock is external - see README, 'The clock is not GitHub's'.",
   "link": "https://fantasyeg.com/",
   "days": {
     "buildUp": [],

@@ -43,6 +43,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   publish:
@@ -106,3 +107,33 @@ jobs:
           done
           echo "::error::Could not push the ledger. A later run may re-post; reconcile by hand."
           exit 1
+
+      # A RED RUN IS INVISIBLE. On 2026-09-04 this workflow failed five consecutive scheduled runs
+      # — 08:35, 13:14, 17:25, 18:41, 20:26, all `fetch failed` reaching the live API — and nothing
+      # said so; it was found by a person looking. GitHub's own email for a failed scheduled
+      # workflow demonstrably does not reach anyone here.
+      #
+      # Last step in the job on purpose: `failure()` is true if ANY earlier step failed, so this
+      # has to sit after all of them. It covers a run that went red; watchdog.yml covers the
+      # other half — a run that never happened at all.
+      - name: Say so if this run failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ github.workflow }} is failing
+        run: |
+          set -euo pipefail
+          BODY=$(printf '`%s` failed at %s.\n\n[the run](%s/%s/actions/runs/%s)\n' \
+            "$GITHUB_WORKFLOW" "$(date -u +%FT%TZ)" \
+            "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          # One issue per workflow, commented on rather than reopened, so five failures in a row
+          # are five comments on one thread instead of five issues.
+          NUM=$(gh issue list --state open --label workflow-failure --json number,title \
+                  --jq "[.[] | select(.title == env.TITLE)][0].number // empty")
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body "$BODY"
+          else
+            gh label create workflow-failure --color B60205 \
+              --description 'A workflow run went red' 2>/dev/null || true
+            gh issue create --title "$TITLE" --label workflow-failure --body "$BODY"
+          fi

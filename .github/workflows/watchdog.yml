@@ -1,0 +1,101 @@
+# The alarm for a routine that never ran.
+#
+# Two things here are load-bearing:
+#
+# 1. IT IS ALLOWED TO BE LATE, WHICH IS WHY IT CAN LIVE ON GITHUB. The publisher's clock must
+#    fire ON TIME and therefore runs off a real cron on the VPS (FEL_INFRA scripts/publish-tick.sh);
+#    this only has to fire EVENTUALLY. A half-hourly schedule delivering a quarter of its runs
+#    still comfortably beats a 90-minute threshold. Splitting the two across two hosts means
+#    neither host's death takes the other's alarm with it.
+# 2. IT SHARES NO CONCURRENCY GROUP WITH THE PUBLISHER. Joining `content` would queue the alarm
+#    behind the very runs it is watching, which is the one time it must not wait.
+name: Watchdog
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      grace:
+        description: 'Minutes a post may be late before the alarm (default 90)'
+        type: string
+
+concurrency:
+  group: watchdog
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  # One title, searched for every run, so five bad hours update one issue instead of opening five.
+  ALARM_TITLE: 'Publishing has stalled'
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # continue-on-error, not `|| true`: the step's OUTCOME is what the next two read, and a
+      # swallowed exit code would make a stalled pipeline look healthy.
+      - name: Is anything owed that has not gone out?
+        id: check
+        continue-on-error: true
+        env:
+          # Through the environment, never interpolated into the script: this is a public repo
+          # and `${{ }}` inside a run block is string substitution, not an argument.
+          GRACE: ${{ inputs.grace }}
+        run: |
+          # NOT `set -e`. The whole point of this step is to run a command that EXITS 1, and
+          # -e would abort before the body file is written — leaving the alarm with nothing to
+          # say but "the watchdog itself failed".
+          set -uo pipefail
+          ARGS=""
+          if [ -n "${GRACE:-}" ]; then ARGS="--grace $GRACE"; fi
+          node publish/watchdog.mjs $ARGS --format markdown --out "$RUNNER_TEMP/body.md"
+          RC=$?
+          cat "$RUNNER_TEMP/body.md"
+          exit $RC
+
+      - name: Raise the alarm
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # The body is written even when the check exits 1, which is the normal alarm path. It
+          # is missing only if the watchdog itself crashed — still an alarm, just a vaguer one.
+          BODY="$RUNNER_TEMP/body.md"
+          [ -s "$BODY" ] || echo "The watchdog itself failed to run. See the log." > "$BODY"
+          printf '\n\n[the run that found it](%s/%s/actions/runs/%s)\n' \
+            "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" >> "$BODY"
+
+          NUM=$(gh issue list --state open --label watchdog --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file "$BODY"
+            echo "Updated #$NUM"
+          else
+            gh label create watchdog --color B60205 --description 'Raised automatically by watchdog.yml' 2>/dev/null || true
+            gh issue create --title "$ALARM_TITLE" --label watchdog --body-file "$BODY"
+          fi
+          exit 1
+
+      # An alarm nobody clears is an alarm nobody reads. If the backlog cleared on its own —
+      # a delayed run finally landing — say so and close it, so an open issue always means a
+      # live problem.
+      - name: Stand down
+        if: steps.check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NUM=$(gh issue list --state open --label watchdog --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "Clear as of $(date -u +%FT%TZ) — nothing owed. Closing; the watchdog will reopen if it recurs."
+            echo "Closed #$NUM"
+          fi

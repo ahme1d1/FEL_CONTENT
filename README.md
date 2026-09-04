@@ -22,7 +22,8 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `manifests/gwNN.json` | the week's plan, reviewed as a diff before anything publishes |
 | `gwNN/` | rendered media, served by Pages, content-addressed by sha256 |
 | `.github/workflows/author.yml` | **the routine that writes the week** — author, render, push, schedule |
-| `.github/workflows/publish.yml` | the routine that publishes what is due, eight times a day |
+| `.github/workflows/publish.yml` | the routine that publishes what is due, on a clock it does not own |
+| `.github/workflows/watchdog.yml` | **the alarm** — half-hourly, opens an issue when something owed has not gone out |
 | `build/author-cli.mjs` | **writes the manifest** from the live API and the calendar |
 | `build/current-gw-cli.mjs` | which gameweeks to author, worked out from public `/fixtures` |
 | `build/author/calendar.json` | which card goes out at which slot on which day |
@@ -35,17 +36,19 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/swap-card.mjs` | **the meme maker** — swaps a borrowed video's game UI for ours |
 | `build/swap-plan.mjs` | its argument grammar and filter graph, kept pure so they are tested |
 | `memes/` | the GW1 swap, from before these carried a manifest entry |
-| `publish/publish.mjs` | the publisher a cloud routine runs eight times a day |
+| `publish/publish.mjs` | the publisher, run by the external clock and by GitHub's own crons |
 | `publish/schedule-facebook.mjs` | hands the Facebook posts to Meta's own scheduler, run by `author.yml` |
 | `publish/wait-media.mjs` | blocks until Pages actually serves the media Meta is about to fetch |
 | `publish/tiktok-auth-cli.mjs` | one-time TikTok authorization, run by hand |
 | `publish/tiktok-draft.mjs` | sends a video to the TikTok drafts inbox, run by hand |
+| `publish/watchdog-plan.mjs` | is anything owed that has not gone out — pure, so it is tested |
+| `publish/watchdog.mjs` | the alarm's CLI; publishes nothing, needs no credential |
 | `publish/ledger.jsonl` | append-only record of what actually went out |
 
 ## Commands
 
 ```bash
-npm test                                    # 347 unit tests, no network, no accounts
+npm test                                    # 361 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
@@ -53,6 +56,7 @@ node build/validate-cli.mjs                 # validate every manifest
 node build/lint-copy-cli.mjs instagram "…"  # lint one caption
 node publish/schedule-facebook.mjs --manifest manifests/gw04.json --dry-run
 node publish/publish.mjs --manifest fixtures/gw03.json --dry-run --now 2026-09-03T08:00:00Z
+node publish/watchdog.mjs                   # is anything owed that has not gone out?
 node publish/tiktok-draft.mjs --file ../FEL_VIDEO/out/ad-full.mp4 --dry-run
 node build/swap-card.mjs --video <tiktok-url> --probe        # find the card box
 ```
@@ -144,11 +148,92 @@ and the round settles, so there is always a next batch nobody has handed over. R
 pass is safe because the ledger records a `scheduled` state per post, and `schedule-plan.mjs`
 skips anything already carrying one.
 
+## The clock is not GitHub's
+
+**GitHub drops most scheduled workflow runs, and this pipeline cannot absorb that.** `publish.yml`
+asks for about thirty-six runs a day across seven cron entries; on 2-4 Sep 2026 it got six to ten.
+On 4 Sep nothing ran between 01:21Z and 13:22Z — twelve hours straight through the Cairo noon
+block — and the four Instagram posts for the 12:00, 13:00, 14:00 and 16:00 slots published
+together in twenty-nine seconds at 16:23 Cairo.
+
+**Lateness here is not cosmetic.** `due.mjs` writes any post more than six hours late as
+`skipped`, which is terminal: the post is never sent. That morning's winner post went out 4h23
+late. It missed being deleted by 1h37.
+
+**Facebook is immune and Instagram is not.** `fb-feed` and `fb-text` were handed to Meta's own
+scheduler during the authoring pass, and Meta holds them. The Graph API has no scheduled publish
+for Instagram, so `ig-feed`, `ig-story`, `ig-reel` and `fb-story` — the four in `ROUTINE_FIRED` —
+go out only when this workflow actually runs.
+
+**Adding cron entries does not work, and the file already proves it.** Commit `2eacdb0` tried
+exactly that; `*/15 16-23 * * *` is a fifteen-minute poll and it is dropped alongside the rest.
+GitHub is rationing the workflow, not the entries.
+
+So the clock lives outside GitHub, on the VPS that already has real cron:
+
+```
+FEL_INFRA scripts/publish-tick.sh   — every 5 min, 08:00-23:59 UTC, via /etc/cron.d/fel-clock
+  └── POST /repos/ahme1d1/FEL_CONTENT/actions/workflows/publish.yml/dispatches
+      {"ref":"main","inputs":{"dry_run":"false"}}
+```
+
+Worst-case lateness goes from 4h23 to five minutes. See FEL_INFRA `docs/RUNBOOK.md` §5b.
+
+**`dry_run` must be on the wire, spelled `"false"`.** The input declares `default: true`, so a
+dispatch that omits it runs the whole job, exits 0, goes green in the Actions list — and
+publishes nothing. That is the single easiest way to build a clock that looks like it works.
+
+**A 204 means accepted, not published.** The proof is a `published` record in the ledger, never
+the status code.
+
+**The GitHub crons stay** as a free backstop for the VPS being down. Do not remove them, and do
+not add more.
+
+A dense cadence is safe because both workflows share `concurrency: {group: content,
+cancel-in-progress: false}`: ticks queue behind a run in flight rather than racing it, surplus
+pending runs collapse to the newest, and a tick with nothing due writes nothing and commits
+nothing.
+
+## Nothing here is watched by a person
+
+Two failures are silent, and they need different mechanisms.
+
+**A run that went red.** `author.yml` failed five consecutive scheduled runs on 4 Sep — 08:35,
+13:14, 17:25, 18:41, 20:26, every one of them `fetch failed` reaching the live API — and nothing
+said so. Both workflows now end with an `if: failure()` step that opens, or comments on, one
+issue labelled `workflow-failure`.
+
+**A run that never happened.** No failure step can fire for a run that did not occur, so
+`watchdog.yml` runs half-hourly and asks `publish/watchdog.mjs`:
+
+| it shouts about | meaning |
+|---|---|
+| `backlog` | something is due and more than 90 minutes late — the clock has stopped, with ~4.5h left before `due.mjs` deletes it |
+| `lost` | a post passed the six-hour budget. Already gone. |
+| `stuck` | a `claimed` record never closed out — reconcile against the platform, never re-post |
+
+**It asks `selectDue`, not the ledger's age.** The obvious watchdog — "the newest ledger entry is
+older than N hours" — cries wolf every morning, because on a day with nothing scheduled the
+ledger legitimately does not move. Asking `selectDue` means there is one definition of "late" in
+this repo and the alarm cannot drift from what the publisher does.
+
+**The alarm lives on GitHub and the clock does not, deliberately.** The clock has to fire on
+time; the alarm only has to fire eventually, so an unreliable half-hourly cron is fine against a
+ninety-minute threshold. Splitting them across two hosts means neither host's death takes the
+other's alarm with it — and the alarm is what catches a clock that is quietly dispatching with
+`dry_run: true`, which the failure step would report as success.
+
+It closes its own issue when the backlog clears, so an open one always means a live problem.
+
 ## The calendar
 
 **The day starts at noon** (owner call, 2026-09-02). `SLOTS_CAIRO` is `12:00 13:00 14:00 16:00
-20:00 22:30`, and `publish.yml`'s six crons fire on exactly those times — **change the two
-together**, or a slot has no routine behind it and its posts wait for the next one.
+20:00 22:30`, and six of `publish.yml`'s seven crons fire on exactly those times — **change the
+two together**, or a slot has no routine behind it and its posts wait for the next one. The
+seventh, `*/15 16-23`, is not a slot: it polls the evening for the ANCHORED results post, whose
+instant is deliberately not one of the six.
+
+Those crons are now a backstop rather than the clock. See «The clock is not GitHub's» below.
 
 | day role | slots |
 |---|---|
