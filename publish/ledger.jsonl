@@ -71,3 +71,13 @@
 {"ts":"2026-09-04T06:07:08.621Z","id":"gw04-meme-pov-yasser-fb-video","state":"scheduled","remoteId":"1384200869949205","scheduledFor":"2026-09-04T19:30:00Z"}
 {"ts":"2026-09-04T06:07:08.622Z","id":"gw04-meme-my-gameweek-fb-video","state":"claimed","strategy":"fb-video","mediaSha256":"6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f"}
 {"ts":"2026-09-04T06:07:12.664Z","id":"gw04-meme-my-gameweek-fb-video","state":"scheduled","remoteId":"1358911459646297","scheduledFor":"2026-09-05T17:00:00Z"}
+{"ts":"2026-09-04T13:23:11.188Z","id":"gw03-d7-1200-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"4b31eb9d14cfa0abdfff89cb7f4b285e3f2606f918eca176cdac9aa3c1a3de61"}
+{"ts":"2026-09-04T13:23:22.112Z","id":"gw03-d7-1200-ig-feed","state":"published","remoteId":"18111227129109576"}
+{"ts":"2026-09-04T13:23:22.113Z","id":"gw03-d7-1300-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"3d6b741366ec906a8cfbbc1fdba1af29d113cce6434d57b6fd5af325f15a7ef5"}
+{"ts":"2026-09-04T13:23:32.566Z","id":"gw03-d7-1300-ig-feed","state":"published","remoteId":"18111768974097473"}
+{"ts":"2026-09-04T13:23:32.567Z","id":"gw03-d7-1400-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"1cdb35c130529e332466989d749a27df28a7a9329cdf4759407a1b7edc5bb0f5"}
+{"ts":"2026-09-04T13:23:41.783Z","id":"gw03-d7-1400-ig-feed","state":"published","remoteId":"18092952470439423"}
+{"ts":"2026-09-04T13:23:41.784Z","id":"gw03-d7-1600-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"8347704ec6fd30de2f77f93020041de3f2cf0bc3ddba8ee1901d512c049305fb"}
+{"ts":"2026-09-04T13:23:51.171Z","id":"gw03-d7-1600-ig-feed","state":"published","remoteId":"18022115945882847"}
+{"ts":"2026-09-04T13:23:51.260Z","id":"gw04-meme-ahly-defence-ig-reel","state":"claimed","strategy":"ig-reel","mediaSha256":"fda70726f7d2d02917d586ae5c87f17937e94f5ae7f3d8e77cd8fde4de3bf720"}
+{"ts":"2026-09-04T13:25:14.982Z","id":"gw04-meme-ahly-defence-ig-reel","state":"published","remoteId":"18009308759953329"}
