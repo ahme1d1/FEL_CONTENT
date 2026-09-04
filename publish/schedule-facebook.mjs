@@ -117,10 +117,15 @@ async function main() {
   // A dry run writes nothing, so entries it *would* write are carried forward in memory. Without
   // this the plan below re-reads the file, still sees `scheduled`, and prints HELD for a post the
   // same run just reported dropping — which is the opposite of what a real run does.
+  // ONE read, shared by both passes. `readToken` drains stdin, so a second call returns nothing:
+  // an unschedule run deleted two posts at Facebook and then died before re-sending them, because
+  // the scheduling pass below asked for the token again and got an empty string. Stranding a post
+  // that way — gone from the queue, never re-sent — is the exact failure this file exists to avoid.
+  const token = args.dryRun ? '' : readToken()
+  if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
+
   const pendingLedger = []
   if (args.unschedule.length) {
-    const token = args.dryRun ? '' : readToken()
-    if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
     const dropLog = []
     const http = args.dryRun ? dryRunHttp(dropLog) : graphHttp(token)
     const pulled = planUnschedule({ manifest, ledger: readLedger(args.ledger), ids: args.unschedule })
@@ -154,9 +159,6 @@ async function main() {
       `no caption ${plan.needsCaption.length} · out of window ${plan.tooSoon.length + plan.tooFar.length} · ` +
       `needs reconciliation ${plan.crashed.length}`,
   )
-
-  const token = args.dryRun ? '' : readToken()
-  if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
 
   const log = []
   const http = args.dryRun ? dryRunHttp(log) : graphHttp(token)
