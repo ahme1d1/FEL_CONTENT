@@ -199,7 +199,12 @@ const BUILDERS = {
   // until bonus points are entered, so its presence is the API's own "this round is final".
   winner: ({ window, data }) => {
     need(data.topPlayers, 'settled gameweek')
-    return winnerCard({ gameweek: window.gameweek, winner: need(data.gwStandings, 'gameweek board')[0] })
+    // `data.winner` carries his ELEVEN and gets the pitch card; the board carries only a name and
+    // a score. Falling back to the board keeps a prize post on a round whose winner read failed.
+    return winnerCard({
+      gameweek: window.gameweek,
+      winner: data.winner ?? need(data.gwStandings, 'gameweek board')[0],
+    })
   },
 
   podium: ({ window, data }) => {
@@ -210,7 +215,7 @@ const BUILDERS = {
   playerOfRound: ({ data }) => playerOfRoundCard({ player: need(data.topPlayers, 'gameweek points')[0] }),
 
   teamOfWeek: ({ window, data }) =>
-    teamOfWeekCard({ gameweek: window.gameweek, players: need(data.topPlayers, 'gameweek points') }),
+    teamOfWeekCard({ gameweek: window.gameweek, team: need(data.teamOfWeek, 'gameweek team') }),
 
   topPlayers: ({ data }) => topPlayersCard({ players: need(data.topPlayers, 'gameweek points') }),
 

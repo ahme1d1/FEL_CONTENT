@@ -209,46 +209,29 @@ export function playerOfRoundCard({ player }) {
   }
 }
 
-/** Two slots per pitch position from t2 — points then name — and one shirt per player. */
-const FORMATIONS = [
-  { card: 'M_TEAM_OF_THE_WEEK_4_4_2', shape: { FWD: 2, MID: 4, DEF: 4 } },
-  { card: 'M_TEAM_OF_THE_WEEK_5_2_3', shape: { FWD: 3, MID: 2, DEF: 5 } },
-]
-
-/** Top of the pitch downwards, which is the order the slots run in. */
-const PITCH_ORDER = ['FWD', 'MID', 'DEF']
-
-function bestXi(players, shape) {
-  const keeper = players.find((p) => p.pos === 'GK')
-  if (!keeper) return null
-
-  const picked = []
-  for (const pos of PITCH_ORDER) {
-    const forPos = players.filter((p) => p.pos === pos).slice(0, shape[pos])
-    if (forPos.length < shape[pos]) return null
-    picked.push(...forPos)
-  }
-  picked.push(keeper)
-
-  return { xi: picked, total: picked.reduce((sum, p) => sum + p.points, 0) }
-}
-
 /**
- * The best legal XI of the round.
+ * Picking the eleven moved to the API on 2026-09-04 — `GET /gameweeks/:gw/team-of-week`.
  *
- * A pure top eleven does not fit a pitch, so both shipped formations are filled and the one that
- * scores more wins — the rule in `posting-runbook.md` §3, where GW1 came out 4-4-2 112 to 5-2-3
- * 111. Ties keep 4-4-2, so the same data always renders the same bytes.
+ * It was done here, from `top-players?limit=50`, and it failed on exactly the rounds this card is
+ * most wanted for: GW3's top fifty held ONE forward, no shipped shape could be filled, and the
+ * 16:00 slot went empty. A picker needs a per-position pool rather than a leaderboard, and the API
+ * is where the whole field already lives. `FORMATIONS`, `bestXi` and the pitch order that lived
+ * here are gone with it; the shapes are the rules engine's now, so the two cannot drift.
  */
-export function teamOfWeekCard({ gameweek, players }) {
-  const ranked = [...players].sort((a, b) => b.points - a.points || a.playerId - b.playerId)
-
-  let best = null
-  for (const formation of FORMATIONS) {
-    const built = bestXi(ranked, formation.shape)
-    if (built && (!best || built.total > best.total)) best = { ...built, card: formation.card }
+export function teamOfWeekCard({ gameweek, team }) {
+  // The API picks the side now — across every shape the rules engine admits, from the whole field
+  // rather than a leaderboard. Assembling one here from `top-players` is what left GW3 with a
+  // single forward, no fillable shape and an empty 16:00 slot. This renders what it was given.
+  const players = team?.players
+  if (!Array.isArray(players)) throw new Error('no gameweek team available yet')
+  if (players.length !== 11) {
+    throw new Error(`The team of the week is eleven players, got ${players.length}.`)
   }
-  if (!best) throw new Error('No shipped formation can be filled from these players.')
+  const card = `M_TEAM_OF_THE_WEEK_${String(team.formation).replace(/-/g, '_')}`
+  if (!DRAWABLE_FORMATIONS.includes(team.formation)) {
+    throw new Error(`No card template for a ${team.formation}; ask the API for ${DRAWABLE_FORMATIONS.join(', ')}.`)
+  }
+  const best = { xi: players, card }
 
   const texts = { 0: gameweekLabel(gameweek), 1: TEXT.teamOfWeekTitle }
   const assets = {}
@@ -358,8 +341,62 @@ export function leagueTableCard({ rows }) {
  *
  * The name is a manager's own and goes on verbatim, exactly as it does on the podium.
  */
+/**
+ * The formations we hold a card template for.
+ *
+ * The API picks across all eight shapes the rules engine admits; this repo can only DRAW three, so
+ * it is told which. Add a template, add it here — `M_TEAM_OF_THE_WEEK_<shape>` is the naming rule.
+ */
+export const DRAWABLE_FORMATIONS = ['4-4-2', '5-2-3', '5-4-1']
+
+/** How much room a name has under a shirt. Rule 9's 284px box; verified by rendering the card. */
+const SHIRT_NAME_MAX = 14
+
+/**
+ * The winner and the eleven he won with.
+ *
+ * `P_WINNER_THEIR_TEAM_NO_CLUB_SET`, not its retired 29-slot twin: this one carries a points badge
+ * for ALL eleven rather than ten, plus a captain marker.
+ *
+ * THE CAPTAIN LEADS THE ELEVEN. The template pins its marker to the first cell, and pitch order
+ * buys nothing to weigh against that — the card draws a fixed 3-3-4-1 whatever the real shape is,
+ * so ordering by position was costing a correct armband to decorate a pitch that is already
+ * decorative. The armband is the EFFECTIVE one: if the captain did not play it moved to the vice,
+ * and the doubled points moved with it.
+ *
+ * Slots run points-then-name from t5, except the first man, whose captain marker sits between them
+ * at t6 — so he is t5 / t7 and everyone after him is t(2j+4) / t(2j+5).
+ */
+function winnerTeamCard({ gameweek, winner }) {
+  const captain = winner.xi.find((p) => p.isCaptain)
+  const xi = captain ? [captain, ...winner.xi.filter((p) => p !== captain)] : winner.xi
+
+  const texts = {
+    0: `${TEXT.winnerHero} ${gameweekLabel(gameweek).replace(/^الجولة /, '')}`.trim(),
+    1: winner.teamName ?? '',
+    2: winner.name,
+    3: asText(winner.gwPts),
+    4: TEXT.pointsWord,
+  }
+  if (captain) texts[6] = 'C'
+
+  const assets = {}
+  xi.forEach((p, i) => {
+    const j = i + 1
+    texts[j === 1 ? 5 : 2 * j + 4] = asText(p.points)
+    texts[j === 1 ? 7 : 2 * j + 5] = cardName(p.name, { maxChars: SHIRT_NAME_MAX })
+    assets[i] = p.club
+  })
+
+  return { card: 'P_WINNER_THEIR_TEAM_NO_CLUB_SET', slug: 'winner', keepNames: true, texts, assets }
+}
+
 export function winnerCard({ gameweek, winner }) {
   if (!winner?.name) throw new Error('no gameweek winner available yet')
+
+  // The eleven is the card we want. The STAT card is what a round answers with when the winner
+  // endpoint has not been deployed or has nothing to say — a name and a score beats no post.
+  if (Array.isArray(winner.xi) && winner.xi.length === 11) return winnerTeamCard({ gameweek, winner })
 
   const points = `${asText(winner.gwPts)} ${TEXT.pointsWord}`
   const fits = winner.name.length <= 16

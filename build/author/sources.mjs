@@ -10,6 +10,8 @@
  * for the API — which is also what makes a manifest reproducible.
  */
 
+import { DRAWABLE_FORMATIONS } from './cards.mjs'
+
 export const DEFAULT_API_BASE = 'https://api.fantasyeg.com/api/v1'
 
 /** How deep into the price list a captain is plausibly picked from. */
@@ -71,7 +73,7 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
     return value
   }
 
-  const [clubs, fixtures, previousFixtures, standings, gwBoard, topPlayers, premiums, prices] =
+  const [clubs, fixtures, previousFixtures, standings, gwBoard, topPlayers, winner, teamOfWeek, premiums, prices] =
     await Promise.all([
       read('/clubs'),
       read(`/fixtures?gw=${gameweek}`),
@@ -79,6 +81,12 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
       read('/standings'),
       take(`/gameweeks/${gameweek}/standings?limit=3`, 'gwStandings'),
       take(`/gameweeks/${gameweek}/top-players?limit=50`, 'topPlayers'),
+      // The settle-day pair. Both are settled fact and both 404 GAMEWEEK_NOT_SETTLED until the
+      // round is final, which `optional` already reads as "not yet" rather than "broken".
+      take(`/gameweeks/${gameweek}/winner`, 'winner'),
+      // Only the shapes we hold a card template for. Without this the API is free to answer with
+      // the best legal formation of the eight, which may be one we cannot draw.
+      take(`/gameweeks/${gameweek}/team-of-week?formations=${DRAWABLE_FORMATIONS.join(',')}`, 'teamOfWeek'),
       read(`/players?sortBy=price&per_page=${CAPTAIN_POOL}`),
       take('/players/price-changes?window=168h', 'priceChanges'),
     ])
@@ -131,6 +139,8 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
     priceChanges: moves.length
       ? moves.sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).map(withClubName)
       : null,
+    winner,
+    teamOfWeek,
     notes,
   }
 }

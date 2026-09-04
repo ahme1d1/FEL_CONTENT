@@ -217,43 +217,48 @@ const squad = (counts, pointsFor) =>
     Array.from({ length: n }, (_, i) => player({ playerId: `${pos}${i}`.length * 100 + i, pos, points: pointsFor(pos, i) })),
   )
 
-test('the formation that scores more wins, which is why both are built', () => {
-  // Plenty of forwards, thin midfield: 5-2-3 must beat 4-4-2.
-  const players = squad({ GK: 1, DEF: 6, MID: 4, FWD: 4 }, (pos, i) =>
-    pos === 'FWD' ? 20 - i : pos === 'MID' ? 2 : 9 - i,
+// Picking the side moved to the API on 2026-09-04. What is left here is rendering the eleven it
+// hands back — and refusing anything this repo cannot actually draw.
+const TEAM = (over = {}) => ({
+  formation: '4-4-2',
+  totalPoints: 128,
+  players: Array.from({ length: 11 }, (_, i) => player({ playerId: i, points: 20 - i })),
+  ...over,
+})
+
+test('the card follows the formation the API picked', () => {
+  assert.equal(teamOfWeekCard({ gameweek: 3, team: TEAM() }).card, 'M_TEAM_OF_THE_WEEK_4_4_2')
+  assert.equal(
+    teamOfWeekCard({ gameweek: 3, team: TEAM({ formation: '5-4-1' }) }).card,
+    'M_TEAM_OF_THE_WEEK_5_4_1',
   )
-  assert.equal(teamOfWeekCard({ gameweek: 4, players }).card, 'M_TEAM_OF_THE_WEEK_5_2_3')
 })
 
-test('a tie keeps 4-4-2, so the same data always renders the same bytes', () => {
-  const players = squad({ GK: 1, DEF: 5, MID: 4, FWD: 3 }, () => 5)
-  assert.equal(teamOfWeekCard({ gameweek: 4, players }).card, 'M_TEAM_OF_THE_WEEK_4_4_2')
-})
-
-test('the eleven run down the pitch: forwards first, keeper last', () => {
-  const players = squad({ GK: 1, DEF: 5, MID: 5, FWD: 3 }, (pos) =>
-    ({ FWD: 9, MID: 7, DEF: 5, GK: 3 })[pos],
-  )
-  const s = teamOfWeekCard({ gameweek: 4, players })
-  assert.equal(s.card, 'M_TEAM_OF_THE_WEEK_4_4_2')
-  assert.deepEqual([s.texts[2], s.texts[4]], ['9', '9'], 'two forwards')
-  assert.deepEqual([s.texts[6], s.texts[8], s.texts[10], s.texts[12]], ['7', '7', '7', '7'])
-  assert.deepEqual([s.texts[14], s.texts[16], s.texts[18], s.texts[20]], ['5', '5', '5', '5'])
-  assert.equal(s.texts[22], '3', 'the keeper is last')
-})
-
-test('a squad that fills no shipped formation is refused', () => {
+// The API can pick across all eight legal shapes; this repo holds three templates. Rendering a
+// shape we have no card for would put sample players on a real post.
+test('a formation with no card template is refused by name', () => {
   assert.throws(
-    () => teamOfWeekCard({ gameweek: 4, players: squad({ GK: 1, DEF: 2, MID: 2, FWD: 1 }, () => 5) }),
-    /No shipped formation/,
+    () => teamOfWeekCard({ gameweek: 3, team: TEAM({ formation: '3-4-3' }) }),
+    /No card template for a 3-4-3/,
   )
 })
 
-test('no keeper at all is refused rather than rendering ten men', () => {
+test('a side that is not eleven is refused rather than part-drawn', () => {
   assert.throws(
-    () => teamOfWeekCard({ gameweek: 4, players: squad({ DEF: 5, MID: 5, FWD: 3 }, () => 5) }),
-    /No shipped formation/,
+    () => teamOfWeekCard({ gameweek: 3, team: TEAM({ players: [player()] }) }),
+    /eleven players, got 1/,
   )
+})
+
+test('no team at all is a card that cannot be written yet, not a crash', () => {
+  assert.throws(() => teamOfWeekCard({ gameweek: 3, team: null }), /no gameweek team/)
+})
+
+test('the eleven keep the order the API sent them in', () => {
+  const team = TEAM()
+  const s = teamOfWeekCard({ gameweek: 3, team })
+  assert.equal(s.assets[0], team.players[0].club)
+  assert.equal(Object.keys(s.assets).length, 11)
 })
 
 /* ─────────────── the generated slot map is the contract ─────────────── */
@@ -310,7 +315,23 @@ test('every slot a filler writes still exists on the card it names', { skip: !ex
     playerOfRoundCard({ player: { name: 'زيزو', club: 'AHL', clubShort: 'الأهلي', points: 14 } }),
     teamOfWeekCard({
       gameweek: 4,
-      players: squad({ GK: 1, DEF: 5, MID: 5, FWD: 3 }, (pos) => ({ FWD: 9, MID: 7, DEF: 5, GK: 3 })[pos]),
+      team: { formation: '4-4-2', totalPoints: 128, players: ten.slice(0, 10).concat(ten[0]) },
+    }),
+    teamOfWeekCard({
+      gameweek: 4,
+      team: { formation: '5-4-1', totalPoints: 132, players: ten.slice(0, 10).concat(ten[0]) },
+    }),
+    // The winner's eleven. This is the card whose slots run points-then-name with a captain marker
+    // wedged between the first pair — the mapping most likely to be written off by one, and the
+    // one where being off by one publishes every man's score against the wrong face.
+    winnerCard({
+      gameweek: 4,
+      winner: {
+        name: 'Mohamed Sadek',
+        teamName: 'العالمي',
+        gwPts: 80,
+        xi: ten.slice(0, 10).concat(ten[0]).map((p, i) => ({ ...p, isCaptain: i === 1 })),
+      },
     }),
     priceChangesCard({ changes: EIGHT_MOVES }),
     podiumCard({
