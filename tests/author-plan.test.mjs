@@ -298,3 +298,40 @@ test('the results card on a round’s last matchday is still vertical on tiktok'
   const feed = posts.find((p) => p.id === 'gw04-d4-results-fb-feed')
   assert.notEqual(JSON.stringify(tiktok.source), JSON.stringify(feed.source))
 })
+
+// 2026-09-04: moving the build-up to the deadline day broke authoring for two days' worth of runs.
+// `mergePosts` KEEPS an existing post that has no fresh twin — deliberately, since its slot may
+// simply have passed and it may already be published. But a retired post keeps everything it
+// carried, and the build-up carries the gameweek's one link. So the old post and the new one each
+// held a link, `validateManifest` refused the result with `too-many-links`, and every scheduled
+// Author run failed at the last step having authored nothing.
+//
+// Retiring a slotted post therefore is not a calendar edit alone: its existing posts have to go
+// too, or the manifest carries them forever.
+test('a retired post is kept by the merge, which is why a moved link post must be deleted', () => {
+  const linked = (id, publishAt) => ({
+    id,
+    publishAt,
+    slotCairo: '2026-09-04 20:00 Africa/Cairo',
+    platform: 'facebook',
+    strategy: 'fb-scheduled',
+    kind: 'buildUp',
+    source: { card: 'D_STAT', texts: {}, assets: {} },
+    caption: 'x',
+    link: 'https://fantasyeg.com/',
+    media: null,
+  })
+
+  const existing = [linked('gw04-d1-2000-fb-feed', '2026-09-04T17:00:00Z')]
+  const fresh = [linked('gw04-d3-1300-fb-feed', '2026-09-07T10:00:00Z')]
+  const { posts } = mergePosts({ existing, fresh })
+
+  assert.equal(posts.length, 2, 'the retired post survives the merge')
+  assert.equal(posts.filter((p) => p.link).length, 2, 'and so does its link — which is the bug')
+
+  const manifest = buildManifest({ gameweek: 4, authoredAt: '2026-09-04T00:00:00Z', posts })
+  assert.ok(
+    validateManifest(manifest).some((f) => f.ruleId === 'too-many-links'),
+    'the validator is what caught it, and it must keep catching it',
+  )
+})
