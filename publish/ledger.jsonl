@@ -60,3 +60,5 @@
 {"ts":"2026-09-04T03:46:57.288Z","id":"gw03-d7-1400-fb-feed","state":"scheduled","remoteId":"122120186103405259","scheduledFor":"2026-09-04T11:00:00Z"}
 {"ts":"2026-09-04T03:47:01.125Z","id":"gw04-d1-2000-fb-feed","state":"skipped","remoteId":"122118592005405259"}
 {"ts":"2026-09-04T03:47:06.128Z","id":"gw05-d1-2000-fb-feed","state":"skipped","remoteId":"122119989129405259"}
+{"ts":"2026-09-04T03:58:13.571Z","id":"gw04-d1-2000-ig-feed","state":"skipped","reason":"build-up retired from its own day; it now goes out on the deadline day"}
+{"ts":"2026-09-04T03:58:13.584Z","id":"gw05-d1-2000-ig-feed","state":"skipped","reason":"build-up retired from its own day; it now goes out on the deadline day"}

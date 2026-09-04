@@ -69,12 +69,23 @@ test('the only finding before rendering is the missing media', () => {
   assert.deepEqual([...ids], ['missing-media'])
 })
 
+// The link still rides the build-up and still appears exactly once. What moved is WHERE: owner
+// call, 2026-09-04, the build-up goes out on the deadline day at 13:00 rather than three days
+// earlier on a day of its own. That empty day is kept on purpose — see calendar.json `_buildUp`.
 test('one link in the whole gameweek, on the build-up post, on Facebook only', () => {
   const { posts } = plan()
   const linked = posts.filter((p) => p.link)
   assert.equal(linked.length, 1)
   assert.equal(linked[0].platform, 'facebook')
-  assert.match(linked[0].id, /-d1-2000-fb-feed$/)
+  assert.equal(linked[0].kind, 'buildUp')
+  assert.match(linked[0].id, /-1300-fb-feed$/)
+})
+
+// The whole reason the empty build-up day stays: a post id carries its day index, and mergePosts
+// keys on that id. Renumbering the days would mint a duplicate of every post in the week.
+test('moving the build-up did not renumber the days', () => {
+  const { posts } = plan()
+  assert.ok(posts.some((p) => p.id === 'gw04-d3-1200-ig-feed'), 'the deadline day is still d3')
 })
 
 test('a post id names its gameweek, day, slot and destination', () => {

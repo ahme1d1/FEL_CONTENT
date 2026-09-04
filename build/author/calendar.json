@@ -3,19 +3,7 @@
   "_source": "posting-runbook.md §2. Slots must be members of SLOTS_CAIRO in build/manifest-schema.mjs, which is also what the publish workflow's eight crons fire on.",
   "link": "https://fantasyeg.com/",
   "days": {
-    "buildUp": [
-      {
-        "slot": "20:00",
-        "kind": "buildUp",
-        "card": "buildUp",
-        "platforms": [
-          "facebook",
-          "instagram",
-          "tiktok"
-        ],
-        "carriesLink": true
-      }
-    ],
+    "buildUp": [],
     "middle": [
       {
         "slot": "12:00",
@@ -59,6 +47,18 @@
           "instagram",
           "tiktok"
         ]
+      },
+      {
+        "slot": "13:00",
+        "kind": "buildUp",
+        "card": "buildUp",
+        "platforms": [
+          "facebook",
+          "instagram",
+          "tiktok"
+        ],
+        "carriesLink": true,
+        "_note": "Owner call, 2026-09-04: the build-up goes out on the DEADLINE DAY, not three days before it. 13:00 sits between the matchday card and the 14:00 deadline reminder, and ahead of every deadline the fixture list has produced."
       },
       {
         "slot": "14:00",
@@ -161,5 +161,6 @@
   },
   "_tiktok": "TikTok takes a 1080x1920 story card for every kind that has one — see STORY_BUILDERS in plan.mjs. Matchday and results joined on 2026-09-02 once build-cards.py grew short row variants of their story cards; before that the only layouts held eight and four rows.",
   "_settleDay": "The prize post leads the day. Owner call, 2026-09-02: the round's winner is what the audience is waiting for once a gameweek settles, so it goes out first rather than third. Settlement itself runs around 01:00 Cairo and the day starts at noon, so 12:00 is as immediate as the grid allows.",
-  "_freshness": "freshWithinHours holds back a card whose data keeps moving until its slot is close. A card is a snapshot and mergePosts keeps it, so one authored four days early publishes what was true when it rendered. Prices are a rolling 168h window, hence 24h; the table needs the previous round finished, hence 48h plus its own completeness check in plan.mjs."
+  "_freshness": "freshWithinHours holds back a card whose data keeps moving until its slot is close. A card is a snapshot and mergePosts keeps it, so one authored four days early publishes what was true when it rendered. Prices are a rolling 168h window, hence 24h; the table needs the previous round finished, hence 48h plus its own completeness check in plan.mjs.",
+  "_buildUp": "Owner call, 2026-09-04: the build-up moved to the DEADLINE DAY. It used to have its own day — the morning after the previous round's last match — which put «الجولة الرابعة قربت» in front of people three days before the deadline it was announcing. The day itself is deliberately KEPT and left empty: `day.index` is part of every post id and `mergePosts` keys on that id, so dropping the day would renumber every later day and mint a duplicate of every post in the week."
 }
