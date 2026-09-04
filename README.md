@@ -339,6 +339,91 @@ check it against the whole clip rather than one.
 **yt-dlp cannot download TikTok** right now — it fails on "universal data for rehydration" and
 browser cookies return 403 — so the tool uses tikwm's public endpoint.
 
+## Decisions, 2026-09-04
+
+One long session's worth of owner calls, written down so the next person does not have to
+re-litigate them. Each says what changed and why, because the why is the part that rots first.
+
+**The settle-day cards read from the API, not from a leaderboard.** Two public endpoints were
+added to FEL_API for them:
+
+| endpoint | what it answers |
+|---|---|
+| `GET /gameweeks/:gw/winner` | the settled winner, his team name, his points, and his eleven with theirs |
+| `GET /gameweeks/:gw/team-of-week[?formations=…]` | the best legal XI, already picked |
+
+Both refuse an unsettled round with `GAMEWEEK_NOT_SETTLED`, which this repo already treats as
+"not yet" rather than "broken". Both are public because the pipeline holds no credentials by
+design — see `publish/route.mjs` for the same reasoning about TikTok.
+
+**Team of the week is picked in the API, not here.** It used to be assembled from
+`top-players?limit=50`, which breaks on exactly the rounds the card is most wanted for: GW3
+ended 0-1, 0-1, 2-1, 0-1, 0-0, 0-0, 0-1, 2-0, 0-2, 1-0, clean sheets carried the scoring, and the
+top fifty held ONE forward. No shape could be filled and the 16:00 slot went empty. The pool a
+picker needs is per-position, not a leaderboard, and that should not be the caller's problem.
+
+**`?formations=` is not optional politeness.** The API picks across all eight shapes the rules
+engine admits; this repo can only DRAW the ones with a card template. Pass the drawable set or the
+API will hand back a formation that cannot be rendered.
+
+**The winner card is `P_WINNER_THEIR_TEAM_NO_CLUB_SET`.** Its 29-slot twin was the wrong card and
+is now deleted: this one has 31 slots — a points badge for all eleven rather than ten, plus a
+captain marker. The captain LEADS the eleven, because the template pins that marker to the first
+cell. Pitch order buys nothing in exchange: the card draws a fixed 3-3-4-1 whatever the real shape
+is, so ordering by position was costing a correct armband for a decoration.
+
+**The player of the round carries his photo.** `G_PLAYER_SPOTLIGHT` and `G_NO_PHOTO_FALLBACK` have
+identical texts and assets and differ only by a 520x520 hero, so the fallback was never a lesser
+card — it was the only one we ever got, because the settle-day author reads `top-players`, which
+carries no `photoUrl`, and never asked `/players/:id`, which does. The photos were public all
+along. The lookup is never fatal: a 404 costs the photo and nothing else.
+
+**Full names on the wide cards.** See `content-design-kit.md` rule 9, now scoped: the 284px box it
+measures is the one under a shirt. Shirt cards keep shortening.
+
+**The build-up goes out on the DEADLINE DAY.** It used to have its own day, the morning after the
+previous round's last match, which put «الجولة الرابعة قربت» in front of people three days before
+the deadline it was announcing. A reminder three days early is noise. Its old day is kept in the
+calendar and left empty on purpose — `day.index` is part of every post id and `mergePosts` keys on
+that id, so removing the day renumbers every later one and mints a duplicate of every post in the
+week. Six tests caught that.
+
+**A scheduled post can be pulled back.** `schedule-plan.mjs` is one-way by design, because that
+guard is the only thing between a re-run and a duplicate on a live brand account. Two escapes now
+exist, and the difference between them is the whole point:
+
+- `--unschedule <ids>` deletes at Meta and writes a NON-terminal state, so the same run re-sends
+  the new render. This is for replacing a card.
+- `--drop <ids>` deletes and writes `skipped`, which is terminal. This is for retiring a post.
+  Using `--unschedule` to retire something means the next authoring pass re-sends what was just
+  deleted.
+
+Replacing is delete-then-resend because Meta binds the image at creation and offers no edit for a
+scheduled photo post. Instagram is different again: it is never handed to Meta in advance, so
+retiring one is a ledger write with no API call at all — and forgetting that is how a post you
+"deleted" still goes out at its slot.
+
+**Read the token once.** `readToken()` drains stdin. A second call returns an empty string, and
+the run that learned this deleted two posts at Facebook and then died before re-sending them.
+They survived only because the ledger's entry and the commit that carries it landed first.
+
+**Show the cards before they are scheduled.** Renders and captions go to the owner for review;
+nothing reaches an account on the strength of a passing test.
+
+### How the repositories land work
+
+Neither FEL_API nor FEL_WEBSITE uses pull requests.
+
+- `develop` is linear. Feature work is squashed to one commit and fast-forwarded in — a merge
+  commit would be the odd one out in either history.
+- `main` is not a merge of `develop`. Every commit is re-landed by cherry-pick as a `release:`
+  commit with the same title.
+- **On FEL_API, pushing `main` IS the production deploy.** `ci-deploy.yml` fires on push to
+  `[main, develop]` and its own header says nothing approves a production release. Dev is
+  `api-dev.fantasyeg.com`; prod is `api.fantasyeg.com`.
+- **FEL_WEBSITE's default branch is `main`, and that is what `author.yml` checks out** for the card
+  tool. A card committed only to `develop` is a card CI cannot render with.
+
 ## Two things that are easy to get wrong
 
 **Times are absolute.** `publishAt` is a UTC instant, converted once from the Cairo wall clock
