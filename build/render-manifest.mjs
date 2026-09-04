@@ -70,7 +70,7 @@ function dimensionsOf(file) {
 
 const sha256File = (file) => createHash('sha256').update(readFileSync(file)).digest('hex')
 
-function main() {
+async function main() {
   const args = parseArgs(process.argv.slice(2))
   const manifest = JSON.parse(readFileSync(args.manifest, 'utf8'))
   const outDir = args.out ?? `gw${String(manifest.gameweek).padStart(2, '0')}`
@@ -91,7 +91,31 @@ function main() {
 
   try {
     const jobsPath = join(work, 'jobs.json')
-    writeFileSync(jobsPath, JSON.stringify(plan.map((g) => g.job), null, 2))
+
+    // A photo hero reaches the card tool as `heroFile`, a path it reads and inlines — so a job that
+    // names a `photoUrl` has to have those bytes on disk beside the jobs file before the tool runs.
+    // A photo that will not download costs us the photo and nothing else: the job falls back to the
+    // no-photo card, which carries the same texts, rather than failing the whole render.
+    const jobs = []
+    for (const group of plan) {
+      const { photoUrl, ...job } = group.job
+      if (photoUrl) {
+        const file = `hero-${group.job.file}.jpg`
+        try {
+          const res = await fetch(photoUrl)
+          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+          writeFileSync(join(work, file), Buffer.from(await res.arrayBuffer()))
+          job.heroFile = file
+        } catch (err) {
+          console.warn(`  ! ${photoUrl} did not download (${err.message}); rendering without the photo`)
+          job.card = 'G_NO_PHOTO_FALLBACK'
+        }
+      }
+      jobs.push(job)
+      group.job = job
+    }
+
+    writeFileSync(jobsPath, JSON.stringify(jobs, null, 2))
     run('node', [RENDER_CARDS, jobsPath, work])
 
     const results = plan.map((group) => {
@@ -130,9 +154,9 @@ function main() {
   }
 }
 
-try {
-  main()
-} catch (err) {
+// `main` is async since the photo hero has to be fetched, so a sync try/catch would let a render
+// failure escape as an unhandled rejection and exit 0 — a green run that produced nothing.
+main().catch((err) => {
   console.error(err.message)
   process.exit(2)
-}
+})

@@ -189,10 +189,15 @@ export function topPlayersCard({ players }) {
 
 /** The round's best player, without a photo — the 192x200 portraits cannot fill a 520px hero. */
 export function playerOfRoundCard({ player }) {
+  // `G_PLAYER_SPOTLIGHT` and `G_NO_PHOTO_FALLBACK` carry the SAME eight texts and one crest, and
+  // differ only by a 520x520 photo hero — so the fallback is a real fallback, not a lesser card.
+  // Which one we get is decided by whether the API had a photo for this player, nothing else.
+  const photoUrl = typeof player.photoUrl === 'string' && player.photoUrl.trim() ? player.photoUrl.trim() : null
   return {
-    card: 'G_NO_PHOTO_FALLBACK',
+    card: photoUrl ? 'G_PLAYER_SPOTLIGHT' : 'G_NO_PHOTO_FALLBACK',
     slug: 'player',
     keepNames: true,
+    ...(photoUrl ? { photoUrl } : {}),
     texts: {
       0: TEXT.playerOfRoundTitle,
       1: cardName(player.name, { maxChars: HERO_NAME_MAX }),
@@ -359,11 +364,16 @@ export function winnerCard({ gameweek, winner }) {
   const points = `${asText(winner.gwPts)} ${TEXT.pointsWord}`
   const fits = winner.name.length <= 16
 
+  // Owner call, 2026-09-04: the card names his TEAM as well as him. D_STAT has one support line,
+  // so the shirt promise moves off the card and lives in the caption, which already says it. A
+  // manager with no team name still gets a clean line rather than a stray separator.
+  const support = [winner.teamName?.trim(), points].filter(Boolean).join(' · ')
+
   return {
     ...statCard({
       gameweek,
       hero: fits ? winner.name : TEXT.winnerHero,
-      support: fits ? `${points} · ${TEXT.winnerShirt}` : `${winner.name} · ${points}`,
+      support: fits ? support : `${winner.name} · ${support}`,
     }),
     slug: 'winner',
   }

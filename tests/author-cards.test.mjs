@@ -14,6 +14,7 @@ import {
   statCard,
   teamOfWeekCard,
   topPlayersCard,
+  winnerCard,
 } from '../build/author/cards.mjs'
 
 const club = (id, short) => ({ id, short })
@@ -338,4 +339,50 @@ test('every slot a filler writes still exists on the card it names', { skip: !ex
       `${source.card} keepNames disagrees with the generated map`,
     )
   }
+})
+
+// ── the photo hero, and the winner's team ──────────────────────────────────────────────────────
+
+// The two G cards carry identical texts and one crest; only the 520x520 photo hero differs. So the
+// choice is made by the DATA — a player the API has a photo for gets the spotlight, and one it does
+// not still gets a complete card rather than a hole where a face should be.
+test('a player the API has a photo for gets the spotlight card', () => {
+  const s = playerOfRoundCard({
+    player: { name: 'احمد سامى', club: 'PYR', clubShort: 'بيراميدز', points: 17, photoUrl: 'https://api.fantasyeg.com/api/v1/assets/players/21.jpg' },
+  })
+  assert.equal(s.card, 'G_PLAYER_SPOTLIGHT')
+  assert.equal(s.photoUrl, 'https://api.fantasyeg.com/api/v1/assets/players/21.jpg')
+})
+
+test('a player with no photo still gets a complete card', () => {
+  const s = playerOfRoundCard({ player: { name: 'احمد سامى', club: 'PYR', clubShort: 'بيراميدز', points: 17 } })
+  assert.equal(s.card, 'G_NO_PHOTO_FALLBACK')
+  assert.equal(s.photoUrl, undefined, 'no dangling key for the renderer to trip on')
+})
+
+test('a blank photo url is not a photo', () => {
+  for (const photoUrl of ['', '   ', null]) {
+    assert.equal(playerOfRoundCard({ player: { name: 'ا', club: 'PYR', clubShort: 'ب', points: 1, photoUrl } }).card, 'G_NO_PHOTO_FALLBACK')
+  }
+})
+
+// Owner call, 2026-09-04: the winner card names his team as well as him.
+test('the winner card carries his team name beside his points', () => {
+  const s = winnerCard({ gameweek: 3, winner: { name: 'Mohamed Sadek', teamName: 'العالمي', gwPts: 80 } })
+  assert.equal(s.texts[1], 'Mohamed Sadek')
+  assert.equal(s.texts[2], 'العالمي · 80 نقطة')
+})
+
+// A manager who never named a team must not get a card with a stray separator on it.
+test('a winner with no team name gets a clean support line', () => {
+  const s = winnerCard({ gameweek: 3, winner: { name: 'Mohamed Sadek', gwPts: 80 } })
+  assert.equal(s.texts[2], '80 نقطة')
+})
+
+// The hero slot wraps past 16 characters, so a long name moves down into the support line — and
+// must take the team with it rather than dropping it.
+test('a long winner name steps aside for the title and keeps the team', () => {
+  const s = winnerCard({ gameweek: 3, winner: { name: 'عبد الرحمن محمد السيد', teamName: 'العالمي', gwPts: 80 } })
+  assert.equal(s.texts[1], 'بطل الجولة')
+  assert.equal(s.texts[2], 'عبد الرحمن محمد السيد · العالمي · 80 نقطة')
 })

@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { planUnschedule, UNSCHEDULED } from '../publish/unschedule-plan.mjs'
+import { DROPPED, planUnschedule, UNSCHEDULED } from '../publish/unschedule-plan.mjs'
 import { selectSchedulable } from '../publish/schedule-plan.mjs'
 
 const post = (id, over = {}) => ({
@@ -65,4 +65,21 @@ test('duplicate ids are collapsed so nothing is deleted twice', () => {
   const ledger = [led('gw03-d7-1400-fb-feed', 'scheduled', { remoteId: '122' })]
   const ids = ['gw03-d7-1400-fb-feed', 'gw03-d7-1400-fb-feed']
   assert.equal(planUnschedule({ manifest: MANIFEST, ledger, ids }).toDelete.length, 1)
+})
+
+// The mirror of the round-trip test above, and the reason two states exist. `unscheduled` is
+// non-terminal so a replaced card is re-sent; a RETIRED post must not be, or the delete and the
+// next authoring pass would fight each other forever.
+test('a dropped post is never offered to the scheduler again', () => {
+  const ledger = [
+    led('gw03-d7-1400-fb-feed', 'scheduled', { remoteId: '122' }),
+    led('gw03-d7-1400-fb-feed', DROPPED, { remoteId: '122' }),
+  ]
+  const plan = selectSchedulable({ manifest: MANIFEST, ledger, now: new Date('2026-09-04T06:00:00Z') })
+  assert.equal(plan.toSchedule.some((p) => p.id === 'gw03-d7-1400-fb-feed'), false, 'must stay gone')
+  assert.equal(plan.alreadyScheduled.some((p) => p.id === 'gw03-d7-1400-fb-feed'), false)
+})
+
+test('the two states are not the same state', () => {
+  assert.notEqual(UNSCHEDULED, DROPPED)
 })

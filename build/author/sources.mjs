@@ -63,7 +63,7 @@ async function optional(read, path, label) {
  * @param {{gameweek: number, read: Function}} input
  * @returns {Promise<object>} pass it straight to `planPosts` as `data`
  */
-export async function fetchGameweekData({ gameweek, read }) {
+export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_BASE }) {
   const notes = []
   const take = async (path, label) => {
     const { value, note } = await optional(read, path, label)
@@ -83,6 +83,28 @@ export async function fetchGameweekData({ gameweek, read }) {
       take('/players/price-changes?window=168h', 'priceChanges'),
     ])
 
+  // `top-players` does not carry photoUrl and `/players/:id` does, so the ONE player who gets a
+  // photo card — the top scorer on the player-of-the-round card — is looked up individually.
+  // Fetching fifty player records to use one would be rude to an API we do not pay for.
+  const topRows = topPlayers ? rows(topPlayers) : []
+  let heroPhoto = null
+  if (topRows.length) {
+    // Never fatal. The photo is the nicer half of a card that already has a working fallback, so a
+    // player record that 404s or an API having a bad minute must cost us the photo and nothing
+    // else — not the player-of-the-round card, and not the four other cards in this same pass.
+    // Recorded as a note rather than swallowed, so a run that lost the photo says so.
+    let record = null
+    try {
+      record = await take(`/players/${topRows[0].playerId}`, 'playerPhoto')
+    } catch (err) {
+      notes.push(`playerPhoto: ${err.message}`)
+    }
+    const href = record?.photoUrl
+    // The API answers with a site-absolute path; a card is rendered somewhere else entirely, so it
+    // needs an absolute URL. An absolute href is left alone in case the API ever serves one.
+    if (href) heroPhoto = /^https?:\/\//.test(href) ? href : new URL(href, apiBase).toString()
+  }
+
   // Players and the league table carry a club CODE; a card prints the club's short Arabic name.
   const shortById = new Map(clubs.map((c) => [c.id, c.short]))
   const withClubName = (row) => ({ ...row, clubShort: shortById.get(row.club) ?? row.club })
@@ -97,7 +119,10 @@ export async function fetchGameweekData({ gameweek, read }) {
     previousFixtures,
     standings: rows(standings).map(withClubName),
     gwStandings: gwBoard ? rows(gwBoard) : null,
-    topPlayers: topPlayers ? rows(topPlayers).map(withClubName) : null,
+    // Only the first carries a photo: it is the only one that lands on a card with a photo hero.
+    topPlayers: topPlayers
+      ? rows(topPlayers).map(withClubName).map((p, i) => (i === 0 && heroPhoto ? { ...p, photoUrl: heroPhoto } : p))
+      : null,
     // The premiums, in form order. Sorting the whole league by form instead offers four names
     // nobody would captain: after three rounds the top of that table is whoever had one good
     // week, not the players a manager is actually choosing between.

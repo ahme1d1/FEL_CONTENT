@@ -24,6 +24,18 @@
  */
 export const UNSCHEDULED = 'unscheduled'
 
+/**
+ * The state written when a post is pulled AND must not come back.
+ *
+ * `unscheduled` is deliberately non-terminal, which is right for replacing a card and exactly wrong
+ * for retiring a post: the very next authoring pass would re-send what was just deleted. `skipped`
+ * is in `schedule-plan.mjs`'s TERMINAL set, so the post is passed over for good.
+ *
+ * This does NOT stop the post being AUTHORED — the calendar still writes it into the manifest each
+ * pass. It stops it reaching Facebook. Retiring it properly is a calendar change.
+ */
+export const DROPPED = 'skipped'
+
 /** The most recent recorded entry for a post id, or null. */
 function latestEntry(ledger, id) {
   for (let i = ledger.length - 1; i >= 0; i -= 1) {

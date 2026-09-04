@@ -56,6 +56,9 @@ on:
       unschedule:
         description: 'Comma-separated post ids to pull back out of Meta''s queue first, e.g. gw03-d7-1400-fb-feed'
         type: string
+      drop:
+        description: 'Comma-separated post ids to delete and RETIRE — deleted, and never re-sent'
+        type: string
 
 concurrency:
   group: content
@@ -168,20 +171,25 @@ jobs:
       # same slot. Ids are matched to their own manifest by prefix; an id the manifest does not
       # carry is an error, not a no-op.
       - name: Pull named posts out of Meta's queue
-        if: inputs.unschedule != '' && inputs.skip_facebook != true
+        if: (inputs.unschedule != '' || inputs.drop != '') && inputs.skip_facebook != true
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           UNSCHEDULE: ${{ inputs.unschedule }}
+          DROP: ${{ inputs.drop }}
         run: |
           set -euo pipefail
           shopt -s nullglob
           for m in manifests/*.json; do
             gw=$(basename "$m" .json)
-            IDS=$(printf '%s' "$UNSCHEDULE" | tr ',' '\n' | sed 's/ //g' | grep "^${gw}-" | paste -sd, - || true)
-            if [ -z "$IDS" ]; then continue; fi
+            IDS=$(printf '%s' "${UNSCHEDULE:-}" | tr ',' '\n' | sed 's/ //g' | grep "^${gw}-" | paste -sd, - || true)
+            DROPS=$(printf '%s' "${DROP:-}" | tr ',' '\n' | sed 's/ //g' | grep "^${gw}-" | paste -sd, - || true)
+            if [ -z "$IDS" ] && [ -z "$DROPS" ]; then continue; fi
+            ARGS=()
+            if [ -n "$IDS" ]; then ARGS+=(--unschedule "$IDS"); fi
+            if [ -n "$DROPS" ]; then ARGS+=(--drop "$DROPS"); fi
             echo "── $m"
-            printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest "$m" --unschedule "$IDS"
+            printf '%s' "$FB_PAGE_TOKEN" | node publish/schedule-facebook.mjs --manifest "$m" "${ARGS[@]}"
           done
 
       # Meta schedules these natively; due.mjs deliberately refuses them, so this pass is the only

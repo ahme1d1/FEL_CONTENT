@@ -62,6 +62,9 @@ export function planRenders(manifest) {
         assets: post.source.assets ?? {},
         ...(post.source.keepNames ? { keepNames: true } : {}),
         ...(post.source.heroFile ? { heroFile: post.source.heroFile } : {}),
+        // A URL, not a file. render-manifest downloads it beside the jobs file and turns it
+        // into the `heroFile` the card tool actually reads.
+        ...(post.source.photoUrl ? { photoUrl: post.source.photoUrl } : {}),
       },
     })
   }

@@ -18,7 +18,7 @@ import { cairoWallClock, validateManifest } from '../build/manifest-schema.mjs'
 import { appendLedger, readLedger, record } from './ledger.mjs'
 import { verifyMedia } from './media.mjs'
 import { selectSchedulable } from './schedule-plan.mjs'
-import { planUnschedule, UNSCHEDULED } from './unschedule-plan.mjs'
+import { DROPPED, planUnschedule, UNSCHEDULED } from './unschedule-plan.mjs'
 import {
   epochSeconds,
   scheduleFacebookPhoto,
@@ -29,12 +29,13 @@ import {
 const GRAPH = 'https://graph.facebook.com/v21.0'
 
 function parseArgs(argv) {
-  const args = { dryRun: false, ledger: 'publish/ledger.jsonl', now: null, manifest: null, skipMediaCheck: false, unschedule: [] }
+  const args = { dryRun: false, ledger: 'publish/ledger.jsonl', now: null, manifest: null, skipMediaCheck: false, unschedule: [], drop: [] }
   for (let i = 0; i < argv.length; i += 1) {
     const [flag, inline] = argv[i].split('=')
     const value = () => inline ?? argv[++i]
     if (flag === '--dry-run') args.dryRun = true
     else if (flag === '--unschedule') args.unschedule = value().split(',').map((x) => x.trim()).filter(Boolean)
+    else if (flag === '--drop') args.drop = value().split(',').map((x) => x.trim()).filter(Boolean)
     else if (flag === '--skip-media-check') args.skipMediaCheck = true
     else if (flag === '--manifest') args.manifest = value()
     else if (flag === '--ledger') args.ledger = value()
@@ -125,10 +126,18 @@ async function main() {
   if (!args.dryRun && !token) throw new Error('No Page access token on stdin.')
 
   const pendingLedger = []
-  if (args.unschedule.length) {
+  // Two ways to pull a post. `--unschedule` releases it so this same run re-sends the new render;
+  // `--drop` retires it, and the terminal state is the only thing between "deleted" and "deleted
+  // and then immediately re-sent by the next pass".
+  const pulls = [
+    ...args.unschedule.map((id) => ({ id, state: UNSCHEDULED, verb: 'released' })),
+    ...args.drop.map((id) => ({ id, state: DROPPED, verb: 'retired' })),
+  ]
+  if (pulls.length) {
     const dropLog = []
     const http = args.dryRun ? dryRunHttp(dropLog) : graphHttp(token)
-    const pulled = planUnschedule({ manifest, ledger: readLedger(args.ledger), ids: args.unschedule })
+    const pulled = planUnschedule({ manifest, ledger: readLedger(args.ledger), ids: pulls.map((x) => x.id) })
+    const stateFor = new Map(pulls.map((x) => [x.id, x]))
 
     for (const id of pulled.unknown) {
       throw new Error(`"${id}" is not a post in ${args.manifest}; refusing to guess which one you meant.`)
@@ -140,13 +149,14 @@ async function main() {
       console.log(`  DROP ${id} (${remoteId})`)
       // Graph takes a delete as POST ?method=delete, which the existing transport already speaks.
       await http({ method: 'POST', path: `/${remoteId}`, form: { method: 'delete' } })
-      const entry = record(id, UNSCHEDULED, { remoteId })
+      const { state, verb } = stateFor.get(id)
+      const entry = record(id, state, { remoteId })
       if (args.dryRun) {
         console.log(`    LEDGER ${JSON.stringify(entry)}`)
         pendingLedger.push(entry)
       } else appendLedger(args.ledger, entry)
       for (const line of dropLog.splice(0)) console.log(line)
-      console.log(`    ok — Facebook released it`)
+      console.log(`    ok — Facebook ${verb} it`)
     }
   }
 

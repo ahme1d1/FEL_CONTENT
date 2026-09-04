@@ -24,6 +24,9 @@ function stubApi(overrides = {}) {
     '/standings': ok([{ club: 'AHL', p: 4, pts: 12 }]),
     '/gameweeks/4/standings?limit=3': ok({ data: [{ name: 'مدير', gwPts: 80 }] }),
     '/gameweeks/4/top-players?limit=50': ok([{ playerId: 1, club: 'ZAM', points: 14 }]),
+    // `top-players` carries no photoUrl, so the top scorer is looked up on his own for the
+    // player-of-the-round card's photo hero. Site-absolute, exactly as the API answers.
+    '/players/1': ok({ id: 1, name: 'إمام عاشور', photoUrl: '/api/v1/assets/players/1.jpg' }),
     '/players?sortBy=price&per_page=12': ok({
       data: [
         { id: 1, club: 'AHL', form: 2 },
