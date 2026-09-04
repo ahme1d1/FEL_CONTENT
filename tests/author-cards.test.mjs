@@ -184,17 +184,29 @@ test('too few of either direction is refused rather than mismatching an arrow', 
   assert.throws(() => priceChangesCard({ changes: EIGHT_MOVES.slice(0, 4) }), /5 risers and 3 fallers/)
 })
 
+// Owner call, 2026-09-04: the wide cards carry the FULL name. Rule 9's 284px box is the one under
+// a shirt, and this card's name is a hero, not a shirt label — its own template ships
+// «أحمد سيد زيزو» in full. `shortName` is untouched and still what the shirt cards use.
 test('the player of the round names his club in words and his points as a number', () => {
   const s = playerOfRoundCard({
     player: { name: 'أحمد سيد زيزو', club: 'AHL', clubShort: 'الأهلي', points: 14 },
   })
   assert.deepEqual(s.texts, {
     0: 'أعلى نقط الجولة',
-    1: 'زيزو',
+    1: 'أحمد سيد زيزو',
     2: 'الأهلي',
     3: '14',
     4: 'نقطة',
   })
+})
+
+// The budget still bites. A name past it falls back to the last name rather than overflowing the
+// slot, which is rule 9 doing the job it was written for.
+test('a player of the round whose name overruns the hero slot falls back to his last name', () => {
+  const s = playerOfRoundCard({
+    player: { name: 'محمود عبد المنعم كهربا', club: 'AHL', clubShort: 'الأهلي', points: 14 },
+  })
+  assert.equal(s.texts[1], 'كهربا')
 })
 
 /* ─────────────────────────── team of the week ─────────────────────────── */

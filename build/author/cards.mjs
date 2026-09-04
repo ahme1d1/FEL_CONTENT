@@ -16,7 +16,7 @@
  */
 
 import { COPY, gameweekLabel, kickoffTime, deadlinePhrase } from './labels.mjs'
-import { shortName } from './names.mjs'
+import { cardName, shortName } from './names.mjs'
 
 const { cards: TEXT } = COPY
 
@@ -140,6 +140,16 @@ export function buildUpCard({ gameweek, deadline }) {
   }
 }
 
+/**
+ * How much room a name slot has, in characters.
+ *
+ * Only the WIDE cards get a budget; the shirt cards keep `shortName` outright, because the 284px
+ * box design-kit rule 9 measured is theirs. Both numbers were set by rendering the card and
+ * looking at it — change one the same way, not by reasoning about it.
+ */
+const ROW_NAME_MAX = 18
+const HERO_NAME_MAX = 16
+
 /** Four captain candidates. `keepNames` because each crest's nameSlot holds a PLAYER's name. */
 export function questionCard({ gameweek, players }) {
   if (players.length !== 4) throw new Error(`The question card takes 4 players, got ${players.length}.`)
@@ -163,7 +173,7 @@ export function topPlayersCard({ players }) {
   const assets = {}
   players.slice(0, rows).forEach((p, i) => {
     texts[1 + 3 * i] = asText(i + 1)
-    texts[2 + 3 * i] = shortName(p.name)
+    texts[2 + 3 * i] = cardName(p.name, { maxChars: ROW_NAME_MAX })
     texts[3 + 3 * i] = asText(p.points)
     assets[i] = p.club
   })
@@ -185,7 +195,7 @@ export function playerOfRoundCard({ player }) {
     keepNames: true,
     texts: {
       0: TEXT.playerOfRoundTitle,
-      1: shortName(player.name),
+      1: cardName(player.name, { maxChars: HERO_NAME_MAX }),
       2: player.clubShort,
       3: asText(player.points),
       4: TEXT.pointsWord,
