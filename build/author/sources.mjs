@@ -11,6 +11,7 @@
  */
 
 import { DRAWABLE_FORMATIONS } from './cards.mjs'
+import { withRetry } from '../../publish/retry.mjs'
 
 export const DEFAULT_API_BASE = 'https://api.fantasyeg.com/api/v1'
 
@@ -26,17 +27,39 @@ const CAPTAIN_POOL = 12
  */
 const NOT_YET = new Set(['GAMEWEEK_NOT_SETTLED', 'GAMEWEEK_NOT_FOUND'])
 
-/** @returns {(path: string) => Promise<unknown>} */
-export function apiReader({ base = DEFAULT_API_BASE, fetchFn = fetch } = {}) {
+/**
+ * RETRIES THE NETWORK, AND ONLY THE NETWORK. `author.yml` failed five consecutive scheduled runs
+ * on 2026-09-04 and once more on 09-05, every one of them `fetch failed` reaching the live API —
+ * one dropped socket costing a whole authoring pass. `fetchGameweekData` opens ten of these at
+ * once, so the odds compound: the pass is only as reliable as its unluckiest request.
+ *
+ * A GET is idempotent, so re-sending it costs nothing. What must NOT be repeated is an ANSWER —
+ * `GAMEWEEK_NOT_SETTLED` is how this API says "not yet", and `optional` below depends on it
+ * arriving promptly. That falls out of `isTransient` for free: the errors thrown here are plain
+ * Errors carrying a code, never the TypeError a dead socket produces, so `withRetry` rethrows
+ * them on the first attempt.
+ *
+ * @returns {(path: string) => Promise<unknown>}
+ */
+export function apiReader({ base = DEFAULT_API_BASE, fetchFn = fetch, sleep } = {}) {
   return async function read(path) {
-    const res = await fetchFn(`${base}${path}`, { headers: { accept: 'application/json' } })
-    const body = await res.json().catch(() => null)
+    return withRetry(
+      async () => {
+        const res = await fetchFn(`${base}${path}`, { headers: { accept: 'application/json' } })
+        const body = await res.json().catch(() => null)
 
-    if (!res.ok || body?.success === false) {
-      const code = body?.error ?? `HTTP ${res.status}`
-      throw Object.assign(new Error(`GET ${path} failed: ${code}`), { code, status: res.status })
-    }
-    return body?.data ?? null
+        if (!res.ok || body?.success === false) {
+          const code = body?.error ?? `HTTP ${res.status}`
+          throw Object.assign(new Error(`GET ${path} failed: ${code}`), { code, status: res.status })
+        }
+        return body?.data ?? null
+      },
+      {
+        ...(sleep ? { sleep } : {}),
+        onRetry: ({ attempt, attempts, delay }) =>
+          console.warn(`  GET ${path} — network failed, retry ${attempt}/${attempts - 1} in ${delay}ms`),
+      },
+    )
   }
 }
 

@@ -137,3 +137,58 @@ test('captain candidates come from the price list, ordered by form', async () =>
   assert.ok(seen.includes('/players?sortBy=price&per_page=12'))
   assert.deepEqual(data.captainCandidates.map((p) => p.id), [2, 1])
 })
+
+// ── Retrying the network, and only the network ───────────────────────────────
+// `author.yml` failed five consecutive scheduled runs on 2026-09-04 and once more on 09-05, every
+// one of them `fetch failed` reaching the live API. One dropped socket cost a whole authoring
+// pass, and fetchGameweekData opens ten of these at once, so the odds compound.
+
+const netError = () => {
+  const e = new TypeError('fetch failed')
+  e.cause = Object.assign(new Error('other side closed'), { code: 'UND_ERR_SOCKET' })
+  return e
+}
+
+test('a read that succeeds first time is not retried', async () => {
+  let calls = 0
+  const read = apiReader({ fetchFn: async () => { calls += 1; return ok([1, 2]) }, sleep: async () => {} })
+  assert.deepEqual(await read('/fixtures'), [1, 2])
+  assert.equal(calls, 1)
+})
+
+test('a dropped socket is retried and can still succeed', async () => {
+  let calls = 0
+  const read = apiReader({
+    fetchFn: async () => { calls += 1; if (calls < 3) throw netError(); return ok([1]) },
+    sleep: async () => {},
+  })
+  assert.deepEqual(await read('/fixtures'), [1])
+  assert.equal(calls, 3)
+})
+
+// The whole point of the retry helper: an ANSWER must not be repeated. GAMEWEEK_NOT_SETTLED is
+// how the API says "not yet", and `optional` depends on it arriving promptly — retrying it would
+// stall every settle-day card behind four pointless round trips.
+test('a "not yet" answer is not retried', async () => {
+  let calls = 0
+  const read = apiReader({
+    fetchFn: async () => { calls += 1; return fail(404, 'GAMEWEEK_NOT_SETTLED') },
+    sleep: async () => {},
+  })
+  await assert.rejects(() => read('/gameweeks/9/winner'), /GAMEWEEK_NOT_SETTLED/)
+  assert.equal(calls, 1)
+})
+
+test('an http error is not retried', async () => {
+  let calls = 0
+  const read = apiReader({ fetchFn: async () => { calls += 1; return fail(500, 'BOOM') }, sleep: async () => {} })
+  await assert.rejects(() => read('/clubs'), /BOOM/)
+  assert.equal(calls, 1)
+})
+
+test('it gives up after the attempt budget rather than hanging the run', async () => {
+  let calls = 0
+  const read = apiReader({ fetchFn: async () => { calls += 1; throw netError() }, sleep: async () => {} })
+  await assert.rejects(() => read('/fixtures'), /fetch failed/)
+  assert.equal(calls, 4)
+})

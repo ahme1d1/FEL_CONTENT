@@ -276,3 +276,30 @@ jobs:
             # same reason the issue is commented on rather than reopened.
             printf '%s\n\n%s' "$TITLE" "$BODY" | node publish/notify.mjs || true
           fi
+
+      # An alarm nobody clears is an alarm nobody reads. `watchdog.yml` already closes its own
+      # issue when the backlog clears, so an open `watchdog` issue always means a live problem —
+      # but `workflow-failure` had no equivalent, and a stale one looks exactly like a live one.
+      # Issue #3, opened by a transient `fetch failed` on 2026-09-05, sat open through two green
+      # runs and had to be closed by hand.
+      #
+      # AFTER the failure step, not before: `success()` is false when any earlier step failed, so
+      # this can only fire on a run that was clean all the way through — including the ledger push.
+      - name: Stand down if this run succeeded
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ github.workflow }} is failing
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -euo pipefail
+          NUM=$(gh issue list --state open --label workflow-failure --json number,title \
+                  --jq "[.[] | select(.title == env.TITLE)][0].number // empty")
+          if [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "Recovered at $(date -u +%FT%TZ) — this workflow ran green. Closing; it will reopen if it recurs."
+            echo "Closed #$NUM"
+            # Inside the `if`, so it speaks only when an alarm was actually standing.
+            printf '%s recovered — ran green at %s. Closed #%s.' \
+              "$GITHUB_WORKFLOW" "$(date -u +%FT%TZ)" "$NUM" | node publish/notify.mjs || true
+          fi
