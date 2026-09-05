@@ -31,6 +31,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `build/author/copy.json` | the fixed words a card carries: ordinals, day names, clock phrases |
 | `build/copy-rules.json` | voice, forbidden claims and the platform shape rules — check it against real posts before blaming a template |
 | `build/lint-copy.mjs` | caption linter |
+| `build/author/sources.mjs` | everything the author reads — and the retry that keeps a dropped socket from costing a pass |
 | `build/manifest-schema.mjs` | manifest validator, including the Cairo slot and aspect-ratio guards |
 | `build/render-manifest.mjs` | renders the cards and stamps `media` back into the manifest |
 | `build/swap-card.mjs` | **the meme maker** — swaps a borrowed video's game UI for ours |
@@ -43,12 +44,13 @@ publishing routine; TikTok tokens never leave the author's machine.
 | `publish/tiktok-draft.mjs` | sends a video to the TikTok drafts inbox, run by hand |
 | `publish/watchdog-plan.mjs` | is anything owed that has not gone out — pure, so it is tested |
 | `publish/watchdog.mjs` | the alarm's CLI; publishes nothing, needs no credential |
+| `publish/notify.mjs` | **the tap on the shoulder** — one Telegram bot, spoken to on a transition, never on a tick |
 | `publish/ledger.jsonl` | append-only record of what actually went out |
 
 ## Commands
 
 ```bash
-npm test                                    # 372 unit tests, no network, no accounts
+npm test                                    # 386 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
@@ -124,6 +126,18 @@ round, with `GAMEWEEK_NOT_SETTLED`, because bonus points are entered by hand and
 total would be provisional. So the author says `topPlayers: GAMEWEEK_NOT_SETTLED` and skips those
 cards mid-round, then picks them up on the re-run after the round settles. That is the loop
 working, not a deployment gap.
+
+**Every read retries the network, and only the network.** `author.yml` failed five consecutive
+scheduled runs on 4 Sep and twice more on 5 Sep, every one of them `fetch failed` reaching the
+live API — one dropped socket costing a whole authoring pass. The retry lives in `apiReader` in
+`build/author/sources.mjs` rather than in any one caller, because that is the choke point every
+read passes through, and `fetchGameweekData` opens ten requests at once: the pass was only ever
+as reliable as its unluckiest one. A GET is idempotent, so re-sending costs nothing.
+
+An ANSWER is never repeated. `GAMEWEEK_NOT_SETTLED` is how the API says "not yet" and `optional`
+depends on it arriving promptly, so retrying it would stall every settle-day card behind four
+pointless round trips. That falls out of `isTransient` in `publish/retry.mjs` for free: the errors
+thrown there are plain Errors carrying a code, never the TypeError a dead socket produces.
 
 ## Scheduling the Facebook half
 
@@ -223,7 +237,13 @@ ninety-minute threshold. Splitting them across two hosts means neither host's de
 other's alarm with it — and the alarm is what catches a clock that is quietly dispatching with
 `dry_run: true`, which the failure step would report as success.
 
-It closes its own issue when the backlog clears, so an open one always means a live problem.
+**Both kinds of alarm stand down by themselves, so an open issue always means a live problem.**
+The watchdog closes its own when the backlog clears. `workflow-failure` had no equivalent until
+2026-09-05 and it showed: issue #3, opened by a transient `fetch failed`, sat open through two
+green runs and had to be closed by hand — a stale alarm indistinguishable from a live one. Both
+workflows now end with a `Stand down if this run succeeded` step. It sits AFTER the failure step
+on purpose: `success()` is false when any earlier step failed, so it can only fire on a run that
+was clean throughout, ledger push included.
 
 **The issue is the record; Telegram is the tap on the shoulder.** Both mechanisms above end in a
 GitHub issue, and an issue you do not go and read is the same as no alarm — which is how five red
