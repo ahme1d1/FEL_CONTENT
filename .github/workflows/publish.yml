@@ -121,6 +121,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TITLE: ${{ github.workflow }} is failing
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -euo pipefail
           BODY=$(printf '`%s` failed at %s.\n\n[the run](%s/%s/actions/runs/%s)\n' \
@@ -136,4 +138,8 @@ jobs:
             gh label create workflow-failure --color B60205 \
               --description 'A workflow run went red' 2>/dev/null || true
             gh issue create --title "$TITLE" --label workflow-failure --body "$BODY"
+            # Telegram ONLY here, in the branch that OPENS the issue. Five red runs in a row are
+            # five comments on one thread and must be one tap on the shoulder, not five — the
+            # same reason the issue is commented on rather than reopened.
+            printf '%s\n\n%s' "$TITLE" "$BODY" | node publish/notify.mjs || true
           fi

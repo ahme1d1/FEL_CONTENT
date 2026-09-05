@@ -74,6 +74,8 @@ jobs:
         if: steps.check.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -euo pipefail
           # The body is written even when the check exits 1, which is the normal alarm path. It
@@ -90,6 +92,10 @@ jobs:
           else
             gh label create watchdog --color B60205 --description 'Raised automatically by watchdog.yml' 2>/dev/null || true
             gh issue create --title "$ALARM_TITLE" --label watchdog --body-file "$BODY"
+            # Only on the OPENING of the alarm. This job runs every thirty minutes, so a five-hour
+            # outage would otherwise be ten identical messages — and an alarm that repeats itself
+            # is one people learn to swipe away.
+            printf '%s\n\n' "$ALARM_TITLE" | cat - "$BODY" | node publish/notify.mjs || true
           fi
           exit 1
 
@@ -100,10 +106,16 @@ jobs:
         if: steps.check.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           set -euo pipefail
           NUM=$(gh issue list --state open --label watchdog --json number --jq '.[0].number // empty')
           if [ -n "$NUM" ]; then
             gh issue close "$NUM" --comment "Clear as of $(date -u +%FT%TZ) — nothing owed. Closing; the watchdog will reopen if it recurs."
             echo "Closed #$NUM"
+            # Inside the `if`, so this sends only when an alarm was actually standing. The clear
+            # is half the signal: without it you are left watching the phone wondering.
+            printf 'Publishing recovered — nothing owed as of %s. Closed #%s.' \
+              "$(date -u +%FT%TZ)" "$NUM" | node publish/notify.mjs || true
           fi

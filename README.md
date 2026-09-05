@@ -225,6 +225,26 @@ other's alarm with it — and the alarm is what catches a clock that is quietly 
 
 It closes its own issue when the backlog clears, so an open one always means a live problem.
 
+**The issue is the record; Telegram is the tap on the shoulder.** Both mechanisms above end in a
+GitHub issue, and an issue you do not go and read is the same as no alarm — which is how five red
+`author.yml` runs went unnoticed. `publish/notify.mjs` sends the same body to one Telegram bot.
+
+**It fires on a TRANSITION, never on a tick.** The watchdog runs half-hourly, so a five-hour
+outage must be two messages — raised, then stood down — not ten. That is why the call sits inside
+the `gh issue create` branch and never beside `gh issue comment`, and why the stand-down step
+sends from inside its `if`: a recovery message only makes sense if something was actually wrong.
+
+`TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are repo secrets, passed through `env:` rather than
+interpolated into a `run:` block — this repo is public and `${{ }}` there is string substitution,
+not an argument. **Missing credentials are deliberately not an error**: the notifier logs and
+returns, because a workflow going red for want of a bot is worse than the silence it replaces.
+Prove the whole path without an outage:
+
+```bash
+node publish/notify.mjs --test
+gh workflow run watchdog.yml -f now=2026-09-05T09:00:00Z   # reads only, writes no ledger record
+```
+
 ## The calendar
 
 **The day starts at noon** (owner call, 2026-09-02). `SLOTS_CAIRO` is `12:00 13:00 14:00 16:00
