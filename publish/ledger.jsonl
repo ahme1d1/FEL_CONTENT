@@ -91,3 +91,5 @@
 {"ts":"2026-09-04T21:05:51.322Z","id":"gw05-d3-1300-fb-feed","state":"scheduled","remoteId":"122120487489405259","scheduledFor":"2026-09-14T10:00:00Z"}
 {"ts":"2026-09-04T21:14:23.340Z","id":"gw04-meme-pov-yasser-ig-reel","state":"claimed","strategy":"ig-reel","mediaSha256":"dd0d7c4c92b7a2fe90d5e4bafb36eee251876b9d88198bc54550f058b59302b4"}
 {"ts":"2026-09-04T21:15:45.723Z","id":"gw04-meme-pov-yasser-ig-reel","state":"published","remoteId":"17945099778293978"}
+{"ts":"2026-09-05T17:00:12.671Z","id":"gw04-meme-my-gameweek-ig-reel","state":"claimed","strategy":"ig-reel","mediaSha256":"6bc6582e0b445aca9a2224206004c8829a34e00fe185a1b88a55ed2530e8134f"}
+{"ts":"2026-09-05T17:00:52.573Z","id":"gw04-meme-my-gameweek-ig-reel","state":"published","remoteId":"17921117619424519"}
