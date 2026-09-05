@@ -233,11 +233,16 @@ export function teamOfWeekCard({ gameweek, team }) {
   }
   const best = { xi: players, card }
 
+  // Full names here as well, owner call 2026-09-05. This card used `shortName` outright while the
+  // winner's pitch used a budget, so the same man from the same round printed two ways —
+  // `أحمد سامى` on the winner card and `سامى` here. The budget is per LINE, because a five-wide
+  // defensive line has a 164px box and a lone forward has 900px of column to sit in.
+  const widths = lineWidths(team.formation)
   const texts = { 0: gameweekLabel(gameweek), 1: TEXT.teamOfWeekTitle }
   const assets = {}
   best.xi.forEach((p, i) => {
     texts[2 + 2 * i] = asText(p.points)
-    texts[3 + 2 * i] = shortName(p.name)
+    texts[3 + 2 * i] = cardName(p.name, { maxChars: SHIRT_NAME_MAX_BY_LINE[widths[i]] })
     assets[i] = p.club
   })
 
@@ -342,32 +347,124 @@ export function leagueTableCard({ rows }) {
  * The name is a manager's own and goes on verbatim, exactly as it does on the podium.
  */
 /**
- * The formations we hold a card template for.
+ * The team-of-the-week formations we hold a card template for.
  *
- * The API picks across all eight shapes the rules engine admits; this repo can only DRAW three, so
- * it is told which. Add a template, add it here — `M_TEAM_OF_THE_WEEK_<shape>` is the naming rule.
+ * The API picks across all eight shapes the rules engine admits; this repo can only DRAW the ones
+ * with a template, so it is told which. Add a template, add it here — `M_TEAM_OF_THE_WEEK_<shape>`
+ * is the naming rule.
+ *
+ * The WINNER card cannot be constrained this way and has its own list below: he played what he
+ * played, and no query parameter changes it.
  */
-export const DRAWABLE_FORMATIONS = ['4-4-2', '5-2-3', '5-4-1']
-
-/** How much room a name has under a shirt. Rule 9's 284px box; verified by rendering the card. */
-const SHIRT_NAME_MAX = 14
+export const DRAWABLE_FORMATIONS = [
+  '3-4-3', '3-5-2', '4-3-3', '4-4-2', '4-5-1', '5-2-3', '5-3-2', '5-4-1',
+]
 
 /**
- * The winner and the eleven he won with.
+ * The shapes the winner's pitch can draw, as `P_WINNER_THEIR_TEAM_NO_CLUB_SET_<shape>`.
  *
- * `P_WINNER_THEIR_TEAM_NO_CLUB_SET`, not its retired 29-slot twin: this one carries a points badge
- * for ALL eleven rather than ten, plus a captain marker.
- *
- * THE CAPTAIN LEADS THE ELEVEN. The template pins its marker to the first cell, and pitch order
- * buys nothing to weigh against that — the card draws a fixed 3-3-4-1 whatever the real shape is,
- * so ordering by position was costing a correct armband to decorate a pitch that is already
- * decorative. The armband is the EFFECTIVE one: if the captain did not play it moved to the vice,
- * and the doubled points moved with it.
- *
- * Slots run points-then-name from t5, except the first man, whose captain marker sits between them
- * at t6 — so he is t5 / t7 and everyone after him is t(2j+4) / t(2j+5).
+ * "NO CLUB SET" is not decoration in that name. `build-cards.py` gives any card whose name holds
+ * WINNER but not NO CLUB a shirt hero: it finds the first square silhouette and replaces its
+ * children, which on a pitch card is the first player's disc — costing one shirt, one points
+ * badge and one captain marker. These variants are the same no-club family and keep the phrase.
  */
-function winnerTeamCard({ gameweek, winner }) {
+export const DRAWABLE_WINNER_FORMATIONS = [
+  '3-4-3', '3-5-2', '4-3-3', '4-4-2', '4-5-1', '5-2-3', '5-3-2', '5-4-1',
+]
+
+/** How many men stand in each line of a shape, forwards first and the keeper last. */
+export function linesOf(formation) {
+  const [def, mid, fwd] = String(formation).split('-').map(Number)
+  return [fwd, mid, def, 1]
+}
+
+/**
+ * The shape an eleven actually played, read off its own positions.
+ *
+ * The API sends `pos` on every player and never sends a formation for the winner — the note in
+ * both repos is that none is needed, and this is why. Auto-subs preserve `XI_RULES`, so a settled
+ * XI is always one of the eight the rules engine admits.
+ */
+export function formationOf(xi) {
+  const n = (p) => xi.filter((x) => x.pos === p).length
+  return `${n('DEF')}-${n('MID')}-${n('FWD')}`
+}
+
+/**
+ * How much room a name has under a shirt, by how many men share the line.
+ *
+ * ONE NUMBER CANNOT DO THIS. The name box is `min(900/N - 16, 300)` px inside a fixed 900px well,
+ * so it runs 300 / 300 / 284 / 209 / 164 as a line goes from one man to five, and the five-wide
+ * line drops to a 22px face as well. A budget measured against the 284px box overflows the 164px
+ * one and wraps every defender onto two lines.
+ *
+ * Set by rendering the real longest names in the league into every line width and looking, which
+ * is what rule 9 asks for and is not the same as measuring the box. A synthetic worst-glyph
+ * measurement said 17 for a one-wide line; the render puts «محمود عبد المنعم كهربا» — twenty-two
+ * characters — on one line there comfortably, because Arabic script sets far narrower than a
+ * repeated glyph and, on the one- and two-wide lines, the 300px box sits inside a 900px or 450px
+ * column, so the little it does overflow has nothing to collide with.
+ *
+ * Where it bites is the five-wide line: 164px at a 22px face, with 8px of slack. «عبد الله السعيد»
+ * holds one line there and «محمود حمدي الونش» wraps onto two, so the budget sits below that.
+ * The old single `SHIRT_NAME_MAX = 14` was the 284px figure applied to every line at once.
+ */
+const SHIRT_NAME_MAX_BY_LINE = { 1: 22, 2: 20, 3: 16, 4: 14, 5: 12 }
+
+/** The width of the line each of the eleven stands in, by their index down the pitch. */
+function lineWidths(formation) {
+  return linesOf(formation).flatMap((n) => Array.from({ length: n }, () => n))
+}
+
+/**
+ * The winner and the eleven he won with, in the shape he actually played.
+ *
+ * PITCH ORDER IS LOAD-BEARING NOW. It did not used to be: the card drew a fixed 3/3/4/1 whoever
+ * won, so ordering by position bought nothing and the captain was promoted to the front instead,
+ * because the template pinned its one marker to cell one. Drawing the real shape while leaving
+ * the armband on cell one would still put a man in the wrong place — the very bug this fixes — so
+ * every cell of every `_<shape>` template carries its own marker and the API's order survives
+ * untouched. That order is forwards first, keeper last, which is the order the lines run in.
+ *
+ * The armband is the EFFECTIVE one: if the captain did not play it moved to the vice, and the
+ * doubled points moved with it.
+ *
+ * Slots run points, captain, name per man from t5 — t(5+3i) / t(6+3i) / t(7+3i) — after a
+ * five-slot header. ALL ELEVEN MARKERS ARE WRITTEN, the ten empty ones included: an unwritten
+ * slot keeps the design's sample value and every marker's sample is 'C'. The card tool hides an
+ * empty one with `.cap:empty{display:none!important}` — !important because the marker carries
+ * `display:flex` inline to centre its letter, and an inline style beats a stylesheet rule.
+ */
+function winnerTeamCard({ gameweek, winner, formation }) {
+  const widths = lineWidths(formation)
+
+  const texts = {
+    0: `${TEXT.winnerHero} ${gameweekLabel(gameweek).replace(/^الجولة /, '')}`.trim(),
+    1: winner.teamName ?? '',
+    2: winner.name,
+    3: asText(winner.gwPts),
+    4: TEXT.pointsWord,
+  }
+
+  const assets = {}
+  winner.xi.forEach((p, i) => {
+    texts[5 + 3 * i] = asText(p.points)
+    texts[6 + 3 * i] = p.isCaptain ? 'C' : ''
+    texts[7 + 3 * i] = cardName(p.name, { maxChars: SHIRT_NAME_MAX_BY_LINE[widths[i]] })
+    assets[i] = p.club
+  })
+
+  const card = `P_WINNER_THEIR_TEAM_NO_CLUB_SET_${formation.replace(/-/g, '_')}`
+  return { card, slug: 'winner', keepNames: true, texts, assets }
+}
+
+/**
+ * The fixed-shape card, kept as the fallback.
+ *
+ * A settle day is the wrong moment to discover a shape nobody drew. Auto-subs preserve XI_RULES
+ * so this should be unreachable, which is exactly why it is here rather than a thrown error.
+ */
+function winnerTeamCardFixed({ gameweek, winner }) {
   const captain = winner.xi.find((p) => p.isCaptain)
   const xi = captain ? [captain, ...winner.xi.filter((p) => p !== captain)] : winner.xi
 
@@ -384,7 +481,7 @@ function winnerTeamCard({ gameweek, winner }) {
   xi.forEach((p, i) => {
     const j = i + 1
     texts[j === 1 ? 5 : 2 * j + 4] = asText(p.points)
-    texts[j === 1 ? 7 : 2 * j + 5] = cardName(p.name, { maxChars: SHIRT_NAME_MAX })
+    texts[j === 1 ? 7 : 2 * j + 5] = cardName(p.name, { maxChars: SHIRT_NAME_MAX_BY_LINE[3] })
     assets[i] = p.club
   })
 
@@ -396,7 +493,12 @@ export function winnerCard({ gameweek, winner }) {
 
   // The eleven is the card we want. The STAT card is what a round answers with when the winner
   // endpoint has not been deployed or has nothing to say — a name and a score beats no post.
-  if (Array.isArray(winner.xi) && winner.xi.length === 11) return winnerTeamCard({ gameweek, winner })
+  if (Array.isArray(winner.xi) && winner.xi.length === 11) {
+    const formation = formationOf(winner.xi)
+    return DRAWABLE_WINNER_FORMATIONS.includes(formation)
+      ? winnerTeamCard({ gameweek, winner, formation })
+      : winnerTeamCardFixed({ gameweek, winner })
+  }
 
   const points = `${asText(winner.gwPts)} ${TEXT.pointsWord}`
   const fits = winner.name.length <= 16

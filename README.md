@@ -48,7 +48,7 @@ publishing routine; TikTok tokens never leave the author's machine.
 ## Commands
 
 ```bash
-npm test                                    # 361 unit tests, no network, no accounts
+npm test                                    # 372 unit tests, no network, no accounts
 node build/current-gw-cli.mjs               # which gameweeks are worth authoring right now
 node build/author-cli.mjs --gameweek 4      # write manifests/gw04.json from the live API
 npm run render -- manifests/gw04.json       # render the cards, stamp media, re-validate
@@ -457,18 +457,33 @@ captain marker. The captain LEADS the eleven, because the template pins that mar
 cell. Pitch order buys nothing in exchange: the card draws a fixed 3-3-4-1 whatever the real shape
 is, so ordering by position was costing a correct armband for a decoration.
 
-**OPEN — the winner's pitch does not show his formation.** Owner call, 2026-09-04: ship it as it
-is for GW3, fix it for the weeks after. `P_WINNER_THEIR_TEAM_NO_CLUB_SET` has four hard-coded rows
-— **3 / 3 / 4 / 1** — and no formation variants, so it draws that shape whoever won and whatever
-they played. Mohamed Sadek played 4-4-2, which pours into those rows as two forwards and a
-midfielder in the front line: every name and every score correct, one man standing in the wrong
-line. Team of the week already solves this — it has a template per shape, and `teamOfWeekCard`
-picks by `formation`. The winner card needs the same treatment: `P_WINNER_THEIR_TEAM_<shape>`
-layouts, and `winnerTeamCard` choosing between them. The API side needs nothing — the XI's
-positions already say the shape, so it can be derived without another endpoint. The 5-4-1 built
-today is the worked example: clone the nearest existing layout, take a five-wide line from a card
-that already has one rather than cloning a four-wide, and RENDER IT AND LOOK — the first attempt
-put the far defender through the edge of the card and no amount of reading the markup showed it.
+**CLOSED, 2026-09-05 — the winner's pitch draws the shape he played.** It used to draw a fixed
+3 / 3 / 4 / 1 whoever won, so Mohamed Sadek's 4-4-2 went out on 4 Sep with a midfielder standing in
+his forward line. There is now a `P_WINNER_THEIR_TEAM_NO_CLUB_SET_<shape>` for all eight shapes the
+rules engine admits, and `winnerTeamCard` derives the shape from the XI's own `pos` — the API
+needed nothing, exactly as predicted. The old fixed card is kept as the fallback, because a settle
+day is the wrong moment to meet a shape nobody drew.
+
+**Pitch order became load-bearing, and that cost the captain trick.** The old card pinned its one
+marker to cell one, so the filler promoted the captain to the front and threw the API's order away.
+That was a fair trade while the card drew one fixed shape and a bug the moment it draws the real
+one. Every cell carries a marker now and the filler blanks ten of them — and blanking is not free:
+slot filling is raw text substitution, so a marker written as `''` keeps its white disc.
+`.cap:empty{display:none!important}` in the card tool hides it, `!important` because the marker
+carries `display:flex` inline and an inline style beats a stylesheet rule. The first render had ten
+bare discs on the ten men who are not captain.
+
+**Team of the week got its missing five in the same pass**, so `DRAWABLE_FORMATIONS` is now all
+eight and `?formations=` no longer narrows what the API may pick. Keep sending it: it is the
+contract that let this repo catch up without a deploy on the API side.
+
+**Full names on both shirt cards** (owner call, 2026-09-05). The same man printed two ways from one
+round — `أحمد سامى` on the winner card and `سامى` on team of the week — which was a slip, not a
+decision. One budget cannot serve a pitch card, though: the name box is `min(900/N − 16, 300)` px,
+so it runs 300 / 300 / 284 / 209 / 164 as a line goes from one man to five. `SHIRT_NAME_MAX_BY_LINE`
+is keyed by how many share the line, and the numbers came off a render — measuring the box with a
+repeated glyph said 17 for a one-wide line, and the render puts a twenty-two character name there
+comfortably.
 
 **The player of the round carries his photo.** `G_PLAYER_SPOTLIGHT` and `G_NO_PHOTO_FALLBACK` have
 identical texts and assets and differ only by a 520x520 hero, so the fallback was never a lesser

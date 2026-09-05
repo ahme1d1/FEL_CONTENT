@@ -29,7 +29,7 @@ function stubApi(overrides = {}) {
     '/players/1': ok({ id: 1, name: 'إمام عاشور', photoUrl: '/api/v1/assets/players/1.jpg' }),
     // The settle-day pair. Both are settled fact and both 404 until the round is final.
     '/gameweeks/4/winner': ok({ gw: 4, name: 'Mohamed Sadek', teamName: 'العالمي', gwPts: 80, xi: [] }),
-    '/gameweeks/4/team-of-week?formations=4-4-2,5-2-3,5-4-1': ok({
+    '/gameweeks/4/team-of-week?formations=3-4-3,3-5-2,4-3-3,4-4-2,4-5-1,5-2-3,5-3-2,5-4-1': ok({
       gw: 4,
       formation: '4-4-2',
       totalPoints: 128,
@@ -123,7 +123,7 @@ test('a genuine failure is thrown, never turned into a missing card', async () =
 })
 
 test('the first gameweek does not ask for a round before it', async () => {
-  const { read, seen } = stubApi({ '/fixtures?gw=1': ok([]), '/gameweeks/1/standings?limit=3': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/top-players?limit=50': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/winner': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/team-of-week?formations=4-4-2,5-2-3,5-4-1': fail(404, 'GAMEWEEK_NOT_SETTLED') })
+  const { read, seen } = stubApi({ '/fixtures?gw=1': ok([]), '/gameweeks/1/standings?limit=3': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/top-players?limit=50': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/winner': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/team-of-week?formations=3-4-3,3-5-2,4-3-3,4-4-2,4-5-1,5-2-3,5-3-2,5-4-1': fail(404, 'GAMEWEEK_NOT_SETTLED') })
   await fetchGameweekData({ gameweek: 1, read })
   assert.equal(seen.some((p) => p.includes('gw=0')), false)
 })
