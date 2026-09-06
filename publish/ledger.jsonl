@@ -95,3 +95,5 @@
 {"ts":"2026-09-05T17:00:52.573Z","id":"gw04-meme-my-gameweek-ig-reel","state":"published","remoteId":"17921117619424519"}
 {"ts":"2026-09-06T07:06:14.099Z","id":"gw04-announce-totw-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"e7e5d85d425d18b295a93a5e3acfc3eb915af6b0e7005ed726598972dc5b5f6e"}
 {"ts":"2026-09-06T07:06:17.554Z","id":"gw04-announce-totw-fb-feed","state":"scheduled","remoteId":"122120708727405259","scheduledFor":"2026-09-06T13:00:00Z"}
+{"ts":"2026-09-06T11:00:09.602Z","id":"gw04-d2-1400-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"2e21b99753e6e289b4181dc08e4f199607500eb41d33be9ec6fd9b78584ccf1e"}
+{"ts":"2026-09-06T11:00:18.230Z","id":"gw04-d2-1400-ig-feed","state":"published","remoteId":"18146376526537608"}
