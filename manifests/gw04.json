@@ -313,6 +313,26 @@
       "dependsOn": null
     },
     {
+      "id": "gw04-announce-totw-fb-feed",
+      "publishAt": "2026-09-06T13:00:00Z",
+      "slotCairo": "2026-09-06 16:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "notice",
+      "media": {
+        "file": "1600-announce-e7e5d85d.jpg",
+        "sha256": "e7e5d85d425d18b295a93a5e3acfc3eb915af6b0e7005ed726598972dc5b5f6e",
+        "bytes": 149736,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": null,
+      "caption": "تفتكر مين أحسن 11 لاعب في الجولة اللي فاتت؟ 👀\nدلوقتي تقدر تشوفهم كلهم على fantasyeg.com ⚽\nوكمان أحسن 11 من أول الدوري لحد دلوقتي 🏆",
+      "link": null,
+      "dependsOn": null
+    },
+    {
       "id": "gw04-d2-2000-fb-feed",
       "publishAt": "2026-09-06T17:00:00Z",
       "slotCairo": "2026-09-06 20:00 Africa/Cairo",
