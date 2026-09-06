@@ -99,3 +99,12 @@
 {"ts":"2026-09-06T11:00:18.230Z","id":"gw04-d2-1400-ig-feed","state":"published","remoteId":"18146376526537608"}
 {"ts":"2026-09-06T17:00:10.747Z","id":"gw04-d2-2000-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"6eeed041291ea034737145526ca7e6cfb558d299ef393d6d7790caaea5971cf0"}
 {"ts":"2026-09-06T17:00:18.863Z","id":"gw04-d2-2000-ig-feed","state":"published","remoteId":"17958082179000113"}
+{"ts":"2026-09-06T21:09:16.212Z","id":"gw04-d3-1200-fb-feed","state":"unscheduled","remoteId":"122118592197405259"}
+{"ts":"2026-09-06T21:09:19.536Z","id":"gw04-d4-1200-fb-feed","state":"unscheduled","remoteId":"122118592299405259"}
+{"ts":"2026-09-06T21:09:23.203Z","id":"gw04-d5-1200-fb-feed","state":"unscheduled","remoteId":"122118592347405259"}
+{"ts":"2026-09-06T21:09:23.205Z","id":"gw04-d3-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"c8f7743c7b7ac0eb2bc4e9a33ea4fd467ac1d7adf3148ac9c7fa744d7cc34654"}
+{"ts":"2026-09-06T21:09:25.033Z","id":"gw04-d3-1200-fb-feed","state":"scheduled","remoteId":"122120802231405259","scheduledFor":"2026-09-07T09:00:00Z"}
+{"ts":"2026-09-06T21:09:25.034Z","id":"gw04-d4-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"aa2972d2a202aa7049669bc98bc7bf949b28f695ec7c6736ef75f5d0aa304a61"}
+{"ts":"2026-09-06T21:09:26.653Z","id":"gw04-d4-1200-fb-feed","state":"scheduled","remoteId":"122120802279405259","scheduledFor":"2026-09-08T09:00:00Z"}
+{"ts":"2026-09-06T21:09:26.653Z","id":"gw04-d5-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"10c041bafe7d10d422ccaa5e44a1b00db9f987f9fa22791f4eef4357188b1791"}
+{"ts":"2026-09-06T21:09:28.122Z","id":"gw04-d5-1200-fb-feed","state":"scheduled","remoteId":"122120802327405259","scheduledFor":"2026-09-09T09:00:00Z"}
