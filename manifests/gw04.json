@@ -771,6 +771,168 @@
       "maxLatenessMinutes": 60
     },
     {
+      "id": "gw04-d3-results-fb-feed",
+      "publishAt": "2026-09-07T22:18:03Z",
+      "slotCairo": "2026-09-08 01:18 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0118-results-d9309b74.jpg",
+        "sha256": "d9309b746580e5bcd0419b1f07dbfab69440642e3379debda433b2924ddfe3f3",
+        "bytes": 114105,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الاتحاد",
+          "3": "1",
+          "5": "0",
+          "6": "بترول أسيوط",
+          "7": "القناة",
+          "8": "1",
+          "10": "1",
+          "11": "طلائع الجيش",
+          "12": "البنك الأهلي",
+          "13": "3",
+          "15": "1",
+          "16": "غزل المحلة",
+          "17": "بتروجيت",
+          "18": "2",
+          "20": "1",
+          "21": "المصري"
+        },
+        "assets": {
+          "0": "ITT",
+          "1": "ASY",
+          "2": "QAN",
+          "3": "TLG",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d3-results-ig-feed",
+      "publishAt": "2026-09-07T22:18:03Z",
+      "slotCairo": "2026-09-08 01:18 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0118-results-d9309b74.jpg",
+        "sha256": "d9309b746580e5bcd0419b1f07dbfab69440642e3379debda433b2924ddfe3f3",
+        "bytes": 114105,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الاتحاد",
+          "3": "1",
+          "5": "0",
+          "6": "بترول أسيوط",
+          "7": "القناة",
+          "8": "1",
+          "10": "1",
+          "11": "طلائع الجيش",
+          "12": "البنك الأهلي",
+          "13": "3",
+          "15": "1",
+          "16": "غزل المحلة",
+          "17": "بتروجيت",
+          "18": "2",
+          "20": "1",
+          "21": "المصري"
+        },
+        "assets": {
+          "0": "ITT",
+          "1": "ASY",
+          "2": "QAN",
+          "3": "TLG",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d3-results-tiktok",
+      "publishAt": "2026-09-07T22:18:03Z",
+      "slotCairo": "2026-09-08 01:18 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0118-results-story-a6484889.jpg",
+        "sha256": "a64848891fd21b30d43296fb5917d0a3157f041bb6bb9488105e3ff85ee42ae6",
+        "bytes": 123007,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الاتحاد",
+          "3": "1",
+          "5": "0",
+          "6": "بترول أسيوط",
+          "7": "القناة",
+          "8": "1",
+          "10": "1",
+          "11": "طلائع الجيش",
+          "12": "البنك الأهلي",
+          "13": "3",
+          "15": "1",
+          "16": "غزل المحلة",
+          "17": "بتروجيت",
+          "18": "2",
+          "20": "1",
+          "21": "المصري"
+        },
+        "assets": {
+          "0": "ITT",
+          "1": "ASY",
+          "2": "QAN",
+          "3": "TLG",
+          "4": "NBE",
+          "5": "GHZ",
+          "6": "PTJ",
+          "7": "MAS"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw04-d4-1200-fb-feed",
       "publishAt": "2026-09-08T09:00:00Z",
       "slotCairo": "2026-09-08 12:00 Africa/Cairo",
