@@ -1050,6 +1050,132 @@
       "dependsOn": null
     },
     {
+      "id": "gw04-d4-results-fb-feed",
+      "publishAt": "2026-09-08T21:59:58Z",
+      "slotCairo": "2026-09-09 00:59 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0059-results-cf551965.jpg",
+        "sha256": "cf5519654b96f5fb563a1a9cd035a0ff9182dd4cfd25933047494ce3c529acf5",
+        "bytes": 77461,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الزمالك",
+          "3": "2",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "0",
+          "10": "2",
+          "11": "سيراميكا"
+        },
+        "assets": {
+          "0": "ZAM",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d4-results-ig-feed",
+      "publishAt": "2026-09-08T21:59:58Z",
+      "slotCairo": "2026-09-09 00:59 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0059-results-cf551965.jpg",
+        "sha256": "cf5519654b96f5fb563a1a9cd035a0ff9182dd4cfd25933047494ce3c529acf5",
+        "bytes": 77461,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الزمالك",
+          "3": "2",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "0",
+          "10": "2",
+          "11": "سيراميكا"
+        },
+        "assets": {
+          "0": "ZAM",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d4-results-tiktok",
+      "publishAt": "2026-09-08T21:59:58Z",
+      "slotCairo": "2026-09-09 00:59 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0059-results-story-a951229c.jpg",
+        "sha256": "a951229c486fb7dfab2e016ad9a1a3056e054aaa5a3f60a02b5db018cbdd0379",
+        "bytes": 79894,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "الزمالك",
+          "3": "2",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "0",
+          "10": "2",
+          "11": "سيراميكا"
+        },
+        "assets": {
+          "0": "ZAM",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw04-d5-1200-fb-feed",
       "publishAt": "2026-09-09T09:00:00Z",
       "slotCairo": "2026-09-09 12:00 Africa/Cairo",
