@@ -126,3 +126,17 @@
 {"ts":"2026-09-08T22:00:19.734Z","id":"gw04-d4-results-ig-feed","state":"published","remoteId":"17945470149317859"}
 {"ts":"2026-09-09T09:00:14.385Z","id":"gw04-d5-1200-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"10c041bafe7d10d422ccaa5e44a1b00db9f987f9fa22791f4eef4357188b1791"}
 {"ts":"2026-09-09T09:00:25.013Z","id":"gw04-d5-1200-ig-feed","state":"published","remoteId":"18120737485904921"}
+{"ts":"2026-09-09T20:40:05.644Z","id":"gw04-d5-results-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"90a6dc1da0e73738f289ffe17c41e99a0451e867a416aae75b674fa8b2b8b55f"}
+{"ts":"2026-09-09T20:40:09.234Z","id":"gw04-d5-results-fb-feed","state":"scheduled","remoteId":"122121248721405259","scheduledFor":"2026-09-09T20:58:53Z"}
+{"ts":"2026-09-09T20:40:09.409Z","id":"gw06-d2-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"450fe98b5352de6314e035b8df188fe225ae8bbadb37f4a43328d1a6e5d9c2ea"}
+{"ts":"2026-09-09T20:40:18.782Z","id":"gw06-d2-2000-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T20:40:18.783Z","id":"gw06-d3-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"9f8b947dadc0fc09aa90f3a53746ffe19d0ab92889aa7e0dc29ae853b0171bf5"}
+{"ts":"2026-09-09T20:40:24.567Z","id":"gw06-d3-1200-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T20:40:24.567Z","id":"gw06-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"64e0ed0246044fa215c79c08301d444263512ed28bcedf48d7807f5d149fe313"}
+{"ts":"2026-09-09T20:40:32.430Z","id":"gw06-d3-1300-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T20:40:32.430Z","id":"gw06-d3-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"3cafa91d18355d57e431a0c5ff356fa91f06958227e6e6a0ac06e12d276d4a7d"}
+{"ts":"2026-09-09T20:40:39.672Z","id":"gw06-d3-1400-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T20:40:39.673Z","id":"gw06-d4-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"8229a3100bbf0f3cc68d53f8d6f5e1b64a291a36e72ed0a73ab39439e6cec6db"}
+{"ts":"2026-09-09T20:40:46.620Z","id":"gw06-d4-1200-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T20:40:46.621Z","id":"gw06-d5-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"3bdc48fa5e97148fe9e783ff0c322800b9bdd06a58063afb561178e017a3bb5d"}
+{"ts":"2026-09-09T20:40:52.863Z","id":"gw06-d5-1200-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
