@@ -1321,6 +1321,168 @@
       "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw04-d5-results-fb-feed",
+      "publishAt": "2026-09-09T20:58:53Z",
+      "slotCairo": "2026-09-09 23:58 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2358-results-90a6dc1d.jpg",
+        "sha256": "90a6dc1da0e73738f289ffe17c41e99a0451e867a416aae75b674fa8b2b8b55f",
+        "bytes": 107323,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "بيراميدز",
+          "3": "1",
+          "5": "0",
+          "6": "الجونة",
+          "7": "مودرن",
+          "8": "2",
+          "10": "1",
+          "11": "وادي دجلة",
+          "12": "المقاولون",
+          "13": "1",
+          "15": "1",
+          "16": "الأهلي",
+          "17": "إنبي",
+          "18": "2",
+          "20": "1",
+          "21": "زد"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "MOD",
+          "3": "WDY",
+          "4": "MOK",
+          "5": "AHL",
+          "6": "ENP",
+          "7": "ZED"
+        }
+      },
+      "caption": "الجولة الرابعة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d5-results-ig-feed",
+      "publishAt": "2026-09-09T20:58:53Z",
+      "slotCairo": "2026-09-09 23:58 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2358-results-90a6dc1d.jpg",
+        "sha256": "90a6dc1da0e73738f289ffe17c41e99a0451e867a416aae75b674fa8b2b8b55f",
+        "bytes": 107323,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "بيراميدز",
+          "3": "1",
+          "5": "0",
+          "6": "الجونة",
+          "7": "مودرن",
+          "8": "2",
+          "10": "1",
+          "11": "وادي دجلة",
+          "12": "المقاولون",
+          "13": "1",
+          "15": "1",
+          "16": "الأهلي",
+          "17": "إنبي",
+          "18": "2",
+          "20": "1",
+          "21": "زد"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "MOD",
+          "3": "WDY",
+          "4": "MOK",
+          "5": "AHL",
+          "6": "ENP",
+          "7": "ZED"
+        }
+      },
+      "caption": "الجولة الرابعة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw04-d5-results-tiktok",
+      "publishAt": "2026-09-09T20:58:53Z",
+      "slotCairo": "2026-09-09 23:58 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2358-results-story-13cca475.jpg",
+        "sha256": "13cca475b6e582b3db0fd87e2efdf3eb0a8459bd4e7529e0152a6a898304afd2",
+        "bytes": 115372,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الرابعة",
+          "1": "نتايج النهاردة",
+          "2": "بيراميدز",
+          "3": "1",
+          "5": "0",
+          "6": "الجونة",
+          "7": "مودرن",
+          "8": "2",
+          "10": "1",
+          "11": "وادي دجلة",
+          "12": "المقاولون",
+          "13": "1",
+          "15": "1",
+          "16": "الأهلي",
+          "17": "إنبي",
+          "18": "2",
+          "20": "1",
+          "21": "زد"
+        },
+        "assets": {
+          "0": "PYR",
+          "1": "GON",
+          "2": "MOD",
+          "3": "WDY",
+          "4": "MOK",
+          "5": "AHL",
+          "6": "ENP",
+          "7": "ZED"
+        }
+      },
+      "caption": "الجولة الرابعة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
