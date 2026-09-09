@@ -140,3 +140,5 @@
 {"ts":"2026-09-09T20:40:46.620Z","id":"gw06-d4-1200-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
 {"ts":"2026-09-09T20:40:46.621Z","id":"gw06-d5-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"3bdc48fa5e97148fe9e783ff0c322800b9bdd06a58063afb561178e017a3bb5d"}
 {"ts":"2026-09-09T20:40:52.863Z","id":"gw06-d5-1200-fb-feed","state":"failed","error":"POST /1236455056218105/photos failed: (#100) The specified scheduled publish time was invalid."}
+{"ts":"2026-09-09T21:00:11.329Z","id":"gw04-d5-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"90a6dc1da0e73738f289ffe17c41e99a0451e867a416aae75b674fa8b2b8b55f"}
+{"ts":"2026-09-09T21:00:26.305Z","id":"gw04-d5-results-ig-feed","state":"published","remoteId":"18139871116610819"}
