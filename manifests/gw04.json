@@ -1755,9 +1755,9 @@
       "strategy": "fb-scheduled",
       "kind": "playerOfRound",
       "media": {
-        "file": "1400-player-cf18eb8c.jpg",
-        "sha256": "cf18eb8c6f3fef71c66939fc1d367f09afec4ea548ad738648861b1c52e2548b",
-        "bytes": 73450,
+        "file": "1400-player-c604668e.jpg",
+        "sha256": "c604668e6800d4d1631bd944dca1177dd8cf77b4f078063363aecca41c66c71a",
+        "bytes": 73387,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
@@ -1790,9 +1790,9 @@
       "strategy": "ig-feed",
       "kind": "playerOfRound",
       "media": {
-        "file": "1400-player-cf18eb8c.jpg",
-        "sha256": "cf18eb8c6f3fef71c66939fc1d367f09afec4ea548ad738648861b1c52e2548b",
-        "bytes": 73450,
+        "file": "1400-player-c604668e.jpg",
+        "sha256": "c604668e6800d4d1631bd944dca1177dd8cf77b4f078063363aecca41c66c71a",
+        "bytes": 73387,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
