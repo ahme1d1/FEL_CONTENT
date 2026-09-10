@@ -160,3 +160,5 @@
 {"ts":"2026-09-10T11:00:22.262Z","id":"gw04-d6-1400-ig-feed","state":"published","remoteId":"18110863712113469"}
 {"ts":"2026-09-10T13:00:16.602Z","id":"gw04-d6-1600-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"46c5dad9adf2827f64f74e6489953e84734dfafa62bbc40d859bd88840a6e6a7"}
 {"ts":"2026-09-10T13:00:28.287Z","id":"gw04-d6-1600-ig-feed","state":"published","remoteId":"18353606947168031"}
+{"ts":"2026-09-10T17:00:11.950Z","id":"gw04-d6-2000-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"c650b22d156e7704876df9b4442d3d470d0d0cf34becfeb026fd36df162ad4c7"}
+{"ts":"2026-09-10T17:00:21.486Z","id":"gw04-d6-2000-ig-feed","state":"published","remoteId":"18094017299556651"}
