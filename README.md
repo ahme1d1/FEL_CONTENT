@@ -474,12 +474,22 @@ added to FEL_API for them:
 
 | endpoint | what it answers |
 |---|---|
-| `GET /gameweeks/:gw/winner` | the settled winner, his team name, his points, and his eleven with theirs |
+| `GET /gameweeks/:gw/shirt-winner` | the weekly shirt's winner — his team name, his points, and his eleven with theirs |
 | `GET /gameweeks/:gw/team-of-week[?formations=…]` | the best legal XI, already picked |
 
 Both refuse an unsettled round with `GAMEWEEK_NOT_SETTLED`, which this repo already treats as
 "not yet" rather than "broken". Both are public because the pipeline holds no credentials by
 design — see `publish/route.mjs` for the same reasoning about TikTok.
+
+**`shirt-winner`, not `winner`.** `GET /gameweeks/:gw/winner` exists too and answers rank 1 —
+whoever scored most, chips and all. The weekly shirt is a different prize with its own rule: the
+highest scorer who played **no** chip. The prize card read rank 1 until 2026-09-11, and on GW4 it
+congratulated a Bench Boost manager on 93 points, on Facebook and Instagram, for a shirt that
+belonged to the chip-free manager at rank 4; both posts had to be deleted by hand. `shirt-winner`
+answers a body of `null` on a round where everybody chipped — a real outcome, and one that
+publishes no card rather than naming somebody who did not win it. There is deliberately **no**
+fallback to `/gameweeks/:gw/standings` when the read comes back empty: that board is rank 1 again,
+and provisional before settlement besides.
 
 **Team of the week is picked in the API, not here.** It used to be assembled from
 `top-players?limit=50`, which breaks on exactly the rounds the card is most wanted for: GW3

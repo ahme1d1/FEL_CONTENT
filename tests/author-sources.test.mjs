@@ -28,7 +28,9 @@ function stubApi(overrides = {}) {
     // player-of-the-round card's photo hero. Site-absolute, exactly as the API answers.
     '/players/1': ok({ id: 1, name: 'إمام عاشور', photoUrl: '/api/v1/assets/players/1.jpg' }),
     // The settle-day pair. Both are settled fact and both 404 until the round is final.
-    '/gameweeks/4/winner': ok({ gw: 4, name: 'Mohamed Sadek', teamName: 'العالمي', gwPts: 80, xi: [] }),
+    // `shirt-winner` is the chip-free top scorer — the prize card's subject. `/winner` (rank 1,
+    // chips and all) is deliberately NOT stubbed: asking for it is the bug this pair replaced.
+    '/gameweeks/4/shirt-winner': ok({ gw: 4, name: 'Mohamed Sadek', teamName: 'العالمي', gwPts: 80, xi: [] }),
     '/gameweeks/4/team-of-week?formations=3-4-3,3-5-2,4-3-3,4-4-2,4-5-1,5-2-3,5-3-2,5-4-1': ok({
       gw: 4,
       formation: '4-4-2',
@@ -66,6 +68,27 @@ test('a snapshot carries everything the calendar can draw on', async () => {
   assert.equal(data.topPlayers.length, 1)
   assert.equal(data.captainCandidates.length, 2)
   assert.deepEqual(data.notes, [])
+})
+
+// The prize card congratulates a manager and promises him his club's shirt, and the shirt goes to
+// the highest scorer who played NO chip. `/gameweeks/:gw/winner` is rank 1, chips and all — asking
+// it for the prize is how GW4's card congratulated a Bench Boost manager on 93 points for a prize
+// that belonged to the chip-free manager at rank 4, on Facebook and Instagram.
+test('the prize subject is the chip-free winner, and rank 1 is never asked for', async () => {
+  const { read, seen } = stubApi()
+  const data = await fetchGameweekData({ gameweek: 4, read })
+
+  assert.equal(data.shirtWinner.name, 'Mohamed Sadek')
+  assert.ok(seen.includes('/gameweeks/4/shirt-winner'))
+  assert.equal(seen.some((p) => p.endsWith('/winner')), false, 'rank 1 must not be read')
+})
+
+// Every manager chipped. The API answers with a body of `null` rather than an error, because it is
+// a real outcome of a real round — and a round with no shirt must publish no shirt card.
+test('a round where everybody chipped leaves no prize subject', async () => {
+  const { read } = stubApi({ '/gameweeks/4/shirt-winner': ok(null) })
+  const data = await fetchGameweekData({ gameweek: 4, read })
+  assert.equal(data.shirtWinner, null)
 })
 
 test('a club code becomes the short Arabic name a card prints', () => {
@@ -123,7 +146,7 @@ test('a genuine failure is thrown, never turned into a missing card', async () =
 })
 
 test('the first gameweek does not ask for a round before it', async () => {
-  const { read, seen } = stubApi({ '/fixtures?gw=1': ok([]), '/gameweeks/1/standings?limit=3': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/top-players?limit=50': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/winner': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/team-of-week?formations=3-4-3,3-5-2,4-3-3,4-4-2,4-5-1,5-2-3,5-3-2,5-4-1': fail(404, 'GAMEWEEK_NOT_SETTLED') })
+  const { read, seen } = stubApi({ '/fixtures?gw=1': ok([]), '/gameweeks/1/standings?limit=3': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/top-players?limit=50': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/shirt-winner': fail(404, 'GAMEWEEK_NOT_SETTLED'), '/gameweeks/1/team-of-week?formations=3-4-3,3-5-2,4-3-3,4-4-2,4-5-1,5-2-3,5-3-2,5-4-1': fail(404, 'GAMEWEEK_NOT_SETTLED') })
   await fetchGameweekData({ gameweek: 1, read })
   assert.equal(seen.some((p) => p.includes('gw=0')), false)
 })
@@ -175,7 +198,7 @@ test('a "not yet" answer is not retried', async () => {
     fetchFn: async () => { calls += 1; return fail(404, 'GAMEWEEK_NOT_SETTLED') },
     sleep: async () => {},
   })
-  await assert.rejects(() => read('/gameweeks/9/winner'), /GAMEWEEK_NOT_SETTLED/)
+  await assert.rejects(() => read('/gameweeks/9/shirt-winner'), /GAMEWEEK_NOT_SETTLED/)
   assert.equal(calls, 1)
 })
 

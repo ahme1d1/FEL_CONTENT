@@ -118,7 +118,11 @@ function captionVars({ window: w, day, data, publishAt }) {
     // because congratulating nobody in particular is not a congratulation. Undefined until the
     // round settles, which is fine: the winner post is skipped until then, so no template that
     // uses it is ever reached with it missing.
-    winner: data.gwStandings?.[0]?.name,
+    //
+    // It reads the SAME object the card draws (`shirtWinner`), never the board. It used to name
+    // `gwStandings[0]` while the card named someone else, so a caption congratulating one manager
+    // could sit under a card showing another — they agreed only as long as both were rank 1.
+    winner: data.shirtWinner?.name,
   }
 }
 
@@ -199,12 +203,15 @@ const BUILDERS = {
   // until bonus points are entered, so its presence is the API's own "this round is final".
   winner: ({ window, data }) => {
     need(data.topPlayers, 'settled gameweek')
-    // `data.winner` carries his ELEVEN and gets the pitch card; the board carries only a name and
-    // a score. Falling back to the board keeps a prize post on a round whose winner read failed.
-    return winnerCard({
-      gameweek: window.gameweek,
-      winner: data.winner ?? need(data.gwStandings, 'gameweek board')[0],
-    })
+    // `shirtWinner` is the highest scorer who played NO chip — the manager the prize is actually
+    // his — and he carries his ELEVEN, which is what the pitch card needs.
+    //
+    // There is deliberately NO fallback to the board here. It used to fall back to
+    // `gwStandings[0]` "to keep a prize post on a round whose winner read failed", and that row is
+    // rank 1: provisional before settlement, and chip-inclusive always. A prize post that names
+    // the wrong manager is worse than no prize post, and no post is what `need` produces —
+    // skipped by name, with the reason.
+    return winnerCard({ gameweek: window.gameweek, winner: need(data.shirtWinner, 'shirt winner') })
   },
 
   podium: ({ window, data }) => {
@@ -260,7 +267,9 @@ const STORY_BUILDERS = {
     questionCardStory({ gameweek: window.gameweek, players: need(data.captainCandidates, 'captain candidates').slice(0, 4) }),
   winner: ({ window, data }) => {
     need(data.topPlayers, 'settled gameweek')
-    return winnerCardStory({ gameweek: window.gameweek, winner: need(data.gwStandings, 'gameweek board')[0] })
+    // The same manager the feed card names, for the same reason — this is the third surface that
+    // used to resolve the winner for itself, off the board.
+    return winnerCardStory({ gameweek: window.gameweek, winner: need(data.shirtWinner, 'shirt winner') })
   },
 }
 

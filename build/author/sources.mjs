@@ -96,7 +96,7 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
     return value
   }
 
-  const [clubs, fixtures, previousFixtures, standings, gwBoard, topPlayers, winner, teamOfWeek, premiums, prices] =
+  const [clubs, fixtures, previousFixtures, standings, gwBoard, topPlayers, shirtWinner, teamOfWeek, premiums, prices] =
     await Promise.all([
       read('/clubs'),
       read(`/fixtures?gw=${gameweek}`),
@@ -106,7 +106,14 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
       take(`/gameweeks/${gameweek}/top-players?limit=50`, 'topPlayers'),
       // The settle-day pair. Both are settled fact and both 404 GAMEWEEK_NOT_SETTLED until the
       // round is final, which `optional` already reads as "not yet" rather than "broken".
-      take(`/gameweeks/${gameweek}/winner`, 'winner'),
+      //
+      // `shirt-winner`, NOT `winner`. The prize card congratulates a manager and promises him the
+      // shirt, and the shirt goes to the highest scorer who played NO chip — `/winner` is rank 1,
+      // chips and all. Reading rank 1 is how GW4's card congratulated a Bench Boost manager on 93
+      // points for a prize that belonged to the chip-free manager at rank 4. It answers a `null`
+      // body on a round where everybody chipped, which reaches here as null exactly like the 404
+      // does: no shirt that week, so no card.
+      take(`/gameweeks/${gameweek}/shirt-winner`, 'shirtWinner'),
       // Only the shapes we hold a card template for. Without this the API is free to answer with
       // the best legal formation of the eight, which may be one we cannot draw.
       take(`/gameweeks/${gameweek}/team-of-week?formations=${DRAWABLE_FORMATIONS.join(',')}`, 'teamOfWeek'),
@@ -162,7 +169,7 @@ export async function fetchGameweekData({ gameweek, read, apiBase = DEFAULT_API_
     priceChanges: moves.length
       ? moves.sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).map(withClubName)
       : null,
-    winner,
+    shirtWinner,
     teamOfWeek,
     notes,
   }

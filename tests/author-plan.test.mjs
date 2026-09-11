@@ -38,11 +38,57 @@ const DATA = {
   gwStandings: [1, 2, 3].map((n) => ({ name: `مدير ${n}`, teamName: `فريق ${n}`, gwPts: 90 - n })),
   topPlayers: squad().map((p) => ({ ...p, clubShort: 'الأهلي' })),
   priceChanges: null,
+  // The weekly shirt goes to the highest scorer who played NO chip, so he is deliberately NOT
+  // `gwStandings[0]` here — on the round this fixture is modelled on, the board leader had played
+  // Bench Boost and the shirt belonged to the manager at rank 4.
+  shirtWinner: { gw: 4, name: 'كيرلس ممدوح', teamName: 'الزمالك', gwPts: 84, xi: [] },
 }
 
 const WINDOW = contentWindow({ gameweek: 4, fixtures: GW4, previousFixtures: GW3_TAIL })
 const AUTHORED = '2026-09-01T09:00:00Z'
 const plan = (over = {}) => planPosts({ window: WINDOW, data: DATA, authoredAt: AUTHORED, ...over })
+
+// ── the weekly shirt ──────────────────────────────────────────────────────────
+// The prize card congratulates a manager and promises him his club's shirt. That prize is the
+// chip-free top scorer's, so every surface of the post — the feed card, the story card and the
+// caption — must name the same man, and none of them may resolve him from the board. All three
+// used to do it differently: the card read the settled rank 1, the caption and the story read the
+// LIVE board's rank 1. On GW4 that published a Bench Boost manager on 93 points to Facebook and
+// Instagram, for a prize that was the chip-free manager's at rank 4.
+
+const prizePosts = (posts) => posts.filter((p) => String(p.source?.slug ?? '').startsWith('winner'))
+
+test('every surface of the prize post names the chip-free winner, never the board leader', () => {
+  const { posts } = plan()
+  const prize = prizePosts(posts)
+  assert.ok(prize.length >= 2, 'the settle day plans a prize post per platform')
+
+  for (const post of prize) {
+    const texts = JSON.stringify(post.source.texts)
+    assert.ok(texts.includes('كيرلس ممدوح'), `${post.id} names the shirt winner`)
+    assert.equal(texts.includes('مدير 1'), false, `${post.id} must not name the board leader`)
+    assert.ok(post.caption.includes('كيرلس ممدوح'), `${post.id}'s caption names the same man`)
+    assert.equal(post.caption.includes('مدير 1'), false)
+  }
+})
+
+// No fallback. Falling back to the board "to keep a prize post on a round whose winner read
+// failed" is what made the wrong name publishable: that row is rank 1, provisional before
+// settlement and chip-inclusive always. No post is the correct outcome.
+test('a round with no chip-free winner plans no prize post rather than naming rank 1', () => {
+  const { posts } = plan({ data: { ...DATA, shirtWinner: null } })
+  assert.deepEqual(prizePosts(posts), [])
+  assert.equal(JSON.stringify(posts).includes('مدير 1'), true, 'the podium still names the board')
+})
+
+// The correction must not spill onto the ranking cards. Rank is rank: the podium names whoever
+// actually scored most, chips and all, exactly as the leaderboard does.
+test('the podium still ranks the board, chips and all', () => {
+  const { posts } = plan()
+  const podium = posts.find((p) => p.source?.slug === 'podium')
+  assert.ok(podium, 'the settle day plans a podium')
+  assert.ok(JSON.stringify(podium.source.texts).includes('مدير 1'))
+})
 
 test('a day wears one calendar role even when it holds two', () => {
   assert.equal(primaryRole({ roles: ['deadline', 'match'] }), 'deadlineDay')
