@@ -163,3 +163,5 @@
 {"ts":"2026-09-10T17:00:11.950Z","id":"gw04-d6-2000-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"c650b22d156e7704876df9b4442d3d470d0d0cf34becfeb026fd36df162ad4c7"}
 {"ts":"2026-09-10T17:00:21.486Z","id":"gw04-d6-2000-ig-feed","state":"published","remoteId":"18094017299556651"}
 {"ts":"2026-09-11T03:44:45.423Z","id":"gw04-meme-round-review-tiktok","state":"drafted","remoteId":"v_inbox_file~v2.7684118100320913415","status":"SEND_TO_USER_INBOX"}
+{"ts":"2026-09-11T03:49:03.258Z","id":"gw04-meme-round-review-fb-video","state":"claimed","strategy":"fb-video","mediaSha256":"6be6bea2d8fbe5c1392686b69706a425bc39674b3d9858afc31761d32f89ea2a"}
+{"ts":"2026-09-11T03:49:09.449Z","id":"gw04-meme-round-review-fb-video","state":"scheduled","remoteId":"1055031360683504","scheduledFor":"2026-09-11T13:00:00Z"}
