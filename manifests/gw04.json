@@ -2143,6 +2143,48 @@
       "caption": "أعلى لاعيبة جابوا نقط في الجولة الرابعة 🔥\nعندك حد منهم؟ 👀",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-round-review-fb-video",
+      "publishAt": "2026-09-11T13:00:00Z",
+      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-video",
+      "kind": "meme",
+      "media": {
+        "file": "1600-meme-round-review-6be6bea2.mp4",
+        "sha256": "6be6bea2d8fbe5c1392686b69706a425bc39674b3d9858afc31761d32f89ea2a",
+        "bytes": 3130018,
+        "mime": "video/mp4",
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 100.33
+      },
+      "source": null,
+      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-round-review-tiktok",
+      "publishAt": "2026-09-11T13:00:00Z",
+      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "meme",
+      "media": {
+        "file": "1600-meme-round-review-6be6bea2.mp4",
+        "sha256": "6be6bea2d8fbe5c1392686b69706a425bc39674b3d9858afc31761d32f89ea2a",
+        "bytes": 3130018,
+        "mime": "video/mp4",
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 100.33
+      },
+      "source": null,
+      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
+      "link": null,
+      "dependsOn": null
     }
   ]
 }
