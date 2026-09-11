@@ -2152,9 +2152,9 @@
       "strategy": "fb-scheduled",
       "kind": "winner",
       "media": {
-        "file": "1200-winner-afa1ad43.jpg",
-        "sha256": "afa1ad43752fbd4af5a1cdeb7461ecbd392c931d21aac6f02b3f1d9cc1afe092",
-        "bytes": 109695,
+        "file": "1200-winner-42733435.jpg",
+        "sha256": "42733435c08c7f9db9c03dd45c9e73950c0795a884417636302cbeac416d3d4f",
+        "bytes": 110403,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
