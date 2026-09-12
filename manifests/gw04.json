@@ -2145,9 +2145,51 @@
       "dependsOn": null
     },
     {
+      "id": "gw04-meme-round-review-fb-video",
+      "publishAt": "2026-09-11T13:00:00Z",
+      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-video",
+      "kind": "meme",
+      "media": {
+        "file": "1600-meme-round-review-6d9cc107.mp4",
+        "sha256": "6d9cc107fa635218916370755b3bef399445038c0ad151a60a91bcf2fd3b1d81",
+        "bytes": 3258675,
+        "mime": "video/mp4",
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 100.33
+      },
+      "source": null,
+      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw04-meme-round-review-tiktok",
+      "publishAt": "2026-09-11T13:00:00Z",
+      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "meme",
+      "media": {
+        "file": "1600-meme-round-review-6d9cc107.mp4",
+        "sha256": "6d9cc107fa635218916370755b3bef399445038c0ad151a60a91bcf2fd3b1d81",
+        "bytes": 3258675,
+        "mime": "video/mp4",
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 100.33
+      },
+      "source": null,
+      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
+      "link": null,
+      "dependsOn": null
+    },
+    {
       "id": "gw04-d6-1200-fb-feed-repost",
-      "publishAt": "2026-09-11T09:00:00Z",
-      "slotCairo": "2026-09-11 12:00 Africa/Cairo",
+      "publishAt": "2026-09-12T19:30:00Z",
+      "slotCairo": "2026-09-12 22:30 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
       "kind": "winner",
@@ -2218,48 +2260,6 @@
         }
       },
       "caption": "مبروك يا كيرلس ممدوح 🏆\nكلّمنا في الرسايل عشان التيشيرت 👕",
-      "link": null,
-      "dependsOn": null
-    },
-    {
-      "id": "gw04-meme-round-review-fb-video",
-      "publishAt": "2026-09-11T13:00:00Z",
-      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
-      "platform": "facebook",
-      "strategy": "fb-video",
-      "kind": "meme",
-      "media": {
-        "file": "1600-meme-round-review-6d9cc107.mp4",
-        "sha256": "6d9cc107fa635218916370755b3bef399445038c0ad151a60a91bcf2fd3b1d81",
-        "bytes": 3258675,
-        "mime": "video/mp4",
-        "width": 1080,
-        "height": 1920,
-        "durationSeconds": 100.33
-      },
-      "source": null,
-      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
-      "link": null,
-      "dependsOn": null
-    },
-    {
-      "id": "gw04-meme-round-review-tiktok",
-      "publishAt": "2026-09-11T13:00:00Z",
-      "slotCairo": "2026-09-11 16:00 Africa/Cairo",
-      "platform": "tiktok",
-      "strategy": "tiktok-draft",
-      "kind": "meme",
-      "media": {
-        "file": "1600-meme-round-review-6d9cc107.mp4",
-        "sha256": "6d9cc107fa635218916370755b3bef399445038c0ad151a60a91bcf2fd3b1d81",
-        "bytes": 3258675,
-        "mime": "video/mp4",
-        "width": 1080,
-        "height": 1920,
-        "durationSeconds": 100.33
-      },
-      "source": null,
-      "caption": "تقييمات الجولة الرابعه .. مشاهدة ممتعة 😂❤️",
       "link": null,
       "dependsOn": null
     }
