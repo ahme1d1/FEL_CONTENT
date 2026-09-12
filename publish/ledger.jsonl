@@ -171,3 +171,5 @@
 {"ts":"2026-09-11T04:08:16.798Z","id":"gw04-meme-round-review-tiktok","state":"drafted","remoteId":"v_inbox_file~v2.7684124267482761224","status":"SEND_TO_USER_INBOX"}
 {"ts":"2026-09-11T13:23:33.232Z","id":"gw05-d2-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"43c7e47af9653b94fec9cb6fd2f0d8bdc86b683ddd24029b9674bd83afb68112"}
 {"ts":"2026-09-11T13:23:36.361Z","id":"gw05-d2-1400-fb-feed","state":"scheduled","remoteId":"122121471849405259","scheduledFor":"2026-09-13T11:00:00Z"}
+{"ts":"2026-09-12T18:56:31.626Z","id":"gw04-d6-1200-fb-feed-repost","state":"claimed","strategy":"fb-scheduled","mediaSha256":"42733435c08c7f9db9c03dd45c9e73950c0795a884417636302cbeac416d3d4f"}
+{"ts":"2026-09-12T18:56:34.753Z","id":"gw04-d6-1200-fb-feed-repost","state":"scheduled","remoteId":"122121628047405259","scheduledFor":"2026-09-12T19:30:00Z"}
