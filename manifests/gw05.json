@@ -568,6 +568,132 @@
       "maxLatenessMinutes": 60
     },
     {
+      "id": "gw05-d3-results-fb-feed",
+      "publishAt": "2026-09-14T22:40:32Z",
+      "slotCairo": "2026-09-15 01:40 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0140-results-9eaf0886.jpg",
+        "sha256": "9eaf08867f8ab2c1c090702b6acdf73f61548eafddd29b921996732a96515705",
+        "bytes": 82989,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "طلائع الجيش",
+          "3": "0",
+          "5": "1",
+          "6": "سموحة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "البنك الأهلي"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 8 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d3-results-ig-feed",
+      "publishAt": "2026-09-14T22:40:32Z",
+      "slotCairo": "2026-09-15 01:40 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0140-results-9eaf0886.jpg",
+        "sha256": "9eaf08867f8ab2c1c090702b6acdf73f61548eafddd29b921996732a96515705",
+        "bytes": 82989,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "طلائع الجيش",
+          "3": "0",
+          "5": "1",
+          "6": "سموحة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "البنك الأهلي"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 8 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d3-results-tiktok",
+      "publishAt": "2026-09-14T22:40:32Z",
+      "slotCairo": "2026-09-15 01:40 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0140-results-story-be92b99d.jpg",
+        "sha256": "be92b99d7e141bd50f8ead87fdc76d659aad630424deda34dcf782a036ad8397",
+        "bytes": 86054,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "طلائع الجيش",
+          "3": "0",
+          "5": "1",
+          "6": "سموحة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "البنك الأهلي"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "SMC",
+          "2": "CRA",
+          "3": "NBE"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 8 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw05-d4-1200-fb-feed",
       "publishAt": "2026-09-15T09:00:00Z",
       "slotCairo": "2026-09-15 12:00 Africa/Cairo",
