@@ -845,6 +845,114 @@
       "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw05-d6-1200-fb-feed",
+      "publishAt": "2026-09-17T09:00:00Z",
+      "slotCairo": "2026-09-17 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-match-bde9dca9.jpg",
+        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
+        "bytes": 71094,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "",
+          "3": "",
+          "4": "زد",
+          "5": "القناة",
+          "6": "5:00"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d6-1200-ig-feed",
+      "publishAt": "2026-09-17T09:00:00Z",
+      "slotCairo": "2026-09-17 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-match-bde9dca9.jpg",
+        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
+        "bytes": 71094,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "",
+          "3": "",
+          "4": "زد",
+          "5": "القناة",
+          "6": "5:00"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw05-d6-1200-tiktok",
+      "publishAt": "2026-09-17T09:00:00Z",
+      "slotCairo": "2026-09-17 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-match-bde9dca9.jpg",
+        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
+        "bytes": 71094,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "C_SINGLE_MATCH",
+        "slug": "match",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "",
+          "3": "",
+          "4": "زد",
+          "5": "القناة",
+          "6": "5:00"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة ⚽",
+      "link": null,
+      "dependsOn": null
     }
   ]
 }
