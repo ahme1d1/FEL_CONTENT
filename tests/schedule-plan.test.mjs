@@ -4,7 +4,7 @@ import { SCHEDULE_CEILING_MS, SCHEDULE_FLOOR_MS, selectSchedulable } from '../pu
 
 const post = (over = {}) => ({
   id: 'gw04-d1-2000-fb-feed',
-  publishAt: '2026-09-04T17:00:00Z',
+  publishAt: '2026-09-02T17:00:00Z',
   strategy: 'fb-scheduled',
   caption: 'الجولة الجاية فتحت 🔜\nجهّز فريقك ⏰',
   media: { file: 'x.jpg', sha256: 'a'.repeat(64) },
@@ -75,8 +75,27 @@ test('a slot that has already gone cannot be scheduled, and says so', () => {
   assert.match(out.tooSoon[0].reason, /already passed/)
 })
 
-test('a time past the six-month ceiling is refused before the request', () => {
+test('a time past the ceiling is refused before the request', () => {
   const far = new Date(NOW.getTime() + SCHEDULE_CEILING_MS + 86_400_000).toISOString()
+  const out = select([post({ publishAt: far })])
+  assert.deepEqual(out.toSchedule, [])
+  assert.equal(out.tooFar.length, 1)
+})
+
+// The constant is pinned because getting it wrong is silent in exactly one direction. It read six
+// months until 2026-09-15, on the strength of a Graph doc line that does not hold for a scheduled
+// PHOTO post, and nothing in the pipeline could tell: `tooFar` never fired, so every too-early post
+// was handed to Meta, rejected, and written off as `failed` — which is TERMINAL, so it was never
+// retried once its date came into range either.
+test('the lead is two days, far inside the ~29 days Meta actually accepts', () => {
+  assert.equal(SCHEDULE_CEILING_MS, 2 * 24 * 60 * 60 * 1000)
+})
+
+// GW6's six Facebook posts, authored 2026-09-09 for slots 31-34 days out. Every one came back
+// `(#100) The specified scheduled publish time was invalid`. Holding them costs nothing: the
+// authoring pass runs hourly, so a slot is picked up within an hour of entering the window.
+test('a slot a month out is held back rather than burned on a rejection', () => {
+  const far = new Date(NOW.getTime() + 25 * 86_400_000).toISOString()
   const out = select([post({ publishAt: far })])
   assert.deepEqual(out.toSchedule, [])
   assert.equal(out.tooFar.length, 1)
@@ -105,8 +124,8 @@ test('a text post with no caption is nothing at all', () => {
 
 test('posts are scheduled in the order they will publish', () => {
   const posts = [
-    post({ id: 'late', publishAt: '2026-09-08T17:00:00Z' }),
-    post({ id: 'early', publishAt: '2026-09-04T17:00:00Z' }),
+    post({ id: 'late', publishAt: '2026-09-02T20:00:00Z' }),
+    post({ id: 'early', publishAt: '2026-09-02T17:00:00Z' }),
   ]
   assert.deepEqual(ids(select(posts).toSchedule), ['early', 'late'])
 })

@@ -19,8 +19,23 @@ const TERMINAL = new Set(['scheduled', 'failed', 'skipped'])
 /** Graph rejects a scheduled time less than ten minutes out. */
 export const SCHEDULE_FLOOR_MS = 10 * 60 * 1000
 
-/** …or more than six months out. Six 30-day months is inside Meta's limit on every calendar. */
-export const SCHEDULE_CEILING_MS = 6 * 30 * 24 * 60 * 60 * 1000
+/**
+ * …and how far ahead we hand a post over at all: **two days**.
+ *
+ * This is OUR lead, not Meta's limit, and it is deliberately far under it. Meta caps a scheduled
+ * Page post at roughly 29 days; this constant read six months until 2026-09-15, quoting a Graph
+ * doc line that does not hold for a scheduled photo. Every GW6 post was authored 31-34 days out,
+ * sailed past a ceiling six times too generous, and came back `(#100) The specified scheduled
+ * publish time was invalid`. `failed` is TERMINAL, so none was retried once its date came into
+ * range — six posts lost to a comment.
+ *
+ * Two days rather than twenty-eight, because a long queue is the other failure this repo keeps
+ * meeting: a scheduled photo cannot be edited, so every day a card sits at Meta is another day it
+ * can be made wrong by a moved fixture, and pulling it back is a delete-and-resend. Two days is
+ * about as long as a card stays true. Holding costs nothing — the authoring pass runs hourly, so
+ * a slot is picked up within an hour of entering the window, and `tooFar` writes no ledger state.
+ */
+export const SCHEDULE_CEILING_MS = 2 * 24 * 60 * 60 * 1000
 
 /** The most recent recorded state for a post id, or null if it has none. */
 export function latestState(ledger, id) {
@@ -39,7 +54,7 @@ const withReason = (post, reason) => ({ ...post, reason })
  *   alreadyScheduled - Facebook already holds them; doing nothing is the whole point
  *   needsCaption     - the author left the copy to a human and nobody has written it
  *   tooSoon          - past, or inside Facebook's ten-minute floor
- *   tooFar           - past Facebook's six-month ceiling
+ *   tooFar           - further ahead than our two-day lead; re-offered by a later pass
  *   crashed          - claimed but never closed out; reconcile by hand, never re-send
  */
 export function selectSchedulable({ manifest, ledger, now }) {
@@ -75,7 +90,7 @@ export function selectSchedulable({ manifest, ledger, now }) {
       continue
     }
     if (lead > SCHEDULE_CEILING_MS) {
-      out.tooFar.push(withReason(post, `${post.publishAt} is past Facebook’s six-month ceiling`))
+      out.tooFar.push(withReason(post, `${post.publishAt} is further out than the two-day lead`))
       continue
     }
 

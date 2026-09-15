@@ -197,3 +197,9 @@
 {"ts":"2026-09-15T11:53:25.809Z","id":"gw05-d5-1200-fb-feed","state":"scheduled","remoteId":"122121944085405259","scheduledFor":"2026-09-16T09:00:00Z"}
 {"ts":"2026-09-15T11:53:25.810Z","id":"gw05-d6-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"17cc010f79346729ac57201cf0893e4b5e70106fa6ba2400d0ea083a7cc185a5"}
 {"ts":"2026-09-15T11:53:27.464Z","id":"gw05-d6-1200-fb-feed","state":"scheduled","remoteId":"122121944133405259","scheduledFor":"2026-09-17T09:00:00Z"}
+{"ts":"2026-09-15T12:28:37.055Z","id":"gw06-d2-2000-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
+{"ts":"2026-09-15T12:28:37.068Z","id":"gw06-d3-1200-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
+{"ts":"2026-09-15T12:28:37.074Z","id":"gw06-d3-1300-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
+{"ts":"2026-09-15T12:28:37.081Z","id":"gw06-d3-1400-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
+{"ts":"2026-09-15T12:28:37.089Z","id":"gw06-d4-1200-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
+{"ts":"2026-09-15T12:28:37.094Z","id":"gw06-d5-1200-fb-feed","state":"unscheduled","reason":"scheduled 31-34 days out against a ceiling that read six months; never reached Meta, so nothing to delete"}
