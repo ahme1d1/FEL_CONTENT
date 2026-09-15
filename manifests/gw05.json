@@ -846,17 +846,17 @@
       "slotCairo": "2026-09-16 12:00 Africa/Cairo",
       "platform": "facebook",
       "strategy": "fb-scheduled",
-      "kind": "matchdayFinal",
+      "kind": "matchday",
       "media": {
-        "file": "1200-matchday-32c652cc.jpg",
-        "sha256": "32c652cc5fb426091b7e53ae9c01f8032ba2ad6cc3815bdbc1d7d7458c9ca135",
-        "bytes": 99799,
+        "file": "1200-matchday-052dac4e.jpg",
+        "sha256": "052dac4e72b733bf0d12f3558be823c9472606222038b40c7bd18eafa8405d07",
+        "bytes": 81192,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "A_MATCHDAY_3_rows",
+        "card": "A_MATCHDAY_2_rows",
         "slug": "matchday",
         "texts": {
           "0": "الجولة الخامسة",
@@ -864,23 +864,18 @@
           "2": "الجونة",
           "3": "5:00",
           "4": "بتروجيت",
-          "5": "إنبي",
+          "5": "غزل المحلة",
           "6": "8:00",
-          "7": "بيراميدز",
-          "8": "غزل المحلة",
-          "9": "8:00",
-          "10": "الزمالك"
+          "7": "الزمالك"
         },
         "assets": {
           "0": "GON",
           "1": "PTJ",
-          "2": "ENP",
-          "3": "PYR",
-          "4": "GHZ",
-          "5": "ZAM"
+          "2": "GHZ",
+          "3": "ZAM"
         }
       },
-      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "caption": "ماتشين النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -890,17 +885,17 @@
       "slotCairo": "2026-09-16 12:00 Africa/Cairo",
       "platform": "instagram",
       "strategy": "ig-feed",
-      "kind": "matchdayFinal",
+      "kind": "matchday",
       "media": {
-        "file": "1200-matchday-32c652cc.jpg",
-        "sha256": "32c652cc5fb426091b7e53ae9c01f8032ba2ad6cc3815bdbc1d7d7458c9ca135",
-        "bytes": 99799,
+        "file": "1200-matchday-052dac4e.jpg",
+        "sha256": "052dac4e72b733bf0d12f3558be823c9472606222038b40c7bd18eafa8405d07",
+        "bytes": 81192,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "A_MATCHDAY_3_rows",
+        "card": "A_MATCHDAY_2_rows",
         "slug": "matchday",
         "texts": {
           "0": "الجولة الخامسة",
@@ -908,23 +903,18 @@
           "2": "الجونة",
           "3": "5:00",
           "4": "بتروجيت",
-          "5": "إنبي",
+          "5": "غزل المحلة",
           "6": "8:00",
-          "7": "بيراميدز",
-          "8": "غزل المحلة",
-          "9": "8:00",
-          "10": "الزمالك"
+          "7": "الزمالك"
         },
         "assets": {
           "0": "GON",
           "1": "PTJ",
-          "2": "ENP",
-          "3": "PYR",
-          "4": "GHZ",
-          "5": "ZAM"
+          "2": "GHZ",
+          "3": "ZAM"
         }
       },
-      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "caption": "ماتشين النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -934,17 +924,17 @@
       "slotCairo": "2026-09-16 12:00 Africa/Cairo",
       "platform": "tiktok",
       "strategy": "tiktok-draft",
-      "kind": "matchdayFinal",
+      "kind": "matchday",
       "media": {
-        "file": "1200-matchday-story-bf7114b3.jpg",
-        "sha256": "bf7114b34cd06ec5a95c97b4c3ad025d6afd17462723968d2cfb521d6896f6c1",
-        "bytes": 85559,
+        "file": "1200-matchday-story-7d3b27b4.jpg",
+        "sha256": "7d3b27b45d277f8d8c097b321204436032148771d2409e3973afd48698df119c",
+        "bytes": 69671,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1920
       },
       "source": {
-        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "card": "A_MATCHDAY_1080_1920_2_rows",
         "slug": "matchday-story",
         "texts": {
           "0": "الجولة الخامسة",
@@ -952,23 +942,18 @@
           "2": "الجونة",
           "3": "5:00",
           "4": "بتروجيت",
-          "5": "إنبي",
+          "5": "غزل المحلة",
           "6": "8:00",
-          "7": "بيراميدز",
-          "8": "غزل المحلة",
-          "9": "8:00",
-          "10": "الزمالك"
+          "7": "الزمالك"
         },
         "assets": {
           "0": "GON",
           "1": "PTJ",
-          "2": "ENP",
-          "3": "PYR",
-          "4": "GHZ",
-          "5": "ZAM"
+          "2": "GHZ",
+          "3": "ZAM"
         }
       },
-      "caption": "آخر يوم في الجولة الخامسة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "caption": "ماتشين النهاردة ⚽\nمين عندك هيلعب ؟",
       "link": null,
       "dependsOn": null
     },
@@ -980,28 +965,31 @@
       "strategy": "fb-scheduled",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-match-bde9dca9.jpg",
-        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
-        "bytes": 71094,
+        "file": "1200-matchday-17cc010f.jpg",
+        "sha256": "17cc010f79346729ac57201cf0893e4b5e70106fa6ba2400d0ea083a7cc185a5",
+        "bytes": 79299,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "C_SINGLE_MATCH",
-        "slug": "match",
-        "keepNames": true,
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
         "texts": {
           "0": "الجولة الخامسة",
-          "1": "",
-          "3": "",
-          "4": "زد",
-          "5": "القناة",
-          "6": "5:00"
+          "1": "مباريات النهاردة",
+          "2": "زد",
+          "3": "5:00",
+          "4": "القناة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز"
         },
         "assets": {
           "0": "ZED",
-          "1": "QAN"
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
         }
       },
       "caption": "آخر يوم في الجولة ⚽",
@@ -1016,28 +1004,31 @@
       "strategy": "ig-feed",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-match-bde9dca9.jpg",
-        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
-        "bytes": 71094,
+        "file": "1200-matchday-17cc010f.jpg",
+        "sha256": "17cc010f79346729ac57201cf0893e4b5e70106fa6ba2400d0ea083a7cc185a5",
+        "bytes": 79299,
         "mime": "image/jpeg",
         "width": 1080,
         "height": 1350
       },
       "source": {
-        "card": "C_SINGLE_MATCH",
-        "slug": "match",
-        "keepNames": true,
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
         "texts": {
           "0": "الجولة الخامسة",
-          "1": "",
-          "3": "",
-          "4": "زد",
-          "5": "القناة",
-          "6": "5:00"
+          "1": "مباريات النهاردة",
+          "2": "زد",
+          "3": "5:00",
+          "4": "القناة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز"
         },
         "assets": {
           "0": "ZED",
-          "1": "QAN"
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
         }
       },
       "caption": "آخر يوم في الجولة ⚽",
@@ -1052,28 +1043,31 @@
       "strategy": "tiktok-draft",
       "kind": "matchdayFinal",
       "media": {
-        "file": "1200-match-bde9dca9.jpg",
-        "sha256": "bde9dca9053339c937c79c1920d626be1604503607c0c5962d906fa3c66ec4af",
-        "bytes": 71094,
+        "file": "1200-matchday-story-6dee0e86.jpg",
+        "sha256": "6dee0e8688fa265031d45a5b35735e855dfd0628e3eb53f46904bcce0833775c",
+        "bytes": 67084,
         "mime": "image/jpeg",
         "width": 1080,
-        "height": 1350
+        "height": 1920
       },
       "source": {
-        "card": "C_SINGLE_MATCH",
-        "slug": "match",
-        "keepNames": true,
+        "card": "A_MATCHDAY_1080_1920_2_rows",
+        "slug": "matchday-story",
         "texts": {
           "0": "الجولة الخامسة",
-          "1": "",
-          "3": "",
-          "4": "زد",
-          "5": "القناة",
-          "6": "5:00"
+          "1": "مباريات النهاردة",
+          "2": "زد",
+          "3": "5:00",
+          "4": "القناة",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "بيراميدز"
         },
         "assets": {
           "0": "ZED",
-          "1": "QAN"
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
         }
       },
       "caption": "آخر يوم في الجولة ⚽",
