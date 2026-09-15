@@ -841,6 +841,168 @@
       "dependsOn": null
     },
     {
+      "id": "gw05-d4-results-fb-feed",
+      "publishAt": "2026-09-15T19:43:01Z",
+      "slotCairo": "2026-09-15 22:43 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "2243-results-6c31bee1.jpg",
+        "sha256": "6c31bee114f66d676da4e4d5b9b2921eeaca0aa6ec9fcb5c0ab34f11cbbc3822",
+        "bytes": 112844,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "2",
+          "6": "مودرن",
+          "7": "وادي دجلة",
+          "8": "0",
+          "10": "2",
+          "11": "المقاولون",
+          "12": "المصري",
+          "13": "0",
+          "15": "2",
+          "16": "الاتحاد",
+          "17": "الأهلي",
+          "18": "2",
+          "20": "0",
+          "21": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "WDY",
+          "3": "MOK",
+          "4": "MAS",
+          "5": "ITT",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d4-results-ig-feed",
+      "publishAt": "2026-09-15T19:43:01Z",
+      "slotCairo": "2026-09-15 22:43 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "2243-results-6c31bee1.jpg",
+        "sha256": "6c31bee114f66d676da4e4d5b9b2921eeaca0aa6ec9fcb5c0ab34f11cbbc3822",
+        "bytes": 112844,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "2",
+          "6": "مودرن",
+          "7": "وادي دجلة",
+          "8": "0",
+          "10": "2",
+          "11": "المقاولون",
+          "12": "المصري",
+          "13": "0",
+          "15": "2",
+          "16": "الاتحاد",
+          "17": "الأهلي",
+          "18": "2",
+          "20": "0",
+          "21": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "WDY",
+          "3": "MOK",
+          "4": "MAS",
+          "5": "ITT",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d4-results-tiktok",
+      "publishAt": "2026-09-15T19:43:01Z",
+      "slotCairo": "2026-09-15 22:43 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "2243-results-story-9a0f31ca.jpg",
+        "sha256": "9a0f31ca7a73969437041b332ec0c9be1935a2e8567fd288de891a1adda31d68",
+        "bytes": 122296,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "2",
+          "6": "مودرن",
+          "7": "وادي دجلة",
+          "8": "0",
+          "10": "2",
+          "11": "المقاولون",
+          "12": "المصري",
+          "13": "0",
+          "15": "2",
+          "16": "الاتحاد",
+          "17": "الأهلي",
+          "18": "2",
+          "20": "0",
+          "21": "أبو قير"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "MOD",
+          "2": "WDY",
+          "3": "MOK",
+          "4": "MAS",
+          "5": "ITT",
+          "6": "AHL",
+          "7": "ABQ"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw05-d5-1200-fb-feed",
       "publishAt": "2026-09-16T09:00:00Z",
       "slotCairo": "2026-09-16 12:00 Africa/Cairo",
