@@ -1120,6 +1120,132 @@
       "dependsOn": null
     },
     {
+      "id": "gw05-d5-results-fb-feed",
+      "publishAt": "2026-09-16T19:32:57Z",
+      "slotCairo": "2026-09-16 22:32 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "2232-results-795bc446.jpg",
+        "sha256": "795bc446b0a5c61a64c3060ed05bb49edc52320ec9f32597319715bdc7058a4c",
+        "bytes": 75566,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "بتروجيت",
+          "7": "غزل المحلة",
+          "8": "0",
+          "10": "1",
+          "11": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "GHZ",
+          "3": "ZAM"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتشين في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d5-results-ig-feed",
+      "publishAt": "2026-09-16T19:32:57Z",
+      "slotCairo": "2026-09-16 22:32 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "2232-results-795bc446.jpg",
+        "sha256": "795bc446b0a5c61a64c3060ed05bb49edc52320ec9f32597319715bdc7058a4c",
+        "bytes": 75566,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "بتروجيت",
+          "7": "غزل المحلة",
+          "8": "0",
+          "10": "1",
+          "11": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "GHZ",
+          "3": "ZAM"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتشين في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d5-results-tiktok",
+      "publishAt": "2026-09-16T19:32:57Z",
+      "slotCairo": "2026-09-16 22:32 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "2232-results-story-9d8dd113.jpg",
+        "sha256": "9d8dd113367f4383fdf82a050276310187e3a4f2209c9c0385054ef428c7898d",
+        "bytes": 77062,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "بتروجيت",
+          "7": "غزل المحلة",
+          "8": "0",
+          "10": "1",
+          "11": "الزمالك"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "PTJ",
+          "2": "GHZ",
+          "3": "ZAM"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل ماتشين في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw05-d6-1200-fb-feed",
       "publishAt": "2026-09-17T09:00:00Z",
       "slotCairo": "2026-09-17 12:00 Africa/Cairo",
