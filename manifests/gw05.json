@@ -1361,6 +1361,132 @@
       "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw05-d6-results-fb-feed",
+      "publishAt": "2026-09-17T19:45:19Z",
+      "slotCairo": "2026-09-17 22:45 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2245-results-952d1d62.jpg",
+        "sha256": "952d1d623972ec87af20cf648be4d98f201fad7d2465815a14251186436ea8cb",
+        "bytes": 73601,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "2",
+          "5": "1",
+          "6": "القناة",
+          "7": "إنبي",
+          "8": "1",
+          "10": "2",
+          "11": "بيراميدز"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
+        }
+      },
+      "caption": "الجولة الخامسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d6-results-ig-feed",
+      "publishAt": "2026-09-17T19:45:19Z",
+      "slotCairo": "2026-09-17 22:45 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2245-results-952d1d62.jpg",
+        "sha256": "952d1d623972ec87af20cf648be4d98f201fad7d2465815a14251186436ea8cb",
+        "bytes": 73601,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "2",
+          "5": "1",
+          "6": "القناة",
+          "7": "إنبي",
+          "8": "1",
+          "10": "2",
+          "11": "بيراميدز"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
+        }
+      },
+      "caption": "الجولة الخامسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw05-d6-results-tiktok",
+      "publishAt": "2026-09-17T19:45:19Z",
+      "slotCairo": "2026-09-17 22:45 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2245-results-story-c9645740.jpg",
+        "sha256": "c9645740cd91b090afe4e18d62deb91d89c37f1216728dac365522e7a0c6bf3f",
+        "bytes": 74885,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة الخامسة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "2",
+          "5": "1",
+          "6": "القناة",
+          "7": "إنبي",
+          "8": "1",
+          "10": "2",
+          "11": "بيراميدز"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "QAN",
+          "2": "ENP",
+          "3": "PYR"
+        }
+      },
+      "caption": "الجولة الخامسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
