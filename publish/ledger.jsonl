@@ -219,3 +219,13 @@
 {"ts":"2026-09-17T19:26:36.242Z","id":"gw05-d6-results-fb-feed","state":"scheduled","remoteId":"122122237581405259","scheduledFor":"2026-09-17T19:45:19Z"}
 {"ts":"2026-09-17T19:50:14.981Z","id":"gw05-d6-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"952d1d623972ec87af20cf648be4d98f201fad7d2465815a14251186436ea8cb"}
 {"ts":"2026-09-17T19:50:30.980Z","id":"gw05-d6-results-ig-feed","state":"failed","error":"Composio publish failed: Failed to create post (status 400). Response: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"A7cikA4eIWJhpvpZcHUno91\"}}"}
+{"ts":"2026-09-17T22:27:09.079Z","id":"gw05-d7-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"2445ccba48f7ce80bfe30fe5395c50034b5064e2108916c0e355ef9a6e7c0566"}
+{"ts":"2026-09-17T22:27:11.431Z","id":"gw05-d7-1200-fb-feed","state":"scheduled","remoteId":"122122253877405259","scheduledFor":"2026-09-18T09:00:00Z"}
+{"ts":"2026-09-17T22:27:11.432Z","id":"gw05-d7-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"394e262d127a938f9d9ea94fbbb65549bace4b8f7d15d4f4b0a3643b5a0c9d62"}
+{"ts":"2026-09-17T22:27:13.396Z","id":"gw05-d7-1300-fb-feed","state":"scheduled","remoteId":"122122253931405259","scheduledFor":"2026-09-18T10:00:00Z"}
+{"ts":"2026-09-17T22:27:13.397Z","id":"gw05-d7-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"baa3a6ce59c808dce3290a1cb048f835565e65cbbe24033a455bb13002676a6b"}
+{"ts":"2026-09-17T22:27:14.873Z","id":"gw05-d7-1400-fb-feed","state":"scheduled","remoteId":"122122253973405259","scheduledFor":"2026-09-18T11:00:00Z"}
+{"ts":"2026-09-17T22:27:14.873Z","id":"gw05-d7-1600-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"159ee9c41659b1e51ba384382d446e8eea7134f892c7bd6ef788bf9cc472c288"}
+{"ts":"2026-09-17T22:27:16.587Z","id":"gw05-d7-1600-fb-feed","state":"scheduled","remoteId":"122122254027405259","scheduledFor":"2026-09-18T13:00:00Z"}
+{"ts":"2026-09-17T22:27:16.587Z","id":"gw05-d7-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"6f1d395c8f41d9e69a45952d336c20503154a0618d35294db1ec735a725b60f6"}
+{"ts":"2026-09-17T22:27:18.205Z","id":"gw05-d7-2000-fb-feed","state":"scheduled","remoteId":"122122254069405259","scheduledFor":"2026-09-18T17:00:00Z"}
