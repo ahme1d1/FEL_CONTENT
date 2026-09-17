@@ -213,3 +213,5 @@
 {"ts":"2026-09-16T19:14:00.715Z","id":"gw05-d5-results-fb-feed","state":"scheduled","remoteId":"122122103937405259","scheduledFor":"2026-09-16T19:32:57Z"}
 {"ts":"2026-09-16T19:35:11.581Z","id":"gw05-d5-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"795bc446b0a5c61a64c3060ed05bb49edc52320ec9f32597319715bdc7058a4c"}
 {"ts":"2026-09-16T19:35:27.975Z","id":"gw05-d5-results-ig-feed","state":"failed","error":"Composio publish failed: Failed to create post (status 400). Response: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"Acqxj2ZQpDSnh3e4euC3Ws-\"}}"}
+{"ts":"2026-09-17T09:00:09.399Z","id":"gw05-d6-1200-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"17cc010f79346729ac57201cf0893e4b5e70106fa6ba2400d0ea083a7cc185a5"}
+{"ts":"2026-09-17T09:00:18.695Z","id":"gw05-d6-1200-ig-feed","state":"published","remoteId":"18155773546511386"}
