@@ -553,6 +553,132 @@
       "maxLatenessMinutes": 60
     },
     {
+      "id": "gw06-d3-results-fb-feed",
+      "publishAt": "2026-10-12T02:29:44Z",
+      "slotCairo": "2026-10-12 05:29 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0529-results-77ab3690.jpg",
+        "sha256": "77ab3690e0cc6d6834e6313568c1efa9fa5c61ba4777c232763d32ff7121bdd7",
+        "bytes": 75459,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "القناة",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "0",
+          "10": "2",
+          "11": "الأهلي"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "AHL"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d3-results-ig-feed",
+      "publishAt": "2026-10-12T02:29:44Z",
+      "slotCairo": "2026-10-12 05:29 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0529-results-77ab3690.jpg",
+        "sha256": "77ab3690e0cc6d6834e6313568c1efa9fa5c61ba4777c232763d32ff7121bdd7",
+        "bytes": 75459,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "القناة",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "0",
+          "10": "2",
+          "11": "الأهلي"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "AHL"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d3-results-tiktok",
+      "publishAt": "2026-10-12T02:29:44Z",
+      "slotCairo": "2026-10-12 05:29 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0529-results-story-05e751d8.jpg",
+        "sha256": "05e751d8a63ccd145bc9b60cc4773331566d2d62d6055639b69f94ff6004ecdd",
+        "bytes": 77577,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "القناة",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "0",
+          "10": "2",
+          "11": "الأهلي"
+        },
+        "assets": {
+          "0": "QAN",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "AHL"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw06-d4-1200-fb-feed",
       "publishAt": "2026-10-12T09:00:00Z",
       "slotCairo": "2026-10-12 12:00 Africa/Cairo",
