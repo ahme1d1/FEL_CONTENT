@@ -826,6 +826,168 @@
       "dependsOn": null
     },
     {
+      "id": "gw06-d4-results-fb-feed",
+      "publishAt": "2026-10-12T20:30:51Z",
+      "slotCairo": "2026-10-12 23:30 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "2330-results-31dfdcfc.jpg",
+        "sha256": "31dfdcfcdacc0478c52bf2611ae7bf61f317b6aef1a6d2369070490dc82a66c9",
+        "bytes": 110372,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "المقاولون",
+          "3": "1",
+          "5": "1",
+          "6": "زد",
+          "7": "مودرن",
+          "8": "3",
+          "10": "2",
+          "11": "إنبي",
+          "12": "سموحة",
+          "13": "1",
+          "15": "0",
+          "16": "غزل المحلة",
+          "17": "بيراميدز",
+          "18": "4",
+          "20": "1",
+          "21": "سيراميكا"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "ZED",
+          "2": "MOD",
+          "3": "ENP",
+          "4": "SMC",
+          "5": "GHZ",
+          "6": "PYR",
+          "7": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d4-results-ig-feed",
+      "publishAt": "2026-10-12T20:30:51Z",
+      "slotCairo": "2026-10-12 23:30 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "2330-results-31dfdcfc.jpg",
+        "sha256": "31dfdcfcdacc0478c52bf2611ae7bf61f317b6aef1a6d2369070490dc82a66c9",
+        "bytes": 110372,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "المقاولون",
+          "3": "1",
+          "5": "1",
+          "6": "زد",
+          "7": "مودرن",
+          "8": "3",
+          "10": "2",
+          "11": "إنبي",
+          "12": "سموحة",
+          "13": "1",
+          "15": "0",
+          "16": "غزل المحلة",
+          "17": "بيراميدز",
+          "18": "4",
+          "20": "1",
+          "21": "سيراميكا"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "ZED",
+          "2": "MOD",
+          "3": "ENP",
+          "4": "SMC",
+          "5": "GHZ",
+          "6": "PYR",
+          "7": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d4-results-tiktok",
+      "publishAt": "2026-10-12T20:30:51Z",
+      "slotCairo": "2026-10-12 23:30 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "2330-results-story-e1e7eb03.jpg",
+        "sha256": "e1e7eb03bd81cb5cf0fd48435c4fa822ebcf47e66292d5f1f63b9707bdfa99c2",
+        "bytes": 119545,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "المقاولون",
+          "3": "1",
+          "5": "1",
+          "6": "زد",
+          "7": "مودرن",
+          "8": "3",
+          "10": "2",
+          "11": "إنبي",
+          "12": "سموحة",
+          "13": "1",
+          "15": "0",
+          "16": "غزل المحلة",
+          "17": "بيراميدز",
+          "18": "4",
+          "20": "1",
+          "21": "سيراميكا"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "ZED",
+          "2": "MOD",
+          "3": "ENP",
+          "4": "SMC",
+          "5": "GHZ",
+          "6": "PYR",
+          "7": "CRA"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 4 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw06-d5-1200-fb-feed",
       "publishAt": "2026-10-13T09:00:00Z",
       "slotCairo": "2026-10-13 12:00 Africa/Cairo",
