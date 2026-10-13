@@ -279,3 +279,13 @@
 {"ts":"2026-10-13T20:55:54.335Z","id":"gw06-d5-results-fb-feed","state":"scheduled","remoteId":"122126172291405259","scheduledFor":"2026-10-13T21:14:46Z"}
 {"ts":"2026-10-13T21:15:13.549Z","id":"gw06-d5-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"7b0c46189d75ec6b0cc92292c3031c9bb1c35f1269f722b62548181a354fff66"}
 {"ts":"2026-10-13T21:15:22.889Z","id":"gw06-d5-results-ig-feed","state":"published","remoteId":"17875753386582727"}
+{"ts":"2026-10-13T22:29:53.373Z","id":"gw06-d6-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"e56ee3e50a44a88481fd2d50fec3db426063cd81d1e0d37168e11ec1e0b97fae"}
+{"ts":"2026-10-13T22:29:55.784Z","id":"gw06-d6-1200-fb-feed","state":"scheduled","remoteId":"122126178315405259","scheduledFor":"2026-10-14T09:00:00Z"}
+{"ts":"2026-10-13T22:29:55.784Z","id":"gw06-d6-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"aa326a83b8808f4ddc72d7c91fa3b21a44b95f46d3bacc9fc20a7882fa75049e"}
+{"ts":"2026-10-13T22:29:57.586Z","id":"gw06-d6-1300-fb-feed","state":"scheduled","remoteId":"122126178363405259","scheduledFor":"2026-10-14T10:00:00Z"}
+{"ts":"2026-10-13T22:29:57.587Z","id":"gw06-d6-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"da26880090397a6af868d7316291c6bad3ce1e43430f6e037fb9946acc3c5934"}
+{"ts":"2026-10-13T22:29:59.391Z","id":"gw06-d6-1400-fb-feed","state":"scheduled","remoteId":"122126178411405259","scheduledFor":"2026-10-14T11:00:00Z"}
+{"ts":"2026-10-13T22:29:59.392Z","id":"gw06-d6-1600-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"aeb22a09530dbc06f0a5e45939f90cc2ef64a4a319464f285f3c80519bd7cc12"}
+{"ts":"2026-10-13T22:30:01.688Z","id":"gw06-d6-1600-fb-feed","state":"scheduled","remoteId":"122126178459405259","scheduledFor":"2026-10-14T13:00:00Z"}
+{"ts":"2026-10-13T22:30:01.688Z","id":"gw06-d6-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"ee35838455bfe7e2ae69b83b707266d9bc5fa8607ff929d62f20f3cc8eba2bd5"}
+{"ts":"2026-10-13T22:30:03.213Z","id":"gw06-d6-2000-fb-feed","state":"scheduled","remoteId":"122126178513405259","scheduledFor":"2026-10-14T17:00:00Z"}
