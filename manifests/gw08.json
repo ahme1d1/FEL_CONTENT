@@ -1,0 +1,797 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 8,
+  "authoredAt": "2026-10-13T20:54:58.611Z",
+  "mediaBase": "https://media.fantasyeg.com/gw08",
+  "posts": [
+    {
+      "id": "gw08-d2-2000-fb-feed",
+      "publishAt": "2026-10-27T17:00:00Z",
+      "slotCairo": "2026-10-27 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-47a3281a.jpg",
+        "sha256": "47a3281a292a52d4a24d0f5c39882f3daace341dce2c664e959c403f31cf7e0b",
+        "bytes": 79539,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "ريان",
+          "5": "فيصل"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "NBE"
+        }
+      },
+      "caption": "مين كابتن فريقك في الجولة التامنة؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d2-2000-ig-feed",
+      "publishAt": "2026-10-27T17:00:00Z",
+      "slotCairo": "2026-10-27 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-47a3281a.jpg",
+        "sha256": "47a3281a292a52d4a24d0f5c39882f3daace341dce2c664e959c403f31cf7e0b",
+        "bytes": 79539,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "ريان",
+          "5": "فيصل"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "NBE"
+        }
+      },
+      "caption": "مين كابتن فريقك في الجولة التامنة؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d2-2000-tiktok",
+      "publishAt": "2026-10-27T17:00:00Z",
+      "slotCairo": "2026-10-27 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-story-7792cf00.jpg",
+        "sha256": "7792cf00513367c5b6e969f8c1a3d4d21d55d0852606cdd76ca7df66204ab8b0",
+        "bytes": 77832,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "J_QUESTION_1080_1920",
+        "slug": "question-story",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "كابتنك مين؟",
+          "2": "بنشرقي",
+          "3": "ماهر",
+          "4": "ريان",
+          "5": "فيصل"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "NBE"
+        }
+      },
+      "caption": "مين كابتن فريقك في الجولة التامنة؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1200-fb-feed",
+      "publishAt": "2026-10-28T09:00:00Z",
+      "slotCairo": "2026-10-28 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-e4bc5e8b.jpg",
+        "sha256": "e4bc5e8b27265f5b8b3b8727339a672e988547966522eb0bb7b571b918d1702a",
+        "bytes": 86232,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "البنك الأهلي",
+          "3": "5:00",
+          "4": "المصري",
+          "5": "الزمالك",
+          "6": "8:00",
+          "7": "المقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1200-ig-feed",
+      "publishAt": "2026-10-28T09:00:00Z",
+      "slotCairo": "2026-10-28 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-e4bc5e8b.jpg",
+        "sha256": "e4bc5e8b27265f5b8b3b8727339a672e988547966522eb0bb7b571b918d1702a",
+        "bytes": 86232,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "البنك الأهلي",
+          "3": "5:00",
+          "4": "المصري",
+          "5": "الزمالك",
+          "6": "8:00",
+          "7": "المقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1200-tiktok",
+      "publishAt": "2026-10-28T09:00:00Z",
+      "slotCairo": "2026-10-28 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-ef0dee9f.jpg",
+        "sha256": "ef0dee9fbf04e39506c60243b92e6fdcc87673b4b5343a039030423b8d849732",
+        "bytes": 73041,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_2_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "البنك الأهلي",
+          "3": "5:00",
+          "4": "المصري",
+          "5": "الزمالك",
+          "6": "8:00",
+          "7": "المقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1300-fb-feed",
+      "publishAt": "2026-10-28T10:00:00Z",
+      "slotCairo": "2026-10-28 13:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-93ec4236.jpg",
+        "sha256": "93ec4236c022914313fa7c0047aac97127c68b190e2b9b4ea0040f634d108558",
+        "bytes": 51717,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة التامنة قربت ⏰\nجهّز فريقك على fantasyeg.com ⚽",
+      "link": "https://fantasyeg.com/",
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1300-ig-feed",
+      "publishAt": "2026-10-28T10:00:00Z",
+      "slotCairo": "2026-10-28 13:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-93ec4236.jpg",
+        "sha256": "93ec4236c022914313fa7c0047aac97127c68b190e2b9b4ea0040f634d108558",
+        "bytes": 51717,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة التامنة قربت ⏰\nجهّز فريقك",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1300-tiktok",
+      "publishAt": "2026-10-28T10:00:00Z",
+      "slotCairo": "2026-10-28 13:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-story-6f87226f.jpg",
+        "sha256": "6f87226f89d89d3ac4d83c85c704880582cea6806bd3016d7369478489c795ef",
+        "bytes": 47541,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "buildup-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "الجولة التامنة قربت ⏰",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d3-1400-fb-feed",
+      "publishAt": "2026-10-28T11:00:00Z",
+      "slotCairo": "2026-10-28 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-c7bce21d.jpg",
+        "sha256": "c7bce21d8c98281ba50a0589b5c2b4dda4950b8b1bc6feebfd2e91fb2d71f6f9",
+        "bytes": 57102,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "الديدلاين كمان ساعتين ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw08-d3-1400-ig-feed",
+      "publishAt": "2026-10-28T11:00:00Z",
+      "slotCairo": "2026-10-28 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-c7bce21d.jpg",
+        "sha256": "c7bce21d8c98281ba50a0589b5c2b4dda4950b8b1bc6feebfd2e91fb2d71f6f9",
+        "bytes": 57102,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "الديدلاين كمان ساعتين ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw08-d3-1400-tiktok",
+      "publishAt": "2026-10-28T11:00:00Z",
+      "slotCairo": "2026-10-28 14:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-story-b323729d.jpg",
+        "sha256": "b323729d0469313208e3ae0da519d9a0afcceb723bfb81ff7337c08be8f3689c",
+        "bytes": 62142,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "H_DEADLINE_1080_1920",
+        "slug": "deadline-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "الأربع 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "الديدلاين كمان ساعتين ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw08-d4-1200-fb-feed",
+      "publishAt": "2026-10-29T09:00:00Z",
+      "slotCairo": "2026-10-29 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-da6e3251.jpg",
+        "sha256": "da6e32519a04ff838f25e045b69a2eed3c4ea8980690c366d7d629336b9d17c7",
+        "bytes": 83175,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "الأهلي",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "وادي دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d4-1200-ig-feed",
+      "publishAt": "2026-10-29T09:00:00Z",
+      "slotCairo": "2026-10-29 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-da6e3251.jpg",
+        "sha256": "da6e32519a04ff838f25e045b69a2eed3c4ea8980690c366d7d629336b9d17c7",
+        "bytes": 83175,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_2_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "الأهلي",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "وادي دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d4-1200-tiktok",
+      "publishAt": "2026-10-29T09:00:00Z",
+      "slotCairo": "2026-10-29 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-558335b9.jpg",
+        "sha256": "558335b926c0106f2c35d802787e20062f6ee56ad1d28df22a7a14217b9e31db",
+        "bytes": 70813,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_2_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "مودرن",
+          "3": "5:00",
+          "4": "الأهلي",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "وادي دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "كابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d5-1200-fb-feed",
+      "publishAt": "2026-10-30T10:00:00Z",
+      "slotCairo": "2026-10-30 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-a68ffe4f.jpg",
+        "sha256": "a68ffe4fb55b8f8c752a9221aef0ff7607b458c31e690bca961b258a7ea48b90",
+        "bytes": 103026,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "طلائع الجيش",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "3 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d5-1200-ig-feed",
+      "publishAt": "2026-10-30T10:00:00Z",
+      "slotCairo": "2026-10-30 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-a68ffe4f.jpg",
+        "sha256": "a68ffe4fb55b8f8c752a9221aef0ff7607b458c31e690bca961b258a7ea48b90",
+        "bytes": 103026,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "طلائع الجيش",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "3 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d5-1200-tiktok",
+      "publishAt": "2026-10-30T10:00:00Z",
+      "slotCairo": "2026-10-30 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-8df1f80d.jpg",
+        "sha256": "8df1f80de93e8df040d7727b68762bcf23be6bfaddb47781542398f8e2480f41",
+        "bytes": 87994,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "بترول أسيوط",
+          "3": "5:00",
+          "4": "الجونة",
+          "5": "الاتحاد",
+          "6": "8:00",
+          "7": "طلائع الجيش",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "3 ماتشات النهاردة ⚽\nمين عندك هيلعب ؟",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d6-1200-fb-feed",
+      "publishAt": "2026-10-31T10:00:00Z",
+      "slotCairo": "2026-10-31 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-0c09d781.jpg",
+        "sha256": "0c09d78141e46c515fe5ae67857ffc56b021591bcb9cf1d6e578c70fd6ad94a3",
+        "bytes": 100976,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "أبو قير",
+          "3": "5:00",
+          "4": "غزل المحلة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "زد",
+          "8": "بتروجيت",
+          "9": "8:00",
+          "10": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة التامنة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d6-1200-ig-feed",
+      "publishAt": "2026-10-31T10:00:00Z",
+      "slotCairo": "2026-10-31 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-0c09d781.jpg",
+        "sha256": "0c09d78141e46c515fe5ae67857ffc56b021591bcb9cf1d6e578c70fd6ad94a3",
+        "bytes": 100976,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "أبو قير",
+          "3": "5:00",
+          "4": "غزل المحلة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "زد",
+          "8": "بتروجيت",
+          "9": "8:00",
+          "10": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة التامنة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw08-d6-1200-tiktok",
+      "publishAt": "2026-10-31T10:00:00Z",
+      "slotCairo": "2026-10-31 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-story-42693a2d.jpg",
+        "sha256": "42693a2d1795d389bc58e421fd94104d6e63afa379d5ab5739a09c2508079866",
+        "bytes": 85838,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "مباريات النهاردة",
+          "2": "أبو قير",
+          "3": "5:00",
+          "4": "غزل المحلة",
+          "5": "سيراميكا",
+          "6": "8:00",
+          "7": "زد",
+          "8": "بتروجيت",
+          "9": "8:00",
+          "10": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة التامنة ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}

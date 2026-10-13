@@ -1133,6 +1133,168 @@
       "caption": "آخر يوم في الجولة ⚽",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw06-d5-results-fb-feed",
+      "publishAt": "2026-10-13T21:14:46Z",
+      "slotCairo": "2026-10-14 00:14 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0014-results-7b0c4618.jpg",
+        "sha256": "7b0c46189d75ec6b0cc92292c3031c9bb1c35f1269f722b62548181a354fff66",
+        "bytes": 114966,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "1",
+          "5": "2",
+          "6": "بترول أسيوط",
+          "7": "البنك الأهلي",
+          "8": "3",
+          "10": "0",
+          "11": "طلائع الجيش",
+          "12": "بتروجيت",
+          "13": "2",
+          "15": "2",
+          "16": "وادي دجلة",
+          "17": "الاتحاد",
+          "18": "2",
+          "20": "1",
+          "21": "الجونة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "ASY",
+          "2": "NBE",
+          "3": "TLG",
+          "4": "PTJ",
+          "5": "WDY",
+          "6": "ITT",
+          "7": "GON"
+        }
+      },
+      "caption": "الجولة السادسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d5-results-ig-feed",
+      "publishAt": "2026-10-13T21:14:46Z",
+      "slotCairo": "2026-10-14 00:14 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0014-results-7b0c4618.jpg",
+        "sha256": "7b0c46189d75ec6b0cc92292c3031c9bb1c35f1269f722b62548181a354fff66",
+        "bytes": 114966,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "1",
+          "5": "2",
+          "6": "بترول أسيوط",
+          "7": "البنك الأهلي",
+          "8": "3",
+          "10": "0",
+          "11": "طلائع الجيش",
+          "12": "بتروجيت",
+          "13": "2",
+          "15": "2",
+          "16": "وادي دجلة",
+          "17": "الاتحاد",
+          "18": "2",
+          "20": "1",
+          "21": "الجونة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "ASY",
+          "2": "NBE",
+          "3": "TLG",
+          "4": "PTJ",
+          "5": "WDY",
+          "6": "ITT",
+          "7": "GON"
+        }
+      },
+      "caption": "الجولة السادسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw06-d5-results-tiktok",
+      "publishAt": "2026-10-13T21:14:46Z",
+      "slotCairo": "2026-10-14 00:14 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0014-results-story-fc46edae.jpg",
+        "sha256": "fc46edae435b82399e1255835c4d3527f38972a6426a17f9a3301da70a938607",
+        "bytes": 122971,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السادسة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "1",
+          "5": "2",
+          "6": "بترول أسيوط",
+          "7": "البنك الأهلي",
+          "8": "3",
+          "10": "0",
+          "11": "طلائع الجيش",
+          "12": "بتروجيت",
+          "13": "2",
+          "15": "2",
+          "16": "وادي دجلة",
+          "17": "الاتحاد",
+          "18": "2",
+          "20": "1",
+          "21": "الجونة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "ASY",
+          "2": "NBE",
+          "3": "TLG",
+          "4": "PTJ",
+          "5": "WDY",
+          "6": "ITT",
+          "7": "GON"
+        }
+      },
+      "caption": "الجولة السادسة خلصت ✅\nبكرة نعرف الترتيب 🏆",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
