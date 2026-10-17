@@ -303,3 +303,9 @@
 {"ts":"2026-10-16T15:19:38.765Z","id":"gw07-d2-1400-fb-feed","state":"scheduled","remoteId":"122126456469405259","scheduledFor":"2026-10-18T11:00:00Z"}
 {"ts":"2026-10-16T19:08:36.596Z","id":"gw07-d2-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"a20ef8916425df33ee64a0739d6e7931ad6ad3d243451ca7b845d8c70b7a1b94"}
 {"ts":"2026-10-16T19:08:39.257Z","id":"gw07-d2-2000-fb-feed","state":"scheduled","remoteId":"122126479023405259","scheduledFor":"2026-10-18T17:00:00Z"}
+{"ts":"2026-10-17T11:29:04.004Z","id":"gw07-d3-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"3ad026588029072bae87e64dcc896b3462df4f5325fb92f281b0cc0c919db751"}
+{"ts":"2026-10-17T11:29:06.441Z","id":"gw07-d3-1200-fb-feed","state":"scheduled","remoteId":"122126549115405259","scheduledFor":"2026-10-19T09:00:00Z"}
+{"ts":"2026-10-17T11:29:06.442Z","id":"gw07-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"75b84b1246de4aaf6f63f3a36da0c62237798a562f2f57db9234be2411c895b6"}
+{"ts":"2026-10-17T11:29:08.550Z","id":"gw07-d3-1300-fb-feed","state":"scheduled","remoteId":"122126549163405259","scheduledFor":"2026-10-19T10:00:00Z"}
+{"ts":"2026-10-17T11:29:08.550Z","id":"gw07-d3-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"4472e7b42c768edab8e7280ac824bd9bffd104d381f13c853e788f0af5c5a8a6"}
+{"ts":"2026-10-17T11:29:10.753Z","id":"gw07-d3-1400-fb-feed","state":"scheduled","remoteId":"122126549211405259","scheduledFor":"2026-10-19T11:00:00Z"}
