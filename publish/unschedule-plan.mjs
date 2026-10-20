@@ -45,14 +45,16 @@ function latestEntry(ledger, id) {
 }
 
 /**
- * @param {{manifest: object, ledger: object[], ids: string[]}} input
+ * @param {{manifest: object, ledger: object[], ids: string[], now?: number}} input
+ *   `now` defaults to the clock. A post whose `scheduledFor` is not after it has already been
+ *   published by Facebook itself, which writes nothing back — so it still reads `scheduled`.
  * @returns {{toDelete: Array<{id: string, remoteId: string}>, notScheduled: string[], unknown: string[]}}
  *
  *   toDelete     - Meta is holding these; delete the remote post, then record UNSCHEDULED
  *   notScheduled - nothing to pull back: never scheduled, or already published
  *   unknown      - not in this manifest at all, which is almost always a typo
  */
-export function planUnschedule({ manifest, ledger = [], ids = [] }) {
+export function planUnschedule({ manifest, ledger = [], ids = [], now = Date.now() }) {
   const known = new Set((manifest?.posts ?? []).map((p) => p.id))
   const out = { toDelete: [], notScheduled: [], unknown: [] }
 
@@ -66,6 +68,11 @@ export function planUnschedule({ manifest, ledger = [], ids = [] }) {
     // Only a post whose LATEST state is `scheduled` is still in the queue. A later `published`
     // means it has gone out, and pulling that is not this tool's job.
     if (entry?.state !== 'scheduled' || !entry.remoteId) {
+      out.notScheduled.push(id)
+      continue
+    }
+    // Facebook published it at its time and told nobody: it is live on the page, not queued.
+    if (entry.scheduledFor && Date.parse(entry.scheduledFor) <= now) {
       out.notScheduled.push(id)
       continue
     }

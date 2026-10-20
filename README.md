@@ -561,6 +561,12 @@ exist, and the difference between them is the whole point:
   Using `--unschedule` to retire something means the next authoring pass re-sends what was just
   deleted.
 
+`author.yml`'s `unschedule_drifted` (with `refresh`) pulls back every Facebook post the refresh
+replaced, without naming them. The FEL_API Mac sync dispatches exactly that after it fixes a moved
+kick-off on its own (since 2026-10-20), because it cannot know which post ids showed the old time.
+A Facebook post whose `scheduledFor` has passed still reads `scheduled` in the ledger — Facebook
+publishes it and writes nothing back — so `planUnschedule` treats it as live and never deletes it.
+
 Replacing is delete-then-resend because Meta binds the image at creation and offers no edit for a
 scheduled photo post. Instagram is different again: it is never handed to Meta in advance, so
 retiring one is a ledger write with no API call at all — and forgetting that is how a post you

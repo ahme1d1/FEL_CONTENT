@@ -56,6 +56,10 @@ on:
       unschedule:
         description: 'Comma-separated post ids to pull back out of Meta''s queue first, e.g. gw03-d7-1400-fb-feed'
         type: string
+      unschedule_drifted:
+        description: 'With refresh: also pull back every queued Facebook post the refresh replaced'
+        type: boolean
+        default: false
       drop:
         description: 'Comma-separated post ids to delete and RETIRE — deleted, and never re-sent'
         type: string
@@ -122,7 +126,7 @@ jobs:
           for gw in $GAMEWEEKS; do
             echo "── gameweek $gw"
             REFRESH_FLAG=""
-            [ "${REFRESH:-false}" = "true" ] && REFRESH_FLAG="--refresh"
+            [ "${REFRESH:-false}" = "true" ] && REFRESH_FLAG="--refresh --drifted-out $RUNNER_TEMP/drifted.txt"
             node build/author-cli.mjs --gameweek "$gw" $REFRESH_FLAG
             npm run render -- "manifests/gw$(printf '%02d' "$gw").json"
           done
@@ -171,16 +175,25 @@ jobs:
       # scheduling step below, so one run drops the stale post and re-sends the fresh one into the
       # same slot. Ids are matched to their own manifest by prefix; an id the manifest does not
       # carry is an error, not a no-op.
+      #
+      # `unschedule_drifted` adds every Facebook post the refresh above replaced — sent by the Mac
+      # after it fixes a moved kick-off, which cannot know the post ids in advance. A post whose
+      # time has already passed is live on the page, and unschedule-plan.mjs keeps it.
       - name: Pull named posts out of Meta's queue
-        if: (inputs.unschedule != '' || inputs.drop != '') && inputs.skip_facebook != true
+        if: (inputs.unschedule != '' || inputs.drop != '' || inputs.unschedule_drifted) && inputs.skip_facebook != true
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           UNSCHEDULE: ${{ inputs.unschedule }}
+          UNSCHEDULE_DRIFTED: ${{ inputs.unschedule_drifted }}
           DROP: ${{ inputs.drop }}
         run: |
           set -euo pipefail
           shopt -s nullglob
+          if [ "${UNSCHEDULE_DRIFTED:-false}" = "true" ] && [ -f "$RUNNER_TEMP/drifted.txt" ]; then
+            DRIFTED=$(grep -- '-fb-' "$RUNNER_TEMP/drifted.txt" | paste -sd, - || true)
+            UNSCHEDULE="${UNSCHEDULE:+$UNSCHEDULE,}${DRIFTED}"
+          fi
           for m in manifests/*.json; do
             gw=$(basename "$m" .json)
             IDS=$(printf '%s' "${UNSCHEDULE:-}" | tr ',' '\n' | sed 's/ //g' | grep "^${gw}-" | paste -sd, - || true)

@@ -15,7 +15,7 @@
  * a post that already exists keeps its stamped media and its written caption.
  */
 
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { validateManifest } from './manifest-schema.mjs'
 import { applyHumanCaptions, missingCaptions } from './author/captions.mjs'
@@ -34,6 +34,7 @@ function parseArgs(argv) {
     now: null,
     apiBase: DEFAULT_API_BASE,
     refresh: false,
+    driftedOut: null,
     dryRun: false,
     allowMissingCaptions: false,
   }
@@ -42,6 +43,7 @@ function parseArgs(argv) {
     const value = () => inline ?? argv[++i]
     if (flag === '--dry-run') args.dryRun = true
     else if (flag === '--refresh') args.refresh = true
+    else if (flag === '--drifted-out') args.driftedOut = value()
     else if (flag === '--allow-missing-captions') args.allowMissingCaptions = true
     else if (flag === '--gameweek') args.gameweek = Number(value())
     else if (flag === '--out') args.out = value()
@@ -116,6 +118,11 @@ async function main() {
   for (const { id, reason } of skipped) console.log(`  - ${id}: ${reason}`)
   for (const id of merged.drifted) {
     console.warn(`  ! ${id} was authored from data that has since changed; --refresh to replace it`)
+  }
+  // What a refresh replaced, for author.yml's `unschedule_drifted`: those are exactly the posts
+  // Facebook may be holding an old rendering of. Appended, because one run authors several weeks.
+  if (args.driftedOut && args.refresh && merged.drifted.length) {
+    appendFileSync(args.driftedOut, `${merged.drifted.join('\n')}\n`)
   }
 
   // Text a manager typed, going onto a card verbatim. Nothing here can be fixed automatically —

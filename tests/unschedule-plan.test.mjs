@@ -83,3 +83,22 @@ test('a dropped post is never offered to the scheduler again', () => {
 test('the two states are not the same state', () => {
   assert.notEqual(UNSCHEDULED, DROPPED)
 })
+
+// Facebook publishes a scheduled post itself and nothing ever writes `published` for it, so a post
+// whose time has passed still reads `scheduled` — and is LIVE on the page. Found 2026-10-20, when
+// the first automatic refresh after a moved kick-off listed yesterday's results card among the
+// changed posts: without this it would have deleted a card the page had shown since morning.
+test('a scheduled post whose time has passed is live, and is never planned for deletion', () => {
+  const ledger = [
+    led('gw03-d7-1400-fb-feed', 'scheduled', { remoteId: '122', scheduledFor: '2026-09-04T11:00:00Z' }),
+    led('gw03-d7-2000-fb-feed', 'scheduled', { remoteId: '123', scheduledFor: '2026-09-04T17:00:00Z' }),
+  ]
+  const plan = planUnschedule({
+    manifest: MANIFEST,
+    ledger,
+    ids: ['gw03-d7-1400-fb-feed', 'gw03-d7-2000-fb-feed'],
+    now: Date.parse('2026-09-04T12:00:00Z'),
+  })
+  assert.deepEqual(plan.toDelete, [{ id: 'gw03-d7-2000-fb-feed', remoteId: '123' }])
+  assert.deepEqual(plan.notScheduled, ['gw03-d7-1400-fb-feed'])
+})
