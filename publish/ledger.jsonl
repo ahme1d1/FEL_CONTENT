@@ -327,3 +327,5 @@
 {"ts":"2026-10-20T09:00:21.227Z","id":"gw07-d4-1200-ig-feed","state":"published","remoteId":"18182382691390652"}
 {"ts":"2026-10-20T09:17:51.842Z","id":"gw07-d3-results-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"9e2813dea75206ea452ae0109be163b84424a990e6e426206b3dec36c9303455"}
 {"ts":"2026-10-20T09:17:55.189Z","id":"gw07-d3-results-fb-feed","state":"scheduled","remoteId":"122126881365405259","scheduledFor":"2026-10-20T09:36:30Z"}
+{"ts":"2026-10-20T09:40:11.562Z","id":"gw07-d3-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"9e2813dea75206ea452ae0109be163b84424a990e6e426206b3dec36c9303455"}
+{"ts":"2026-10-20T09:40:18.122Z","id":"gw07-d3-results-ig-feed","state":"published","remoteId":"18093834449180087"}
