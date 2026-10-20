@@ -859,6 +859,168 @@
       "anchor": "fixturesFinished"
     },
     {
+      "id": "gw07-d4-results-fb-feed",
+      "publishAt": "2026-10-20T20:05:08Z",
+      "slotCairo": "2026-10-20 23:05 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-6d42ee24.jpg",
+        "sha256": "6d42ee245fe3a9abb4022c7ecd8f6c6a977c721a16ea3f1af6dc73d54495dc03",
+        "bytes": 114190,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "1",
+          "6": "الزمالك",
+          "7": "زد",
+          "8": "3",
+          "10": "2",
+          "11": "مودرن",
+          "12": "وادي دجلة",
+          "13": "1",
+          "15": "1",
+          "16": "البنك الأهلي",
+          "17": "طلائع الجيش",
+          "18": "1",
+          "20": "4",
+          "21": "بيراميدز"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "ZAM",
+          "2": "ZED",
+          "3": "MOD",
+          "4": "WDY",
+          "5": "NBE",
+          "6": "TLG",
+          "7": "PYR"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d4-results-ig-feed",
+      "publishAt": "2026-10-20T20:05:08Z",
+      "slotCairo": "2026-10-20 23:05 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-6d42ee24.jpg",
+        "sha256": "6d42ee245fe3a9abb4022c7ecd8f6c6a977c721a16ea3f1af6dc73d54495dc03",
+        "bytes": 114190,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "1",
+          "6": "الزمالك",
+          "7": "زد",
+          "8": "3",
+          "10": "2",
+          "11": "مودرن",
+          "12": "وادي دجلة",
+          "13": "1",
+          "15": "1",
+          "16": "البنك الأهلي",
+          "17": "طلائع الجيش",
+          "18": "1",
+          "20": "4",
+          "21": "بيراميدز"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "ZAM",
+          "2": "ZED",
+          "3": "MOD",
+          "4": "WDY",
+          "5": "NBE",
+          "6": "TLG",
+          "7": "PYR"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d4-results-tiktok",
+      "publishAt": "2026-10-20T20:05:08Z",
+      "slotCairo": "2026-10-20 23:05 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-story-56be99e9.jpg",
+        "sha256": "56be99e9e5cc5e3e2cc71c864e0e4239030fdef73483b86cee88d8646c193b2c",
+        "bytes": 122896,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "بترول أسيوط",
+          "3": "0",
+          "5": "1",
+          "6": "الزمالك",
+          "7": "زد",
+          "8": "3",
+          "10": "2",
+          "11": "مودرن",
+          "12": "وادي دجلة",
+          "13": "1",
+          "15": "1",
+          "16": "البنك الأهلي",
+          "17": "طلائع الجيش",
+          "18": "1",
+          "20": "4",
+          "21": "بيراميدز"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "ZAM",
+          "2": "ZED",
+          "3": "MOD",
+          "4": "WDY",
+          "5": "NBE",
+          "6": "TLG",
+          "7": "PYR"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw07-d5-1200-fb-feed",
       "publishAt": "2026-10-21T09:00:00Z",
       "slotCairo": "2026-10-21 12:00 Africa/Cairo",
