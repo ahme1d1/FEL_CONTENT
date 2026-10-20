@@ -715,6 +715,150 @@
       "dependsOn": null
     },
     {
+      "id": "gw07-d3-results-fb-feed",
+      "publishAt": "2026-10-20T09:36:30Z",
+      "slotCairo": "2026-10-20 12:36 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "1236-results-9e2813de.jpg",
+        "sha256": "9e2813dea75206ea452ae0109be163b84424a990e6e426206b3dec36c9303455",
+        "bytes": 93705,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "2",
+          "6": "سموحة",
+          "7": "المصري",
+          "8": "1",
+          "10": "1",
+          "11": "أبو قير",
+          "12": "إنبي",
+          "13": "0",
+          "15": "3",
+          "16": "المقاولون"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "SMC",
+          "2": "MAS",
+          "3": "ABQ",
+          "4": "ENP",
+          "5": "MOK"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d3-results-ig-feed",
+      "publishAt": "2026-10-20T09:36:30Z",
+      "slotCairo": "2026-10-20 12:36 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "1236-results-9e2813de.jpg",
+        "sha256": "9e2813dea75206ea452ae0109be163b84424a990e6e426206b3dec36c9303455",
+        "bytes": 93705,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "2",
+          "6": "سموحة",
+          "7": "المصري",
+          "8": "1",
+          "10": "1",
+          "11": "أبو قير",
+          "12": "إنبي",
+          "13": "0",
+          "15": "3",
+          "16": "المقاولون"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "SMC",
+          "2": "MAS",
+          "3": "ABQ",
+          "4": "ENP",
+          "5": "MOK"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d3-results-tiktok",
+      "publishAt": "2026-10-20T09:36:30Z",
+      "slotCairo": "2026-10-20 12:36 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "1236-results-story-33116637.jpg",
+        "sha256": "33116637207d84b627d5840b0c64ff51002a8142d0e3c07e013d6c488f22cbc0",
+        "bytes": 99545,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "0",
+          "5": "2",
+          "6": "سموحة",
+          "7": "المصري",
+          "8": "1",
+          "10": "1",
+          "11": "أبو قير",
+          "12": "إنبي",
+          "13": "0",
+          "15": "3",
+          "16": "المقاولون"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "SMC",
+          "2": "MAS",
+          "3": "ABQ",
+          "4": "ENP",
+          "5": "MOK"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw07-d5-1200-fb-feed",
       "publishAt": "2026-10-21T09:00:00Z",
       "slotCairo": "2026-10-21 12:00 Africa/Cairo",
