@@ -1151,6 +1151,150 @@
       "caption": "آخر يوم في الجولة السابعة ⚽\nعندك مين من الماتشات دي؟ 👀",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw07-d5-results-fb-feed",
+      "publishAt": "2026-10-21T20:07:09Z",
+      "slotCairo": "2026-10-21 23:07 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2307-results-c3c28d5d.jpg",
+        "sha256": "c3c28d5d93672d1533d9a175cd0a11f65c9d40ba817bfeb96e300da96a27e960",
+        "bytes": 93076,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "غزل المحلة",
+          "3": "2",
+          "5": "1",
+          "6": "الاتحاد",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "الأهلي",
+          "13": "3",
+          "15": "3",
+          "16": "القناة"
+        },
+        "assets": {
+          "0": "GHZ",
+          "1": "ITT",
+          "2": "CRA",
+          "3": "PTJ",
+          "4": "AHL",
+          "5": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d5-results-ig-feed",
+      "publishAt": "2026-10-21T20:07:09Z",
+      "slotCairo": "2026-10-21 23:07 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2307-results-c3c28d5d.jpg",
+        "sha256": "c3c28d5d93672d1533d9a175cd0a11f65c9d40ba817bfeb96e300da96a27e960",
+        "bytes": 93076,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "غزل المحلة",
+          "3": "2",
+          "5": "1",
+          "6": "الاتحاد",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "الأهلي",
+          "13": "3",
+          "15": "3",
+          "16": "القناة"
+        },
+        "assets": {
+          "0": "GHZ",
+          "1": "ITT",
+          "2": "CRA",
+          "3": "PTJ",
+          "4": "AHL",
+          "5": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw07-d5-results-tiktok",
+      "publishAt": "2026-10-21T20:07:09Z",
+      "slotCairo": "2026-10-21 23:07 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "2307-results-story-fa234a4f.jpg",
+        "sha256": "fa234a4fc9bd0c28f4d46ebccc48bac77bee5f50982035be87dae67b0d0ec39b",
+        "bytes": 98294,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة السابعة",
+          "1": "نتايج النهاردة",
+          "2": "غزل المحلة",
+          "3": "2",
+          "5": "1",
+          "6": "الاتحاد",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "الأهلي",
+          "13": "3",
+          "15": "3",
+          "16": "القناة"
+        },
+        "assets": {
+          "0": "GHZ",
+          "1": "ITT",
+          "2": "CRA",
+          "3": "PTJ",
+          "4": "AHL",
+          "5": "QAN"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
