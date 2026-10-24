@@ -482,12 +482,17 @@ Both refuse an unsettled round with `GAMEWEEK_NOT_SETTLED`, which this repo alre
 design — see `publish/route.mjs` for the same reasoning about TikTok.
 
 **`shirt-winner`, not `winner`.** `GET /gameweeks/:gw/winner` exists too and answers rank 1 —
-whoever scored most, chips and all. The weekly shirt is a different prize with its own rule: the
-highest scorer who played **no** chip. The prize card read rank 1 until 2026-09-11, and on GW4 it
-congratulated a Bench Boost manager on 93 points, on Facebook and Instagram, for a shirt that
-belonged to the chip-free manager at rank 4; both posts had to be deleted by hand. `shirt-winner`
-answers a body of `null` on a round where everybody chipped — a real outcome, and one that
-publishes no card rather than naming somebody who did not win it. There is deliberately **no**
+whoever scored most, chips and all. The shirt's rule is the API's alone (`FEL_API`'s
+`src/modules/scoring/shirt-rule.ts`) and only `shirt-winner` applies it: GW1-7 went to the highest
+scorer who played **no** chip, and **from GW8 the shirt is the top of the board, chips included**
+(owner's call, 2026-10-24). This repo never re-derives either — it names whoever `shirt-winner`
+names. The prize card read rank 1 until 2026-09-11, and on GW4 it congratulated a Bench Boost
+manager on 93 points, on Facebook and Instagram, for a shirt that belonged to the chip-free manager
+at rank 4; both posts had to be deleted by hand. From GW8 the two routes still differ when rank 1
+belongs to an account the boards no longer list, which is why the regression test that this repo
+never requests `/winner` stays. `shirt-winner` answers a body of `null` on a GW1-7 round where
+everybody chipped — a real outcome, and one that publishes no card rather than naming somebody who
+did not win it. There is deliberately **no**
 fallback to `/gameweeks/:gw/standings` when the read comes back empty: that board is rank 1 again,
 and provisional before settlement besides.
 
