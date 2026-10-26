@@ -368,3 +368,7 @@
 {"ts":"2026-10-25T18:15:10.563Z","id":"gw08-d2-2000-fb-feed","state":"scheduled","remoteId":"122127486891405259","scheduledFor":"2026-10-27T17:00:00Z"}
 {"ts":"2026-10-26T09:53:29.372Z","id":"gw08-d3-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"e4bc5e8b27265f5b8b3b8727339a672e988547966522eb0bb7b571b918d1702a"}
 {"ts":"2026-10-26T09:53:32.136Z","id":"gw08-d3-1200-fb-feed","state":"scheduled","remoteId":"122127558705405259","scheduledFor":"2026-10-28T09:00:00Z"}
+{"ts":"2026-10-26T16:37:59.848Z","id":"gw08-d3-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"93ec4236c022914313fa7c0047aac97127c68b190e2b9b4ea0040f634d108558"}
+{"ts":"2026-10-26T16:38:02.446Z","id":"gw08-d3-1300-fb-feed","state":"scheduled","remoteId":"122127595209405259","scheduledFor":"2026-10-28T10:00:00Z"}
+{"ts":"2026-10-26T16:38:02.447Z","id":"gw08-d3-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"c7bce21d8c98281ba50a0589b5c2b4dda4950b8b1bc6feebfd2e91fb2d71f6f9"}
+{"ts":"2026-10-26T16:38:05.077Z","id":"gw08-d3-1400-fb-feed","state":"scheduled","remoteId":"122127595257405259","scheduledFor":"2026-10-28T11:00:00Z"}
