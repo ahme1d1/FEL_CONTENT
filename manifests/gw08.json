@@ -553,6 +553,132 @@
       "maxLatenessMinutes": 60
     },
     {
+      "id": "gw08-d3-results-fb-feed",
+      "publishAt": "2026-10-28T21:02:04Z",
+      "slotCairo": "2026-10-29 00:02 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0002-results-c17daec2.jpg",
+        "sha256": "c17daec2ba14b40fa28fbb1469dfb662b3b0ad50b13f9cc7cd9eb7531df77133",
+        "bytes": 77142,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "البنك",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "2",
+          "10": "1",
+          "11": "مقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d3-results-ig-feed",
+      "publishAt": "2026-10-28T21:02:04Z",
+      "slotCairo": "2026-10-29 00:02 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0002-results-c17daec2.jpg",
+        "sha256": "c17daec2ba14b40fa28fbb1469dfb662b3b0ad50b13f9cc7cd9eb7531df77133",
+        "bytes": 77142,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "البنك",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "2",
+          "10": "1",
+          "11": "مقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d3-results-tiktok",
+      "publishAt": "2026-10-28T21:02:04Z",
+      "slotCairo": "2026-10-29 00:02 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0002-results-story-3c69f0cd.jpg",
+        "sha256": "3c69f0cdbb19424109dd50df3c66c8c773a2313d379a3fd1e0f93b7afd695892",
+        "bytes": 79279,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "البنك",
+          "3": "1",
+          "5": "1",
+          "6": "المصري",
+          "7": "الزمالك",
+          "8": "2",
+          "10": "1",
+          "11": "مقاولون"
+        },
+        "assets": {
+          "0": "NBE",
+          "1": "MAS",
+          "2": "ZAM",
+          "3": "MOK"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw08-d4-1200-fb-feed",
       "publishAt": "2026-10-29T09:00:00Z",
       "slotCairo": "2026-10-29 12:00 Africa/Cairo",
