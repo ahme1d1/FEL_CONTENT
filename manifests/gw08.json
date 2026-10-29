@@ -796,6 +796,132 @@
       "dependsOn": null
     },
     {
+      "id": "gw08-d4-results-fb-feed",
+      "publishAt": "2026-10-29T21:05:11Z",
+      "slotCairo": "2026-10-29 23:05 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-9262d2a9.jpg",
+        "sha256": "9262d2a9586cd61bce529eb1f022287dd15df3a5aecc98968bec0c6a8cd68153",
+        "bytes": 75260,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "مودرن",
+          "3": "0",
+          "5": "1",
+          "6": "الأهلي",
+          "7": "بيراميدز",
+          "8": "2",
+          "10": "1",
+          "11": "دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 6 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d4-results-ig-feed",
+      "publishAt": "2026-10-29T21:05:11Z",
+      "slotCairo": "2026-10-29 23:05 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-9262d2a9.jpg",
+        "sha256": "9262d2a9586cd61bce529eb1f022287dd15df3a5aecc98968bec0c6a8cd68153",
+        "bytes": 75260,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_2_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "مودرن",
+          "3": "0",
+          "5": "1",
+          "6": "الأهلي",
+          "7": "بيراميدز",
+          "8": "2",
+          "10": "1",
+          "11": "دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 6 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d4-results-tiktok",
+      "publishAt": "2026-10-29T21:05:11Z",
+      "slotCairo": "2026-10-29 23:05 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "2305-results-story-de6c7dae.jpg",
+        "sha256": "de6c7daed6aaf70d885c4c5d8857277817cc8dc8568e2b7ce5d3aabfce27d747",
+        "bytes": 76732,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_2_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "مودرن",
+          "3": "0",
+          "5": "1",
+          "6": "الأهلي",
+          "7": "بيراميدز",
+          "8": "2",
+          "10": "1",
+          "11": "دجلة"
+        },
+        "assets": {
+          "0": "MOD",
+          "1": "AHL",
+          "2": "PYR",
+          "3": "WDY"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 6 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw08-d5-1200-fb-feed",
       "publishAt": "2026-10-30T10:00:00Z",
       "slotCairo": "2026-10-30 12:00 Africa/Cairo",
