@@ -1328,6 +1328,150 @@
       "link": null,
       "dependsOn": null,
       "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d6-results-fb-feed",
+      "publishAt": "2026-10-31T22:38:47Z",
+      "slotCairo": "2026-11-01 00:38 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0038-results-4ceee32d.jpg",
+        "sha256": "4ceee32d63ddedb231841600ef4b3565e140fce222adbcda2dee641c9fce95ed",
+        "bytes": 90625,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "0",
+          "5": "1",
+          "6": "المحلة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "1",
+          "11": "زد",
+          "12": "بتروجيت",
+          "13": "1",
+          "15": "1",
+          "16": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d6-results-ig-feed",
+      "publishAt": "2026-10-31T22:38:47Z",
+      "slotCairo": "2026-11-01 00:38 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0038-results-4ceee32d.jpg",
+        "sha256": "4ceee32d63ddedb231841600ef4b3565e140fce222adbcda2dee641c9fce95ed",
+        "bytes": 90625,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "0",
+          "5": "1",
+          "6": "المحلة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "1",
+          "11": "زد",
+          "12": "بتروجيت",
+          "13": "1",
+          "15": "1",
+          "16": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d6-results-tiktok",
+      "publishAt": "2026-10-31T22:38:47Z",
+      "slotCairo": "2026-11-01 00:38 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0038-results-story-addda741.jpg",
+        "sha256": "addda74112ed77f9ee456e44becc228c244f229b04849c6a16b9b45a5c53dbbd",
+        "bytes": 95442,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أبو قير",
+          "3": "0",
+          "5": "1",
+          "6": "المحلة",
+          "7": "سيراميكا",
+          "8": "2",
+          "10": "1",
+          "11": "زد",
+          "12": "بتروجيت",
+          "13": "1",
+          "15": "1",
+          "16": "سموحة"
+        },
+        "assets": {
+          "0": "ABQ",
+          "1": "GHZ",
+          "2": "CRA",
+          "3": "ZED",
+          "4": "PTJ",
+          "5": "SMC"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
