@@ -404,3 +404,5 @@
 {"ts":"2026-10-31T10:00:24.858Z","id":"gw08-d6-1200-ig-feed","state":"published","remoteId":"18216343219361250"}
 {"ts":"2026-10-31T14:07:38.340Z","id":"gw08-d5-results-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"967e4c09c28962cd3b9e21d8b035078a5f0e95460adfb10ace6f8361942d4655"}
 {"ts":"2026-10-31T14:07:41.038Z","id":"gw08-d5-results-fb-feed","state":"scheduled","remoteId":"122128127115405259","scheduledFor":"2026-10-31T14:26:35Z"}
+{"ts": "2026-10-31T14:13:48.000Z", "id": "gw08-d5-results-ig-feed", "state": "skipped", "reason": "owner pulled it: Friday's results would have gone out on Saturday reading 'today'"}
+{"ts": "2026-10-31T14:13:48.000Z", "id": "gw08-d5-results-tiktok", "state": "skipped", "reason": "owner pulled it: Friday's results would have gone out on Saturday reading 'today'"}
