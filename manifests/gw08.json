@@ -1184,6 +1184,150 @@
       "caption": "آخر يوم في الجولة التامنة ⚽\nعندك مين من الماتشات دي؟ 👀",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw08-d5-results-fb-feed",
+      "publishAt": "2026-10-31T14:26:35Z",
+      "slotCairo": "2026-10-31 16:26 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "1626-results-967e4c09.jpg",
+        "sha256": "967e4c09c28962cd3b9e21d8b035078a5f0e95460adfb10ace6f8361942d4655",
+        "bytes": 90422,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أسيوط",
+          "3": "1",
+          "5": "1",
+          "6": "الجونة",
+          "7": "الاتحاد",
+          "8": "0",
+          "10": "0",
+          "11": "الطلائع",
+          "12": "القناة",
+          "13": "1",
+          "15": "3",
+          "16": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d5-results-ig-feed",
+      "publishAt": "2026-10-31T14:26:35Z",
+      "slotCairo": "2026-10-31 16:26 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "1626-results-967e4c09.jpg",
+        "sha256": "967e4c09c28962cd3b9e21d8b035078a5f0e95460adfb10ace6f8361942d4655",
+        "bytes": 90422,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أسيوط",
+          "3": "1",
+          "5": "1",
+          "6": "الجونة",
+          "7": "الاتحاد",
+          "8": "0",
+          "10": "0",
+          "11": "الطلائع",
+          "12": "القناة",
+          "13": "1",
+          "15": "3",
+          "16": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw08-d5-results-tiktok",
+      "publishAt": "2026-10-31T14:26:35Z",
+      "slotCairo": "2026-10-31 16:26 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "1626-results-story-0b370cc8.jpg",
+        "sha256": "0b370cc89744205862039b70911b6dfd0588faab6b380870ad0e769dc752c119",
+        "bytes": 95369,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التامنة",
+          "1": "نتايج النهاردة",
+          "2": "أسيوط",
+          "3": "1",
+          "5": "1",
+          "6": "الجونة",
+          "7": "الاتحاد",
+          "8": "0",
+          "10": "0",
+          "11": "الطلائع",
+          "12": "القناة",
+          "13": "1",
+          "15": "3",
+          "16": "إنبي"
+        },
+        "assets": {
+          "0": "ASY",
+          "1": "GON",
+          "2": "ITT",
+          "3": "TLG",
+          "4": "QAN",
+          "5": "ENP"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }
