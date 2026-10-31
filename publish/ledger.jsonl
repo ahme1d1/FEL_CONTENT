@@ -407,3 +407,5 @@
 {"ts": "2026-10-31T14:13:48.000Z", "id": "gw08-d5-results-ig-feed", "state": "skipped", "reason": "owner pulled it: Friday's results would have gone out on Saturday reading 'today'"}
 {"ts": "2026-10-31T14:13:48.000Z", "id": "gw08-d5-results-tiktok", "state": "skipped", "reason": "owner pulled it: Friday's results would have gone out on Saturday reading 'today'"}
 {"ts":"2026-10-31T14:15:06.940Z","id":"gw08-d5-results-fb-feed","state":"skipped","remoteId":"122128127115405259"}
+{"ts":"2026-10-31T22:20:03.117Z","id":"gw08-d6-results-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"4ceee32d63ddedb231841600ef4b3565e140fce222adbcda2dee641c9fce95ed"}
+{"ts":"2026-10-31T22:20:05.771Z","id":"gw08-d6-results-fb-feed","state":"scheduled","remoteId":"122128162419405259","scheduledFor":"2026-10-31T22:38:47Z"}
