@@ -411,3 +411,13 @@
 {"ts":"2026-10-31T22:20:05.771Z","id":"gw08-d6-results-fb-feed","state":"scheduled","remoteId":"122128162419405259","scheduledFor":"2026-10-31T22:38:47Z"}
 {"ts":"2026-10-31T22:40:13.963Z","id":"gw08-d6-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"4ceee32d63ddedb231841600ef4b3565e140fce222adbcda2dee641c9fce95ed"}
 {"ts":"2026-10-31T22:40:22.420Z","id":"gw08-d6-results-ig-feed","state":"published","remoteId":"17872990149647952"}
+{"ts":"2026-11-01T01:59:05.700Z","id":"gw08-d7-1200-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"8a87dfab790c5ccda829f9e860238bc954d85af1af5e2bb57dbdb57300310dc4"}
+{"ts":"2026-11-01T01:59:08.094Z","id":"gw08-d7-1200-fb-feed","state":"scheduled","remoteId":"122128175967405259","scheduledFor":"2026-11-01T10:00:00Z"}
+{"ts":"2026-11-01T01:59:08.095Z","id":"gw08-d7-1300-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"7840dd381daf9d3a747c1e4db6ef470ff3acba06012b2822f616796e2181325b"}
+{"ts":"2026-11-01T01:59:09.699Z","id":"gw08-d7-1300-fb-feed","state":"scheduled","remoteId":"122128176015405259","scheduledFor":"2026-11-01T11:00:00Z"}
+{"ts":"2026-11-01T01:59:09.700Z","id":"gw08-d7-1400-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"517c69cf11a0c4b8b1012745af25b8350c962142b61a16302610c633c3c47db5"}
+{"ts":"2026-11-01T01:59:11.232Z","id":"gw08-d7-1400-fb-feed","state":"scheduled","remoteId":"122128176063405259","scheduledFor":"2026-11-01T12:00:00Z"}
+{"ts":"2026-11-01T01:59:11.233Z","id":"gw08-d7-1600-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"70cce8382b0a9f271bb8e59a1ec33627324a81b091456bb07201e1f092c612c7"}
+{"ts":"2026-11-01T01:59:12.778Z","id":"gw08-d7-1600-fb-feed","state":"scheduled","remoteId":"122128176105405259","scheduledFor":"2026-11-01T14:00:00Z"}
+{"ts":"2026-11-01T01:59:12.778Z","id":"gw08-d7-2000-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"72a098951c16ffaa25338cd6540bcdb3aa134ba582064c2c35bcfb9a53f3b488"}
+{"ts":"2026-11-01T01:59:14.310Z","id":"gw08-d7-2000-fb-feed","state":"scheduled","remoteId":"122128176159405259","scheduledFor":"2026-11-01T18:00:00Z"}
