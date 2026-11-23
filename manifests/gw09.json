@@ -568,6 +568,150 @@
       "maxLatenessMinutes": 60
     },
     {
+      "id": "gw09-d3-results-fb-feed",
+      "publishAt": "2026-11-23T23:53:05Z",
+      "slotCairo": "2026-11-24 01:53 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0153-results-2356722a.jpg",
+        "sha256": "2356722a2931cea304818bd4ac8d0fbcf24716ba3abfd7b6d4486d36d73a49be",
+        "bytes": 89670,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "الزمالك",
+          "7": "دجلة",
+          "8": "1",
+          "10": "1",
+          "11": "الاتحاد",
+          "12": "الأهلي",
+          "13": "0",
+          "15": "2",
+          "16": "بيراميدز"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "ZAM",
+          "2": "WDY",
+          "3": "ITT",
+          "4": "AHL",
+          "5": "PYR"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d3-results-ig-feed",
+      "publishAt": "2026-11-23T23:53:05Z",
+      "slotCairo": "2026-11-24 01:53 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0153-results-2356722a.jpg",
+        "sha256": "2356722a2931cea304818bd4ac8d0fbcf24716ba3abfd7b6d4486d36d73a49be",
+        "bytes": 89670,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "الزمالك",
+          "7": "دجلة",
+          "8": "1",
+          "10": "1",
+          "11": "الاتحاد",
+          "12": "الأهلي",
+          "13": "0",
+          "15": "2",
+          "16": "بيراميدز"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "ZAM",
+          "2": "WDY",
+          "3": "ITT",
+          "4": "AHL",
+          "5": "PYR"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d3-results-tiktok",
+      "publishAt": "2026-11-23T23:53:05Z",
+      "slotCairo": "2026-11-24 01:53 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0153-results-story-d6b97693.jpg",
+        "sha256": "d6b97693732c17c95cb2d68ea141f5a93446fc137654f70b4597fc54b501124a",
+        "bytes": 94420,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الجونة",
+          "3": "1",
+          "5": "2",
+          "6": "الزمالك",
+          "7": "دجلة",
+          "8": "1",
+          "10": "1",
+          "11": "الاتحاد",
+          "12": "الأهلي",
+          "13": "0",
+          "15": "2",
+          "16": "بيراميدز"
+        },
+        "assets": {
+          "0": "GON",
+          "1": "ZAM",
+          "2": "WDY",
+          "3": "ITT",
+          "4": "AHL",
+          "5": "PYR"
+        }
+      },
+      "caption": "اليوم خلص ✅\nفاضل 7 ماتشات في الجولة ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw09-d4-1200-fb-feed",
       "publishAt": "2026-11-24T10:00:00Z",
       "slotCairo": "2026-11-24 12:00 Africa/Cairo",
