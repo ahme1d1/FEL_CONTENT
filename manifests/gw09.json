@@ -859,6 +859,168 @@
       "dependsOn": null
     },
     {
+      "id": "gw09-d4-results-fb-feed",
+      "publishAt": "2026-11-25T00:34:48Z",
+      "slotCairo": "2026-11-25 02:34 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "results",
+      "media": {
+        "file": "0234-results-ff0ec6f8.jpg",
+        "sha256": "ff0ec6f834b0f97e85b98d95ace2ee79b24e8cf789fe867ff21294905532eea8",
+        "bytes": 107987,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "0",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "1",
+          "10": "1",
+          "11": "البنك",
+          "12": "مقاولون",
+          "13": "2",
+          "15": "1",
+          "16": "القناة",
+          "17": "المصري",
+          "18": "2",
+          "20": "0",
+          "21": "أسيوط"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "NBE",
+          "4": "MOK",
+          "5": "QAN",
+          "6": "MAS",
+          "7": "ASY"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d4-results-ig-feed",
+      "publishAt": "2026-11-25T00:34:48Z",
+      "slotCairo": "2026-11-25 02:34 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "results",
+      "media": {
+        "file": "0234-results-ff0ec6f8.jpg",
+        "sha256": "ff0ec6f834b0f97e85b98d95ace2ee79b24e8cf789fe867ff21294905532eea8",
+        "bytes": 107987,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "0",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "1",
+          "10": "1",
+          "11": "البنك",
+          "12": "مقاولون",
+          "13": "2",
+          "15": "1",
+          "16": "القناة",
+          "17": "المصري",
+          "18": "2",
+          "20": "0",
+          "21": "أسيوط"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "NBE",
+          "4": "MOK",
+          "5": "QAN",
+          "6": "MAS",
+          "7": "ASY"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d4-results-tiktok",
+      "publishAt": "2026-11-25T00:34:48Z",
+      "slotCairo": "2026-11-25 02:34 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "results",
+      "media": {
+        "file": "0234-results-story-7c9e51c4.jpg",
+        "sha256": "7c9e51c4351a2f27631b0a70fc856cab49aebe229339b48adf2d0e5c7e90735b",
+        "bytes": 116651,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "زد",
+          "3": "0",
+          "5": "0",
+          "6": "أبو قير",
+          "7": "سموحة",
+          "8": "1",
+          "10": "1",
+          "11": "البنك",
+          "12": "مقاولون",
+          "13": "2",
+          "15": "1",
+          "16": "القناة",
+          "17": "المصري",
+          "18": "2",
+          "20": "0",
+          "21": "أسيوط"
+        },
+        "assets": {
+          "0": "ZED",
+          "1": "ABQ",
+          "2": "SMC",
+          "3": "NBE",
+          "4": "MOK",
+          "5": "QAN",
+          "6": "MAS",
+          "7": "ASY"
+        }
+      },
+      "caption": "نتائج مباريات اليوم ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
       "id": "gw09-d5-1200-fb-feed",
       "publishAt": "2026-11-25T10:00:00Z",
       "slotCairo": "2026-11-25 12:00 Africa/Cairo",
