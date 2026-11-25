@@ -1151,6 +1151,150 @@
       "caption": "آخر يوم في الجولة التاسعة ⚽\nعندك مين من الماتشات دي؟ 👀",
       "link": null,
       "dependsOn": null
+    },
+    {
+      "id": "gw09-d5-results-fb-feed",
+      "publishAt": "2026-11-25T23:18:56Z",
+      "slotCairo": "2026-11-26 01:18 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0118-results-9b47516a.jpg",
+        "sha256": "9b47516a4c6920b835c8a0b0a273c4d206e3d0cc0d3d5c83ab0dc1a1a50a12f4",
+        "bytes": 91936,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الطلائع",
+          "3": "0",
+          "5": "0",
+          "6": "مودرن",
+          "7": "المحلة",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "إنبي",
+          "13": "1",
+          "15": "0",
+          "16": "سيراميكا"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "MOD",
+          "2": "GHZ",
+          "3": "PTJ",
+          "4": "ENP",
+          "5": "CRA"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d5-results-ig-feed",
+      "publishAt": "2026-11-25T23:18:56Z",
+      "slotCairo": "2026-11-26 01:18 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0118-results-9b47516a.jpg",
+        "sha256": "9b47516a4c6920b835c8a0b0a273c4d206e3d0cc0d3d5c83ab0dc1a1a50a12f4",
+        "bytes": 91936,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "B_RESULTS_3_rows",
+        "slug": "results",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الطلائع",
+          "3": "0",
+          "5": "0",
+          "6": "مودرن",
+          "7": "المحلة",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "إنبي",
+          "13": "1",
+          "15": "0",
+          "16": "سيراميكا"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "MOD",
+          "2": "GHZ",
+          "3": "PTJ",
+          "4": "ENP",
+          "5": "CRA"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅\nالنقاط الإضافية بعد شوية ⚽",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
+    },
+    {
+      "id": "gw09-d5-results-tiktok",
+      "publishAt": "2026-11-25T23:18:56Z",
+      "slotCairo": "2026-11-26 01:18 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "resultsFinal",
+      "media": {
+        "file": "0118-results-story-cdd4d4fe.jpg",
+        "sha256": "cdd4d4fe6a96c5bd5bb676b835096108e17978f2e6de5cf6eb86817a8d293f89",
+        "bytes": 97251,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "B_RESULTS_1080_1920_3_rows",
+        "slug": "results-story",
+        "texts": {
+          "0": "الجولة التاسعة",
+          "1": "نتايج النهاردة",
+          "2": "الطلائع",
+          "3": "0",
+          "5": "0",
+          "6": "مودرن",
+          "7": "المحلة",
+          "8": "2",
+          "10": "0",
+          "11": "بتروجيت",
+          "12": "إنبي",
+          "13": "1",
+          "15": "0",
+          "16": "سيراميكا"
+        },
+        "assets": {
+          "0": "TLG",
+          "1": "MOD",
+          "2": "GHZ",
+          "3": "PTJ",
+          "4": "ENP",
+          "5": "CRA"
+        }
+      },
+      "caption": "آخر يوم في الجولة خلص ✅",
+      "link": null,
+      "dependsOn": null,
+      "anchor": "fixturesFinished"
     }
   ]
 }

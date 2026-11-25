@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 1,
+  "gameweek": 11,
+  "authoredAt": "2026-11-25T22:59:10.376Z",
+  "mediaBase": "https://media.fantasyeg.com/gw11",
+  "posts": [
+    {
+      "id": "gw11-d2-2000-fb-feed",
+      "publishAt": "2026-12-13T18:00:00Z",
+      "slotCairo": "2026-12-13 20:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-2adc479d.jpg",
+        "sha256": "2adc479dc962ee7dfc1f0f873cd0e92b65cc9c372c05bebe5681b69a7755008c",
+        "bytes": 77666,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة 11",
+          "1": "كابتنك مين؟",
+          "2": "محسن",
+          "3": "زيكو",
+          "4": "ريان",
+          "5": "بنشرقي"
+        },
+        "assets": {
+          "0": "MAS",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "AHL"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d2-2000-ig-feed",
+      "publishAt": "2026-12-13T18:00:00Z",
+      "slotCairo": "2026-12-13 20:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-2adc479d.jpg",
+        "sha256": "2adc479dc962ee7dfc1f0f873cd0e92b65cc9c372c05bebe5681b69a7755008c",
+        "bytes": 77666,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "J_QUESTION",
+        "slug": "question",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة 11",
+          "1": "كابتنك مين؟",
+          "2": "محسن",
+          "3": "زيكو",
+          "4": "ريان",
+          "5": "بنشرقي"
+        },
+        "assets": {
+          "0": "MAS",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "AHL"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d2-2000-tiktok",
+      "publishAt": "2026-12-13T18:00:00Z",
+      "slotCairo": "2026-12-13 20:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "question",
+      "media": {
+        "file": "2000-question-story-ab2a22fa.jpg",
+        "sha256": "ab2a22faffd52d3604ce0b0e9c07dc9164c1490dad34da7d63949b5087227687",
+        "bytes": 76059,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "J_QUESTION_1080_1920",
+        "slug": "question-story",
+        "keepNames": true,
+        "texts": {
+          "0": "الجولة 11",
+          "1": "كابتنك مين؟",
+          "2": "محسن",
+          "3": "زيكو",
+          "4": "ريان",
+          "5": "بنشرقي"
+        },
+        "assets": {
+          "0": "MAS",
+          "1": "PYR",
+          "2": "NBE",
+          "3": "AHL"
+        }
+      },
+      "caption": "كابتنك مين الجولة دي؟ 🤔",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1200-fb-feed",
+      "publishAt": "2026-12-14T10:00:00Z",
+      "slotCairo": "2026-12-14 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-183068c7.jpg",
+        "sha256": "183068c78659f25b23fd4149eae1a4f789799df2632ccbfb92ec51baa1166a06",
+        "bytes": 98902,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "سموحة",
+          "3": "5:00",
+          "4": "الزمالك",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "البنك",
+          "8": "زد",
+          "9": "8:00",
+          "10": "بتروجيت"
+        },
+        "assets": {
+          "0": "SMC",
+          "1": "ZAM",
+          "2": "PYR",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "PTJ"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1200-ig-feed",
+      "publishAt": "2026-12-14T10:00:00Z",
+      "slotCairo": "2026-12-14 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-183068c7.jpg",
+        "sha256": "183068c78659f25b23fd4149eae1a4f789799df2632ccbfb92ec51baa1166a06",
+        "bytes": 98902,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "سموحة",
+          "3": "5:00",
+          "4": "الزمالك",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "البنك",
+          "8": "زد",
+          "9": "8:00",
+          "10": "بتروجيت"
+        },
+        "assets": {
+          "0": "SMC",
+          "1": "ZAM",
+          "2": "PYR",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "PTJ"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1200-tiktok",
+      "publishAt": "2026-12-14T10:00:00Z",
+      "slotCairo": "2026-12-14 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-f8eda3f1.jpg",
+        "sha256": "f8eda3f1710a047c6d151d3c0149e292f2936f386762f0132fff5f9270f97fff",
+        "bytes": 82629,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "سموحة",
+          "3": "5:00",
+          "4": "الزمالك",
+          "5": "بيراميدز",
+          "6": "8:00",
+          "7": "البنك",
+          "8": "زد",
+          "9": "8:00",
+          "10": "بتروجيت"
+        },
+        "assets": {
+          "0": "SMC",
+          "1": "ZAM",
+          "2": "PYR",
+          "3": "NBE",
+          "4": "ZED",
+          "5": "PTJ"
+        }
+      },
+      "caption": "مستني ايه من ماتشات النهاردة؟ ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1300-fb-feed",
+      "publishAt": "2026-12-14T11:00:00Z",
+      "slotCairo": "2026-12-14 13:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-c2d065a7.jpg",
+        "sha256": "c2d065a79e28972b8f029c421e8d6da30efcb2bc1c5176f036ae388668585126",
+        "bytes": 49768,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة 11 ⚽\nالديدلاين الاتنين 4 العصر ⏰\nfantasyeg.com",
+      "link": "https://fantasyeg.com/",
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1300-ig-feed",
+      "publishAt": "2026-12-14T11:00:00Z",
+      "slotCairo": "2026-12-14 13:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-c2d065a7.jpg",
+        "sha256": "c2d065a79e28972b8f029c421e8d6da30efcb2bc1c5176f036ae388668585126",
+        "bytes": 49768,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "D_STAT",
+        "slug": "buildup",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة 11 ⚽\nالديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1300-tiktok",
+      "publishAt": "2026-12-14T11:00:00Z",
+      "slotCairo": "2026-12-14 13:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "buildUp",
+      "media": {
+        "file": "1300-buildup-story-9295daa1.jpg",
+        "sha256": "9295daa1cb63b1d379a02a522e7725745a829b10297df5dabc5744718a2f63d6",
+        "bytes": 45459,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "D_STAT_1080_1920",
+        "slug": "buildup-story",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "الديدلاين"
+        },
+        "assets": {}
+      },
+      "caption": "جهّز فريقك لـالجولة 11 ⚽",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d3-1400-fb-feed",
+      "publishAt": "2026-12-14T12:00:00Z",
+      "slotCairo": "2026-12-14 14:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-ee517cd8.jpg",
+        "sha256": "ee517cd83ffacde66183bb440cc056cfc7ea9bbfd5321669be2d378cde7fd8a8",
+        "bytes": 55728,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "اتأكد من فريقك، الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw11-d3-1400-ig-feed",
+      "publishAt": "2026-12-14T12:00:00Z",
+      "slotCairo": "2026-12-14 14:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-ee517cd8.jpg",
+        "sha256": "ee517cd83ffacde66183bb440cc056cfc7ea9bbfd5321669be2d378cde7fd8a8",
+        "bytes": 55728,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "H_DEADLINE",
+        "slug": "deadline",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "اتأكد من فريقك، الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw11-d3-1400-tiktok",
+      "publishAt": "2026-12-14T12:00:00Z",
+      "slotCairo": "2026-12-14 14:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "deadline",
+      "media": {
+        "file": "1400-deadline-story-d2067851.jpg",
+        "sha256": "d2067851ac13b3ac4c67405302afa4885f525af6c4e5dabc99d07d3af8cb6a88",
+        "bytes": 60465,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "H_DEADLINE_1080_1920",
+        "slug": "deadline-story",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "الاتنين 4 العصر",
+          "2": "آخر ميعاد لتغيير فريقك"
+        },
+        "assets": {}
+      },
+      "caption": "الديدلاين الاتنين 4 العصر ⏰",
+      "link": null,
+      "dependsOn": null,
+      "maxLatenessMinutes": 60
+    },
+    {
+      "id": "gw11-d4-1200-fb-feed",
+      "publishAt": "2026-12-15T10:00:00Z",
+      "slotCairo": "2026-12-15 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-577d02a9.jpg",
+        "sha256": "577d02a96254640c48c49676c7a308545a5a44eefccc6745c7eef37cc9b09303",
+        "bytes": 114383,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "الأهلي",
+          "3": "5:00",
+          "4": "أسيوط",
+          "5": "الجونة",
+          "6": "5:00",
+          "7": "أبو قير",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "الاتحاد",
+          "11": "دجلة",
+          "12": "8:00",
+          "13": "سيراميكا"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "ASY",
+          "2": "GON",
+          "3": "ABQ",
+          "4": "QAN",
+          "5": "ITT",
+          "6": "WDY",
+          "7": "CRA"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d4-1200-ig-feed",
+      "publishAt": "2026-12-15T10:00:00Z",
+      "slotCairo": "2026-12-15 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-577d02a9.jpg",
+        "sha256": "577d02a96254640c48c49676c7a308545a5a44eefccc6745c7eef37cc9b09303",
+        "bytes": 114383,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_4_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "الأهلي",
+          "3": "5:00",
+          "4": "أسيوط",
+          "5": "الجونة",
+          "6": "5:00",
+          "7": "أبو قير",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "الاتحاد",
+          "11": "دجلة",
+          "12": "8:00",
+          "13": "سيراميكا"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "ASY",
+          "2": "GON",
+          "3": "ABQ",
+          "4": "QAN",
+          "5": "ITT",
+          "6": "WDY",
+          "7": "CRA"
+        }
+      },
+      "caption": "مباريات النهاردة ⚽\nكابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d4-1200-tiktok",
+      "publishAt": "2026-12-15T10:00:00Z",
+      "slotCairo": "2026-12-15 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchday",
+      "media": {
+        "file": "1200-matchday-story-fcd992ec.jpg",
+        "sha256": "fcd992eca44f1f6ed0d0eda7813286652cac8e1c88e72e196745222f792ee072",
+        "bytes": 97640,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_4_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "الأهلي",
+          "3": "5:00",
+          "4": "أسيوط",
+          "5": "الجونة",
+          "6": "5:00",
+          "7": "أبو قير",
+          "8": "القناة",
+          "9": "8:00",
+          "10": "الاتحاد",
+          "11": "دجلة",
+          "12": "8:00",
+          "13": "سيراميكا"
+        },
+        "assets": {
+          "0": "AHL",
+          "1": "ASY",
+          "2": "GON",
+          "3": "ABQ",
+          "4": "QAN",
+          "5": "ITT",
+          "6": "WDY",
+          "7": "CRA"
+        }
+      },
+      "caption": "كابتنك لعب ولا لسه؟ 🔥",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d5-1200-fb-feed",
+      "publishAt": "2026-12-16T10:00:00Z",
+      "slotCairo": "2026-12-16 12:00 Africa/Cairo",
+      "platform": "facebook",
+      "strategy": "fb-scheduled",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-126b5374.jpg",
+        "sha256": "126b5374e5c77d49e6ae24d501069dd36be61a3dcbf6433513ddceb45ec5c910",
+        "bytes": 100753,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "مقاولون",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "الطلائع",
+          "8": "المصري",
+          "9": "8:00",
+          "10": "المحلة"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "MOD",
+          "2": "ENP",
+          "3": "TLG",
+          "4": "MAS",
+          "5": "GHZ"
+        }
+      },
+      "caption": "آخر يوم في الجولة 11 ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d5-1200-ig-feed",
+      "publishAt": "2026-12-16T10:00:00Z",
+      "slotCairo": "2026-12-16 12:00 Africa/Cairo",
+      "platform": "instagram",
+      "strategy": "ig-feed",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-126b5374.jpg",
+        "sha256": "126b5374e5c77d49e6ae24d501069dd36be61a3dcbf6433513ddceb45ec5c910",
+        "bytes": 100753,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "source": {
+        "card": "A_MATCHDAY_3_rows",
+        "slug": "matchday",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "مقاولون",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "الطلائع",
+          "8": "المصري",
+          "9": "8:00",
+          "10": "المحلة"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "MOD",
+          "2": "ENP",
+          "3": "TLG",
+          "4": "MAS",
+          "5": "GHZ"
+        }
+      },
+      "caption": "آخر يوم في الجولة 11 ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    },
+    {
+      "id": "gw11-d5-1200-tiktok",
+      "publishAt": "2026-12-16T10:00:00Z",
+      "slotCairo": "2026-12-16 12:00 Africa/Cairo",
+      "platform": "tiktok",
+      "strategy": "tiktok-draft",
+      "kind": "matchdayFinal",
+      "media": {
+        "file": "1200-matchday-story-40462cbe.jpg",
+        "sha256": "40462cbe8385582dd9f1bffa014f7efdab4953441cfbb38b0587ffaf75aaadad",
+        "bytes": 84119,
+        "mime": "image/jpeg",
+        "width": 1080,
+        "height": 1920
+      },
+      "source": {
+        "card": "A_MATCHDAY_1080_1920_3_rows",
+        "slug": "matchday-story",
+        "texts": {
+          "0": "الجولة 11",
+          "1": "مباريات النهاردة",
+          "2": "مقاولون",
+          "3": "5:00",
+          "4": "مودرن",
+          "5": "إنبي",
+          "6": "8:00",
+          "7": "الطلائع",
+          "8": "المصري",
+          "9": "8:00",
+          "10": "المحلة"
+        },
+        "assets": {
+          "0": "MOK",
+          "1": "MOD",
+          "2": "ENP",
+          "3": "TLG",
+          "4": "MAS",
+          "5": "GHZ"
+        }
+      },
+      "caption": "آخر يوم في الجولة 11 ⚽\nعندك مين من الماتشات دي؟ 👀",
+      "link": null,
+      "dependsOn": null
+    }
+  ]
+}
