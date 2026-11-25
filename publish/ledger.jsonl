@@ -472,3 +472,5 @@
 {"ts":"2026-11-24T10:00:27.115Z","id":"gw09-d4-1200-ig-feed","state":"published","remoteId":"18177201247396889"}
 {"ts":"2026-11-25T00:15:52.893Z","id":"gw09-d4-results-fb-feed","state":"claimed","strategy":"fb-scheduled","mediaSha256":"ff0ec6f834b0f97e85b98d95ace2ee79b24e8cf789fe867ff21294905532eea8"}
 {"ts":"2026-11-25T00:15:55.525Z","id":"gw09-d4-results-fb-feed","state":"scheduled","remoteId":"122130875955405259","scheduledFor":"2026-11-25T00:34:48Z"}
+{"ts":"2026-11-25T01:09:27.617Z","id":"gw09-d4-results-ig-feed","state":"claimed","strategy":"ig-feed","mediaSha256":"ff0ec6f834b0f97e85b98d95ace2ee79b24e8cf789fe867ff21294905532eea8"}
+{"ts":"2026-11-25T01:09:43.751Z","id":"gw09-d4-results-ig-feed","state":"failed","error":"Composio publish failed: Failed to create post (status 400). Response: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"A_8dtFyYYYYMqeNQxuWfB5M\"}}"}
